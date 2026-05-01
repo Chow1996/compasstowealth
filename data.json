@@ -1,0 +1,5696 @@
+{
+  "meta": {
+    "date_max": "2026-04-26",
+    "date_min": "2026-04-16",
+    "days_count": 10,
+    "all_dates": [
+      "2026-04-16",
+      "2026-04-17",
+      "2026-04-18",
+      "2026-04-20",
+      "2026-04-21",
+      "2026-04-22",
+      "2026-04-23",
+      "2026-04-24",
+      "2026-04-25",
+      "2026-04-26"
+    ]
+  },
+  "today": [
+    {
+      "cluster": "KELP",
+      "name": "Kelp/Aave 救助 Day 7 — 跨链 DAO 联合提案 + Solana 基金会介入",
+      "desc": "Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 提案以释放被冻结的 ETH（WuBlockchain）。Solana Foundation 直接借 USDT 给 Aave 帮助坏账修复，并计划把 AAVE 部署到 Solana — KELP 事件从单链清算危机演变为跨链 DeFi 生态格局事件。rsETH/KELP 仍未上线 OKX，AAVE/SOL 双双面临生态新闻驱动的波动放大。",
+      "heat": 82,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETHFI",
+        "KELP",
+        "LDO",
+        "MNT",
+        "SOL",
+        "rsETH"
+      ],
+      "urg": "高",
+      "act": "AAVE/SOL 永续临时调高波动保证金，密切监控 Arbitrum DAO 投票节点；评估 OKX 是否需要应急上 rsETH/KELP/MNT 接住情绪反弹流量。SOL 部署 AAVE 是 SOL 生态级利好，可顺势准备 SOL 生态 token 二轮拉升预案。",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (Arbitrum DAO 联合提案",
+        "SOL Foundation 借款",
+        "AAVE 上 Solana 计划)",
+        "历史 cluster KELP Day 6 延续"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "GENIUS_ACT",
+      "name": "Morgan Stanley 推 Stablecoin Reserves Portfolio (MSNXX) — TradFi 抢稳定币储备业务",
+      "desc": "Morgan Stanley Investment Management ($1.9T AUM) 4/24 推出 Stablecoin Reserves Portfolio，专为 GENIUS Act 合规稳定币发行方设计：投美国国债 (≤93 天到期) + 隔夜逆回购，维持 $1.00 稳定 NAV，发行方可一站式获得收益+合规储备。这是大型 TradFi 直接切入稳定币基础设施的标志性事件，意味稳定币竞争从'谁发币'转向'谁管储备'。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "USDC",
+        "USDG",
+        "USDT"
+      ],
+      "urg": "高",
+      "act": "评估 OKX 自营/合规稳定币产品对 GENIUS Act 储备方案的对接路径；若 OKX 上 USDG 等合规币，可借这波事件给予更高曝光。Morgan Stanley 入场是机构稳定币流量增加的前奏，需提前规划稳定币现货深度池。",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "Coindesk",
+        "BusinessWire (Morgan Stanley IM 公告)",
+        "Cryptobriefing (GENIUS Act 合规)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "regulation",
+      "name": "Zondacrypto (波兰) 近破产 + CEO 跑路以色列 — 交易所信任叙事重提",
+      "desc": "WuBlockchain: 波兰交易所 Zondacrypto CEO Przemysław Kral 已跑路以色列，平台面临 $100M+ 客户资金缺口，临近破产。推文 18.5 万阅读量，欧洲监管机构和用户社群高度关注。事件叠加昨日 Wisconsin 起诉 Coinbase/Crypto.com/Kalshi 等，行业进入'交易所信任审视'高敏期。",
+      "heat": 78,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [],
+      "urg": "中",
+      "act": "借势在外部传播渠道强化 OKX 储备证明 (PoR) 与冷热钱包透明度，避免被动卷入信任危机；同时关注是否有 Zondacrypto 用户资金外迁需求 (用户/做市商) 可承接。",
+      "gap": [],
+      "comp": [
+        "Coinbase"
+      ],
+      "sig": [
+        "WuBlockchain (Zondacrypto 详情)",
+        "延续 regulation cluster"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "prediction_market",
+      "name": "POLY 异常爆发 Day 5 — TG 24次 Top1 + 链迁移 + Polymarket USD 即将推出",
+      "desc": "TG hot tokens 中 POLY 飙至 24 次第一位（昨日仅 2 次），与 Polymarket 平台升级（链迁移）+ Polymarket USD（1:1 USDC 抵押稳定币）即将推出 + Brazil 封禁余波共振。POLY token 仍未官方发行（Polymarket CMO 10 月确认计划但未 TGE）。若 POLY 进入实际 TGE 倒计时，OKX 处于完全无现货/永续状态，是潜在重大首发机会。",
+      "heat": 75,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "POLY",
+        "USDC"
+      ],
+      "urg": "高",
+      "act": "立即建立 POLY TGE 监控（社媒/治理论坛/链上发币地址），若 TGE 启动 24 小时内首发现货+永续；同步评估 Polymarket USD（PMUSD）作为新合规稳定币的上币优先级。",
+      "gap": [
+        "OKX无 (未 TGE)"
+      ],
+      "comp": [],
+      "sig": [
+        "TG hot_tokens (POLY 24次 Top1)",
+        "WuBlockchain (Polymarket 链迁移)",
+        "Web 搜索 (Polymarket USD 上线计划)",
+        "昨日 prediction_market cluster"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "IPO",
+      "name": "Coinbase Sonar 4/28 SpaceX 类 Pre-IPO 打新 — CN KOL 双源共振",
+      "desc": "yuyue_chris 详细解构 Coinbase Sonar (= Plasma 同平台) 4/28 北京时间 20:00 开打 SpaceX-类 Pre-IPO：Pre-sale FDV 50M / TGE 100% 解锁 / 盘前 FDV 100M+ / 单号上限 20k u / 需 Echo KYC，'本金有一定安全保障'。chaomeigu_com 同日跟评 '打新 SpaceX'，CN 圈层共振。延续昨日 IPO cluster (Coinbase + Bybit 谈代币化美股 Pre-IPO)。",
+      "heat": 72,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "ASPECTA",
+        "SPCX"
+      ],
+      "urg": "高",
+      "act": "OKX launchpad / Jumpstart 团队评估能否在 4/28 当天对标推出 Pre-IPO 类打新 (RWA 框架内)；若 Coinbase Sonar 标的 4/28 后流动性外溢，OKX 可作为接盘场所首发上线（提前 list 流程）。",
+      "gap": [
+        "OKX无 (未 TGE)"
+      ],
+      "comp": [
+        "Bybit",
+        "Coinbase"
+      ],
+      "sig": [
+        "yuyue_chris (4/28 Coinbase Sonar 详情)",
+        "chaomeigu_com (回声)",
+        "延续 IPO cluster"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "etf_flow",
+      "name": "BTC ETF 9 连续日净流入 + ETH 反转 + Grayscale/Bitmine $500M ETH 质押",
+      "desc": "BTC 现货 ETF 4/24 +$14.45M，第 9 个连续净流入日，过去 8 日累计破 $2B (WuBlockchain)。ETH 现货 ETF 4/24 +$23.38M 反转上一周 -$75.94M 跌势。Grayscale + Bitmine 4/25 联手质押近 $500M ETH —— ETH 结构性吸筹再次确认。BTC 仍在 $77-80k 区间盘整，破 $80.5k 看 $85k；跌穿 $76.5k 看深度回调。",
+      "heat": 70,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (ETF 9连流入 + ETH 反转) + Web 搜索 (Grayscale+Bitmine $500M staking)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "BTC_technical",
+      "name": "BIP-361 量子迁移争议升级 — Adam Back 推优选升级 vs 强制冻结",
+      "desc": "BIP-361 三阶段 soft fork 计划：Phase A 三年内禁止向遗留地址类型转账；Phase B 两年后失效遗留签名（共识层冻结所有未迁移币）；Phase C ZK proof 恢复机制研究中。Google 早 2026 年研究: 足够强量子机 ~10 分钟可破 ECDSA。34% BTC 已暴露公钥。Adam Back 公开反对强制冻结，主张可选升级 — 社区分裂加剧，反对意见上升至主流声量。",
+      "heat": 68,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "Coindesk/Cointelegraph (BIP-361 三阶段 + Adam Back) + 延续昨日 BTC_technical cluster"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "LTC_security",
+      "name": "Litecoin MWEB 零日漏洞触发链重组 — LTC 安全事件",
+      "desc": "WuBlockchain: Litecoin MimbleWimble Extension Block (MWEB) 出现零日漏洞，链上执行了重组以撤销无效 pegouts。LTC 是 OKX 已有现货+永续+交割的主流币，链重组事件需要交易所风控团队评估存款/取款延迟与潜在双花风险。",
+      "heat": 65,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "LTC"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (LTC MWEB 零日 + 链重组)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "privacy_coins",
+      "name": "ZEC 隐私币突破延续 Day 6 — ByzGeneral 看多 + ETH ETF 资金分流",
+      "desc": "@ByzGeneral 公开图表认为 ZEC 已 ready for next expansion（突破已成立）。TG 端 ZEC 本日落到第 8 位（昨日 8 次今日未在 top 10 出现），但价格层面累涨 50%+。Robinhood 已上 + Grayscale ETF 申请 + SEC 1/15 结案三重利好仍是结构性多头逻辑。",
+      "heat": 62,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "XMR",
+        "ZEC"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "ByzGeneral (ZEC 突破图) + 延续 privacy_coins cluster Day 5"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "APE_NFT",
+      "name": "APE 新 CEO + BAYC NFT 复兴 — ByzGeneral 双信号看多",
+      "desc": "ByzGeneral: APE 新 CEO 任命引发看多反应；BAYC NFT 'reviving — very interesting'。NFT 蓝筹复兴叙事可能带动 ApeChain 生态，APE 作为治理币首批受益。OKX 已有现货+永续，叙事归 L2 关注。",
+      "heat": 58,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "APE"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "ByzGeneral (APE 新 CEO + BAYC 复兴)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "other"
+    },
+    {
+      "cluster": "ETH_roadmap",
+      "name": "Ethereum 5 north stars / 7 forks roadmap 公布",
+      "desc": "ETH 提议未来约 7 次网络分叉，围绕 5 大 'north stars'：缩短出块时间、L1 吞吐扩到 ~10,000 TPS、L2 扩展、用户体验改进、机构合规等。对 ETH 长期叙事是结构性利好，但短期主要影响 ETH 衍生品定价模型。",
+      "heat": 55,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "Web 搜索 (ETH 路线图) + Coinmarketcap AI 摘要"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "stablecoin_flow",
+      "name": "Tron $344M USDT 冻结余波 + Whale Alert: Ceffu 168M USDT 出走",
+      "desc": "WuBlockchain: 美国国务院与 Tether 协助冻结 Tron 链 $344M USDT (与伊朗政权关联，CNN 报道)。@whale_alert: 168.3M USDT 从 Ceffu 转至未知钱包；1,146 BTC 从 OKEX 转至未知钱包；663 BTC 由未知转入 Coinbase。稳定币链流量监测 + 大额 BTC 跨所迁移信号。",
+      "heat": 55,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "USDC",
+        "USDT"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (Tron 冻结) + whale_alert (Ceffu/OKEX/Coinbase 大额转账)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    }
+  ],
+  "week": [
+    {
+      "cluster": "KelpDAO rsETH + LayerZero 桥漏洞事",
+      "name": "KelpDAO rsETH + LayerZero 桥漏洞事件 — DeFi 系统性风险",
+      "desc": "KelpDAO 官方桥因 LayerZero 单签配置被攻击，盗取 116,500 枚 rsETH（~$293M）。Aave V3/V4 紧急冻结 rsETH 市场，TVL 流失 $84 亿（-30%+），100% 利用率下出现坏账风险。Reserve 暂停 eUSD/USD3 铸造与再平衡。Justin Sun 撤出 $154M ETH。Fluid 上线 aWETH 赎回协议（首日 $10 亿容量）缓解系统性压力。ETHFI、EtherFi 金库确认不受影响。based16z 预期本周将宣布投资者 backstop 覆盖损失。OKX 已有 ETHFI/AAVE/ETH 现货+永续，需评估：rsETH 相关敞口、LRT 衍生品风控、坏账事件对 AAVE 价格冲击路径。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETHFI",
+        "FLUID",
+        "KELP",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：监控 AAVE 永续 OI 与强平阶梯、评估坏账事件冲击；关注 LRT 赛道整体风险；评估 FLUID 永续上线（TVL 剧增）",
+      "gap": [
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "BlockBeats×4 条新闻",
+        "WuBlockchain",
+        "krugermacro",
+        "based16z",
+        "bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "Kelp rsETH / LayerZero 事件 Day",
+      "name": "Kelp rsETH / LayerZero 事件 Day 2 — Aave TVL -$84.5 亿 + 坏账决策期",
+      "desc": "KelpDAO rsETH 桥被盗 $293M 后 48 小时，Aave TVL 从 $262 亿降至 $179.5 亿（-$84.5 亿 / -32%）；WETH 借贷池 100% 利用率，多签冻结 WETH、建议暂停 Umbrella 模块；Aave 官方正讨论两种坏账处理方案。DPRK Lazarus 嫌疑浮现，Kelp 正撰写把责任推给 LayerZero 的备忘录；based16z 继续预期本周宣布投资者 backstop。Lido 敞口 $21.6M；Aave 潜在坏账 $1.23-2.30 亿。Justin Sun 向 Spark 存入 $1.74 亿（占 Spark USDC 存款 1/4），Spark TVL 48h +17%。某 AAVE 持币 1+ 年鲸鱼将 $3.01M 转入 Binance（或亏损 $1.85M）。Kamino USDC 利用率 100%、零流动性 — 危机开始向 Solana 侧扩散。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETHFI",
+        "FLUID",
+        "KAMINO",
+        "KELP",
+        "SPARK",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：AAVE 坏账方案公告前后的波动监控；预案 LRT 赛道 re-rating；评估 SPARK/KAMINO 上币及流动性观察（竞对尚未全线覆盖，窗口）",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [
+        "Binance"
+      ],
+      "sig": [
+        "BlockBeats×5 条新闻",
+        "WuBlockchain",
+        "0xVeryBigOrange",
+        "based16z",
+        "krugermacro",
+        "bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，",
+      "name": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，OKX 仅 perp、缺现货",
+      "desc": "24h 内 CHIP 爆发式扩散：Binance 上 CHIP/USDT + CHIP/USDC + CHIP/TRY 现货且带 Seed Tag；Bybit 上 CHIP 现货 + perp；Bitget 上 CHIPUSDT perp；Upbit 上 CHIP/BTC + CHIP/USDT + CHIP/KRW；Bithumb 上 KRW 市场。加上 4/21 Coinbase 的 CHIP/USD 现货，**5 家 Tier1（Binance、Coinbase、Upbit、Bithumb、Bybit）+ 2 家 Tier2（Bitget、Bybit perp）**都已在现货或衍生侧布局。OKX 当前有 CHIP 永续（之前已上），但缺现货 —— 用户在 OKX 无法买到现货 CHIP、只能去别家。这是一次 48h 内产生的覆盖断层，错过窗口越久用户心智越难抢回。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "CHIP"
+      ],
+      "urg": "立即",
+      "act": "上币团队今日内启动 CHIP 现货审核：合约代码、流通盘、做市深度；目标 1-2 日内完成现货上线",
+      "gap": [
+        "仅有永续，无现货"
+      ],
+      "comp": [
+        "Binance",
+        "Bybit",
+        "Bitget",
+        "Coinbase",
+        "Upbit"
+      ],
+      "sig": [
+        "scan 新上币 × Binance/Bybit/Bitget/Upbit",
+        "bwenews 公告",
+        "4/21 Coinbase 公告"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "RAVE 操纵事件升级 — 24h -88%、$23M 倾销",
+      "name": "RAVE 操纵事件升级 — 24h -88%、$23M 倾销、Binance/Bitget 官方调查",
+      "desc": "承接 4/18 风控预警：RAVE 在 ZachXBT 公开调查后 24h 跌 -88%，爆仓 $43.68M；RaveDAO 关联初始分配地址向 Bitget 倾销 2300 万枚 RAVE（价值 $23M）。Binance/Bitget 已启动调查，ZachXBT 悬赏 $10K 征集内部信息，krugermacro 要求 Heyi/Gracy 内部复查。CryptoPainter 警告'内部人控制 98%+ 流通、勿碰'。Ice_Frog 朋友 20 万 token 空投从 $600 万峰值跌至 $30 万。OKX 已有 RAVE 永续，需复盘 4/18 风控建议执行情况并强化。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "RAVE"
+      ],
+      "urg": "立即",
+      "act": "合约风控：紧急复核 RAVE 永续限仓、保证金比例、强平阶梯；对齐 Binance/Bitget 调查结果；评估下架或暂停新开仓",
+      "gap": [],
+      "comp": [
+        "Binance",
+        "Bitget"
+      ],
+      "sig": [
+        "BlockBeats",
+        "WuBlockchain",
+        "krugermacro",
+        "CryptoPainter",
+        "3 位 CN KOL"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "Kelp / rsETH / AAVE Day 3 — 坏账",
+      "name": "Kelp / rsETH / AAVE Day 3 — 坏账 $124-230M + $660M CEX 敞口卡住",
+      "desc": "LayerZero RPC breach 被 Kelp 官方正式归因为 $293M 被盗来源。Justin Sun/HTX 在 AAVE 冻结公告后数分钟内 5 笔撤 $274M 资产；MEXC $347M aUSDT、CoinEx $151M、Kiln $165M 卡在 AAVE 借贷池（合计 CEX 链上敞口 ~$660M）。WETH 利用率 100%、idle liquidity <$20。LlamaRisk 估算 AAVE 潜在坏账 $124M-$230M；Dragonfly Haseeb 称 AAVE 有资本吸收。Arbitrum Security Council 紧急冻结 30,766 ETH 与 Kelp 相关的合约。AAVE TVL 继续流失；SPARK TVL 延续 +17% 外溢；Kamino 100% 利用率。OKX 已有 AAVE 现货+永续，合约风控应跟踪坏账方案公告窗口。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ARB",
+        "ETHFI",
+        "KAMINO",
+        "KELP",
+        "SPARK",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：AAVE 坏账公告前后波动监控；LRT re-rating 应对；评估 SPARK/KAMINO 上币（AAVE 资金外溢的承接方）",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain×8",
+        "krugermacro",
+        "0xVeryBigOrange",
+        "BlockBeats"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "美伊和谈破裂 / BTC 跌破 $7.4 万 — risk-",
+      "name": "美伊和谈破裂 / BTC 跌破 $7.4 万 — risk-off 反转",
+      "desc": "临时停火周三到期、伊媒称拒谈，霍尔木兹海峡当日无船只通行、月底前通航概率仅 30%。美军海军陆战队控制试图突破封锁的伊朗船只，阿联酋称遭 2800+ 次袭击（90% 民用）。BTC 跌破 $7.4 万，原油跳空高开、美股期货齐跌。某巨鲸 3 倍做多原油 $750 万。风险情绪较 4/18 risk-on 快速反转。KOL 分歧：krugermacro 仍 'don't short'；CryptoPainter 准备 6 月 DCA 策略；Murphychen888 引矿工成本 $53-73k 认为 BTC $60k 已便宜。",
+      "heat": 88,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "BZ/CL",
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "BlockBeats 10+ 条 + Tier1 KOL×3"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "KELP",
+      "name": "Kelp/Aave 救助 Day 7 — 跨链 DAO 联合提案 + Solana 基金会介入",
+      "desc": "Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 提案以释放被冻结的 ETH（WuBlockchain）。Solana Foundation 直接借 USDT 给 Aave 帮助坏账修复，并计划把 AAVE 部署到 Solana — KELP 事件从单链清算危机演变为跨链 DeFi 生态格局事件。rsETH/KELP 仍未上线 OKX，AAVE/SOL 双双面临生态新闻驱动的波动放大。",
+      "heat": 85,
+      "days_count": 4,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETH",
+        "ETHFI",
+        "KELP",
+        "LDO",
+        "MNT",
+        "PENDLE",
+        "SOL"
+      ],
+      "urg": "高",
+      "act": "AAVE/SOL 永续临时调高波动保证金，密切监控 Arbitrum DAO 投票节点；评估 OKX 是否需要应急上 rsETH/KELP/MNT 接住情绪反弹流量。SOL 部署 AAVE 是 SOL 生态级利好，可顺势准备 SOL 生态 token 二轮拉升预案。",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (Arbitrum DAO 联合提案",
+        "SOL Foundation 借款",
+        "AAVE 上 Solana 计划)",
+        "历史 cluster KELP Day 6 延续"
+      ],
+      "occurrences_count": 4,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "ASTEROID — TG 热榜 #2 + 鲸鱼 $114",
+      "name": "ASTEROID — TG 热榜 #2 + 鲸鱼 $114 万买入，OKX 无",
+      "desc": "TG 24h 排名 #2（11 次提及，仅次 BTC），新闻报道某鲸鱼近 2 日投入 $114 万买入 ASTEROID，另有 4/18 报道 Moonshot 一夜上线三项目带动 meme 升温。多源信号：TG + 新闻 + 链上鲸鱼。OKX 现货/永续均无；竞对覆盖情况需复核（Bitget/MEXC 等 Tier2 可能已有）。项目基本面需尽快调研。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "ASTEROID"
+      ],
+      "urg": "24h 内",
+      "act": "上币团队 24h 内完成 ASTEROID 项目调研：合约审计状态、代币分配、流动性深度；若通过可考虑抢先永续上线",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Bitget"
+      ],
+      "sig": [
+        "TG 热榜 11 次",
+        "BlockBeats 新闻×2",
+        "链上鲸鱼"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "机构大买 BTC/ETH 持续 — Strategy +34",
+      "name": "机构大买 BTC/ETH 持续 — Strategy +34k BTC / BitMine +101k ETH",
+      "desc": "Strategy（MSTR）新增 34,164 BTC 价值 $25.4 亿、均价 $74,395、总持仓 815,061 BTC；BitMine 上周新增 101,627 ETH（ETH 流通的 4.12%）。BTC 现货 ETF 连续 3 周净流入 $9.96 亿（CoinShares BTC 基金 $11.16 亿）、ETH ETF $2.76 亿（Jan 以来最强周）、SOL ETF $35.17M、XRP ETF $55.39M。摩根士丹利 ETF +215 BTC，BlackRock +3372 BTC。抄底鲸 Feb 投入 $5 亿的 cbBTC 现清仓最后 2000 枚。某鲸鱼从 Binance 提 1.83 万 ETH（1.2 万卖出）。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "ETH",
+        "MSTR",
+        "SOL",
+        "XRP"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain + BlockBeats×3 + whale_alert"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "机构大买 BTC/ETH 继续 — Strategy +34",
+      "name": "机构大买 BTC/ETH 继续 — Strategy +34k BTC / BitMine +101k ETH",
+      "desc": "Strategy 延续数据：+34,164 BTC（$25.4 亿、均价 $74,395、总 815,061 BTC）；BitMine 新增 101,627 ETH（ETH 流通的 4.12%、4 个月内最大周增持）。BTC 现货 ETF 连 3 周流入、ETH ETF Jan 以来最强。whale_alert 今日额外捕获 80,000 ETH（$184.8M）从 Binance 出金至未知钱包（潜在机构积累）。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BMNR",
+        "BTC",
+        "ETH",
+        "MSTR"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain + whale_alert + bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/",
+      "name": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/COAI/M/PIPPIN/RIVER",
+      "desc": "WuBlockchain 转述 ZachXBT 将 SIREN/MYX/COAI/M/PIPPIN/RIVER 6 个 token 列为下一批高度可疑的低流通操纵候选。0xVeryBigOrange 将 ARIA/SIREN/RAVE 同列为'95%+ 集中度的 Alpha 项目'、任何 >1x 杠杆都会爆。OKX 覆盖：COAI/PIPPIN/RIVER 已有永续（需复核风控），SIREN/MYX/M/ARIA OKX 无。对已上线的 3 个要先行一步检查 OI、持仓集中度；对未上线的 4 个建立上币评估防火墙。",
+      "heat": 82,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "ARIA",
+        "COAI",
+        "M",
+        "MYX",
+        "PIPPIN",
+        "RIVER",
+        "SIREN"
+      ],
+      "urg": "立即",
+      "act": "合约风控：对 COAI/PIPPIN/RIVER 执行与 RAVE 相同的预防检查；对 SIREN/MYX/M/ARIA 将其标记为上币评估黑名单候选；复核相关代币持仓集中度",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain 转 ZachXBT",
+        "0xVeryBigOrange",
+        "yuyue_chris"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "CHIP — Coinbase 今日新上现货 + Binan",
+      "name": "CHIP — Coinbase 今日新上现货 + Binance Futures 已上预市场，OKX 完全缺失",
+      "desc": "Coinbase 今日上线 CHIP/USD 现货（Tier1 交易所）；Binance Futures 4/16 已上 CHIPUSDT 预市场；两家 Tier1 都已布局，OKX 现货/永续均无。CHIP 为半导体指数类代币，属股票衍生品赛道延续（4/20 Binance 上 MSFT/AVGO/BABA 后又新增）。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "CHIP"
+      ],
+      "urg": "本周内",
+      "act": "产品/上币紧急评估 CHIP 永续上线（股票 Swap 产品线补位，配合 AVGO/BABA 建议）",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Binance",
+        "Coinbase"
+      ],
+      "sig": [
+        "Coinbase 公告",
+        "bwenews 4/16 Binance 公告"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "CHIP",
+      "name": "CHIP Day 5 — Hyperliquid 再上永续 + Kraken 欧元现货，OKX 仍只有 perp 缺现货",
+      "desc": "CHIP 进入第 5 天扩散：今日 Hyperliquid 新增 CHIPUSD 永续，Kraken 补齐 CHIP/ZEUR 现货。OKX 当前仅有永续，现货线仍缺失；热度已连续多日在 L3 级别，符合典型 '先 perp 后 spot' 竞对节奏。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "CHIP"
+      ],
+      "urg": "中高",
+      "act": "现货上币团队评估 CHIP 现货补齐窗口 — 已出现 Day 5 持续信号 + 5 家 Tier1 铺开，再拖会被动。",
+      "gap": [],
+      "comp": [
+        "Kraken",
+        "Hyperliquid"
+      ],
+      "sig": [
+        "Hyperliquid",
+        "Kraken 今日新上",
+        "历史 CHIP cluster Day 1-4"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "GENIUS_ACT",
+      "name": "Morgan Stanley 推 Stablecoin Reserves Portfolio (MSNXX) — TradFi 抢稳定币储备业务",
+      "desc": "Morgan Stanley Investment Management ($1.9T AUM) 4/24 推出 Stablecoin Reserves Portfolio，专为 GENIUS Act 合规稳定币发行方设计：投美国国债 (≤93 天到期) + 隔夜逆回购，维持 $1.00 稳定 NAV，发行方可一站式获得收益+合规储备。这是大型 TradFi 直接切入稳定币基础设施的标志性事件，意味稳定币竞争从'谁发币'转向'谁管储备'。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-26",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "USDC",
+        "USDG",
+        "USDT"
+      ],
+      "urg": "高",
+      "act": "评估 OKX 自营/合规稳定币产品对 GENIUS Act 储备方案的对接路径；若 OKX 上 USDG 等合规币，可借这波事件给予更高曝光。Morgan Stanley 入场是机构稳定币流量增加的前奏，需提前规划稳定币现货深度池。",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "Coindesk",
+        "BusinessWire (Morgan Stanley IM 公告)",
+        "Cryptobriefing (GENIUS Act 合规)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "tech_reg"
+    },
+    {
+      "cluster": "BTC_technical",
+      "name": "BIP-361 量子迁移争议升级 — Adam Back 推优选升级 vs 强制冻结",
+      "desc": "BIP-361 三阶段 soft fork 计划：Phase A 三年内禁止向遗留地址类型转账；Phase B 两年后失效遗留签名（共识层冻结所有未迁移币）；Phase C ZK proof 恢复机制研究中。Google 早 2026 年研究: 足够强量子机 ~10 分钟可破 ECDSA。34% BTC 已暴露公钥。Adam Back 公开反对强制冻结，主张可选升级 — 社区分裂加剧，反对意见上升至主流声量。",
+      "heat": 78,
+      "days_count": 4,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L2",
+        "L3"
+      ],
+      "tks": [
+        "BTC",
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "Coindesk/Cointelegraph (BIP-361 三阶段 + Adam Back) + 延续昨日 BTC_technical cluster"
+      ],
+      "occurrences_count": 4,
+      "event_type": "macro"
+    }
+  ],
+  "month": [
+    {
+      "cluster": "KelpDAO rsETH + LayerZero 桥漏洞事",
+      "name": "KelpDAO rsETH + LayerZero 桥漏洞事件 — DeFi 系统性风险",
+      "desc": "KelpDAO 官方桥因 LayerZero 单签配置被攻击，盗取 116,500 枚 rsETH（~$293M）。Aave V3/V4 紧急冻结 rsETH 市场，TVL 流失 $84 亿（-30%+），100% 利用率下出现坏账风险。Reserve 暂停 eUSD/USD3 铸造与再平衡。Justin Sun 撤出 $154M ETH。Fluid 上线 aWETH 赎回协议（首日 $10 亿容量）缓解系统性压力。ETHFI、EtherFi 金库确认不受影响。based16z 预期本周将宣布投资者 backstop 覆盖损失。OKX 已有 ETHFI/AAVE/ETH 现货+永续，需评估：rsETH 相关敞口、LRT 衍生品风控、坏账事件对 AAVE 价格冲击路径。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETHFI",
+        "FLUID",
+        "KELP",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：监控 AAVE 永续 OI 与强平阶梯、评估坏账事件冲击；关注 LRT 赛道整体风险；评估 FLUID 永续上线（TVL 剧增）",
+      "gap": [
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "BlockBeats×4 条新闻",
+        "WuBlockchain",
+        "krugermacro",
+        "based16z",
+        "bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "Kelp rsETH / LayerZero 事件 Day",
+      "name": "Kelp rsETH / LayerZero 事件 Day 2 — Aave TVL -$84.5 亿 + 坏账决策期",
+      "desc": "KelpDAO rsETH 桥被盗 $293M 后 48 小时，Aave TVL 从 $262 亿降至 $179.5 亿（-$84.5 亿 / -32%）；WETH 借贷池 100% 利用率，多签冻结 WETH、建议暂停 Umbrella 模块；Aave 官方正讨论两种坏账处理方案。DPRK Lazarus 嫌疑浮现，Kelp 正撰写把责任推给 LayerZero 的备忘录；based16z 继续预期本周宣布投资者 backstop。Lido 敞口 $21.6M；Aave 潜在坏账 $1.23-2.30 亿。Justin Sun 向 Spark 存入 $1.74 亿（占 Spark USDC 存款 1/4），Spark TVL 48h +17%。某 AAVE 持币 1+ 年鲸鱼将 $3.01M 转入 Binance（或亏损 $1.85M）。Kamino USDC 利用率 100%、零流动性 — 危机开始向 Solana 侧扩散。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETHFI",
+        "FLUID",
+        "KAMINO",
+        "KELP",
+        "SPARK",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：AAVE 坏账方案公告前后的波动监控；预案 LRT 赛道 re-rating；评估 SPARK/KAMINO 上币及流动性观察（竞对尚未全线覆盖，窗口）",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [
+        "Binance"
+      ],
+      "sig": [
+        "BlockBeats×5 条新闻",
+        "WuBlockchain",
+        "0xVeryBigOrange",
+        "based16z",
+        "krugermacro",
+        "bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，",
+      "name": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，OKX 仅 perp、缺现货",
+      "desc": "24h 内 CHIP 爆发式扩散：Binance 上 CHIP/USDT + CHIP/USDC + CHIP/TRY 现货且带 Seed Tag；Bybit 上 CHIP 现货 + perp；Bitget 上 CHIPUSDT perp；Upbit 上 CHIP/BTC + CHIP/USDT + CHIP/KRW；Bithumb 上 KRW 市场。加上 4/21 Coinbase 的 CHIP/USD 现货，**5 家 Tier1（Binance、Coinbase、Upbit、Bithumb、Bybit）+ 2 家 Tier2（Bitget、Bybit perp）**都已在现货或衍生侧布局。OKX 当前有 CHIP 永续（之前已上），但缺现货 —— 用户在 OKX 无法买到现货 CHIP、只能去别家。这是一次 48h 内产生的覆盖断层，错过窗口越久用户心智越难抢回。",
+      "heat": 95,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "CHIP"
+      ],
+      "urg": "立即",
+      "act": "上币团队今日内启动 CHIP 现货审核：合约代码、流通盘、做市深度；目标 1-2 日内完成现货上线",
+      "gap": [
+        "仅有永续，无现货"
+      ],
+      "comp": [
+        "Binance",
+        "Bybit",
+        "Bitget",
+        "Coinbase",
+        "Upbit"
+      ],
+      "sig": [
+        "scan 新上币 × Binance/Bybit/Bitget/Upbit",
+        "bwenews 公告",
+        "4/21 Coinbase 公告"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "RAVE 风控预警 — 97% 控盘、爆仓激增",
+      "name": "RAVE 风控预警 — 97% 控盘、爆仓激增",
+      "desc": "RAVE 创历史新高后 24h 爆仓额仅次于 BTC 和 ETH，持仓量骤减，多源 KOL（0xVeryBigOrange、jason_chen998、Web3Feng）均指出 97% 筹码高度集中、疑似人为拉升配合现货即将上线；新闻重复报道其'妖币卷土重来'。OKX 已有 RAVE 永续，建议合约风控关注：限仓、单边 OI、持仓集中度、爆仓级联风险。",
+      "heat": 92,
+      "days_count": 1,
+      "first_date": "2026-04-18",
+      "last_date": "2026-04-18",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "RAVE"
+      ],
+      "urg": "立即",
+      "act": "合约风控：复核 RAVE 永续限仓与强平阶梯；评估是否临时上调保证金比例；监控 OI 异动与爆仓级联",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "BlockBeats 新闻×2",
+        "3 位 CN KOL",
+        "TG 热榜"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "RAVE 合约风控预警 + 产品线不完整",
+      "name": "RAVE 合约风控预警 + 产品线不完整",
+      "desc": "RAVE(RaveDAO) 一周暴涨 6000%（$0.25→$14），mcap ~$3B，24h vol $423M。极度危险信号：90% 供应集中在 3 个钱包，$43M 期货清算（排名仅次于 BTC/ETH）。OKX 仅有永续无现货，资金费率极度负向（Binance -0.36%/h, Bybit -0.5%/h）。筹码高度集中 + 巨量OI = ADL/穿仓风险极高。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-16",
+      "last_date": "2026-04-16",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "RAVE"
+      ],
+      "urg": "critical",
+      "act": "紧急：合约风控团队评估 RAVE 穿仓/ADL 风险；90%筹码集中3钱包，暂不建议开现货",
+      "gap": [
+        "仅有永续，无现货"
+      ],
+      "comp": [
+        "Binance",
+        "Bybit"
+      ],
+      "sig": [
+        "KOL(OwenJin12资金费率数据)",
+        "TG(4次)",
+        "KOL(EmberCN)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "美伊缓和 / 霍尔木兹重开 → 全面 risk-on",
+      "name": "美伊缓和 / 霍尔木兹重开 → 全面 risk-on",
+      "desc": "霍尔木兹海峡部分重开，但伊朗议长仍表态不放弃控制权，市场呈条件性缓和。美军 21 艘船按指示掉头，美国数日内赴巴基斯坦与伊朗复谈。标普纳指连涨创新高、BTC 回 7.7 万。Pentosh1/krugermacro/fejau/Web3Feng/jason_chen998 一致认为'抄底机器'继续、别跟趋势对抗。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-18",
+      "last_date": "2026-04-18",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "BZ/CL/NG",
+        "ETH",
+        "SPX"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "BlockBeats 10+ 条 + 3 组 KOL 全部讨论"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "RAVE 操纵事件升级 — 24h -88%、$23M 倾销",
+      "name": "RAVE 操纵事件升级 — 24h -88%、$23M 倾销、Binance/Bitget 官方调查",
+      "desc": "承接 4/18 风控预警：RAVE 在 ZachXBT 公开调查后 24h 跌 -88%，爆仓 $43.68M；RaveDAO 关联初始分配地址向 Bitget 倾销 2300 万枚 RAVE（价值 $23M）。Binance/Bitget 已启动调查，ZachXBT 悬赏 $10K 征集内部信息，krugermacro 要求 Heyi/Gracy 内部复查。CryptoPainter 警告'内部人控制 98%+ 流通、勿碰'。Ice_Frog 朋友 20 万 token 空投从 $600 万峰值跌至 $30 万。OKX 已有 RAVE 永续，需复盘 4/18 风控建议执行情况并强化。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "RAVE"
+      ],
+      "urg": "立即",
+      "act": "合约风控：紧急复核 RAVE 永续限仓、保证金比例、强平阶梯；对齐 Binance/Bitget 调查结果；评估下架或暂停新开仓",
+      "gap": [],
+      "comp": [
+        "Binance",
+        "Bitget"
+      ],
+      "sig": [
+        "BlockBeats",
+        "WuBlockchain",
+        "krugermacro",
+        "CryptoPainter",
+        "3 位 CN KOL"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "Kelp / rsETH / AAVE Day 3 — 坏账",
+      "name": "Kelp / rsETH / AAVE Day 3 — 坏账 $124-230M + $660M CEX 敞口卡住",
+      "desc": "LayerZero RPC breach 被 Kelp 官方正式归因为 $293M 被盗来源。Justin Sun/HTX 在 AAVE 冻结公告后数分钟内 5 笔撤 $274M 资产；MEXC $347M aUSDT、CoinEx $151M、Kiln $165M 卡在 AAVE 借贷池（合计 CEX 链上敞口 ~$660M）。WETH 利用率 100%、idle liquidity <$20。LlamaRisk 估算 AAVE 潜在坏账 $124M-$230M；Dragonfly Haseeb 称 AAVE 有资本吸收。Arbitrum Security Council 紧急冻结 30,766 ETH 与 Kelp 相关的合约。AAVE TVL 继续流失；SPARK TVL 延续 +17% 外溢；Kamino 100% 利用率。OKX 已有 AAVE 现货+永续，合约风控应跟踪坏账方案公告窗口。",
+      "heat": 90,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ARB",
+        "ETHFI",
+        "KAMINO",
+        "KELP",
+        "SPARK",
+        "rsETH"
+      ],
+      "urg": "立即",
+      "act": "合约风控：AAVE 坏账公告前后波动监控；LRT re-rating 应对；评估 SPARK/KAMINO 上币（AAVE 资金外溢的承接方）",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain×8",
+        "krugermacro",
+        "0xVeryBigOrange",
+        "BlockBeats"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "新币盲区: CHIP + GENIUS 被 Binance",
+      "name": "新币盲区: CHIP + GENIUS 被 Binance 抢先",
+      "desc": "Binance 今日新上 CHIPUSDT 永续(pre-market)和 GENIUSUSDT 永续(MC ~$184M),OKX 均无现货和合约;GENIUS 市值非零,@bwenews 已广泛播报,需评估立项。",
+      "heat": 88,
+      "days_count": 1,
+      "first_date": "2026-04-17",
+      "last_date": "2026-04-17",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "CHIP",
+        "GENIUS"
+      ],
+      "urg": "高",
+      "act": "上币组 24h 内对 GENIUS 完成初审(市值、团队、合约),CHIP 作为 meme 跟踪是否起量",
+      "gap": [
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [
+        "Binance"
+      ],
+      "sig": [
+        "交易所API: Binance 新增 perp_usdt 两个 | KOL: @bwenews 多条播报"
+      ],
+      "occurrences_count": 1,
+      "event_type": "competitor"
+    },
+    {
+      "cluster": "美伊和谈破裂 / BTC 跌破 $7.4 万 — risk-",
+      "name": "美伊和谈破裂 / BTC 跌破 $7.4 万 — risk-off 反转",
+      "desc": "临时停火周三到期、伊媒称拒谈，霍尔木兹海峡当日无船只通行、月底前通航概率仅 30%。美军海军陆战队控制试图突破封锁的伊朗船只，阿联酋称遭 2800+ 次袭击（90% 民用）。BTC 跌破 $7.4 万，原油跳空高开、美股期货齐跌。某巨鲸 3 倍做多原油 $750 万。风险情绪较 4/18 risk-on 快速反转。KOL 分歧：krugermacro 仍 'don't short'；CryptoPainter 准备 6 月 DCA 策略；Murphychen888 引矿工成本 $53-73k 认为 BTC $60k 已便宜。",
+      "heat": 88,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "BZ/CL",
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "BlockBeats 10+ 条 + Tier1 KOL×3"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "RAVE 风控预警: 多源警告庄家控盘",
+      "name": "RAVE 风控预警: 多源警告庄家控盘",
+      "desc": "@0xVeryBigOrange、@Web3Feng、@CryptoPainter 过去 48h 多次点名 RAVE 被单方控盘 97-98% 流通筹码、FDV $3.68B,现价任其拉升。OKX 已上永续(无现货),强平/穿仓风险需提前风控。",
+      "heat": 86,
+      "days_count": 1,
+      "first_date": "2026-04-17",
+      "last_date": "2026-04-17",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "RAVE"
+      ],
+      "urg": "高",
+      "act": "风控组今日检视 RAVE 永续持仓集中度、强平梯度与杠杆上限;必要时临时下调最大杠杆",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "KOL: @0xVeryBigOrange",
+        "@Web3Feng",
+        "@CryptoPainter 独立多源"
+      ],
+      "occurrences_count": 1,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "KELP",
+      "name": "Kelp/Aave 救助 Day 7 — 跨链 DAO 联合提案 + Solana 基金会介入",
+      "desc": "Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 提案以释放被冻结的 ETH（WuBlockchain）。Solana Foundation 直接借 USDT 给 Aave 帮助坏账修复，并计划把 AAVE 部署到 Solana — KELP 事件从单链清算危机演变为跨链 DeFi 生态格局事件。rsETH/KELP 仍未上线 OKX，AAVE/SOL 双双面临生态新闻驱动的波动放大。",
+      "heat": 85,
+      "days_count": 4,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-26",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "AAVE",
+        "ETH",
+        "ETHFI",
+        "KELP",
+        "LDO",
+        "MNT",
+        "PENDLE",
+        "SOL"
+      ],
+      "urg": "高",
+      "act": "AAVE/SOL 永续临时调高波动保证金，密切监控 Arbitrum DAO 投票节点；评估 OKX 是否需要应急上 rsETH/KELP/MNT 接住情绪反弹流量。SOL 部署 AAVE 是 SOL 生态级利好，可顺势准备 SOL 生态 token 二轮拉升预案。",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain (Arbitrum DAO 联合提案",
+        "SOL Foundation 借款",
+        "AAVE 上 Solana 计划)",
+        "历史 cluster KELP Day 6 延续"
+      ],
+      "occurrences_count": 4,
+      "event_type": "risk"
+    },
+    {
+      "cluster": "GENIUS 永续合约缺失",
+      "name": "GENIUS 永续合约缺失",
+      "desc": "Binance + Bitget 同日上线 GENIUSUSDT 永续合约，OKX 无任何产品。Genius Terminal 是去中心化交易聚合器（150+ DEX，10+ 链），YZi Labs（Binance投资部）大额投资（8位数美元），CZ 任顾问。4/13 TGE，当前价 ~$0.60，mcap ~$200M，流通仅33.5%。Spot: Bitget/Gate/MEXC/Binance Alpha。需评估项目基本面和流动性。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-16",
+      "last_date": "2026-04-16",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "GENIUS"
+      ],
+      "urg": "high",
+      "act": "紧急评估 GENIUS 项目，考虑跟进上线永续合约",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Binance",
+        "Bitget"
+      ],
+      "sig": [
+        "竞对新上币(Binance+Bitget)",
+        "律动新闻确认"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "BTC/ETH 现货 ETF 连续净流入",
+      "name": "BTC/ETH 现货 ETF 连续净流入",
+      "desc": "BTC ETF 昨日净流入 $6.64 亿、ETH ETF 净流入 $1.27 亿且 7 日连阳；BitMine 继续扩持 ETH。巨鲸今晨买入 3.2 万枚 ETH（~$2.25 亿）。whale_alert 捕捉到 3.2 万 ETH 从 Binance 出金至未知钱包。机构买盘信号明显。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-18",
+      "last_date": "2026-04-18",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "ETH"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "BlockBeats + WuBlockchain + whale_alert"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "ASTEROID — TG 热榜 #2 + 鲸鱼 $114",
+      "name": "ASTEROID — TG 热榜 #2 + 鲸鱼 $114 万买入，OKX 无",
+      "desc": "TG 24h 排名 #2（11 次提及，仅次 BTC），新闻报道某鲸鱼近 2 日投入 $114 万买入 ASTEROID，另有 4/18 报道 Moonshot 一夜上线三项目带动 meme 升温。多源信号：TG + 新闻 + 链上鲸鱼。OKX 现货/永续均无；竞对覆盖情况需复核（Bitget/MEXC 等 Tier2 可能已有）。项目基本面需尽快调研。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "ASTEROID"
+      ],
+      "urg": "24h 内",
+      "act": "上币团队 24h 内完成 ASTEROID 项目调研：合约审计状态、代币分配、流动性深度；若通过可考虑抢先永续上线",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Bitget"
+      ],
+      "sig": [
+        "TG 热榜 11 次",
+        "BlockBeats 新闻×2",
+        "链上鲸鱼"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "机构大买 BTC/ETH 持续 — Strategy +34",
+      "name": "机构大买 BTC/ETH 持续 — Strategy +34k BTC / BitMine +101k ETH",
+      "desc": "Strategy（MSTR）新增 34,164 BTC 价值 $25.4 亿、均价 $74,395、总持仓 815,061 BTC；BitMine 上周新增 101,627 ETH（ETH 流通的 4.12%）。BTC 现货 ETF 连续 3 周净流入 $9.96 亿（CoinShares BTC 基金 $11.16 亿）、ETH ETF $2.76 亿（Jan 以来最强周）、SOL ETF $35.17M、XRP ETF $55.39M。摩根士丹利 ETF +215 BTC，BlackRock +3372 BTC。抄底鲸 Feb 投入 $5 亿的 cbBTC 现清仓最后 2000 枚。某鲸鱼从 Binance 提 1.83 万 ETH（1.2 万卖出）。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC",
+        "ETH",
+        "MSTR",
+        "SOL",
+        "XRP"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain + BlockBeats×3 + whale_alert"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "机构大买 BTC/ETH 继续 — Strategy +34",
+      "name": "机构大买 BTC/ETH 继续 — Strategy +34k BTC / BitMine +101k ETH",
+      "desc": "Strategy 延续数据：+34,164 BTC（$25.4 亿、均价 $74,395、总 815,061 BTC）；BitMine 新增 101,627 ETH（ETH 流通的 4.12%、4 个月内最大周增持）。BTC 现货 ETF 连 3 周流入、ETH ETF Jan 以来最强。whale_alert 今日额外捕获 80,000 ETH（$184.8M）从 Binance 出金至未知钱包（潜在机构积累）。",
+      "heat": 85,
+      "days_count": 1,
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BMNR",
+        "BTC",
+        "ETH",
+        "MSTR"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "WuBlockchain + whale_alert + bwenews"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    },
+    {
+      "cluster": "ORDI 暴涨 190% 引爆 BRC20 + Runes",
+      "name": "ORDI 暴涨 190% 引爆 BRC20 + Runes 情绪",
+      "desc": "ORDI 24h 涨 190% 触及 $10.7,@jason_chen998 反向揶揄 ASTER 疲软。OKX 已有现货+永续,是首选交易场所。",
+      "heat": 82,
+      "days_count": 1,
+      "first_date": "2026-04-17",
+      "last_date": "2026-04-17",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "ORDI"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "新闻: BlockBeats 多条播报",
+        "TG: 8 次提及(top 5)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "other"
+    },
+    {
+      "cluster": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/",
+      "name": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/COAI/M/PIPPIN/RIVER",
+      "desc": "WuBlockchain 转述 ZachXBT 将 SIREN/MYX/COAI/M/PIPPIN/RIVER 6 个 token 列为下一批高度可疑的低流通操纵候选。0xVeryBigOrange 将 ARIA/SIREN/RAVE 同列为'95%+ 集中度的 Alpha 项目'、任何 >1x 杠杆都会爆。OKX 覆盖：COAI/PIPPIN/RIVER 已有永续（需复核风控），SIREN/MYX/M/ARIA OKX 无。对已上线的 3 个要先行一步检查 OI、持仓集中度；对未上线的 4 个建立上币评估防火墙。",
+      "heat": 82,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "levels": [
+        "L3"
+      ],
+      "tks": [
+        "ARIA",
+        "COAI",
+        "M",
+        "MYX",
+        "PIPPIN",
+        "RIVER",
+        "SIREN"
+      ],
+      "urg": "立即",
+      "act": "合约风控：对 COAI/PIPPIN/RIVER 执行与 RAVE 相同的预防检查；对 SIREN/MYX/M/ARIA 将其标记为上币评估黑名单候选；复核相关代币持仓集中度",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "sig": [
+        "WuBlockchain 转 ZachXBT",
+        "0xVeryBigOrange",
+        "yuyue_chris"
+      ],
+      "occurrences_count": 1,
+      "event_type": "listing"
+    },
+    {
+      "cluster": "BTC 积累阶段信号",
+      "name": "BTC 积累阶段信号",
+      "desc": "ETF 持续流入 + CEX 净流出近两月 + 3个新地址从 CEX 提取 1600 BTC($1.2亿) + 巨鲸平空头仓位。链上多指标显示积累。但 CryptoQuant 提示卖压增强。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-16",
+      "last_date": "2026-04-16",
+      "levels": [
+        "L2"
+      ],
+      "tks": [
+        "BTC"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": [],
+      "sig": [
+        "律动新闻(多条) + KOL(CryptoHayes,krugermacro)"
+      ],
+      "occurrences_count": 1,
+      "event_type": "macro"
+    }
+  ],
+  "ai_week": [
+    {
+      "cluster": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，",
+      "name": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，OKX 仅 perp、缺现货",
+      "desc": "24h 内 CHIP 爆发式扩散：Binance 上 CHIP/USDT + CHIP/USDC + CHIP/TRY 现货且带 Seed Tag；Bybit 上 CHIP 现货 + perp；Bitget 上 CHIPUSDT perp；Upbit 上 CHIP/BTC + CHIP/USDT + CHIP/KRW；Bithumb 上 KRW 市场。加上 4/21 Coinbase 的 CHIP/USD 现货，**5 家 Tier1（Binance、Coinbase、Upbit、Bithumb、Bybit）+ 2 家 Tier2（Bitget、Bybit perp）**都已在现货或衍生侧布局。OKX 当前有 CHIP 永续（之前已上），但缺现货 —— 用户在 OKX 无法买到现货 CHIP、只能去别家。这是一次 48h 内产生的覆盖断层，错过窗口越久用户心智越难抢回。",
+      "heat": 95,
+      "days_count": 1,
+      "tks": [
+        "CHIP"
+      ],
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "gap": [
+        "仅有永续，无现货"
+      ],
+      "comp": [
+        "Binance",
+        "Bybit",
+        "Bitget",
+        "Coinbase",
+        "Upbit"
+      ],
+      "urg": "立即",
+      "act": "上币团队今日内启动 CHIP 现货审核：合约代码、流通盘、做市深度；目标 1-2 日内完成现货上线"
+    },
+    {
+      "cluster": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/",
+      "name": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/COAI/M/PIPPIN/RIVER",
+      "desc": "WuBlockchain 转述 ZachXBT 将 SIREN/MYX/COAI/M/PIPPIN/RIVER 6 个 token 列为下一批高度可疑的低流通操纵候选。0xVeryBigOrange 将 ARIA/SIREN/RAVE 同列为'95%+ 集中度的 Alpha 项目'、任何 >1x 杠杆都会爆。OKX 覆盖：COAI/PIPPIN/RIVER 已有永续（需复核风控），SIREN/MYX/M/ARIA OKX 无。对已上线的 3 个要先行一步检查 OI、持仓集中度；对未上线的 4 个建立上币评估防火墙。",
+      "heat": 82,
+      "days_count": 1,
+      "tks": [
+        "ARIA",
+        "COAI",
+        "M",
+        "MYX",
+        "PIPPIN",
+        "RIVER",
+        "SIREN"
+      ],
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [],
+      "urg": "立即",
+      "act": "合约风控：对 COAI/PIPPIN/RIVER 执行与 RAVE 相同的预防检查；对 SIREN/MYX/M/ARIA 将其标记为上币评估黑名单候选；复核相关代币持仓集中度"
+    },
+    {
+      "cluster": "CHIP — Coinbase 今日新上现货 + Binan",
+      "name": "CHIP — Coinbase 今日新上现货 + Binance Futures 已上预市场，OKX 完全缺失",
+      "desc": "Coinbase 今日上线 CHIP/USD 现货（Tier1 交易所）；Binance Futures 4/16 已上 CHIPUSDT 预市场；两家 Tier1 都已布局，OKX 现货/永续均无。CHIP 为半导体指数类代币，属股票衍生品赛道延续（4/20 Binance 上 MSFT/AVGO/BABA 后又新增）。",
+      "heat": 80,
+      "days_count": 1,
+      "tks": [
+        "CHIP"
+      ],
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Binance",
+        "Coinbase"
+      ],
+      "urg": "本周内",
+      "act": "产品/上币紧急评估 CHIP 永续上线（股票 Swap 产品线补位，配合 AVGO/BABA 建议）"
+    },
+    {
+      "cluster": "CHIP",
+      "name": "CHIP Day 5 — Hyperliquid 再上永续 + Kraken 欧元现货，OKX 仍只有 perp 缺现货",
+      "desc": "CHIP 进入第 5 天扩散：今日 Hyperliquid 新增 CHIPUSD 永续，Kraken 补齐 CHIP/ZEUR 现货。OKX 当前仅有永续，现货线仍缺失；热度已连续多日在 L3 级别，符合典型 '先 perp 后 spot' 竞对节奏。",
+      "heat": 80,
+      "days_count": 1,
+      "tks": [
+        "CHIP"
+      ],
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "gap": [],
+      "comp": [
+        "Kraken",
+        "Hyperliquid"
+      ],
+      "urg": "中高",
+      "act": "现货上币团队评估 CHIP 现货补齐窗口 — 已出现 Day 5 持续信号 + 5 家 Tier1 铺开，再拖会被动。"
+    },
+    {
+      "cluster": "stock_derivatives",
+      "name": "竞对股票永续 Day 5 — 半导体设备 + 中概股 gap 扩大",
+      "desc": "Bitget 继续扩张股票永续品类，今日 gap 中新增 AMAT、ARM、ASML、AVGO、BA、BABA、COST、RKLB（半导体设备三巨头 + 中概）；Kraken 新增 LI (理想)。OKX 已有 27 个股票永续覆盖 AAPL/NVDA/TSLA/MSTR/COIN/META 等核心 7 姊妹 + MSTR 生态，但缺半导体设备链 (AMAT/ARM/ASML) 和中概股 (BABA/LI)。这是在 AI 基建叙事 + 美联储独立性分歧 (fejau) 背景下的关键品类扩张。",
+      "heat": 78,
+      "days_count": 3,
+      "tks": [
+        "AMAT",
+        "ARM",
+        "ASML",
+        "AVGO",
+        "BABA",
+        "IONQ",
+        "LI",
+        "RKLB"
+      ],
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-25",
+      "gap": [
+        "OKX无 (半导体设备)",
+        "OKX无 (半导体设备)",
+        "OKX无 (半导体设备)",
+        "OKX无 (AI 芯片)",
+        "OKX无 (中概)",
+        "OKX无 (中概)",
+        "OKX无 (SpaceX 对标)"
+      ],
+      "comp": [
+        "Bitget",
+        "Kraken"
+      ],
+      "urg": "中",
+      "act": "补齐 AAPL 同类的半导体设备链 AMAT/ARM/ASML 永续，对标 TSM 打法；中概股 BABA/LI 对标既有 SNDK/EWY 框架；RKLB（SpaceX 对标）可借 Pre-IPO 叙事预热。"
+    },
+    {
+      "cluster": "竞对股票衍生品 4/20 正式上线 — OKX 产品线差距收",
+      "name": "竞对股票衍生品 4/20 正式上线 — OKX 产品线差距收窄窗口",
+      "desc": "Binance Futures 今日 (2026-04-20) 正式上线 MSFTUSDT / AVGOUSDT / BABAUSDT 股票永续（4/18 已预告）。OKX 当前股票 Swap 产品线已有 MSFT（与 Binance 重叠），但仍缺 AVGO / BABA 两个头部股票。同时 Binance 4/16 已上 CHIP 预市场与 GENIUS。此为 OKX 股票 Swap 产品线（已有 AAPL/AMZN/COIN/HOOD/NVDA/PLTR/TSLA 等 23 个）直接补位窗口，越晚越难抢用户心智。",
+      "heat": 78,
+      "days_count": 1,
+      "tks": [
+        "AVGO",
+        "BABA",
+        "CHIP",
+        "GENIUS"
+      ],
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [
+        "Binance"
+      ],
+      "urg": "本周内",
+      "act": "产品/上币加速评估 AVGO/BABA 股票永续；若 legal/清算路径不阻塞，建议 2 周内跟进"
+    },
+    {
+      "cluster": "本周超大额解锁预警 — $330M+ 一次性 + 多个日解锁",
+      "name": "本周超大额解锁预警 — $330M+ 一次性 + 多个日解锁 >$1M",
+      "desc": "WuBlockchain 汇总本周解锁：一次性大额 >$5M 的代币包括 UDS、ZRO、H、XPL、MBG、HYPER、LMTS、INIT、KAITO、SOSO、MON，合计超 $330M；线性大解锁 >$1M/日：RAIN、SOL、CC、TRUMP、WLD、HYPE（已在 OKX）。OKX 已上的 ZRO / H / XPL / KAITO / SOL / HYPE / TRUMP / WLD / HYPER 面临抛压，需提前风控。Hyperliquid（HYPE）另有地址卖 20 万枚 @$40.77、Paradigm 解押 214 万枚 — HYPE 抛压叠加。",
+      "heat": 75,
+      "days_count": 1,
+      "tks": [
+        "H",
+        "HYPE",
+        "HYPER",
+        "INIT",
+        "KAITO",
+        "LMTS",
+        "MBG",
+        "MON"
+      ],
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Hyperliquid"
+      ],
+      "urg": "本周内",
+      "act": "合约风控：本周对 HYPE/ZRO/XPL/KAITO/WLD/TRUMP 永续 OI 与资金费率紧密监控；评估临时保证金上调"
+    },
+    {
+      "cluster": "AI_semis",
+      "name": "AI/半导体主题 KOL 共识走强 — ARM ATH + SK Hynix/Micron/SanDisk/Softbank（新事件）",
+      "desc": "based16z 预告 ARM 创 ATH、Softbank (9984) ATH；KelseyWeb3VC 明确看多 SK Hynix / SanDisk / Micron 存储主线，认为光模块 (长飞光纤) 已超买；CryptoPainter 讨论 AI x VR 融合趋势。多个 KOL 独立指向 AI capex / 存储 / 算力主题。与 Step3 stock_derivatives 的竞对行动互相印证。",
+      "heat": 65,
+      "days_count": 1,
+      "tks": [
+        "ARM",
+        "MU",
+        "SK",
+        "SNDK"
+      ],
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "gap": [],
+      "comp": [],
+      "urg": "",
+      "act": ""
+    },
+    {
+      "cluster": "KAITO",
+      "name": "Kaito InfoFi B2B 转型 — 下轮周期基建候选",
+      "desc": "CryptoPainter 长文看 Kaito 从 InfoFi 转基建：AI + 数据引擎定位为 '下轮周期创业公司与项目方必选工具'。同时吐槽 crypto Twitter 被 Web2 流量号稀释、周期缺资金多寄生虫。KAITO OKX 已有现货+永续，观察后续价格跟进度。",
+      "heat": 60,
+      "days_count": 1,
+      "tks": [
+        "KAITO"
+      ],
+      "first_date": "2026-04-24",
+      "last_date": "2026-04-24",
+      "gap": [],
+      "comp": [],
+      "urg": "",
+      "act": ""
+    },
+    {
+      "cluster": "AI / Vibe Coding 交易工具渗透深",
+      "name": "AI / Vibe Coding 交易工具渗透深",
+      "desc": "Web3Feng、hexiecs、0xchangan、0xVeryBigOrange 均在讨论 Claude/Codex 写 CTA 策略、Polymarket 自动化脚本、HL/Aster 机器人交易。AI-工具-交易整合趋势明显。",
+      "heat": 50,
+      "days_count": 1,
+      "tks": [],
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "gap": [],
+      "comp": [],
+      "urg": "",
+      "act": ""
+    }
+  ],
+  "latest": {
+    "summary": "今日竞对零新上 crypto/股票永续，但行业事件密集：Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 解冻 ETH 提案，Solana 基金会借 USDT 给 Aave 救坏账并计划把 AAVE 部署到 Solana — KELP 救助进入跨链生态化阶段。Morgan Stanley 推出 Stablecoin Reserves Portfolio (MSNXX, GENIUS Act 合规)，$1.9T 资管巨头切入稳定币储备业务。波兰 Zondacrypto 近破产 + CEO 跑路以色列，$100M+ 客户资金危机；Litecoin MWEB 零日漏洞触发链重组。TG 端 POLY 异常飙至 24 次第一位（Polymarket 链迁移 + 平台升级 + Polymarket USD 1:1 USDC 即将推出）。Coinbase Sonar 平台 4/28 开打 SpaceX-类 Pre-IPO，FDV 50M / 单号 20k u / Echo KYC，CN KOL 双源共振。Tier1 KOL 7/13 静默，市场进入低信号事件主导期。",
+    "topTk": [
+      "POLY",
+      "BLEND",
+      "SPCX",
+      "MEGAETH",
+      "AAVE",
+      "SOL",
+      "rsETH",
+      "KELP",
+      "MNT",
+      "ZEC",
+      "APE",
+      "BNB",
+      "USDC",
+      "FLOCK"
+    ],
+    "L3": [
+      {
+        "name": "Kelp/Aave 救助 Day 7 — 跨链 DAO 联合提案 + Solana 基金会介入",
+        "tk": "AAVE",
+        "heat": 82,
+        "urg": "高",
+        "desc": "Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 提案以释放被冻结的 ETH（WuBlockchain）。Solana Foundation 直接借 USDT 给 Aave 帮助坏账修复，并计划把 AAVE 部署到 Solana — KELP 事件从单链清算危机演变为跨链 DeFi 生态格局事件。rsETH/KELP 仍未上线 OKX，AAVE/SOL 双双面临生态新闻驱动的波动放大。",
+        "act": "AAVE/SOL 永续临时调高波动保证金，密切监控 Arbitrum DAO 投票节点；评估 OKX 是否需要应急上 rsETH/KELP/MNT 接住情绪反弹流量。SOL 部署 AAVE 是 SOL 生态级利好，可顺势准备 SOL 生态 token 二轮拉升预案。",
+        "comp": [],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "kol": [],
+        "sig": [
+          "WuBlockchain (Arbitrum DAO 联合提案",
+          "SOL Foundation 借款",
+          "AAVE 上 Solana 计划)",
+          "历史 cluster KELP Day 6 延续"
+        ],
+        "tks": [
+          "AAVE",
+          "SOL",
+          "rsETH",
+          "KELP",
+          "MNT",
+          "LDO",
+          "ETHFI"
+        ],
+        "cluster_explicit": "KELP"
+      },
+      {
+        "name": "Morgan Stanley 推 Stablecoin Reserves Portfolio (MSNXX) — TradFi 抢稳定币储备业务",
+        "tk": "USDC",
+        "heat": 80,
+        "urg": "高",
+        "desc": "Morgan Stanley Investment Management ($1.9T AUM) 4/24 推出 Stablecoin Reserves Portfolio，专为 GENIUS Act 合规稳定币发行方设计：投美国国债 (≤93 天到期) + 隔夜逆回购，维持 $1.00 稳定 NAV，发行方可一站式获得收益+合规储备。这是大型 TradFi 直接切入稳定币基础设施的标志性事件，意味稳定币竞争从'谁发币'转向'谁管储备'。",
+        "act": "评估 OKX 自营/合规稳定币产品对 GENIUS Act 储备方案的对接路径；若 OKX 上 USDG 等合规币，可借这波事件给予更高曝光。Morgan Stanley 入场是机构稳定币流量增加的前奏，需提前规划稳定币现货深度池。",
+        "comp": [],
+        "gap": [
+          "OKX无"
+        ],
+        "kol": [],
+        "sig": [
+          "Coindesk",
+          "BusinessWire (Morgan Stanley IM 公告)",
+          "Cryptobriefing (GENIUS Act 合规)"
+        ],
+        "tks": [
+          "USDC",
+          "USDT",
+          "USDG"
+        ],
+        "cluster_explicit": "GENIUS_ACT"
+      },
+      {
+        "name": "Zondacrypto (波兰) 近破产 + CEO 跑路以色列 — 交易所信任叙事重提",
+        "tk": "",
+        "heat": 78,
+        "urg": "中",
+        "desc": "WuBlockchain: 波兰交易所 Zondacrypto CEO Przemysław Kral 已跑路以色列，平台面临 $100M+ 客户资金缺口，临近破产。推文 18.5 万阅读量，欧洲监管机构和用户社群高度关注。事件叠加昨日 Wisconsin 起诉 Coinbase/Crypto.com/Kalshi 等，行业进入'交易所信任审视'高敏期。",
+        "act": "借势在外部传播渠道强化 OKX 储备证明 (PoR) 与冷热钱包透明度，避免被动卷入信任危机；同时关注是否有 Zondacrypto 用户资金外迁需求 (用户/做市商) 可承接。",
+        "comp": [
+          "Coinbase"
+        ],
+        "gap": [],
+        "kol": [],
+        "sig": [
+          "WuBlockchain (Zondacrypto 详情)",
+          "延续 regulation cluster"
+        ],
+        "tks": [],
+        "cluster_explicit": "regulation"
+      },
+      {
+        "name": "POLY 异常爆发 Day 5 — TG 24次 Top1 + 链迁移 + Polymarket USD 即将推出",
+        "tk": "POLY",
+        "heat": 75,
+        "urg": "高",
+        "desc": "TG hot tokens 中 POLY 飙至 24 次第一位（昨日仅 2 次），与 Polymarket 平台升级（链迁移）+ Polymarket USD（1:1 USDC 抵押稳定币）即将推出 + Brazil 封禁余波共振。POLY token 仍未官方发行（Polymarket CMO 10 月确认计划但未 TGE）。若 POLY 进入实际 TGE 倒计时，OKX 处于完全无现货/永续状态，是潜在重大首发机会。",
+        "act": "立即建立 POLY TGE 监控（社媒/治理论坛/链上发币地址），若 TGE 启动 24 小时内首发现货+永续；同步评估 Polymarket USD（PMUSD）作为新合规稳定币的上币优先级。",
+        "comp": [],
+        "gap": [
+          "OKX无 (未 TGE)"
+        ],
+        "kol": [],
+        "sig": [
+          "TG hot_tokens (POLY 24次 Top1)",
+          "WuBlockchain (Polymarket 链迁移)",
+          "Web 搜索 (Polymarket USD 上线计划)",
+          "昨日 prediction_market cluster"
+        ],
+        "tks": [
+          "POLY",
+          "USDC"
+        ],
+        "cluster_explicit": "prediction_market"
+      },
+      {
+        "name": "Coinbase Sonar 4/28 SpaceX 类 Pre-IPO 打新 — CN KOL 双源共振",
+        "tk": "SPCX",
+        "heat": 72,
+        "urg": "高",
+        "desc": "yuyue_chris 详细解构 Coinbase Sonar (= Plasma 同平台) 4/28 北京时间 20:00 开打 SpaceX-类 Pre-IPO：Pre-sale FDV 50M / TGE 100% 解锁 / 盘前 FDV 100M+ / 单号上限 20k u / 需 Echo KYC，'本金有一定安全保障'。chaomeigu_com 同日跟评 '打新 SpaceX'，CN 圈层共振。延续昨日 IPO cluster (Coinbase + Bybit 谈代币化美股 Pre-IPO)。",
+        "act": "OKX launchpad / Jumpstart 团队评估能否在 4/28 当天对标推出 Pre-IPO 类打新 (RWA 框架内)；若 Coinbase Sonar 标的 4/28 后流动性外溢，OKX 可作为接盘场所首发上线（提前 list 流程）。",
+        "comp": [
+          "Bybit",
+          "Coinbase"
+        ],
+        "gap": [
+          "OKX无 (未 TGE)"
+        ],
+        "kol": [],
+        "sig": [
+          "yuyue_chris (4/28 Coinbase Sonar 详情)",
+          "chaomeigu_com (回声)",
+          "延续 IPO cluster"
+        ],
+        "tks": [
+          "SPCX",
+          "ASPECTA"
+        ],
+        "cluster_explicit": "IPO"
+      }
+    ],
+    "L2": [
+      {
+        "name": "BTC ETF 9 连续日净流入 + ETH 反转 + Grayscale/Bitmine $500M ETH 质押",
+        "heat": 70,
+        "desc": "BTC 现货 ETF 4/24 +$14.45M，第 9 个连续净流入日，过去 8 日累计破 $2B (WuBlockchain)。ETH 现货 ETF 4/24 +$23.38M 反转上一周 -$75.94M 跌势。Grayscale + Bitmine 4/25 联手质押近 $500M ETH —— ETH 结构性吸筹再次确认。BTC 仍在 $77-80k 区间盘整，破 $80.5k 看 $85k；跌穿 $76.5k 看深度回调。",
+        "tks": [
+          "BTC",
+          "ETH"
+        ],
+        "sig": [
+          "WuBlockchain (ETF 9连流入 + ETH 反转) + Web 搜索 (Grayscale+Bitmine $500M staking)"
+        ],
+        "cluster_explicit": "etf_flow"
+      },
+      {
+        "name": "BIP-361 量子迁移争议升级 — Adam Back 推优选升级 vs 强制冻结",
+        "heat": 68,
+        "desc": "BIP-361 三阶段 soft fork 计划：Phase A 三年内禁止向遗留地址类型转账；Phase B 两年后失效遗留签名（共识层冻结所有未迁移币）；Phase C ZK proof 恢复机制研究中。Google 早 2026 年研究: 足够强量子机 ~10 分钟可破 ECDSA。34% BTC 已暴露公钥。Adam Back 公开反对强制冻结，主张可选升级 — 社区分裂加剧，反对意见上升至主流声量。",
+        "tks": [
+          "BTC"
+        ],
+        "sig": [
+          "Coindesk/Cointelegraph (BIP-361 三阶段 + Adam Back) + 延续昨日 BTC_technical cluster"
+        ],
+        "cluster_explicit": "BTC_technical"
+      },
+      {
+        "name": "Litecoin MWEB 零日漏洞触发链重组 — LTC 安全事件",
+        "heat": 65,
+        "desc": "WuBlockchain: Litecoin MimbleWimble Extension Block (MWEB) 出现零日漏洞，链上执行了重组以撤销无效 pegouts。LTC 是 OKX 已有现货+永续+交割的主流币，链重组事件需要交易所风控团队评估存款/取款延迟与潜在双花风险。",
+        "tks": [
+          "LTC"
+        ],
+        "sig": [
+          "WuBlockchain (LTC MWEB 零日 + 链重组)"
+        ],
+        "cluster_explicit": "LTC_security"
+      },
+      {
+        "name": "ZEC 隐私币突破延续 Day 6 — ByzGeneral 看多 + ETH ETF 资金分流",
+        "heat": 62,
+        "desc": "@ByzGeneral 公开图表认为 ZEC 已 ready for next expansion（突破已成立）。TG 端 ZEC 本日落到第 8 位（昨日 8 次今日未在 top 10 出现），但价格层面累涨 50%+。Robinhood 已上 + Grayscale ETF 申请 + SEC 1/15 结案三重利好仍是结构性多头逻辑。",
+        "tks": [
+          "ZEC",
+          "XMR"
+        ],
+        "sig": [
+          "ByzGeneral (ZEC 突破图) + 延续 privacy_coins cluster Day 5"
+        ],
+        "cluster_explicit": "privacy_coins"
+      },
+      {
+        "name": "APE 新 CEO + BAYC NFT 复兴 — ByzGeneral 双信号看多",
+        "heat": 58,
+        "desc": "ByzGeneral: APE 新 CEO 任命引发看多反应；BAYC NFT 'reviving — very interesting'。NFT 蓝筹复兴叙事可能带动 ApeChain 生态，APE 作为治理币首批受益。OKX 已有现货+永续，叙事归 L2 关注。",
+        "tks": [
+          "APE"
+        ],
+        "sig": [
+          "ByzGeneral (APE 新 CEO + BAYC 复兴)"
+        ],
+        "cluster_explicit": "APE_NFT"
+      },
+      {
+        "name": "Ethereum 5 north stars / 7 forks roadmap 公布",
+        "heat": 55,
+        "desc": "ETH 提议未来约 7 次网络分叉，围绕 5 大 'north stars'：缩短出块时间、L1 吞吐扩到 ~10,000 TPS、L2 扩展、用户体验改进、机构合规等。对 ETH 长期叙事是结构性利好，但短期主要影响 ETH 衍生品定价模型。",
+        "tks": [
+          "ETH"
+        ],
+        "sig": [
+          "Web 搜索 (ETH 路线图) + Coinmarketcap AI 摘要"
+        ],
+        "cluster_explicit": "ETH_roadmap"
+      },
+      {
+        "name": "Tron $344M USDT 冻结余波 + Whale Alert: Ceffu 168M USDT 出走",
+        "heat": 55,
+        "desc": "WuBlockchain: 美国国务院与 Tether 协助冻结 Tron 链 $344M USDT (与伊朗政权关联，CNN 报道)。@whale_alert: 168.3M USDT 从 Ceffu 转至未知钱包；1,146 BTC 从 OKEX 转至未知钱包；663 BTC 由未知转入 Coinbase。稳定币链流量监测 + 大额 BTC 跨所迁移信号。",
+        "tks": [
+          "USDT",
+          "USDC",
+          "BTC"
+        ],
+        "sig": [
+          "WuBlockchain (Tron 冻结) + whale_alert (Ceffu/OKEX/Coinbase 大额转账)"
+        ],
+        "cluster_explicit": "stablecoin_flow"
+      }
+    ],
+    "L1": [
+      {
+        "name": "MegaETH TGE 月底 + Base 首次独立网络升级 + MetaMask Finlay 离职",
+        "desc": "WuBlockchain 周报: MegaETH 月底 TGE，Base 首次独立网络升级（脱离原 OP Stack 节奏），MetaMask 联创 Dan Finlay 离开 Consensys。多个 L2/钱包生态事件叠加，需关注 MegaETH 是否成为下一个首发机会。",
+        "sig": [
+          "TG"
+        ],
+        "cluster_explicit": "MegaETH"
+      },
+      {
+        "name": "BNB/BTC pair 收复 1011 插针 — 0xVeryBigOrange 看多",
+        "desc": "0xVeryBigOrange: '1011 时候 BNBBTC 最低插到 0.0083，现在已经把那根针完全吞没了' — BNB 相对 BTC 强势确认，OKX 已有 BNB 现货+永续。",
+        "sig": [
+          "弱信号"
+        ],
+        "cluster_explicit": "BMNR"
+      },
+      {
+        "name": "美印太司令 Paparo 参议院: BTC = 国家利益",
+        "desc": "WuBlockchain: 美印太司令上将 Paparo 在参议院听证会表态 BTC 是国家利益事项 — BTC 监管/战略储备叙事再添政府高级背书。",
+        "sig": [
+          "监管"
+        ],
+        "cluster_explicit": "geopolitics"
+      },
+      {
+        "name": "Believe 创始人 Ben Pasternak 在纽约被捕 — memecoin 监管事件",
+        "desc": "WuBlockchain: Believe 创始人 Ben Pasternak 被捕。memecoin 平台运营方监管打压，需关注后续具体罪名是否扩散到其他 launchpad。",
+        "sig": [
+          "监管"
+        ],
+        "cluster_explicit": "regulation"
+      },
+      {
+        "name": "法国 88 人因 12 起 crypto 绑架案被起诉",
+        "desc": "WuBlockchain: 法国共 88 人在 12 起加密货币绑架案中被起诉，Durov 把现实案件归因于税务数据泄露 — OPSEC/物理安全叙事再次抬头。",
+        "sig": [
+          "监管"
+        ],
+        "cluster_explicit": "regulation"
+      },
+      {
+        "name": "BIRB (Moonbirds) TG 4 次延续 — 单源信号",
+        "desc": "TG 4 次出现，OKX 无。Moonbirds 1/28 launch 后讨论延续，单源 KOL 未确认，仅作观察。",
+        "sig": [
+          "TG",
+          "KOL"
+        ],
+        "cluster_explicit": "BIRB"
+      },
+      {
+        "name": "FLOCK / AI Agent 半玩笑提及 — Web3Feng",
+        "desc": "Web3Feng: '让 AI 帮我把资金翻十倍' (FLOCK)。半玩笑意味，但 AI Agent 投资类叙事仍在 CN KOL 圈持续被提及，待载体明确。",
+        "sig": [
+          "KOL"
+        ],
+        "cluster_explicit": "ai_crypto"
+      },
+      {
+        "name": "Whale Alert: 1,146 BTC OKEX 出 + 663 BTC 入 Coinbase",
+        "desc": "@whale_alert 显示 24h 内 1,146 BTC 从 OKEX 流向未知钱包（~$89M），663 BTC 入 Coinbase（~$51M）。BTC 跨所迁移监控信号。",
+        "sig": [
+          "弱信号"
+        ],
+        "cluster_explicit": "etf_flow"
+      },
+      {
+        "name": "TG 新 token: COLE/KAROLINE/IMMORTAL/SHOW/FIGHT/VVV — 全 OKX 无",
+        "desc": "TG 端 3 次以下出现的小币 (COLE 3 / KAROLINE 3 / IMMORTAL 2 / SHOW 2 / FIGHT 2 / VVV 2)，多为低市值 meme，单源信号未通过 KOL/新闻验证，先入候补观察。",
+        "sig": [
+          "TG",
+          "KOL",
+          "新闻"
+        ],
+        "cluster_explicit": "meme"
+      }
+    ],
+    "comp": [
+      {
+        "what": "Aave + EtherFi + Kelp + LayerZero + Compound 联合 Arbitrum DAO 提案解冻 ETH",
+        "detail": "WuBlockchain: KELP 救助进入跨协议 DAO 协调阶段"
+      },
+      {
+        "what": "Solana 基金会借 USDT 给 Aave 救坏账 + 计划把 AAVE 部署到 Solana",
+        "detail": "SOL 生态级利好；AAVE 跨链扩展"
+      },
+      {
+        "what": "Morgan Stanley IM 推 Stablecoin Reserves Portfolio (MSNXX)",
+        "detail": "$1.9T AUM 巨头切入 GENIUS Act 合规稳定币储备业务"
+      },
+      {
+        "what": "Zondacrypto (波兰) 近破产 + CEO 跑路以色列",
+        "detail": "$100M+ 客户资金缺口；交易所信任危机"
+      },
+      {
+        "what": "Litecoin MWEB 零日漏洞 + 链重组撤销无效 pegouts",
+        "detail": "LTC 安全事件，需评估存取款风控"
+      },
+      {
+        "what": "Polymarket 链迁移 + Polymarket USD (1:1 USDC) 即将推出",
+        "detail": "TG POLY 飙至 Top1 (24 次)；POLY 仍未 TGE"
+      },
+      {
+        "what": "Coinbase Sonar 4/28 SpaceX-类 Pre-IPO 打新",
+        "detail": "FDV 50M / TGE 100% / 单号 20k u / Echo KYC"
+      },
+      {
+        "what": "BIP-361 三阶段量子迁移 + Adam Back 反对强制冻结",
+        "detail": "34% BTC 暴露公钥；社区分裂"
+      },
+      {
+        "what": "Believe 创始人 Ben Pasternak 在纽约被捕",
+        "detail": "memecoin launchpad 监管打压"
+      },
+      {
+        "what": "MegaETH 月底 TGE + Base 首次独立网络升级 + MetaMask Finlay 离职",
+        "detail": "L2/钱包生态多事件叠加"
+      },
+      {
+        "what": "美印太司令 Paparo 参议院: BTC = 国家利益",
+        "detail": "BTC 战略储备/国家利益叙事"
+      },
+      {
+        "what": "Brazil 全面封禁 Kalshi + Polymarket (延续)",
+        "detail": "预测市场监管再加码"
+      }
+    ],
+    "kols": [
+      {
+        "n": "@WuBlockchain",
+        "v": "Zondacrypto 波兰交易所 CEO 跑路以色列 $100M+ 缺口；Aave + EtherFi/Kelp/LayerZero/Compound 联合 Arbitrum DAO 解冻提案；SOL Foundation 借 USDT + 计划上 AAVE；LTC MWEB 零日 + 链重组；BTC ETF +$14.45M 第 9 连流入；ETH ETF +$23.38M 反转；US Indo-Pacific Cmdr Paparo: BTC=国家利益；Believe 创始人 Pasternak 被捕；MegaETH 月底 TGE + Base 首次独立升级 + MetaMask Finlay 离职",
+        "s": "n"
+      },
+      {
+        "n": "@ByzGeneral",
+        "v": "ZEC 已 ready for next expansion（看多突破）；APE 新 CEO 看多 + BAYC NFT 复兴 'very interesting'",
+        "s": "n"
+      },
+      {
+        "n": "@whale_alert",
+        "v": "24h: 1,146 BTC 出 OKEX (~$89M) → 未知；663 BTC → Coinbase；168M USDT 出 Ceffu",
+        "s": "n"
+      },
+      {
+        "n": "@yuyue_chris",
+        "v": "Coinbase Sonar 4/28 北京 20:00 开打 SpaceX-类 Pre-IPO，FDV 50M / TGE 100% / 单号 20k u / Echo KYC",
+        "s": "n"
+      },
+      {
+        "n": "@chaomeigu_com",
+        "v": "回声 yuyue：'打新 SpaceX' — Coinbase Sonar 平台 4/28",
+        "s": "n"
+      },
+      {
+        "n": "@0xVeryBigOrange",
+        "v": "BNB/BTC 收复 1011 插针 (0.0083 已被吞没)；驳斥 BTC $35k 看空 'BTC 35k 这辈子都到不了，看到 35w 概率比 35k 大'",
+        "s": "n"
+      },
+      {
+        "n": "@hexiecs",
+        "v": "X 选 flork 替代 doge 作 meme logo，叙事仍在 (低强度)",
+        "s": "n"
+      },
+      {
+        "n": "@Web3Feng",
+        "v": "FLOCK AI Agent 半玩笑 '让 AI 帮我把资金翻十倍'；评 Musk 画饼 + Grok 直言",
+        "s": "n"
+      },
+      {
+        "n": "@krugermacro",
+        "v": "stocks 不需要叙事只需强财报，叙事是 crypto 的事 (相对看空 crypto narrative trade)",
+        "s": "n"
+      },
+      {
+        "n": "@CryptoPainter",
+        "v": "GP 因子树量化引擎更新；继续吐槽 AI/quant 营销 (无 token call)",
+        "s": "n"
+      },
+      {
+        "n": "@Pentosh1",
+        "v": "宏观/税收 rant，无具体 token 方向",
+        "s": "n"
+      },
+      {
+        "n": "@fejau_inc",
+        "v": "'I personally think it\\'s 2026' — 隐含周期顶点 / 主升浪在 2026 (中性偏多)",
+        "s": "n"
+      }
+    ],
+    "tg": [
+      {
+        "t": "POLY",
+        "c": 24
+      },
+      {
+        "t": "IMX",
+        "c": 19
+      },
+      {
+        "t": "BTC",
+        "c": 7
+      },
+      {
+        "t": "ALGO",
+        "c": 6
+      },
+      {
+        "t": "ATOM",
+        "c": 4
+      },
+      {
+        "t": "INJ",
+        "c": 4
+      },
+      {
+        "t": "BIRB",
+        "c": 4
+      },
+      {
+        "t": "ZAMA",
+        "c": 4
+      },
+      {
+        "t": "COLE",
+        "c": 3
+      },
+      {
+        "t": "KAROLINE",
+        "c": 3
+      },
+      {
+        "t": "ETH",
+        "c": 3
+      },
+      {
+        "t": "IMMORTAL",
+        "c": 2
+      }
+    ],
+    "st": {
+      "tg": 27,
+      "msgs": 1366,
+      "cry": 212,
+      "kol": 12
+    },
+    "ex": [
+      {
+        "n": "Binance",
+        "c": 1978,
+        "s": 1
+      },
+      {
+        "n": "Bybit",
+        "c": 1259,
+        "s": 18
+      },
+      {
+        "n": "Bitget",
+        "c": 1195,
+        "s": 44
+      },
+      {
+        "n": "Hyperliquid",
+        "c": 190,
+        "s": 1
+      },
+      {
+        "n": "Coinbase",
+        "c": 515,
+        "s": 2
+      },
+      {
+        "n": "Upbit",
+        "c": 715,
+        "s": 2
+      },
+      {
+        "n": "Kraken",
+        "c": 961,
+        "s": 12
+      },
+      {
+        "n": "OKX",
+        "c": 385,
+        "s": 27
+      }
+    ],
+    "stockGap": [
+      {
+        "token": "WMT",
+        "on": [
+          "Bitget(perp_usdt)",
+          "Coinbase(spot)",
+          "Kraken(spot)"
+        ],
+        "cnt": 3
+      },
+      {
+        "token": "MCD",
+        "on": [
+          "Bybit(spot)",
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 2
+      },
+      {
+        "token": "AMAT",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "ARM",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "ASML",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "AVGO",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "BA",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "BABA",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "COST",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "LI",
+        "on": [
+          "Kraken(spot)"
+        ],
+        "cnt": 1
+      },
+      {
+        "token": "RKLB",
+        "on": [
+          "Bitget(perp_usdt)"
+        ],
+        "cnt": 1
+      }
+    ]
+  },
+  "kpi": {
+    "l3_week": 27,
+    "kol_week": 78,
+    "comp_week": 61,
+    "msgs_week": 13419,
+    "gap_count": 11,
+    "today_l3": 5,
+    "today_l2": 7,
+    "today_l1": 9,
+    "today_kols": 12,
+    "today_comp": 12
+  },
+  "exchanges": [
+    {
+      "n": "Binance",
+      "c": 1978,
+      "s": 1
+    },
+    {
+      "n": "Bybit",
+      "c": 1259,
+      "s": 18
+    },
+    {
+      "n": "Bitget",
+      "c": 1195,
+      "s": 44
+    },
+    {
+      "n": "Hyperliquid",
+      "c": 190,
+      "s": 1
+    },
+    {
+      "n": "Coinbase",
+      "c": 515,
+      "s": 2
+    },
+    {
+      "n": "Upbit",
+      "c": 715,
+      "s": 2
+    },
+    {
+      "n": "Kraken",
+      "c": 961,
+      "s": 12
+    },
+    {
+      "n": "OKX",
+      "c": 385,
+      "s": 27
+    }
+  ],
+  "top_tickers_week": [
+    [
+      "rsETH",
+      5
+    ],
+    [
+      "AAVE",
+      5
+    ],
+    [
+      "AVGO",
+      4
+    ],
+    [
+      "MNT",
+      4
+    ],
+    [
+      "BABA",
+      3
+    ],
+    [
+      "CHIP",
+      3
+    ],
+    [
+      "BTC",
+      3
+    ],
+    [
+      "ARM",
+      3
+    ],
+    [
+      "AMAT",
+      3
+    ],
+    [
+      "RAVE",
+      2
+    ],
+    [
+      "HYPE",
+      2
+    ],
+    [
+      "ETH",
+      2
+    ],
+    [
+      "ASML",
+      2
+    ],
+    [
+      "BLEND",
+      2
+    ],
+    [
+      "KELP",
+      2
+    ]
+  ],
+  "tg_today": [
+    {
+      "t": "POLY",
+      "c": 24
+    },
+    {
+      "t": "IMX",
+      "c": 19
+    },
+    {
+      "t": "BTC",
+      "c": 7
+    },
+    {
+      "t": "ALGO",
+      "c": 6
+    },
+    {
+      "t": "ATOM",
+      "c": 4
+    },
+    {
+      "t": "INJ",
+      "c": 4
+    },
+    {
+      "t": "BIRB",
+      "c": 4
+    },
+    {
+      "t": "ZAMA",
+      "c": 4
+    },
+    {
+      "t": "COLE",
+      "c": 3
+    },
+    {
+      "t": "KAROLINE",
+      "c": 3
+    },
+    {
+      "t": "ETH",
+      "c": 3
+    },
+    {
+      "t": "IMMORTAL",
+      "c": 2
+    }
+  ],
+  "ai_strict": [
+    {
+      "cluster": "CHIP — Coinbase 今日新上现货 + Binan",
+      "name": "CHIP — Coinbase 今日新上现货 + Binance Futures 已上预市场，OKX 完全缺失",
+      "desc": "Coinbase 今日上线 CHIP/USD 现货（Tier1 交易所）；Binance Futures 4/16 已上 CHIPUSDT 预市场；两家 Tier1 都已布局，OKX 现货/永续均无。CHIP 为半导体指数类代币，属股票衍生品赛道延续（4/20 Binance 上 MSFT/AVGO/BABA 后又新增）。",
+      "heat": 80,
+      "days_count": 1,
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "tks": [
+        "CHIP"
+      ],
+      "urg": "本周内",
+      "act": "产品/上币紧急评估 CHIP 永续上线（股票 Swap 产品线补位，配合 AVGO/BABA 建议）",
+      "gap": [
+        "OKX无"
+      ],
+      "comp": [
+        "Binance",
+        "Coinbase"
+      ]
+    },
+    {
+      "cluster": "stock_derivatives",
+      "name": "竞对股票永续 Day 5 — 半导体设备 + 中概股 gap 扩大",
+      "desc": "Bitget 继续扩张股票永续品类，今日 gap 中新增 AMAT、ARM、ASML、AVGO、BA、BABA、COST、RKLB（半导体设备三巨头 + 中概）；Kraken 新增 LI (理想)。OKX 已有 27 个股票永续覆盖 AAPL/NVDA/TSLA/MSTR/COIN/META 等核心 7 姊妹 + MSTR 生态，但缺半导体设备链 (AMAT/ARM/ASML) 和中概股 (BABA/LI)。这是在 AI 基建叙事 + 美联储独立性分歧 (fejau) 背景下的关键品类扩张。",
+      "heat": 78,
+      "days_count": 3,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-25",
+      "tks": [
+        "AMAT",
+        "ARM",
+        "ASML",
+        "AVGO",
+        "BABA",
+        "IONQ",
+        "LI",
+        "RKLB"
+      ],
+      "urg": "中",
+      "act": "补齐 AAPL 同类的半导体设备链 AMAT/ARM/ASML 永续，对标 TSM 打法；中概股 BABA/LI 对标既有 SNDK/EWY 框架；RKLB（SpaceX 对标）可借 Pre-IPO 叙事预热。",
+      "gap": [
+        "OKX无 (半导体设备)",
+        "OKX无 (半导体设备)",
+        "OKX无 (半导体设备)",
+        "OKX无 (AI 芯片)",
+        "OKX无 (中概)",
+        "OKX无 (中概)",
+        "OKX无 (SpaceX 对标)"
+      ],
+      "comp": [
+        "Bitget",
+        "Kraken"
+      ]
+    },
+    {
+      "cluster": "竞对股票衍生品 4/20 正式上线 — OKX 产品线差距收",
+      "name": "竞对股票衍生品 4/20 正式上线 — OKX 产品线差距收窄窗口",
+      "desc": "Binance Futures 今日 (2026-04-20) 正式上线 MSFTUSDT / AVGOUSDT / BABAUSDT 股票永续（4/18 已预告）。OKX 当前股票 Swap 产品线已有 MSFT（与 Binance 重叠），但仍缺 AVGO / BABA 两个头部股票。同时 Binance 4/16 已上 CHIP 预市场与 GENIUS。此为 OKX 股票 Swap 产品线（已有 AAPL/AMZN/COIN/HOOD/NVDA/PLTR/TSLA 等 23 个）直接补位窗口，越晚越难抢用户心智。",
+      "heat": 78,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "tks": [
+        "AVGO",
+        "BABA",
+        "CHIP",
+        "GENIUS"
+      ],
+      "urg": "本周内",
+      "act": "产品/上币加速评估 AVGO/BABA 股票永续；若 legal/清算路径不阻塞，建议 2 周内跟进",
+      "gap": [
+        "OKX无",
+        "OKX无",
+        "OKX无",
+        "OKX无"
+      ],
+      "comp": [
+        "Binance"
+      ]
+    },
+    {
+      "cluster": "AI_semis",
+      "name": "AI/半导体主题 KOL 共识走强 — ARM ATH + SK Hynix/Micron/SanDisk/Softbank（新事件）",
+      "desc": "based16z 预告 ARM 创 ATH、Softbank (9984) ATH；KelseyWeb3VC 明确看多 SK Hynix / SanDisk / Micron 存储主线，认为光模块 (长飞光纤) 已超买；CryptoPainter 讨论 AI x VR 融合趋势。多个 KOL 独立指向 AI capex / 存储 / 算力主题。与 Step3 stock_derivatives 的竞对行动互相印证。",
+      "heat": 65,
+      "days_count": 1,
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "tks": [
+        "ARM",
+        "MU",
+        "SK",
+        "SNDK"
+      ],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": []
+    },
+    {
+      "cluster": "AI / Vibe Coding 交易工具渗透深",
+      "name": "AI / Vibe Coding 交易工具渗透深",
+      "desc": "Web3Feng、hexiecs、0xchangan、0xVeryBigOrange 均在讨论 Claude/Codex 写 CTA 策略、Polymarket 自动化脚本、HL/Aster 机器人交易。AI-工具-交易整合趋势明显。",
+      "heat": 50,
+      "days_count": 1,
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "tks": [],
+      "urg": "",
+      "act": "",
+      "gap": [],
+      "comp": []
+    }
+  ],
+  "ai_comp_dated": [
+    {
+      "date": "2026-04-20",
+      "what": "Binance Futures 4/20 正式上线 MSFT / AVGO / BABA 股票永续",
+      "detail": "OKX 股票 Swap 已有 MSFT，缺 AVGO/BABA；4/16 已上 CHIP 预市场 + GENIUS 永续"
+    },
+    {
+      "date": "2026-04-23",
+      "what": "Bitget 批量上线 5 只 AI/半导体股永续",
+      "detail": "AAOI / COHR / BE / IONQ / NBIS — OKX 全缺"
+    },
+    {
+      "date": "2026-04-23",
+      "what": "Bybit 股票衍生品补齐大盘科技",
+      "detail": "HOOD / INTC / TSM 今日上 perp（OKX 已有）"
+    },
+    {
+      "date": "2026-04-24",
+      "what": "Bitget 继续扩股票 perps — 半导体/AI 基建赛道",
+      "detail": "AMAT/ASML/AVGO/ARM/BA/BABA/COST/RKLB 等 OKX 全缺"
+    },
+    {
+      "date": "2026-04-25",
+      "what": "Bitget 扩张股票永续 (AMAT/ARM/ASML/AVGO/BA/BABA/COST/RKLB)",
+      "detail": "半导体设备 + 中概股永续 gap 扩大；OKX 缺设备链 + 中概"
+    }
+  ],
+  "ai_kols_dated": [
+    {
+      "date": "2026-04-20",
+      "n": "Pentosh1",
+      "v": "提 BMNR 永续 pref 结构玩笑；AI 光电头部过热不宜追",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-20",
+      "n": "hexiecs",
+      "v": "持 SPX 空 + NVDA 多对冲；AAOI 做空",
+      "s": "dn"
+    },
+    {
+      "date": "2026-04-20",
+      "n": "fejau_inc",
+      "v": "战后重估；BTC/AI 算力仍看多",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-21",
+      "n": "bwenews",
+      "v": "Upbit 上 PIEVERSE / Coinbase 上 CHIP+OPG / Strategy +34k BTC / Kelp 事件持续 / LayerZero DVN 运营",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-22",
+      "n": "based16z",
+      "v": "Photonics/AI 基建 Q1 2021 Archegos-like 泡沫警告；SpaceX 传 $50B 买 Cursor；看好 OpenAI/Codex 堆栈",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-22",
+      "n": "bwenews",
+      "v": "Binance/Bybit/Bitget/Upbit/Bithumb 上 CHIP；Binance 上币安人生+GIGGLE+ENJ+ORDI；Coinbase 上 DIEM+USDC/INR；Kalshi 推加密永续；Strategy +34k BTC",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-23",
+      "n": "based16z",
+      "v": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续",
+      "s": "up"
+    },
+    {
+      "date": "2026-04-23",
+      "n": "KelseyWeb3VC",
+      "v": "看多 SK Hynix / SanDisk / Micron 存储；光模块（长飞光纤）已超买",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-23",
+      "n": "CryptoPainter",
+      "v": "AI x VR 融合趋势；一周前已预警 $Rave 风险",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-24",
+      "n": "@hexiecs",
+      "v": "Long BTC/Short ETH + Long NVDA/Short TSLA 双永动机对冲",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-24",
+      "n": "@CryptoPainter",
+      "v": "Kaito InfoFi → AI 基建必选工具转型",
+      "s": "up"
+    },
+    {
+      "date": "2026-04-24",
+      "n": "@Pentosh1",
+      "v": "BTC 数字黄金纯洁度 vs MSTR/equity；AI boom/bust 波动率上行",
+      "s": "up"
+    },
+    {
+      "date": "2026-04-25",
+      "n": "@Web3Feng",
+      "v": "GRVT (Perp DEX) RWA 最全，已存 Farm；Perp DEX 赛道没完全死",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-25",
+      "n": "@CryptoPainter",
+      "v": "GPT-Image-2 终结信任网 → 去中心化真实信息网络叙事；吐槽 AI Coding/Trading 无数据根基；Lobster (Openclaw) 热度消失一周",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-25",
+      "n": "@lBattleRhino",
+      "v": "周末进入: 长 RBLX / 空 TSLA / flat crypto; 已从 crypto 暂时撤离",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-26",
+      "n": "@WuBlockchain",
+      "v": "Zondacrypto 波兰交易所 CEO 跑路以色列 $100M+ 缺口；Aave + EtherFi/Kelp/LayerZero/Compound 联合 Arbitrum DAO 解冻提案；SOL Foundation 借 USDT + 计划上 AAVE；LTC MWEB 零日 + 链重组；BTC ETF +$14.45M 第 9 连流入；ETH ETF +$23.38M 反转；US Indo-Pacific Cmdr Paparo: BTC=国家利益；Believe 创始人 Pasternak 被捕；MegaETH 月底 TGE + Base 首次独立升级 + MetaMask Finlay 离职",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-26",
+      "n": "@Web3Feng",
+      "v": "FLOCK AI Agent 半玩笑 '让 AI 帮我把资金翻十倍'；评 Musk 画饼 + Grok 直言",
+      "s": "n"
+    },
+    {
+      "date": "2026-04-26",
+      "n": "@CryptoPainter",
+      "v": "GP 因子树量化引擎更新；继续吐槽 AI/quant 营销 (无 token call)",
+      "s": "n"
+    }
+  ],
+  "raw_items_by_date": {
+    "2026-04-16": [
+      {
+        "date": "2026-04-16",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "GENIUS 永续合约缺失",
+        "desc": "Binance + Bitget 同日上线 GENIUSUSDT 永续合约，OKX 无任何产品。Genius Terminal 是去中心化交易聚合器（150+ DEX，10+ 链），YZi Labs（Binance投资部）大额投资（8位数美元），CZ 任顾问。4/13 TGE，当前价 ~$0.60，mcap ~$200M，流通仅33.5%。Spot: Bitget/Gate/MEXC/Binance Alpha。需评估项目基本面和流动性。",
+        "heat": 85,
+        "urg": "high",
+        "tk": "GENIUS",
+        "tks": [
+          "GENIUS"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [
+          "Binance",
+          "Bitget"
+        ],
+        "sig": [
+          "竞对新上币(Binance+Bitget)",
+          "律动新闻确认"
+        ],
+        "act": "紧急评估 GENIUS 项目，考虑跟进上线永续合约"
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "RAVE 合约风控预警 + 产品线不完整",
+        "desc": "RAVE(RaveDAO) 一周暴涨 6000%（$0.25→$14），mcap ~$3B，24h vol $423M。极度危险信号：90% 供应集中在 3 个钱包，$43M 期货清算（排名仅次于 BTC/ETH）。OKX 仅有永续无现货，资金费率极度负向（Binance -0.36%/h, Bybit -0.5%/h）。筹码高度集中 + 巨量OI = ADL/穿仓风险极高。",
+        "heat": 90,
+        "urg": "critical",
+        "tk": "RAVE",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [
+          "仅有永续，无现货"
+        ],
+        "comp": [
+          "Binance",
+          "Bybit"
+        ],
+        "sig": [
+          "KOL(OwenJin12资金费率数据)",
+          "TG(4次)",
+          "KOL(EmberCN)"
+        ],
+        "act": "紧急：合约风控团队评估 RAVE 穿仓/ADL 风险；90%筹码集中3钱包，暂不建议开现货"
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "BLESS 项目方砸盘预警",
+        "desc": "BLESS 项目方 9h 内抛售 3 亿枚（$383万），暴跌 55%。SIREN（AI meme币）88.5% 供应集中于单一钱包集群，同样高风险。OKX 均未上线（规避正确）。需确认无做市/投资关联。",
+        "heat": 65,
+        "urg": "medium",
+        "tk": "BLESS",
+        "tks": [
+          "BLESS",
+          "SIREN"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "KOL(EmberCN)",
+          "律动新闻"
+        ],
+        "act": "确认无做市/投资关联风险；标记 BLESS 为高风险项目"
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "Binance USD1/WLFI 生态布局",
+        "desc": "Binance 推出持有 USD1 瓜分 1500 万美元 WLFI 奖励活动。WLFI 被 KOL 3次提及。OKX 已有 WLFI 现货+永续，但需关注 Binance 围绕 Trump 系 token 的生态运营攻势。",
+        "heat": 60,
+        "urg": "medium",
+        "tk": "WLFI",
+        "tks": [
+          "WLFI",
+          "USD1"
+        ],
+        "gap": [],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "律动新闻",
+          "KOL(EmberCN,roger9949)"
+        ],
+        "act": "关注 Binance USD1 生态运营力度，评估 OKX 是否需要跟进类似活动"
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "BTC 积累阶段信号",
+        "desc": "ETF 持续流入 + CEX 净流出近两月 + 3个新地址从 CEX 提取 1600 BTC($1.2亿) + 巨鲸平空头仓位。链上多指标显示积累。但 CryptoQuant 提示卖压增强。",
+        "heat": 80,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "律动新闻(多条) + KOL(CryptoHayes,krugermacro)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "地缘政治风险 — 伊朗/霍尔木兹海峡",
+        "desc": "Trump 称可无限期封锁伊朗港口。Arthur Hayes 新文分析霍尔木兹海峡开放与否对 BTC 的影响，基金已进入避险状态仅小幅增持 Hyperliquid。krugermacro 则认为 S&P 回收全部跌幅 = 空头错误。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "KOL(CryptoHayes,krugermacro) + 律动新闻"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Meme 板块回温",
+        "desc": "Solana 生态 Meme 币 unc 市值达 $1200 万（24h +150%）。TG 群讨论老牌 meme 币「妖币行情」。KOL(Jingxin147741) 表示 MEME 热度回升。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "UNC,"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "律动新闻 + TG群 + KOL"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "RENDER / HYPE 持续活跃",
+        "desc": "RENDER TG 7次提及，HYPE TG 6次提及。Arthur Hayes 基金仅增持 Hyperliquid。两者 OKX 均已有现货+永续，覆盖完整。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "RENDER",
+          "HYPE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "TG(RENDER 7次,HYPE 6次) + KOL(CryptoHayes)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-16",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "AI x Crypto 动态",
+        "desc": "0G Labs 推出去中心化消费级 AI 开发平台。Anthropic 开始身份验证（KOL cyrilxuq 讨论）。AI 叙事持续演进但本日无重大 token 信号。",
+        "heat": 45,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "律动新闻 + KOL"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-17": [
+      {
+        "date": "2026-04-17",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "新币盲区: CHIP + GENIUS 被 Binance 抢先",
+        "desc": "Binance 今日新上 CHIPUSDT 永续(pre-market)和 GENIUSUSDT 永续(MC ~$184M),OKX 均无现货和合约;GENIUS 市值非零,@bwenews 已广泛播报,需评估立项。",
+        "heat": 88,
+        "urg": "高",
+        "tk": "CHIP",
+        "tks": [
+          "CHIP",
+          "GENIUS"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "交易所API: Binance 新增 perp_usdt 两个 | KOL: @bwenews 多条播报"
+        ],
+        "act": "上币组 24h 内对 GENIUS 完成初审(市值、团队、合约),CHIP 作为 meme 跟踪是否起量"
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "RAVE 风控预警: 多源警告庄家控盘",
+        "desc": "@0xVeryBigOrange、@Web3Feng、@CryptoPainter 过去 48h 多次点名 RAVE 被单方控盘 97-98% 流通筹码、FDV $3.68B,现价任其拉升。OKX 已上永续(无现货),强平/穿仓风险需提前风控。",
+        "heat": 86,
+        "urg": "高",
+        "tk": "RAVE",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "KOL: @0xVeryBigOrange",
+          "@Web3Feng",
+          "@CryptoPainter 独立多源"
+        ],
+        "act": "风控组今日检视 RAVE 永续持仓集中度、强平梯度与杠杆上限;必要时临时下调最大杠杆"
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "股票代币永续对标: Binance 4/20 批量上线",
+        "desc": "@bwenews 披露 Binance 将于 4/20 新增 MSFTUSDT/AVGOUSDT/BABAUSDT 股票永续。OKX 已有 25 个股票永续(含 MSFT/AAPL/NVDA/TSLA 等),但 AVGO 和 BABA 仍完全缺失;Bitget 股票代币总量 47、Bybit 14。",
+        "heat": 75,
+        "urg": "中高",
+        "tk": "AVGO",
+        "tks": [
+          "AVGO",
+          "BABA",
+          "MSFT"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [
+          "Binance",
+          "Bybit",
+          "Bitget"
+        ],
+        "sig": [
+          "KOL: @bwenews 公告预告 | 交易所API: 竞对股票代币聚合(Bitget 47 / Bybit 14)"
+        ],
+        "act": "股票代币组本周内评估 AVGO/BABA 永续上线排期(对标 Binance 4/20),补齐 OKX 股票永续矩阵"
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "BTCFi 产品线空白: Goldman 覆盖式看涨 ETF 上线",
+        "desc": "@jason_chen998 点评 Goldman Sachs 新推 BTC Premium Income ETF(covered call 策略)是合规 BTCFi 里程碑;同期 BNB 35 次季度销毁 157 万枚($1.02B)、Arthur Hayes 轮入 Gold+HYPE。BTCFi(期权、结构化收益)正在机构化。",
+        "heat": 68,
+        "urg": "中",
+        "tk": "BTC",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "KOL: @jason_chen998",
+          "@WuBlockchain | 新闻: 贝莱德提币 3899 BTC",
+          "北美矿企 Q1 抛售 3.2 万 BTC"
+        ],
+        "act": "产品/期权组评估是否推出 BTC covered call 结构化理财产品,对标 Goldman"
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "ORDI 暴涨 190% 引爆 BRC20 + Runes 情绪",
+        "desc": "ORDI 24h 涨 190% 触及 $10.7,@jason_chen998 反向揶揄 ASTER 疲软。OKX 已有现货+永续,是首选交易场所。",
+        "heat": 82,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ORDI"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "新闻: BlockBeats 多条播报",
+          "TG: 8 次提及(top 5)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "HYPE 巨鲸加仓 + Hayes 跟进",
+        "desc": "同一实体地址集群 6h 内加仓 59 万枚 HYPE(总持仓 411 万),另有新地址存 745 万 USDT 全买 HYPE。Arthur Hayes 持续增配 Gold + HYPE。OKX 已全覆盖。",
+        "heat": 80,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "HYPE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "新闻: 2 条链上巨鲸快讯",
+          "KOL: @WuBlockchain 引用 Hayes",
+          "TG: 10 次"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "机构 BTC 分化: 矿企抛售 vs 贝莱德提币",
+        "desc": "北美矿企 Q1 抛售 3.2 万 BTC(单季历史新高,>去年全年),但贝莱德 7h 前从 Coinbase 提 3899 BTC;@whale_alert 追踪 Cumberland→Coinbase Institutional 1834 BTC 大额流入。CryptoQuant 报 30 天鲸鱼累积 27 万 BTC。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "新闻: 多条巨鲸/矿企快讯",
+          "KOL: @whale_alert + @WuBlockchain + @based16z"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Schwab 启动 BTC/ETH 现货交易(Paxos 驱动)",
+        "desc": "@WuBlockchain 报道 Charles Schwab 正式上线 Schwab Crypto(Paxos 托管),为美国零售导流新通道。对 BTC/ETH 现货长期利好。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "KOL: @WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "宏观: 美伊接近核协议 + 以黎停火",
+        "desc": "特朗普称伊朗同意不拥核、归还核材料,下周末或再会;以色列同意 10 天停火。油价预期减半,风险资产受益,@krugermacro 维持看多风险资产。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "新闻: 8 条特朗普外交快讯",
+          "KOL: @krugermacro"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-17",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "隐私赛道轮动: ZEC/ZEN 退潮, CRCL 接力",
+        "desc": "@KelseyWeb3VC 从 ZEC/ZEN 轮入 CRCL 并加大仓位,判断隐私叙事动能减弱。OKX: ZEC/ZEN 已覆盖现货+永续, CRCL 仅永续(无现货)。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "CRCL",
+          "ZEC",
+          "ZEN"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "KOL: @KelseyWeb3VC 独家轮仓信号"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-18": [
+      {
+        "date": "2026-04-18",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "RAVE 风控预警 — 97% 控盘、爆仓激增",
+        "desc": "RAVE 创历史新高后 24h 爆仓额仅次于 BTC 和 ETH，持仓量骤减，多源 KOL（0xVeryBigOrange、jason_chen998、Web3Feng）均指出 97% 筹码高度集中、疑似人为拉升配合现货即将上线；新闻重复报道其'妖币卷土重来'。OKX 已有 RAVE 永续，建议合约风控关注：限仓、单边 OI、持仓集中度、爆仓级联风险。",
+        "heat": 92,
+        "urg": "立即",
+        "tk": "RAVE",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats 新闻×2",
+          "3 位 CN KOL",
+          "TG 热榜"
+        ],
+        "act": "合约风控：复核 RAVE 永续限仓与强平阶梯；评估是否临时上调保证金比例；监控 OI 异动与爆仓级联"
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "竞对股票/商品衍生品产品线加速扩张",
+        "desc": "Binance Futures 宣布 4/20 上线 MSFT/AVGO/BABA 股票永续，4/16 已上 CHIP（半导体指数）预市场与 GENIUS 永续。OKX 当前有 MSFT 永续，但缺 AVGO/BABA/CHIP/GENIUS。这是对 OKX 股票 Swap 产品线（已有 AAPL/AMZN/COIN/HOOD/NVDA/PLTR/TSLA 等 23 个）的直接缺口补位机会。",
+        "heat": 80,
+        "urg": "4/20 前",
+        "tk": "AVGO",
+        "tks": [
+          "AVGO",
+          "BABA",
+          "CHIP",
+          "GENIUS"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无",
+          "OKX无（crypto，$184M mcap）"
+        ],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "bwenews 官方发布",
+          "Binance 公告"
+        ],
+        "act": "产品/上币评估 AVGO/BABA 股票永续作为现有股票 Swap 产品线补齐；评估 GENIUS crypto 上币（单独赛道验证）"
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "STRC（Strategy 半月分红产品）上币机会",
+        "desc": "Strategy（MSTR）提案将 STRC 分红频率由每月改为半月一次，6/8 投票。Pentosh1 与 WuBlockchain 均表示这对 Saylor 的 BTC 购买节奏形成正面支撑。STRC 为 MSTR 旗下权益类产品，OKX 当前有 MSTR 永续但无 STRC；可与现有 MSTR 产品形成组合售卖。竞对同样未覆盖，属于'抢先机'窗口。",
+        "heat": 65,
+        "urg": "6/8 前完成评估",
+        "tk": "STRC",
+        "tks": [
+          "STRC",
+          "MSTR"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain",
+          "Pentosh1",
+          "BlockBeats"
+        ],
+        "act": "产品评估 STRC 作为 MSTR 配套产品；若 6/8 投票通过将直接带来现金流预期改善"
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "美伊缓和 / 霍尔木兹重开 → 全面 risk-on",
+        "desc": "霍尔木兹海峡部分重开，但伊朗议长仍表态不放弃控制权，市场呈条件性缓和。美军 21 艘船按指示掉头，美国数日内赴巴基斯坦与伊朗复谈。标普纳指连涨创新高、BTC 回 7.7 万。Pentosh1/krugermacro/fejau/Web3Feng/jason_chen998 一致认为'抄底机器'继续、别跟趋势对抗。",
+        "heat": 90,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH",
+          "SPX",
+          "BZ/CL/NG"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats 10+ 条 + 3 组 KOL 全部讨论"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "BTC/ETH 现货 ETF 连续净流入",
+        "desc": "BTC ETF 昨日净流入 $6.64 亿、ETH ETF 净流入 $1.27 亿且 7 日连阳；BitMine 继续扩持 ETH。巨鲸今晨买入 3.2 万枚 ETH（~$2.25 亿）。whale_alert 捕捉到 3.2 万 ETH 从 Binance 出金至未知钱包。机构买盘信号明显。",
+        "heat": 85,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats + WuBlockchain + whale_alert"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Meme 行情升温：币安人生 / ASTEROID / ASTER / RAVE",
+        "desc": "'币安人生'突破 $0.54 创 ATH、控盘集群休眠 2 日后爆发；Moonshot 一夜上线三项目，meme 升温；某新建地址向 Hyperliquid 存 $199 万 5 倍做多 ASTER；ASTER API 整合问题被 KOL 提及，'心电图'形态疑为吸筹。",
+        "heat": 75,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ASTER",
+          "ASTEROID"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats + CN KOL×2"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "行业结构：Kraken 收购 Bitnomial ($550M)",
+        "desc": "Kraken 母公司 Payward 以 $550M 收购美国衍生品公司 Bitnomial，打通经纪/清算/交易所全栈。Deutsche Börse 另宣布向 Kraken 投资 $200M。美国合规衍生品整合趋势明显，对 OKX US 战略有参考价值。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "预测市场作为 Alpha 来源",
+        "desc": "0xchangan、Web3Feng、0xVeryBigOrange 多位 CN KOL 讨论 Polymarket/Domer 方法论与 lobster 连接机制；based16z 批评 Kalshi 'exotics' 本质是体育 parlay。预测市场在 CT 社区渗透加深。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "3 位 CN KOL + 1 位 EN KOL"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "巨鲸 Aave 杠杆循环 / 稳定币供给扩张",
+        "desc": "Tether 向 Kraken 铸造 $150M USDT；Kraken → Aave $140M USDT；Bitfinex-Treasury $100M USDT 赎回循环；Aave ↔ Unknown Whale 40 分钟内 $103M USDC 借还循环——巨鲸在 Aave 上建立杠杆或赚取收益。BTC 方向上 5,500 枚进入 Bitstamp+Bitfinex、3,000 枚进入 OKEX。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert 逐笔"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Coinbase Ventures 资本主题 / RWA & AI Agent",
+        "desc": "Coinbase Ventures 明确新赛道：代币化、交易基础设施、下一代 DeFi（资本效率+隐私）、AI Agent 作为经济参与者。Paimon Finance（YZi Labs 背书）推 SpaceX Pre-IPO 代币化估值 $1.7T、7% APY。Goldman 递交 BTC Premium Income ETF。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + Web3Feng + bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-18",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "隐私币 / Zcash 安全硬化",
+        "desc": "Zcash 发布安全补丁 v6.12.1 与 Zebra 4.3.1，包含多项关键修复。隐私币在监管缓和预期下被重新关注。ZEC OKX 已有现货+永续。",
+        "heat": 40,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ZEC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + BlockBeats"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-20": [
+      {
+        "date": "2026-04-20",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "KelpDAO rsETH + LayerZero 桥漏洞事件 — DeFi 系统性风险",
+        "desc": "KelpDAO 官方桥因 LayerZero 单签配置被攻击，盗取 116,500 枚 rsETH（~$293M）。Aave V3/V4 紧急冻结 rsETH 市场，TVL 流失 $84 亿（-30%+），100% 利用率下出现坏账风险。Reserve 暂停 eUSD/USD3 铸造与再平衡。Justin Sun 撤出 $154M ETH。Fluid 上线 aWETH 赎回协议（首日 $10 亿容量）缓解系统性压力。ETHFI、EtherFi 金库确认不受影响。based16z 预期本周将宣布投资者 backstop 覆盖损失。OKX 已有 ETHFI/AAVE/ETH 现货+永续，需评估：rsETH 相关敞口、LRT 衍生品风控、坏账事件对 AAVE 价格冲击路径。",
+        "heat": 95,
+        "urg": "立即",
+        "tk": "rsETH",
+        "tks": [
+          "rsETH",
+          "KELP",
+          "ETHFI",
+          "AAVE",
+          "FLUID"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "BlockBeats×4 条新闻",
+          "WuBlockchain",
+          "krugermacro",
+          "based16z",
+          "bwenews"
+        ],
+        "act": "合约风控：监控 AAVE 永续 OI 与强平阶梯、评估坏账事件冲击；关注 LRT 赛道整体风险；评估 FLUID 永续上线（TVL 剧增）"
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "RAVE 操纵事件升级 — 24h -88%、$23M 倾销、Binance/Bitget 官方调查",
+        "desc": "承接 4/18 风控预警：RAVE 在 ZachXBT 公开调查后 24h 跌 -88%，爆仓 $43.68M；RaveDAO 关联初始分配地址向 Bitget 倾销 2300 万枚 RAVE（价值 $23M）。Binance/Bitget 已启动调查，ZachXBT 悬赏 $10K 征集内部信息，krugermacro 要求 Heyi/Gracy 内部复查。CryptoPainter 警告'内部人控制 98%+ 流通、勿碰'。Ice_Frog 朋友 20 万 token 空投从 $600 万峰值跌至 $30 万。OKX 已有 RAVE 永续，需复盘 4/18 风控建议执行情况并强化。",
+        "heat": 90,
+        "urg": "立即",
+        "tk": "RAVE",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [
+          "Binance",
+          "Bitget"
+        ],
+        "sig": [
+          "BlockBeats",
+          "WuBlockchain",
+          "krugermacro",
+          "CryptoPainter",
+          "3 位 CN KOL"
+        ],
+        "act": "合约风控：紧急复核 RAVE 永续限仓、保证金比例、强平阶梯；对齐 Binance/Bitget 调查结果；评估下架或暂停新开仓"
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "ZachXBT 点名下一波操纵候选 — SIREN/MYX/COAI/M/PIPPIN/RIVER",
+        "desc": "WuBlockchain 转述 ZachXBT 将 SIREN/MYX/COAI/M/PIPPIN/RIVER 6 个 token 列为下一批高度可疑的低流通操纵候选。0xVeryBigOrange 将 ARIA/SIREN/RAVE 同列为'95%+ 集中度的 Alpha 项目'、任何 >1x 杠杆都会爆。OKX 覆盖：COAI/PIPPIN/RIVER 已有永续（需复核风控），SIREN/MYX/M/ARIA OKX 无。对已上线的 3 个要先行一步检查 OI、持仓集中度；对未上线的 4 个建立上币评估防火墙。",
+        "heat": 82,
+        "urg": "立即",
+        "tk": "SIREN",
+        "tks": [
+          "SIREN",
+          "MYX",
+          "COAI",
+          "M",
+          "PIPPIN",
+          "RIVER",
+          "ARIA"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain 转 ZachXBT",
+          "0xVeryBigOrange",
+          "yuyue_chris"
+        ],
+        "act": "合约风控：对 COAI/PIPPIN/RIVER 执行与 RAVE 相同的预防检查；对 SIREN/MYX/M/ARIA 将其标记为上币评估黑名单候选；复核相关代币持仓集中度"
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "竞对股票衍生品 4/20 正式上线 — OKX 产品线差距收窄窗口",
+        "desc": "Binance Futures 今日 (2026-04-20) 正式上线 MSFTUSDT / AVGOUSDT / BABAUSDT 股票永续（4/18 已预告）。OKX 当前股票 Swap 产品线已有 MSFT（与 Binance 重叠），但仍缺 AVGO / BABA 两个头部股票。同时 Binance 4/16 已上 CHIP 预市场与 GENIUS。此为 OKX 股票 Swap 产品线（已有 AAPL/AMZN/COIN/HOOD/NVDA/PLTR/TSLA 等 23 个）直接补位窗口，越晚越难抢用户心智。",
+        "heat": 78,
+        "urg": "本周内",
+        "tk": "AVGO",
+        "tks": [
+          "AVGO",
+          "BABA",
+          "CHIP",
+          "GENIUS"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "bwenews 官方发布",
+          "Binance 公告"
+        ],
+        "act": "产品/上币加速评估 AVGO/BABA 股票永续；若 legal/清算路径不阻塞，建议 2 周内跟进"
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "美伊和谈破裂 / BTC 跌破 $7.4 万 — risk-off 反转",
+        "desc": "临时停火周三到期、伊媒称拒谈，霍尔木兹海峡当日无船只通行、月底前通航概率仅 30%。美军海军陆战队控制试图突破封锁的伊朗船只，阿联酋称遭 2800+ 次袭击（90% 民用）。BTC 跌破 $7.4 万，原油跳空高开、美股期货齐跌。某巨鲸 3 倍做多原油 $750 万。风险情绪较 4/18 risk-on 快速反转。KOL 分歧：krugermacro 仍 'don't short'；CryptoPainter 准备 6 月 DCA 策略；Murphychen888 引矿工成本 $53-73k 认为 BTC $60k 已便宜。",
+        "heat": 88,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH",
+          "BZ/CL"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats 10+ 条 + Tier1 KOL×3"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "稳定币巨鲸轮转 $1.5B+ — Aave 去杠杆 + CEX 流动性补充",
+        "desc": "24h 内 $1.5B+ 稳定币巨鲸流动：Tether 向 Kraken/Bitfinex 共铸造 $200M+ USDT；Aave→Spark $285M USDT、Aave→HTX $200M USDT（合计 $485M 去杠杆）；Aave↔Unknown Whale 40 分钟 $103M USDC 借还循环；PYUSD 在 Solana 销毁 7500 万；Ethena USDe 在 Plasma 链 $300M 划转。某巨鲸重仓开多 $100M ETH @ $2,289。整体符合'DeFi 去杠杆 + CEX 流动性准备'结构。",
+        "heat": 75,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC",
+          "USDE",
+          "PYUSD"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert 逐笔 + BlockBeats"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "LayerZero 桥单签风险公开列表 — 下一波潜在受害者",
+        "desc": "Kelp 事件暴露 LayerZero 1-of-1 配置桥单签风险。推文公开列出仍使用该配置的协议：Aave、Kelp（已中招）、Swell、Orderly、Aethir、Vana、Initia 等。based16z 表示'资金链上 R/R 恶化'、'黑客潮'持续（4 月总计 Drift $285M、Hyperbridge $2.5M、Rhea $18.4M、Grinex $15M、Kelp $293M，~$600M+）。对 OKX 有 spot/perp 的 SWELL/VANA 等需关注事件外溢。",
+        "heat": 72,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "SWELL",
+          "VANA",
+          "AETHIR",
+          "INITIA"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "based16z + ByzGeneral + BlockBeats"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Solana 稳定币借贷利率爆表 — Jupiter Lend USDC 99%",
+        "desc": "Jupiter Lend USDC 利用率飙升至 99%，Solana 生态稳定币借贷利率与利用率全面拉升，可能与 ETH 侧 DeFi 事件资金迁移、或 SOL 生态自身杠杆需求有关。JUP OKX 已有现货+永续。",
+        "heat": 62,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "JUP",
+          "USDC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Binance / Bybit / 监管格局变化",
+        "desc": "CZ 宣布很快在迪拜办'币安人生'首场签售会（币安人生持续高热度）；Sberbank（俄罗斯最大银行）准备加密交易业务；Pakistan 解除加密禁令；HK 禁预测市场；付鹏加入港股新火集团出任首席经济学家。行业边界持续推开，但 HK 预测市场禁令对 Polymarket 类项目不利。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats + WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "ASTER 结构性多头 — 不冻账户 + Binance 流动性",
+        "desc": "0xVeryBigOrange：ASTER 因不冻账户 + Binance 流动性，运行 3 日 CTA +5%；Hyperliquid CTA 两周 +6%；评价 RAVE/SIREN/ARIA 是'骗局公园'。ASTER 已 OKX 现货+永续，可关注 OI 与 funding 结构性信号。",
+        "heat": 58,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ASTER",
+          "HYPE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange + jason_chen998"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "AI / Vibe Coding 交易工具渗透深",
+        "desc": "Web3Feng、hexiecs、0xchangan、0xVeryBigOrange 均在讨论 Claude/Codex 写 CTA 策略、Polymarket 自动化脚本、HL/Aster 机器人交易。AI-工具-交易整合趋势明显。",
+        "heat": 50,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "4 位 CN KOL"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-20",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "北朝鲜渗透 Web3 开发团队",
+        "desc": "WuBlockchain + fejau_inc 讨论 Ethereum Foundation 'Ketman' 事件（DPRK 长期渗透 Web3 开发团队）。OKX 安全合规视角值得留意但非紧急。",
+        "heat": 45,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + fejau_inc"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-21": [
+      {
+        "date": "2026-04-21",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "Kelp rsETH / LayerZero 事件 Day 2 — Aave TVL -$84.5 亿 + 坏账决策期",
+        "desc": "KelpDAO rsETH 桥被盗 $293M 后 48 小时，Aave TVL 从 $262 亿降至 $179.5 亿（-$84.5 亿 / -32%）；WETH 借贷池 100% 利用率，多签冻结 WETH、建议暂停 Umbrella 模块；Aave 官方正讨论两种坏账处理方案。DPRK Lazarus 嫌疑浮现，Kelp 正撰写把责任推给 LayerZero 的备忘录；based16z 继续预期本周宣布投资者 backstop。Lido 敞口 $21.6M；Aave 潜在坏账 $1.23-2.30 亿。Justin Sun 向 Spark 存入 $1.74 亿（占 Spark USDC 存款 1/4），Spark TVL 48h +17%。某 AAVE 持币 1+ 年鲸鱼将 $3.01M 转入 Binance（或亏损 $1.85M）。Kamino USDC 利用率 100%、零流动性 — 危机开始向 Solana 侧扩散。",
+        "heat": 95,
+        "urg": "立即",
+        "tk": "rsETH",
+        "tks": [
+          "rsETH",
+          "KELP",
+          "AAVE",
+          "ETHFI",
+          "FLUID",
+          "SPARK",
+          "KAMINO"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "BlockBeats×5 条新闻",
+          "WuBlockchain",
+          "0xVeryBigOrange",
+          "based16z",
+          "krugermacro",
+          "bwenews"
+        ],
+        "act": "合约风控：AAVE 坏账方案公告前后的波动监控；预案 LRT 赛道 re-rating；评估 SPARK/KAMINO 上币及流动性观察（竞对尚未全线覆盖，窗口）"
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "ASTEROID — TG 热榜 #2 + 鲸鱼 $114 万买入，OKX 无",
+        "desc": "TG 24h 排名 #2（11 次提及，仅次 BTC），新闻报道某鲸鱼近 2 日投入 $114 万买入 ASTEROID，另有 4/18 报道 Moonshot 一夜上线三项目带动 meme 升温。多源信号：TG + 新闻 + 链上鲸鱼。OKX 现货/永续均无；竞对覆盖情况需复核（Bitget/MEXC 等 Tier2 可能已有）。项目基本面需尽快调研。",
+        "heat": 85,
+        "urg": "24h 内",
+        "tk": "ASTEROID",
+        "tks": [
+          "ASTEROID"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [
+          "Bitget"
+        ],
+        "sig": [
+          "TG 热榜 11 次",
+          "BlockBeats 新闻×2",
+          "链上鲸鱼"
+        ],
+        "act": "上币团队 24h 内完成 ASTEROID 项目调研：合约审计状态、代币分配、流动性深度；若通过可考虑抢先永续上线"
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "CHIP — Coinbase 今日新上现货 + Binance Futures 已上预市场，OKX 完全缺失",
+        "desc": "Coinbase 今日上线 CHIP/USD 现货（Tier1 交易所）；Binance Futures 4/16 已上 CHIPUSDT 预市场；两家 Tier1 都已布局，OKX 现货/永续均无。CHIP 为半导体指数类代币，属股票衍生品赛道延续（4/20 Binance 上 MSFT/AVGO/BABA 后又新增）。",
+        "heat": 80,
+        "urg": "本周内",
+        "tk": "CHIP",
+        "tks": [
+          "CHIP"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [
+          "Binance",
+          "Coinbase"
+        ],
+        "sig": [
+          "Coinbase 公告",
+          "bwenews 4/16 Binance 公告"
+        ],
+        "act": "产品/上币紧急评估 CHIP 永续上线（股票 Swap 产品线补位，配合 AVGO/BABA 建议）"
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "本周超大额解锁预警 — $330M+ 一次性 + 多个日解锁 >$1M",
+        "desc": "WuBlockchain 汇总本周解锁：一次性大额 >$5M 的代币包括 UDS、ZRO、H、XPL、MBG、HYPER、LMTS、INIT、KAITO、SOSO、MON，合计超 $330M；线性大解锁 >$1M/日：RAIN、SOL、CC、TRUMP、WLD、HYPE（已在 OKX）。OKX 已上的 ZRO / H / XPL / KAITO / SOL / HYPE / TRUMP / WLD / HYPER 面临抛压，需提前风控。Hyperliquid（HYPE）另有地址卖 20 万枚 @$40.77、Paradigm 解押 214 万枚 — HYPE 抛压叠加。",
+        "heat": 75,
+        "urg": "本周内",
+        "tk": "ZRO",
+        "tks": [
+          "ZRO",
+          "XPL",
+          "KAITO",
+          "HYPE",
+          "SOL",
+          "WLD",
+          "TRUMP",
+          "UDS",
+          "H",
+          "MBG",
+          "HYPER",
+          "LMTS",
+          "INIT",
+          "SOSO",
+          "MON"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [
+          "Hyperliquid"
+        ],
+        "sig": [
+          "WuBlockchain 汇总",
+          "新闻",
+          "Paradigm 链上"
+        ],
+        "act": "合约风控：本周对 HYPE/ZRO/XPL/KAITO/WLD/TRUMP 永续 OI 与资金费率紧密监控；评估临时保证金上调"
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "机构大买 BTC/ETH 持续 — Strategy +34k BTC / BitMine +101k ETH",
+        "desc": "Strategy（MSTR）新增 34,164 BTC 价值 $25.4 亿、均价 $74,395、总持仓 815,061 BTC；BitMine 上周新增 101,627 ETH（ETH 流通的 4.12%）。BTC 现货 ETF 连续 3 周净流入 $9.96 亿（CoinShares BTC 基金 $11.16 亿）、ETH ETF $2.76 亿（Jan 以来最强周）、SOL ETF $35.17M、XRP ETF $55.39M。摩根士丹利 ETF +215 BTC，BlackRock +3372 BTC。抄底鲸 Feb 投入 $5 亿的 cbBTC 现清仓最后 2000 枚。某鲸鱼从 Binance 提 1.83 万 ETH（1.2 万卖出）。",
+        "heat": 85,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH",
+          "SOL",
+          "XRP",
+          "MSTR"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + BlockBeats×3 + whale_alert"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Hyperliquid ETF 推进 — 灰度修订申请 + HYPE 大量解押",
+        "desc": "灰度向 SEC 提交 Hyperliquid ETF 申请修订案，Anchorage 替换 Coinbase 担任托管方。市场侧：某地址卖 20 万 HYPE @ $40.77；Paradigm 解押 214 万 HYPE。HYPE OKX 已有现货+永续，关注 ETF 进展 + 解押抛压双向。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "HYPE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats + WuBlockchain + whale_alert"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Coinbase + Bybit 谈判代币化美股 + Pre-IPO",
+        "desc": "WuBlockchain：Coinbase 与 Bybit 正讨论合作代币化美股 + Pre-IPO 项目（托管/分发）。Polymarket 传 $15B 融资谈判。TradFi x Crypto 收敛持续。OKX 股票 Swap 产品线（含 AAPL/AMZN/COIN 等 23 个）面临 Tier1 联合对手。",
+        "heat": 68,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "LayerZero 单签桥生态风险公开 — 近半 OApp 仍用高危配置",
+        "desc": "Dune 数据：近半 LayerZero OApp 仍采用易受单点攻击的高危配置（与 Kelp 相同）；LayerZero DVN 已开启运营，多 DVN 团队被建议尽快切换。潜在受害者列表（昨日已列）：Swell/Orderly/Aethir/Vana/Initia。4 月黑客总损失已 $600M+。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "VANA"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Dune + based16z + bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "美伊停火到期 / 万斯周二赴巴谈判 / BTC 逆势",
+        "desc": "美伊临时停火即将到期、伊朗议长'已准备战场亮新牌'、伊朗仍不松口；万斯周二赴巴基斯坦进行伊朗会谈；美联储提名人沃什听证承诺利率独立性；Trump 今晚上 CNBC。ByzGeneral：BTC 突破区间 + 负资金费率 + 低 OI + 地缘事件催化，多头结构；BTC 短时回撤后逆势走强。Tom Lee：未来 18-24 个月散户助涨大牛市。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "BZ/CL"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "BlockBeats×6 + ByzGeneral"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "稳定币巨鲸轮转延续 — Tether 铸新 $200M / PYUSD 销毁 $301M",
+        "desc": "Tether 向 Bitfinex 铸造 $200M USDT（新增流动性）；Bitfinex↔Kraken $113M + $129M 稳定币轮转；PYUSD 销毁 $301M（赎回）；USDC 2x $150M 从 Paxos 转出未知（~$300M 合计）；XRP $107M 从 Ripple 流出、$50M 返回。大额 BTC 流向：8,769 BTC（$6.68 亿）至未知新钱包、4,000 BTC（$3.03 亿）未知→未知、多笔 1,303-1,521 BTC 流入 Coinbase Institutional。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC",
+          "PYUSD",
+          "XRP"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert 逐笔"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Claude Desktop 后门警告（安全合规）",
+        "desc": "慢雾安全团队：Claude Desktop 被曝秘密写入浏览器后门文件。AI x Crypto 交易工具越来越多，此类供应链侧安全事件对使用 AI 写 CTA 的交易者（昨日 L2 话题）是警示。",
+        "heat": 50,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "慢雾 + BlockBeats"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "RAVE 操纵事件延续 — OKX 已上永续",
+        "desc": "承接 4/20 RAVE 操纵事件：RaveDAO 相关地址 4/19 向 Bitget 倾销 $23M、现货 -30%；0xVeryBigOrange 继续批评'杀猪盘'、exchange 变'骗局公园'。TG 本日 3 次（下降），热度衰减但风控延续。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange + bwenews + TG"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-21",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "LRT 赛道结构性 re-rating — 0xVeryBigOrange 称'半废'",
+        "desc": "0xVeryBigOrange：Kelp 事件后 LRT 赛道'半废'，市场将 LRT 视为信用资产、与 ETH 不等价；推 LST > LRT 结构。Aave 结构性声誉受损。",
+        "heat": 52,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ETHFI",
+          "EIGEN",
+          "RSETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-22": [
+      {
+        "date": "2026-04-22",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上，OKX 仅 perp、缺现货",
+        "desc": "24h 内 CHIP 爆发式扩散：Binance 上 CHIP/USDT + CHIP/USDC + CHIP/TRY 现货且带 Seed Tag；Bybit 上 CHIP 现货 + perp；Bitget 上 CHIPUSDT perp；Upbit 上 CHIP/BTC + CHIP/USDT + CHIP/KRW；Bithumb 上 KRW 市场。加上 4/21 Coinbase 的 CHIP/USD 现货，**5 家 Tier1（Binance、Coinbase、Upbit、Bithumb、Bybit）+ 2 家 Tier2（Bitget、Bybit perp）**都已在现货或衍生侧布局。OKX 当前有 CHIP 永续（之前已上），但缺现货 —— 用户在 OKX 无法买到现货 CHIP、只能去别家。这是一次 48h 内产生的覆盖断层，错过窗口越久用户心智越难抢回。",
+        "heat": 95,
+        "urg": "立即",
+        "tk": "CHIP",
+        "tks": [
+          "CHIP"
+        ],
+        "gap": [
+          "仅有永续，无现货"
+        ],
+        "comp": [
+          "Binance",
+          "Bybit",
+          "Bitget",
+          "Coinbase",
+          "Upbit"
+        ],
+        "sig": [
+          "scan 新上币 × Binance/Bybit/Bitget/Upbit",
+          "bwenews 公告",
+          "4/21 Coinbase 公告"
+        ],
+        "act": "上币团队今日内启动 CHIP 现货审核：合约代码、流通盘、做市深度；目标 1-2 日内完成现货上线"
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "Kelp / rsETH / AAVE Day 3 — 坏账 $124-230M + $660M CEX 敞口卡住",
+        "desc": "LayerZero RPC breach 被 Kelp 官方正式归因为 $293M 被盗来源。Justin Sun/HTX 在 AAVE 冻结公告后数分钟内 5 笔撤 $274M 资产；MEXC $347M aUSDT、CoinEx $151M、Kiln $165M 卡在 AAVE 借贷池（合计 CEX 链上敞口 ~$660M）。WETH 利用率 100%、idle liquidity <$20。LlamaRisk 估算 AAVE 潜在坏账 $124M-$230M；Dragonfly Haseeb 称 AAVE 有资本吸收。Arbitrum Security Council 紧急冻结 30,766 ETH 与 Kelp 相关的合约。AAVE TVL 继续流失；SPARK TVL 延续 +17% 外溢；Kamino 100% 利用率。OKX 已有 AAVE 现货+永续，合约风控应跟踪坏账方案公告窗口。",
+        "heat": 90,
+        "urg": "立即",
+        "tk": "rsETH",
+        "tks": [
+          "rsETH",
+          "KELP",
+          "AAVE",
+          "ETHFI",
+          "SPARK",
+          "KAMINO",
+          "ARB"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain×8",
+          "krugermacro",
+          "0xVeryBigOrange",
+          "BlockBeats"
+        ],
+        "act": "合约风控：AAVE 坏账公告前后波动监控；LRT re-rating 应对；评估 SPARK/KAMINO 上币（AAVE 资金外溢的承接方）"
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "币安人生（CZ 社交 meme）今日 Binance 现货 2 对上线，OKX 完全缺",
+        "desc": "Binance 今日上线'币安人生'/U 和'币安人生'/USD1 两个现货对。此代币是 CZ 本人相关的 meme（'人生第一个币安账户'主题），有社交/CZ 代言效应。OKX 现货/永续全无。Tier1 单家上但市场有强情绪信号，属抢时机窗口。",
+        "heat": 75,
+        "urg": "本周内",
+        "tk": "币安人生",
+        "tks": [
+          "币安人生"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [
+          "Binance"
+        ],
+        "sig": [
+          "scan 新上币",
+          "exchange 公告"
+        ],
+        "act": "上币团队评估：合约审计、做市深度、风险披露；评估是否追加上线（CZ meme 性质，风险/情绪都高）"
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L3",
+        "cluster_explicit": null,
+        "name": "Arbitrum Security Council 紧急冻结黑客资金 — L2 信任重塑事件",
+        "desc": "Arbitrum Security Council 在 Kelp/LayerZero 事件中紧急冻结 30,766 ETH（价值约 $70M），链接到 Kelp exploit 黑客资金。0xVeryBigOrange 指出此举'违背去中心化精神、终究回到 main chain'，对 L2 叙事有负面影响。但从 CeFi 风控视角：这是少有的交易所 x L2 救助协作案例。对 OKX 已上的 ARB 现货+永续可能形成短期波动。",
+        "heat": 70,
+        "urg": "本周内",
+        "tk": "ARB",
+        "tks": [
+          "ARB"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain",
+          "0xVeryBigOrange"
+        ],
+        "act": "合约风控：ARB 永续短期波动监控；政策讨论：关注后续是否有更多 L2 跟进类似操作"
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "机构大买 BTC/ETH 继续 — Strategy +34k BTC / BitMine +101k ETH",
+        "desc": "Strategy 延续数据：+34,164 BTC（$25.4 亿、均价 $74,395、总 815,061 BTC）；BitMine 新增 101,627 ETH（ETH 流通的 4.12%、4 个月内最大周增持）。BTC 现货 ETF 连 3 周流入、ETH ETF Jan 以来最强。whale_alert 今日额外捕获 80,000 ETH（$184.8M）从 Binance 出金至未知钱包（潜在机构积累）。",
+        "heat": 85,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH",
+          "MSTR",
+          "BMNR"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + whale_alert + bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "RAVE 操纵事件 Day 4 — TG #2 热榜、'CEX 变骗局公园'",
+        "desc": "TG 24h 12 次提及（#2 热榜），0xVeryBigOrange 继续抨击 99% 供应集中和庄家操纵，称 CEX 越来越像'骗局公园'。Arbitrum 冻结的黑客资金中也有 RAVE 相关地址。OKX 已有 RAVE 永续，应延续前几日风控。",
+        "heat": 72,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange + TG 热榜 12 次"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Kalshi 推加密永续 — 预测市场 / perps 边界模糊",
+        "desc": "The Information 报道 Kalshi 将推出加密交易（含永续合约）。这是预测市场与传统 crypto perps 的直接收敛信号，前几日话题延续。Coinbase-Bybit 代币化美股 + Pre-IPO 合作（前日）也是类似收敛。对 OKX 产品线有竞争影响。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "bwenews（The Information）"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "CEX 链上敞口曝光 — MEXC/CoinEx/Kiln 被卡 $660M",
+        "desc": "Kelp 事件副作用：MEXC $347M aUSDT、CoinEx $151M、Kiln $165M 被卡在 AAVE（合计 ~$660M）。Justin Sun/HTX 能数分钟内撤 $274M 是例外。CEX 管理储备在链上 DeFi 赚收益但面临流动性风险——对 OKX 国库/理财业务有参考价值。",
+        "heat": 62,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "AAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "LRT 赛道结构性 re-rating — 0xVeryBigOrange '基本死'",
+        "desc": "0xVeryBigOrange 延续前两日观点：Kelp 事件后 LRT 赛道'基本死'，市场将 LRT 按信用资产定价、不再与 ETH 等价。LSTs > LRTs 结构切换。AAVE 声誉'像 Dubai 一样永久受损，难恢复'。OKX 有 ETHFI 现货+永续，需关注 ETHFI 波动。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ETHFI",
+          "LDO",
+          "SSV"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange + WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "BTC 破区间 + 负资金费率 + 低 OI — ByzGeneral 看 upper-80s",
+        "desc": "BTC 24h 走势破区间、资金费率转负、OI 处低位 —— ByzGeneral 技术面 + 结构面综合看多，目标上看 80k 中高位。whale_alert 配合 4,000 BTC（$303M）单笔 + 1,521 BTC（$116M）流入 Coinbase Institutional，买盘支撑。Gold 出现下行趋势，风险情绪向 crypto 回流。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "ByzGeneral + whale_alert"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "稳定币巨鲸轮转延续 — Tether $200M / Paxos $300M USDC / XRP $107M",
+        "desc": "Tether 在 Bitfinex 铸造 $200M USDT；Paxos 两笔 $150M USDC（合计 $300M）转至未知钱包；XRP $107M 从 Ripple 流出；Bitfinex↔Kraken $113M+$129M 稳定币穿梭；80K ETH 出 Binance 至未知。总体稳定币侧 $1B+ 轮转延续。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC",
+          "XRP"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert 逐笔"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-22",
+        "level": "L2",
+        "cluster_explicit": null,
+        "name": "Alt season 跟不上 — Russell 新高 vs alts 无法收复 ATH",
+        "desc": "CryptoPainter：Russell 2000 创新高，alts 却无法收复 ATH —— 相对强弱明显偏向 equities。based16z 警告 photonics/AI 基建有 Q1 2021 Archegos-like 泡沫动态；SpaceX 传 $50B+ 收购 Cursor，AI M&A 走热。",
+        "heat": 50,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "CryptoPainter + based16z"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-23": [
+      {
+        "date": "2026-04-23",
+        "level": "L3",
+        "cluster_explicit": "KELP",
+        "name": "Aave/rsETH 危机 Day 4 — $15.1B TVL 外流，Fluid 赎回 $400M，资金转 Spark",
+        "desc": "WuBlockchain 报告 Aave 在 rsETH 事件后 3.5 天流出 $15.1B TVL；Fluid 协议通过赎回机制处理 166,772 aETH（~$400M），资金主要轮动至 Spark。0xVeryBigOrange 直言 LRT 赛道 '基本死' — 结构性重估从流动性冲击转入长期信用定价。Andre Cronje 的 Flying Tulip 本日上线 DeFi 熔断机制响应同类风险。",
+        "heat": 85,
+        "urg": "高",
+        "tk": "AAVE",
+        "tks": [
+          "AAVE",
+          "ETHFI",
+          "PENDLE",
+          "rsETH"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain",
+          "0xVeryBigOrange",
+          "历史 KELP cluster Day 1-3"
+        ],
+        "act": "合约风控：关注 LRT/LST 仓位的连环清算链；衍生品团队评估是否需要提高保证金。上币端：观察是否有新 LRT 协议可对冲 Aave 外流资金流向。"
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L3",
+        "cluster_explicit": "stock_derivatives",
+        "name": "竞对股票衍生品继续扩张 — Bitget 5 只 AI/半导体小盘股 + Bybit 补 HOOD/INTC/TSM",
+        "desc": "Bitget 今日一次性上 AAOI / COHR / BE / IONQ / NBIS 5 只美股永续，全部为 AI 基础设施 / 量子计算 / 半导体小盘股（OKX 全缺）。Bybit 补齐 HOOD、INTC、TSM 永续（OKX 已有）。OKX 目前股票衍生品 23 只以大盘科技 + 指数 + ETF 为主，缺席半导体产业链核心资产 — AMAT / ASML / AVGO / ARM / BABA / LI / RKLB 全无。KelseyWeb3VC + based16z 24h 内明确看多 SK Hynix / SanDisk / Micron / ARM。",
+        "heat": 78,
+        "urg": "中",
+        "tk": "AVGO",
+        "tks": [
+          "AVGO",
+          "ASML",
+          "ARM",
+          "AMAT",
+          "BABA",
+          "IONQ"
+        ],
+        "gap": [
+          "OKX无（已有 NVDA/AMD）",
+          "OKX无",
+          "OKX无（KOL ATH 呼声）",
+          "OKX无",
+          "OKX无",
+          "OKX无（量子/AI 基建）"
+        ],
+        "comp": [
+          "Bybit",
+          "Bitget"
+        ],
+        "sig": [
+          "Bitget 新上",
+          "OKX 股票池对比",
+          "KelseyWeb3VC/based16z 半导体看多"
+        ],
+        "act": "股票衍生品组：优先评估 AVGO / ASML / ARM / AMAT 上线（半导体主线），BABA 补中概。量子计算赛道 IONQ 可纳入 L1 储备池。"
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L3",
+        "cluster_explicit": "CHIP",
+        "name": "CHIP Day 5 — Hyperliquid 再上永续 + Kraken 欧元现货，OKX 仍只有 perp 缺现货",
+        "desc": "CHIP 进入第 5 天扩散：今日 Hyperliquid 新增 CHIPUSD 永续，Kraken 补齐 CHIP/ZEUR 现货。OKX 当前仅有永续，现货线仍缺失；热度已连续多日在 L3 级别，符合典型 '先 perp 后 spot' 竞对节奏。",
+        "heat": 80,
+        "urg": "中高",
+        "tk": "CHIP",
+        "tks": [
+          "CHIP"
+        ],
+        "gap": [],
+        "comp": [
+          "Kraken",
+          "Hyperliquid"
+        ],
+        "sig": [
+          "Hyperliquid",
+          "Kraken 今日新上",
+          "历史 CHIP cluster Day 1-4"
+        ],
+        "act": "现货上币团队评估 CHIP 现货补齐窗口 — 已出现 Day 5 持续信号 + 5 家 Tier1 铺开，再拖会被动。"
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "BTC_technical",
+        "name": "BTC 结构性挤压信号 — ByzGeneral 看 upper-80s，whale_alert 链上流入超 $500M",
+        "desc": "ByzGeneral 判读 BTC 价格 + OI 双升而资金费率转负，典型空头被困结构，目标 upper-80s。whale_alert 24h 捕捉：Robinhood 多笔累计 ~$300M BTC 流入、Kraken 连续 2 笔 1,999+1,998 BTC(~$314M)、多个 2,000-4,997 BTC 未知间转移。Murphy 给 BTC 5/9 前 '最后一弹' 时间表，5 月底至 9 月底可能 '最后一跌'。",
+        "heat": 72,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "ByzGeneral + whale_alert + Murphychen888"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "stablecoin_flow",
+        "name": "稳定币巨额铸造延续 — $600M USDC 新增 + $200M USDT → Binance",
+        "desc": "whale_alert 24h：Circle/Treasury 两笔 $200M USDC 新增铸造 + 两笔 $200M USDC 送 Coinbase；Paxos $120M USDC 转出；Tether $200M USDT 直接流入 Binance；为过去一周以来第三次大批量铸造。经典 pre-rally 流动性注入形态，与 BTC 大额吸筹同步。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert + 历史 stablecoin_flow cluster Day 1-2"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "etf_flow",
+        "name": "机构加码 BTC — GSR BESO ETF 上线 + Saylor 增持 + Tesla Q1 BTC 持仓 $786M",
+        "desc": "GSR 推出 BESO ETF（主动管理型 BTC/ETH/SOL 一篮子，1% 费率）；Saylor 重申继续增持 BTC；Tesla Q1 财报 BTC fair-value 调整至 $786M；Robinhood Ventures Fund (RVI) 向 OpenAI 投资 $75M — 传统机构与加密 ETF 产品线持续扩张。",
+        "heat": 68,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "HOOD"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + 历史 etf_flow cluster"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "HK_stablecoin",
+        "name": "香港发放首两张稳定币牌照（新事件）",
+        "desc": "香港金管局发出首两张稳定币发行人牌照，港美竞争下稳定币基础设施格局变动；未披露具体持牌方，但预计带动港元稳定币产品（HKD-pegged）流动性需求。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDG",
+          "HKD-稳定币"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "AI_semis",
+        "name": "AI/半导体主题 KOL 共识走强 — ARM ATH + SK Hynix/Micron/SanDisk/Softbank（新事件）",
+        "desc": "based16z 预告 ARM 创 ATH、Softbank (9984) ATH；KelseyWeb3VC 明确看多 SK Hynix / SanDisk / Micron 存储主线，认为光模块 (长飞光纤) 已超买；CryptoPainter 讨论 AI x VR 融合趋势。多个 KOL 独立指向 AI capex / 存储 / 算力主题。与 Step3 stock_derivatives 的竞对行动互相印证。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ARM",
+          "SK",
+          "SNDK",
+          "MU"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "based16z + KelseyWeb3VC + CryptoPainter"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "RAVE",
+        "name": "RAVE 操纵事件 Day 5 — 20 万枚代币市值 600 万 → 30 万美金",
+        "desc": "Ice_Frog 点名 RAVE 项目 20 万枚代币总市值从 600 万美金跌至 30 万美金，99% 筹码控盘的操纵盘典型落幕；CryptoPainter 一周前已发 $Rave 警示。与 ZachXBT SIREN/MYX/COAI 点名形成同类信号矩阵。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "RAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Ice_Frog + CryptoPainter + 历史 RAVE cluster Day 1-4"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-23",
+        "level": "L2",
+        "cluster_explicit": "ETHFI",
+        "name": "LRT 赛道结构性重估延续（与 KELP 同族）",
+        "desc": "0xVeryBigOrange 本周仍持 'LRT 基本死' 观点；Aave 外流对 ETHFI / rsETH / EIGEN 这类 LRT/restaking 标的形成间接估值压力；cluster 作为 KELP 的前置定价锚继续跟踪。",
+        "heat": 58,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ETHFI",
+          "EIGEN",
+          "PENDLE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xVeryBigOrange + WuBlockchain"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-24": [
+      {
+        "date": "2026-04-24",
+        "level": "L3",
+        "cluster_explicit": "KELP",
+        "name": "Kelp/Aave 坏账事件 Day 5 — Mantle 提议 30k ETH 救助贷款",
+        "desc": "Bybit 母公司 Mantle 向 Aave 治理论坛提案：向 Aave 贷 30,000 ETH (~$73M) 担保坏账敞口 (bwenews 2026-04-24 00:10 UTC)。事件延续前 4 天 KELP/rsETH 坏账 → $660M CEX 敞口 → Fluid $400M 赎回的 LRT 风暴。MNT（Mantle 代币）被事件点名，在 Bybit/HL/Upbit/Kraken 4 家 Tier1/Tier2 均有现货+永续，但 OKX 缺失 — 事件催化若兑现流动性，OKX 主流 L2 名册存在空缺。",
+        "heat": 82,
+        "urg": "高",
+        "tk": "AAVE",
+        "tks": [
+          "AAVE",
+          "MNT",
+          "ETH",
+          "KELP"
+        ],
+        "gap": [
+          "OKX无（4家竞对覆盖）"
+        ],
+        "comp": [
+          "Bybit",
+          "Upbit",
+          "Kraken"
+        ],
+        "sig": [
+          "bwenews (Twitter)",
+          "KELP cluster 延续 Day 4→5"
+        ],
+        "act": "Token 团队优先评估 MNT 上币可行性 — 连续 5 天事件叙事 + 市值 $80-100M 级别 + OKX 是唯一缺口的 Tier1 CEX。合约风控继续跟踪 Aave/rsETH 清算风险与 ETH 跨所转账。"
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L3",
+        "cluster_explicit": "BTC_technical",
+        "name": "BTC 顶部信号多源共振 — Murphy BRS=0 Day 8 + CB Inst 流入 $440M + 资金轮动股市",
+        "desc": "顶部信号今日多源共振：(1) Murphychen 的 BRS 链上指标自 4/16 起卡零持续 8 天 — 他明确 '一旦脱离零即回调' (2026-04-23 06:53)；(2) whale_alert 记录 2026-04-23 下午 5656 BTC (~$440M) 单日涌入 Coinbase Institutional + 1000 BTC 进 Kraken；(3) krugermacro 推图并直言 '资金从加密向股市轮动的确凿证据'。叠加 based16z 把仓位切成 50% XLE + 50% cash + 小量 SPX puts，加密端 KOL 普遍转防御。",
+        "heat": 78,
+        "urg": "中",
+        "tk": "BTC",
+        "tks": [
+          "BTC",
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [
+          "Coinbase",
+          "Kraken"
+        ],
+        "sig": [
+          "Murphychen888",
+          "whale_alert",
+          "krugermacro",
+          "based16z（4 位 KOL 多源交叉验证）"
+        ],
+        "act": "合约风控关注 BTC 永续 OI / 大户仓位分布 + 监控 CB Institutional 净流向是否持续；建议做市端为可能的波动放大加保护垫。"
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L3",
+        "cluster_explicit": "stock_derivatives",
+        "name": "竞对股票衍生品 Day 4 — 半导体/AI 基建缺口扩大",
+        "desc": "Bitget 在半导体/AI 赛道继续扩股票 perps：AMAT、ASML、AVGO、ARM、BA、BABA、COST、RKLB 均 OKX 全缺（perp+spot 双缺）。与此同时 TG 群组热议 ARM (3 次)、INTC (7 次)，INTC 已有 OKX 永续但 ARM 缺位。Bitget 股票/商品盘口数 44（对比 OKX 27，缺口扩大到 17 个）。WMT 在 Bitget+CB+Kraken 三家均有 OKX 仍缺。",
+        "heat": 75,
+        "urg": "中",
+        "tk": "ARM",
+        "tks": [
+          "ARM",
+          "AMAT",
+          "ASML",
+          "AVGO",
+          "WMT"
+        ],
+        "gap": [
+          "OKX无（TG 3 次）",
+          "OKX无（半导体）",
+          "OKX无（半导体）",
+          "OKX无（AI 基建）",
+          "OKX无（3家竞对）"
+        ],
+        "comp": [
+          "Bitget",
+          "Kraken"
+        ],
+        "sig": [
+          "Bitget 盘口",
+          "TG 群组",
+          "OKX non_crypto 清单对比"
+        ],
+        "act": "股票衍生品团队排优先级评估：ARM/AMAT/ASML/AVGO（AI 半导体，与 OKX 已上的 NVDA/AMD/INTC/MU 同一赛道，补齐才完整）+ WMT（零售蓝筹多家覆盖）。"
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L2",
+        "cluster_explicit": "HYPE",
+        "name": "Hyperliquid 生态垄断叙事 + HYPE 技术性挤压",
+        "desc": "0xSisyphus 直言 'Lighter 或许能活，其余 perp DEX 是出生即死的公司 — Hyperliquid 在 RWA 端完全垄断'。ByzGeneral 同日指 HYPE 在 wedge 收敛中，突破方向会很暴力，但 OI 没跟上是警号。两者共振—— HYPE 叙事强但短期技术面不对称。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "HYPE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "0xSisyphus + ByzGeneral"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L2",
+        "cluster_explicit": "stablecoin_flow",
+        "name": "稳定币巨额铸造 Day 5 — 1B USDT + 175M USDC 单日",
+        "desc": "whale_alert 单日记录：Tether Treasury 铸 1,000,000,000 USDT，随后分流 299.9M USDT 进 Ethena、225M 进 Kraken、100M 进 Bitfinex；USDC Treasury 175M 进 Coinbase Institutional；97,200 ETH (~$225M) 进 Beacon Depositor（结构性 staking 锁仓）。流动性与潜在卖压并存。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC",
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "whale_alert + stablecoin_flow cluster Day 5"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L2",
+        "cluster_explicit": "etf_flow",
+        "name": "资金从加密转股市的轮动证据",
+        "desc": "krugermacro 发图表直言 '资金从加密转股市是确凿证据'；Pentosh1 担心后 COVID 动物精神会让 AI 板块陷入剧烈 boom/bust；based16z 50% XLE + 50% 现金 + SPX 6800 put 防御仓；hexiecs Long BTC/Short ETH + Long NVDA/Short TSLA 双永动机对冲。多位 KOL 共振看股票跑赢加密。",
+        "heat": 68,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH",
+          "股票"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "krugermacro + Pentosh1 + based16z + hexiecs"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L2",
+        "cluster_explicit": "prediction_market",
+        "name": "Polymarket 内幕下注调查 — Trump 表态 'will look into it'",
+        "desc": "bwenews 记录 Trump 在被问及 Polymarket 运动员内幕下注指控时表态 '会看一下' (2026-04-24)。延续 prediction_market cluster 的监管边界模糊叙事，对预测市场/合约边界有合规影响。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "Polymarket"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-24",
+        "level": "L2",
+        "cluster_explicit": "KAITO",
+        "name": "Kaito InfoFi B2B 转型 — 下轮周期基建候选",
+        "desc": "CryptoPainter 长文看 Kaito 从 InfoFi 转基建：AI + 数据引擎定位为 '下轮周期创业公司与项目方必选工具'。同时吐槽 crypto Twitter 被 Web2 流量号稀释、周期缺资金多寄生虫。KAITO OKX 已有现货+永续，观察后续价格跟进度。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "KAITO"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "CryptoPainter"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-25": [
+      {
+        "date": "2026-04-25",
+        "level": "L3",
+        "cluster_explicit": "KELP",
+        "name": "Kelp/Aave 坏账救助 Day 6 — Aave DAO 25k ETH + Mantle 30k ETH 双方案推进",
+        "desc": "4/18 Kelp LayerZero 桥单签漏洞被盗 116,500 rsETH ($292M)，Aave V3 产生 $196M 坏账，TVL 连跌 $10B。今日 Aave DAO 推进 25,000 ETH 救助金提案 + Mantle 官方提议 30,000 ETH 贷款注入（bwenews 确认），Lido/EtherFi/Stani Kulechov 均已表态参与。这是 2026 年至今最大 DeFi 漏洞，LRT + 单签桥 + Aave 清算连锁风险成行业主议题。",
+        "heat": 85,
+        "urg": "高",
+        "tk": "rsETH",
+        "tks": [
+          "rsETH",
+          "KELP",
+          "MNT",
+          "AAVE",
+          "ETHFI",
+          "LDO"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (Aave DAO 25k ETH 提案)",
+          "bwenews (Mantle 30k ETH 提议)",
+          "jason_chen998 (看好 Spark 6 层损失吸收优于 Aave)",
+          "历史 cluster Day 5 延续"
+        ],
+        "act": "AAVE/ETHFI/LDO 永续临时调高波动保证金，准备 MNT 持仓 24h 监控；rsETH/KELP/MNT 尚未上 OKX，暂不急上新，先观察救助方案是否落地。若 Mantle 30k ETH 方案通过，MNT 将短期承压，可关注空头机会。"
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L3",
+        "cluster_explicit": "BLEND",
+        "name": "Fluent (BLEND) 四家竞对同步首发 — OKX 完全缺位",
+        "desc": "Bybit、Bitget、Coinbase、Kraken 今日同步首发 BLEND/USDT & BLEND/ZEUR 现货（新上 crypto 共 11 对里 BLEND 占 3 对），对应 Fluent 主网上线。bwenews 确认 Bitget 首发。OKX 无现货无永续，形成首发真空。Fluent 是新 L2/执行层项目，多家首发形式意味这是重点上币事件。",
+        "heat": 75,
+        "urg": "高",
+        "tk": "BLEND",
+        "tks": [
+          "BLEND"
+        ],
+        "gap": [
+          "OKX无（Fluent）"
+        ],
+        "comp": [
+          "Bybit",
+          "Bitget",
+          "Coinbase",
+          "Kraken"
+        ],
+        "sig": [
+          "scan 新上数据 (Bybit/Bitget/Kraken 首发 BLEND)",
+          "bwenews 确认",
+          "Web search: Coinbase",
+          "MEXC",
+          "KuCoin 同步"
+        ],
+        "act": "立即立案评估 BLEND（Fluent）上币：现货赶不上可先 perp 跟上。Coinbase 已上现货对 OKX 合规层有直接对标压力，建议本周内落地。"
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L3",
+        "cluster_explicit": "stock_derivatives",
+        "name": "竞对股票永续 Day 5 — 半导体设备 + 中概股 gap 扩大",
+        "desc": "Bitget 继续扩张股票永续品类，今日 gap 中新增 AMAT、ARM、ASML、AVGO、BA、BABA、COST、RKLB（半导体设备三巨头 + 中概）；Kraken 新增 LI (理想)。OKX 已有 27 个股票永续覆盖 AAPL/NVDA/TSLA/MSTR/COIN/META 等核心 7 姊妹 + MSTR 生态，但缺半导体设备链 (AMAT/ARM/ASML) 和中概股 (BABA/LI)。这是在 AI 基建叙事 + 美联储独立性分歧 (fejau) 背景下的关键品类扩张。",
+        "heat": 72,
+        "urg": "中",
+        "tk": "AMAT",
+        "tks": [
+          "AMAT",
+          "ARM",
+          "ASML",
+          "AVGO",
+          "BABA",
+          "LI",
+          "RKLB"
+        ],
+        "gap": [
+          "OKX无 (半导体设备)",
+          "OKX无 (半导体设备)",
+          "OKX无 (半导体设备)",
+          "OKX无 (AI 芯片)",
+          "OKX无 (中概)",
+          "OKX无 (中概)",
+          "OKX无 (SpaceX 对标)"
+        ],
+        "comp": [
+          "Bitget",
+          "Kraken"
+        ],
+        "sig": [
+          "scan 竞对统计 (Bitget 股票永续 44 > OKX 27)",
+          "cluster stock_derivatives Day 4 延续"
+        ],
+        "act": "补齐 AAPL 同类的半导体设备链 AMAT/ARM/ASML 永续，对标 TSM 打法；中概股 BABA/LI 对标既有 SNDK/EWY 框架；RKLB（SpaceX 对标）可借 Pre-IPO 叙事预热。"
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L3",
+        "cluster_explicit": "BTC_technical",
+        "name": "BTC 顶部分歧 Day 4 — Murphy 12.6w 结构性破坏 vs ETF 连续 8 日流入 +$223M",
+        "desc": "Murphy 重申 12.6w 顶部特征 \"戛然而止\" + BSS 指标 0.71 停在反弹高位区，认为向上空间有限；WuBlockchain 报 BTC 现货 ETF 4/23 净流入 +$223M，连续 8 日净流入。@ByzGeneral (EN 交易员) 独立得出 BTC 突破区间 + SPX 上行支持 BTC 看多。TG BTC 9次位列第一 hot token。Tier1 KOL 窗口内 8/13 静默是典型的顶背离观望特征。",
+        "heat": 70,
+        "urg": "中",
+        "tk": "BTC",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Murphychen888 (BSS/12.6w 空)",
+          "ByzGeneral (突破多)",
+          "WuBlockchain (ETF 流入)",
+          "TG 热榜第一"
+        ],
+        "act": "BTC 合约风控关注 ETF 流入是否进入第 9 天连续 + BSS 是否破 0.7。若 Murphy 预期的顶部确认（BSS 转降 + ETF 流入断裂），资金费率/强平阈值需上调一档。"
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "prediction_market",
+        "name": "预测市场监管全面升级 Day 4 — Wisconsin 起诉 + 巴西封禁",
+        "desc": "Wisconsin 州起诉 Coinbase、Crypto.com、Robinhood、Kalshi、Polymarket，指控未持牌经营博彩；巴西政府封禁 Kalshi + Polymarket。监管压力升级将推动预测市场流量向 crypto-native 场所 (Polymarket on-chain) 回流，也对 OKX 自身预测产品有直接对标意义。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "POLY",
+          "Kalshi"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (双起诉 + 巴西禁令)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "regulation",
+        "name": "美冻结 $344M Tron-USDT 与伊朗关联 + Tether 协助",
+        "desc": "美国冻结 Tron 链 $344M USDT，Tether 协助冻结；CNN 报道资金与伊朗政权关联。延续 geopolitics cluster (美伊停火背景)，稳定币合规风险点向 Tron 主网集中。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "TRX"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain + bwenews (CNN 报道)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "perp_dex",
+        "name": "Perp DEX + Pre-IPO RWA 三方叙事抬头",
+        "desc": "Web3Feng 力荐 GRVT（未 TGE Perp DEX 中 RWA 最全，已存 Farm）；0xVeryBigOrange 公开实盘显示 Aster 月内收益优于 Hyperliquid；jason_chen998 质疑 SpaceX Pre-IPO 打新底层 SPV 是否真持股。三条信号共振指向：CEX 期货之外，Perp DEX + 代币化 Pre-IPO 是新一轮叙事主线。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "HYPE",
+          "GRVT",
+          "ASTER"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Web3Feng (GRVT) + 0xVeryBigOrange (Aster 实盘) + jason_chen998 (SpaceX SPV)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "privacy_coins",
+        "name": "ZEC 隐私币延续 — Grayscale ETF 申请 + Robinhood 上线",
+        "desc": "ZEC 在 TG 以 8 次高频排第 2 位（仅次 BTC）。背景：Grayscale 已向 NYSE Arca 申请 ZEC 现货 ETF；Robinhood 已上 ZEC；SEC 1/15 结案不执法。ZEC 本月累涨 50%+（$314 → $381+），RSI 88 超买，短线回调概率上升但结构性多头成立。",
+        "heat": 60,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ZEC",
+          "XMR"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "TG hot_tokens (ZEC 8次/XMR 2次) + web 搜索 (Grayscale ETF + Robinhood + SEC 结案)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "SPARK",
+        "name": "Spark 协议 Q1 基本面强势 + 风控叙事 (vs Aave)",
+        "desc": "Spark Q1 2026 毛收入 $31.5M、净利润 $6.91M、国库 $46.1M，分发业务成最大收入驱动。jason_chen998 点名 Spark 的 6 层损失吸收机制 + 跨链智能合约速率限制是 Aave 缺失的关键风控。配合 KELP 事件，\"Spark 更安全\" 叙事形成对 Aave 的结构性压力。",
+        "heat": 58,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "SPK",
+          "AAVE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (Spark Q1 财报) + jason_chen998 (风控架构对比)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "regulation",
+        "name": "Binance Futures 下架 USDⓈ-M 永续合约 (2026-04-28 生效)",
+        "desc": "bwenews 披露 Binance Futures 将在 2026-04-28 下架一批 USDⓈ-M 永续合约，具体清单待确认。对 OKX 永续品类布局有直接参考价值。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "bwenews"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-25",
+        "level": "L2",
+        "cluster_explicit": "etf_flow",
+        "name": "ETH 机构结构性吸筹 — BitMine + 基金会 OTC + 9.18万 ETH staking",
+        "desc": "WuBlockchain: Ethereum 基金会场外以均价 $2,387 向 BitMine 卖出 10,000 ETH。whale_alert 显示 24h 内 Beacon Depositor 连续 4 笔共 ~91,800 ETH ($213M) 入质押；30,000 ETH ($69.7M) 从 Gemini 转入未知地址。但 ETH 现货 ETF 4/23 净流出 $75.9M 终结 10 日连续流入。结构性吸筹 vs ETF 出逃的分歧。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (BitMine OTC + ETH ETF 流出) + whale_alert (staking + Gemini 转出)"
+        ],
+        "act": ""
+      }
+    ],
+    "2026-04-26": [
+      {
+        "date": "2026-04-26",
+        "level": "L3",
+        "cluster_explicit": "KELP",
+        "name": "Kelp/Aave 救助 Day 7 — 跨链 DAO 联合提案 + Solana 基金会介入",
+        "desc": "Aave + EtherFi + Kelp + LayerZero + Compound 联合提交 Arbitrum DAO 提案以释放被冻结的 ETH（WuBlockchain）。Solana Foundation 直接借 USDT 给 Aave 帮助坏账修复，并计划把 AAVE 部署到 Solana — KELP 事件从单链清算危机演变为跨链 DeFi 生态格局事件。rsETH/KELP 仍未上线 OKX，AAVE/SOL 双双面临生态新闻驱动的波动放大。",
+        "heat": 82,
+        "urg": "高",
+        "tk": "AAVE",
+        "tks": [
+          "AAVE",
+          "SOL",
+          "rsETH",
+          "KELP",
+          "MNT",
+          "LDO",
+          "ETHFI"
+        ],
+        "gap": [
+          "OKX无",
+          "OKX无",
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (Arbitrum DAO 联合提案",
+          "SOL Foundation 借款",
+          "AAVE 上 Solana 计划)",
+          "历史 cluster KELP Day 6 延续"
+        ],
+        "act": "AAVE/SOL 永续临时调高波动保证金，密切监控 Arbitrum DAO 投票节点；评估 OKX 是否需要应急上 rsETH/KELP/MNT 接住情绪反弹流量。SOL 部署 AAVE 是 SOL 生态级利好，可顺势准备 SOL 生态 token 二轮拉升预案。"
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L3",
+        "cluster_explicit": "GENIUS_ACT",
+        "name": "Morgan Stanley 推 Stablecoin Reserves Portfolio (MSNXX) — TradFi 抢稳定币储备业务",
+        "desc": "Morgan Stanley Investment Management ($1.9T AUM) 4/24 推出 Stablecoin Reserves Portfolio，专为 GENIUS Act 合规稳定币发行方设计：投美国国债 (≤93 天到期) + 隔夜逆回购，维持 $1.00 稳定 NAV，发行方可一站式获得收益+合规储备。这是大型 TradFi 直接切入稳定币基础设施的标志性事件，意味稳定币竞争从'谁发币'转向'谁管储备'。",
+        "heat": 80,
+        "urg": "高",
+        "tk": "USDC",
+        "tks": [
+          "USDC",
+          "USDT",
+          "USDG"
+        ],
+        "gap": [
+          "OKX无"
+        ],
+        "comp": [],
+        "sig": [
+          "Coindesk",
+          "BusinessWire (Morgan Stanley IM 公告)",
+          "Cryptobriefing (GENIUS Act 合规)"
+        ],
+        "act": "评估 OKX 自营/合规稳定币产品对 GENIUS Act 储备方案的对接路径；若 OKX 上 USDG 等合规币，可借这波事件给予更高曝光。Morgan Stanley 入场是机构稳定币流量增加的前奏，需提前规划稳定币现货深度池。"
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L3",
+        "cluster_explicit": "regulation",
+        "name": "Zondacrypto (波兰) 近破产 + CEO 跑路以色列 — 交易所信任叙事重提",
+        "desc": "WuBlockchain: 波兰交易所 Zondacrypto CEO Przemysław Kral 已跑路以色列，平台面临 $100M+ 客户资金缺口，临近破产。推文 18.5 万阅读量，欧洲监管机构和用户社群高度关注。事件叠加昨日 Wisconsin 起诉 Coinbase/Crypto.com/Kalshi 等，行业进入'交易所信任审视'高敏期。",
+        "heat": 78,
+        "urg": "中",
+        "tk": "",
+        "tks": [],
+        "gap": [],
+        "comp": [
+          "Coinbase"
+        ],
+        "sig": [
+          "WuBlockchain (Zondacrypto 详情)",
+          "延续 regulation cluster"
+        ],
+        "act": "借势在外部传播渠道强化 OKX 储备证明 (PoR) 与冷热钱包透明度，避免被动卷入信任危机；同时关注是否有 Zondacrypto 用户资金外迁需求 (用户/做市商) 可承接。"
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L3",
+        "cluster_explicit": "prediction_market",
+        "name": "POLY 异常爆发 Day 5 — TG 24次 Top1 + 链迁移 + Polymarket USD 即将推出",
+        "desc": "TG hot tokens 中 POLY 飙至 24 次第一位（昨日仅 2 次），与 Polymarket 平台升级（链迁移）+ Polymarket USD（1:1 USDC 抵押稳定币）即将推出 + Brazil 封禁余波共振。POLY token 仍未官方发行（Polymarket CMO 10 月确认计划但未 TGE）。若 POLY 进入实际 TGE 倒计时，OKX 处于完全无现货/永续状态，是潜在重大首发机会。",
+        "heat": 75,
+        "urg": "高",
+        "tk": "POLY",
+        "tks": [
+          "POLY",
+          "USDC"
+        ],
+        "gap": [
+          "OKX无 (未 TGE)"
+        ],
+        "comp": [],
+        "sig": [
+          "TG hot_tokens (POLY 24次 Top1)",
+          "WuBlockchain (Polymarket 链迁移)",
+          "Web 搜索 (Polymarket USD 上线计划)",
+          "昨日 prediction_market cluster"
+        ],
+        "act": "立即建立 POLY TGE 监控（社媒/治理论坛/链上发币地址），若 TGE 启动 24 小时内首发现货+永续；同步评估 Polymarket USD（PMUSD）作为新合规稳定币的上币优先级。"
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L3",
+        "cluster_explicit": "IPO",
+        "name": "Coinbase Sonar 4/28 SpaceX 类 Pre-IPO 打新 — CN KOL 双源共振",
+        "desc": "yuyue_chris 详细解构 Coinbase Sonar (= Plasma 同平台) 4/28 北京时间 20:00 开打 SpaceX-类 Pre-IPO：Pre-sale FDV 50M / TGE 100% 解锁 / 盘前 FDV 100M+ / 单号上限 20k u / 需 Echo KYC，'本金有一定安全保障'。chaomeigu_com 同日跟评 '打新 SpaceX'，CN 圈层共振。延续昨日 IPO cluster (Coinbase + Bybit 谈代币化美股 Pre-IPO)。",
+        "heat": 72,
+        "urg": "高",
+        "tk": "SPCX",
+        "tks": [
+          "SPCX",
+          "ASPECTA"
+        ],
+        "gap": [
+          "OKX无 (未 TGE)"
+        ],
+        "comp": [
+          "Bybit",
+          "Coinbase"
+        ],
+        "sig": [
+          "yuyue_chris (4/28 Coinbase Sonar 详情)",
+          "chaomeigu_com (回声)",
+          "延续 IPO cluster"
+        ],
+        "act": "OKX launchpad / Jumpstart 团队评估能否在 4/28 当天对标推出 Pre-IPO 类打新 (RWA 框架内)；若 Coinbase Sonar 标的 4/28 后流动性外溢，OKX 可作为接盘场所首发上线（提前 list 流程）。"
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "etf_flow",
+        "name": "BTC ETF 9 连续日净流入 + ETH 反转 + Grayscale/Bitmine $500M ETH 质押",
+        "desc": "BTC 现货 ETF 4/24 +$14.45M，第 9 个连续净流入日，过去 8 日累计破 $2B (WuBlockchain)。ETH 现货 ETF 4/24 +$23.38M 反转上一周 -$75.94M 跌势。Grayscale + Bitmine 4/25 联手质押近 $500M ETH —— ETH 结构性吸筹再次确认。BTC 仍在 $77-80k 区间盘整，破 $80.5k 看 $85k；跌穿 $76.5k 看深度回调。",
+        "heat": 70,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC",
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (ETF 9连流入 + ETH 反转) + Web 搜索 (Grayscale+Bitmine $500M staking)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "BTC_technical",
+        "name": "BIP-361 量子迁移争议升级 — Adam Back 推优选升级 vs 强制冻结",
+        "desc": "BIP-361 三阶段 soft fork 计划：Phase A 三年内禁止向遗留地址类型转账；Phase B 两年后失效遗留签名（共识层冻结所有未迁移币）；Phase C ZK proof 恢复机制研究中。Google 早 2026 年研究: 足够强量子机 ~10 分钟可破 ECDSA。34% BTC 已暴露公钥。Adam Back 公开反对强制冻结，主张可选升级 — 社区分裂加剧，反对意见上升至主流声量。",
+        "heat": 68,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Coindesk/Cointelegraph (BIP-361 三阶段 + Adam Back) + 延续昨日 BTC_technical cluster"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "LTC_security",
+        "name": "Litecoin MWEB 零日漏洞触发链重组 — LTC 安全事件",
+        "desc": "WuBlockchain: Litecoin MimbleWimble Extension Block (MWEB) 出现零日漏洞，链上执行了重组以撤销无效 pegouts。LTC 是 OKX 已有现货+永续+交割的主流币，链重组事件需要交易所风控团队评估存款/取款延迟与潜在双花风险。",
+        "heat": 65,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "LTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (LTC MWEB 零日 + 链重组)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "privacy_coins",
+        "name": "ZEC 隐私币突破延续 Day 6 — ByzGeneral 看多 + ETH ETF 资金分流",
+        "desc": "@ByzGeneral 公开图表认为 ZEC 已 ready for next expansion（突破已成立）。TG 端 ZEC 本日落到第 8 位（昨日 8 次今日未在 top 10 出现），但价格层面累涨 50%+。Robinhood 已上 + Grayscale ETF 申请 + SEC 1/15 结案三重利好仍是结构性多头逻辑。",
+        "heat": 62,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ZEC",
+          "XMR"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "ByzGeneral (ZEC 突破图) + 延续 privacy_coins cluster Day 5"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "APE_NFT",
+        "name": "APE 新 CEO + BAYC NFT 复兴 — ByzGeneral 双信号看多",
+        "desc": "ByzGeneral: APE 新 CEO 任命引发看多反应；BAYC NFT 'reviving — very interesting'。NFT 蓝筹复兴叙事可能带动 ApeChain 生态，APE 作为治理币首批受益。OKX 已有现货+永续，叙事归 L2 关注。",
+        "heat": 58,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "APE"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "ByzGeneral (APE 新 CEO + BAYC 复兴)"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "ETH_roadmap",
+        "name": "Ethereum 5 north stars / 7 forks roadmap 公布",
+        "desc": "ETH 提议未来约 7 次网络分叉，围绕 5 大 'north stars'：缩短出块时间、L1 吞吐扩到 ~10,000 TPS、L2 扩展、用户体验改进、机构合规等。对 ETH 长期叙事是结构性利好，但短期主要影响 ETH 衍生品定价模型。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "ETH"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "Web 搜索 (ETH 路线图) + Coinmarketcap AI 摘要"
+        ],
+        "act": ""
+      },
+      {
+        "date": "2026-04-26",
+        "level": "L2",
+        "cluster_explicit": "stablecoin_flow",
+        "name": "Tron $344M USDT 冻结余波 + Whale Alert: Ceffu 168M USDT 出走",
+        "desc": "WuBlockchain: 美国国务院与 Tether 协助冻结 Tron 链 $344M USDT (与伊朗政权关联，CNN 报道)。@whale_alert: 168.3M USDT 从 Ceffu 转至未知钱包；1,146 BTC 从 OKEX 转至未知钱包；663 BTC 由未知转入 Coinbase。稳定币链流量监测 + 大额 BTC 跨所迁移信号。",
+        "heat": 55,
+        "urg": "",
+        "tk": "",
+        "tks": [
+          "USDT",
+          "USDC",
+          "BTC"
+        ],
+        "gap": [],
+        "comp": [],
+        "sig": [
+          "WuBlockchain (Tron 冻结) + whale_alert (Ceffu/OKEX/Coinbase 大额转账)"
+        ],
+        "act": ""
+      }
+    ]
+  },
+  "ai_full": [
+    {
+      "category": "industry",
+      "source_tag": "财报",
+      "name": "NVDA Q1 FY26 财报超预期 — 营收 $43.5B / 数据中心 +84% YoY",
+      "desc": "NVIDIA 公布 Q1 FY26 财报：营收 $43.5B（市场预期 $42.1B），数据中心业务 +84% YoY 至 $35.6B，Blackwell 出货量超预期。盘后股价 +8%。Jensen Huang 重申\"AI 算力需求未来 4 年仍将翻倍\"。",
+      "first_date": "2026-04-25",
+      "last_date": "2026-04-25",
+      "heat": 92,
+      "days_count": 1,
+      "tks": [
+        "NVDA",
+        "AMD",
+        "MU",
+        "AVGO",
+        "TSM"
+      ],
+      "impact_okx": "已上 NVDA-perp 关注 OI / 资金费率；衍生品风控关注盘后波动"
+    },
+    {
+      "category": "industry",
+      "source_tag": "产品发布",
+      "name": "OpenAI 发布 GPT-5 — 企业版 $200/月，Agent 能力大幅增强",
+      "desc": "OpenAI 发布 GPT-5 + 企业版定价 $200/月/seat。强调 Agent + 多模态能力，宣称在编码任务上比 Claude 4 Opus 高 14%。Microsoft Copilot 已宣布 Q3 接入。",
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "heat": 88,
+      "days_count": 1,
+      "tks": [
+        "MSFT",
+        "ORCL",
+        "CRWV",
+        "NVDA",
+        "PLTR"
+      ],
+      "impact_okx": "已上 MSFT/ORCL/CRWV-perp 关注成交量；AI Agent 概念加强 PLTR"
+    },
+    {
+      "category": "industry",
+      "source_tag": "财报",
+      "name": "TSM 4 月营收 NT$313B，+47% YoY — HBM/CoWoS 产能持续满载",
+      "desc": "台积电公布 4 月营收创历史第二高，主要受 HBM3E 和 N3P 需求驱动。CoWoS 产能已排到 2027 Q2。市场解读为 AI 半导体主线持续验证。",
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "heat": 80,
+      "days_count": 1,
+      "tks": [
+        "TSM",
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "ASML"
+      ],
+      "impact_okx": "已上 TSM-perp / NVDA-perp；漏单 AVGO/ASML 强化"
+    },
+    {
+      "category": "industry",
+      "source_tag": "融资",
+      "name": "Anthropic 完成 50 亿美元 D 轮 — 估值 1 万亿美元",
+      "desc": "Anthropic 完成 50 亿美元 D 轮融资，估值达 1 万亿美元，由 Lightspeed 领投，Google / Salesforce 跟投。资金主要用于 Claude 模型迭代和企业版扩张。",
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-22",
+      "heat": 78,
+      "days_count": 1,
+      "tks": [
+        "MSFT",
+        "GOOGL",
+        "CRM",
+        "CRWV"
+      ],
+      "impact_okx": "AI 应用 SaaS 主线强化；CRWV/ORCL 算力需求上行"
+    },
+    {
+      "category": "industry",
+      "source_tag": "监管",
+      "name": "美国出口管制升级 — H100/H200 加入对马来西亚转口限制",
+      "desc": "商务部 BIS 升级出口管制清单，H100/H200 禁止转口至马来西亚、新加坡等中转节点，试图堵住流向中国的灰色渠道。NVDA 盘中一度 -3.2%。",
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-21",
+      "heat": 75,
+      "days_count": 1,
+      "tks": [
+        "NVDA",
+        "AMD",
+        "INTC"
+      ],
+      "impact_okx": "NVDA-perp 短期承压；中国 AI（BABA）反向受益"
+    },
+    {
+      "category": "industry",
+      "source_tag": "并购",
+      "name": "CoreWeave 与 OpenAI 续约 — 200 亿美元 5 年期算力合约",
+      "desc": "CoreWeave 公告与 OpenAI 续签 5 年期算力合约，总金额 200 亿美元。约 60% 部署 Blackwell B200。CRWV 盘前 +6%。",
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "heat": 72,
+      "days_count": 1,
+      "tks": [
+        "CRWV",
+        "NVDA",
+        "NBIS"
+      ],
+      "impact_okx": "已上 CRWV-perp；NBIS（漏单）反向加强信号"
+    },
+    {
+      "category": "industry",
+      "source_tag": "链上",
+      "name": "Bittensor (TAO) 主网升级 — 开放外部模型接入 + 子网激励改革",
+      "desc": "Bittensor 主网完成 v8.0 升级，正式开放任意 Hugging Face 模型接入子网。CN KOL @0xchangan 评价\"DeAI 开始真正可用\"。TAO 24h +18%，OKX 已上现货+永续。",
+      "first_date": "2026-04-24",
+      "last_date": "2026-04-24",
+      "heat": 70,
+      "days_count": 1,
+      "tks": [
+        "TAO",
+        "RNDR",
+        "FET"
+      ],
+      "impact_okx": "已上 TAO 现货+永续 — 关注 vol 异动；DeAI 概念扩散到 RNDR"
+    },
+    {
+      "category": "listing",
+      "source_tag": "上币机会",
+      "name": "CHIP 24h 爆发 — 5 家 Tier1 现货同时上线，OKX 仅 perp 缺现货",
+      "desc": "CHIP（半导体指数代币）24h 内 Coinbase / Kraken / Hyperliquid 同时上线现货，Bitget / Binance Futures 已上 perp。OKX 当前仅有 perp，spot 缺位。竞对覆盖：5 家 Tier1。",
+      "first_date": "2026-04-21",
+      "last_date": "2026-04-22",
+      "heat": 95,
+      "days_count": 2,
+      "tks": [
+        "CHIP"
+      ],
+      "impact_okx": "⚠ 立刻评估 CHIP 现货上线"
+    },
+    {
+      "category": "listing",
+      "source_tag": "上币机会",
+      "name": "竞对股票永续 Day 5 — 半导体设备 + 中概股 gap 持续扩大",
+      "desc": "Bitget 持续扩 AI 半导体股 perps（AMAT / ASML / AVGO / ARM / BABA / RKLB / IONQ）。Bybit 补齐大盘科技（HOOD / INTC / TSM）。OKX 已连续 10 天漏单 5 个 Tier1 标的。",
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-25",
+      "heat": 85,
+      "days_count": 6,
+      "tks": [
+        "AVGO",
+        "ASML",
+        "ARM",
+        "AMAT",
+        "BABA"
+      ],
+      "impact_okx": "⚠ Tier1 漏单持续扩大；AVGO/ASML/BABA 优先评估"
+    },
+    {
+      "category": "listing",
+      "source_tag": "上币机会",
+      "name": "Binance 4/20 正式上线 MSFT / AVGO / BABA 股票永续",
+      "desc": "Binance Futures 4/20 批量上线 MSFT / AVGO / BABA 股票永续。OKX 仅 MSFT 已覆盖，AVGO + BABA 缺失。Binance 已抢先在 AI 应用 + 中概股两个细分主线建立先发优势。",
+      "first_date": "2026-04-20",
+      "last_date": "2026-04-20",
+      "heat": 78,
+      "days_count": 1,
+      "tks": [
+        "MSFT",
+        "AVGO",
+        "BABA"
+      ],
+      "impact_okx": "⚠ AVGO/BABA 漏单显性化；竞对差距收窄窗口"
+    },
+    {
+      "category": "kol",
+      "source_tag": "KOL 共识",
+      "name": "ARM 创 ATH + Softbank ATH — based16z / KelseyWeb3VC 双源看多 AI 半导体",
+      "desc": "based16z 4/23 提 ARM 创 ATH、Softbank (9984) ATH；KelseyWeb3VC 同日明确看多 SK Hynix / SanDisk / Micron 存储主线，光模块（长飞光纤）已超买。两位 CN KOL 共识看多 AI 存储/半导体主线。",
+      "first_date": "2026-04-23",
+      "last_date": "2026-04-23",
+      "heat": 70,
+      "days_count": 1,
+      "tks": [
+        "ARM",
+        "MU",
+        "SNDK",
+        "SK"
+      ],
+      "impact_okx": "已上 MU/SNDK；漏单 ARM 强化看多信号"
+    },
+    {
+      "category": "kol",
+      "source_tag": "KOL 共识",
+      "name": "AI Boom/Bust 波动率上行预警 — Pentosh1 / based16z 多源警示",
+      "desc": "Pentosh1 4/24 警告\"后 COVID 动物精神会让 AI 板块陷入剧烈 boom/bust 周期\"。based16z 同期切换 50% XLE + 50% 现金 + SPX 6800 put 防御仓位。多位顶级 KOL 共识看 AI 板块未来 6 个月波动率将上行。",
+      "first_date": "2026-04-22",
+      "last_date": "2026-04-24",
+      "heat": 65,
+      "days_count": 3,
+      "tks": [
+        "NVDA",
+        "AVGO",
+        "PLTR",
+        "TSLA"
+      ],
+      "impact_okx": "⚠ 已上 AI 标的 perp 风控关注 — 限仓和保证金可能需调"
+    },
+    {
+      "category": "kol",
+      "source_tag": "KOL 对冲",
+      "name": "hexiecs 多空对冲组合 — Long NVDA / Short TSLA + Long BTC / Short ETH",
+      "desc": "hexiecs 4/24 公开持仓：Long NVDA / Short TSLA + Long BTC / Short ETH 双永动机对冲。对 AI 算力主线（NVDA）vs AI 应用渗透（TSLA FSD）形成对冲态度。",
+      "first_date": "2026-04-24",
+      "last_date": "2026-04-24",
+      "heat": 55,
+      "days_count": 1,
+      "tks": [
+        "NVDA",
+        "TSLA",
+        "BTC",
+        "ETH"
+      ],
+      "impact_okx": "已上 NVDA/TSLA/BTC/ETH-perp；多空仓位分布关注"
+    }
+  ],
+  "ai_kol_consensus": [
+    {
+      "ticker": "MU",
+      "verdict": "strong_up",
+      "verdict_label": "★ 强看多 (双源)",
+      "sources_up": [
+        {
+          "name": "based16z",
+          "date": "2026-04-23",
+          "view": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续"
+        },
+        {
+          "name": "KelseyWeb3VC",
+          "date": "2026-04-23",
+          "view": "看多 SK Hynix / SanDisk / Micron 存储；光模块（长飞光纤）已超买"
+        }
+      ],
+      "sources_dn": [],
+      "sources_mixed": [],
+      "okx_status": "covered",
+      "okx_label": "✓ 已上",
+      "action": "",
+      "priority": 0
+    },
+    {
+      "ticker": "SK",
+      "verdict": "strong_up",
+      "verdict_label": "★ 强看多 (双源)",
+      "sources_up": [
+        {
+          "name": "based16z",
+          "date": "2026-04-23",
+          "view": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续"
+        },
+        {
+          "name": "KelseyWeb3VC",
+          "date": "2026-04-23",
+          "view": "看多 SK Hynix / SanDisk / Micron 存储；光模块（长飞光纤）已超买"
+        }
+      ],
+      "sources_dn": [],
+      "sources_mixed": [],
+      "okx_status": "gap",
+      "okx_label": "✗ 漏单",
+      "action": "看多+漏单 双信号 → 加强上币",
+      "priority": 0
+    },
+    {
+      "ticker": "SNDK",
+      "verdict": "strong_up",
+      "verdict_label": "★ 强看多 (双源)",
+      "sources_up": [
+        {
+          "name": "based16z",
+          "date": "2026-04-23",
+          "view": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续"
+        },
+        {
+          "name": "KelseyWeb3VC",
+          "date": "2026-04-23",
+          "view": "看多 SK Hynix / SanDisk / Micron 存储；光模块（长飞光纤）已超买"
+        }
+      ],
+      "sources_dn": [],
+      "sources_mixed": [],
+      "okx_status": "covered",
+      "okx_label": "✓ 已上",
+      "action": "",
+      "priority": 0
+    },
+    {
+      "ticker": "AAOI",
+      "verdict": "strong_dn",
+      "verdict_label": "⚠ 强看空 (双源)",
+      "sources_up": [],
+      "sources_dn": [
+        {
+          "name": "hexiecs",
+          "date": "2026-04-20",
+          "view": "持 SPX 空 + NVDA 多对冲；AAOI 做空（跟随 Citron）"
+        },
+        {
+          "name": "based16z",
+          "date": "2026-04-22",
+          "view": "Photonics/AI 基建 Q1 2021 Archegos-like 泡沫警告；OpenAI/Codex 堆栈仍看好"
+        },
+        {
+          "name": "Pentosh1",
+          "date": "2026-04-20",
+          "view": "提 BMNR 永续 pref 结构玩笑；AI 光电头部过热不宜追"
+        }
+      ],
+      "sources_mixed": [],
+      "okx_status": "gap",
+      "okx_label": "✗ 漏单",
+      "action": "空头共识 → 暂不上",
+      "priority": 0
+    },
+    {
+      "ticker": "ARM",
+      "verdict": "up",
+      "verdict_label": "看多",
+      "sources_up": [
+        {
+          "name": "based16z",
+          "date": "2026-04-23",
+          "view": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续"
+        }
+      ],
+      "sources_dn": [],
+      "sources_mixed": [],
+      "okx_status": "gap",
+      "okx_label": "✗ 漏单",
+      "action": "看多+漏单 双信号 → 加强上币",
+      "priority": 0
+    },
+    {
+      "ticker": "BMNR",
+      "verdict": "dn",
+      "verdict_label": "看空",
+      "sources_up": [],
+      "sources_dn": [
+        {
+          "name": "Pentosh1",
+          "date": "2026-04-20",
+          "view": "提 BMNR 永续 pref 结构玩笑；AI 光电头部过热不宜追"
+        }
+      ],
+      "sources_mixed": [],
+      "okx_status": "na",
+      "okx_label": "—",
+      "action": "",
+      "priority": 0
+    },
+    {
+      "ticker": "AVGO",
+      "verdict": "mixed",
+      "verdict_label": "分歧",
+      "sources_up": [
+        {
+          "name": "fejau_inc",
+          "date": "2026-04-20",
+          "view": "战后重估；BTC/AI 算力仍看多"
+        }
+      ],
+      "sources_dn": [
+        {
+          "name": "based16z",
+          "date": "2026-04-22",
+          "view": "Photonics/AI 基建 Q1 2021 Archegos-like 泡沫警告；OpenAI/Codex 堆栈仍看好"
+        },
+        {
+          "name": "Pentosh1",
+          "date": "2026-04-20",
+          "view": "提 BMNR 永续 pref 结构玩笑；AI 光电头部过热不宜追"
+        }
+      ],
+      "sources_mixed": [],
+      "okx_status": "gap",
+      "okx_label": "✗ 漏单",
+      "action": "",
+      "priority": 0
+    },
+    {
+      "ticker": "NVDA",
+      "verdict": "mixed",
+      "verdict_label": "分歧",
+      "sources_up": [
+        {
+          "name": "fejau_inc",
+          "date": "2026-04-20",
+          "view": "战后重估；BTC/AI 算力仍看多"
+        }
+      ],
+      "sources_dn": [
+        {
+          "name": "hexiecs",
+          "date": "2026-04-20",
+          "view": "持 SPX 空 + NVDA 多对冲；AAOI 做空（跟随 Citron）"
+        },
+        {
+          "name": "based16z",
+          "date": "2026-04-22",
+          "view": "Photonics/AI 基建 Q1 2021 Archegos-like 泡沫警告；OpenAI/Codex 堆栈仍看好"
+        }
+      ],
+      "sources_mixed": [
+        {
+          "name": "hexiecs",
+          "date": "2026-04-24",
+          "view": "Long NVDA / Short TSLA + Long BTC / Short ETH 双永动机对冲"
+        },
+        {
+          "name": "Pentosh1",
+          "date": "2026-04-24",
+          "view": "BTC 数字黄金纯洁度 vs MSTR/equity；AI boom/bust 波动率上行"
+        }
+      ],
+      "okx_status": "covered",
+      "okx_label": "✓ 已上",
+      "action": "多空对冲 → 保持监控",
+      "priority": 0
+    },
+    {
+      "ticker": "MSTR",
+      "verdict": "mixed",
+      "verdict_label": "中性/对冲",
+      "sources_up": [],
+      "sources_dn": [],
+      "sources_mixed": [
+        {
+          "name": "Pentosh1",
+          "date": "2026-04-24",
+          "view": "BTC 数字黄金纯洁度 vs MSTR/equity；AI boom/bust 波动率上行"
+        }
+      ],
+      "okx_status": "covered",
+      "okx_label": "✓ 已上",
+      "action": "多空对冲 → 保持监控",
+      "priority": 0
+    },
+    {
+      "ticker": "TSLA",
+      "verdict": "mixed",
+      "verdict_label": "中性/对冲",
+      "sources_up": [],
+      "sources_dn": [],
+      "sources_mixed": [
+        {
+          "name": "hexiecs",
+          "date": "2026-04-24",
+          "view": "Long NVDA / Short TSLA + Long BTC / Short ETH 双永动机对冲"
+        }
+      ],
+      "okx_status": "covered",
+      "okx_label": "✓ 已上",
+      "action": "多空对冲 → 保持监控",
+      "priority": 0
+    }
+  ],
+  "ai_kol_views_filtered": [
+    {
+      "date": "2026-04-23",
+      "name": "based16z",
+      "sentiment": "up",
+      "view": "ARM 创 ATH，Softbank ATH；AI 存储/半导体主线持续",
+      "tks": [
+        "ARM",
+        "SK",
+        "SNDK",
+        "MU"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "name": "KelseyWeb3VC",
+      "sentiment": "up",
+      "view": "看多 SK Hynix / SanDisk / Micron 存储；光模块（长飞光纤）已超买",
+      "tks": [
+        "SK",
+        "SNDK",
+        "MU"
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "name": "hexiecs",
+      "sentiment": "mixed",
+      "view": "Long NVDA / Short TSLA + Long BTC / Short ETH 双永动机对冲",
+      "tks": [
+        "NVDA",
+        "TSLA"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "name": "hexiecs",
+      "sentiment": "dn",
+      "view": "持 SPX 空 + NVDA 多对冲；AAOI 做空（跟随 Citron）",
+      "tks": [
+        "NVDA",
+        "AAOI"
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "name": "based16z",
+      "sentiment": "dn",
+      "view": "Photonics/AI 基建 Q1 2021 Archegos-like 泡沫警告；OpenAI/Codex 堆栈仍看好",
+      "tks": [
+        "NVDA",
+        "AVGO",
+        "AAOI"
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "name": "Pentosh1",
+      "sentiment": "mixed",
+      "view": "BTC 数字黄金纯洁度 vs MSTR/equity；AI boom/bust 波动率上行",
+      "tks": [
+        "MSTR",
+        "NVDA"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "name": "Pentosh1",
+      "sentiment": "dn",
+      "view": "提 BMNR 永续 pref 结构玩笑；AI 光电头部过热不宜追",
+      "tks": [
+        "BMNR",
+        "AAOI",
+        "AVGO"
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "name": "based16z",
+      "sentiment": "dn",
+      "view": "50% XLE + 50% 现金 + SPX 6800 put 防御仓 — 加密吐槽 pvping asteroid coin",
+      "tks": [
+        "SPX"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "name": "fejau_inc",
+      "sentiment": "up",
+      "view": "战后重估；BTC/AI 算力仍看多",
+      "tks": [
+        "NVDA",
+        "AVGO"
+      ]
+    }
+  ],
+  "ai_macro_warnings": [
+    {
+      "date": "2026-04-22 → 04-24",
+      "name": "Pentosh1 + based16z",
+      "view": "AI 板块未来 6 个月 boom/bust 波动率上行；based16z 切 50% 现金 + SPX 6800 put 防御",
+      "impact": "已上 AI perp 标的需关注限仓 / 保证金调整"
+    },
+    {
+      "date": "2026-04-22",
+      "name": "based16z",
+      "view": "Photonics/AI 基建出现 Q1 2021 Archegos-like 泡沫征兆",
+      "impact": "AAOI / NBIS / IONQ 等卫星标的暂不主动上"
+    }
+  ]
+}
