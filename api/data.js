@@ -27,36 +27,46 @@ function eventToCluster(e) {
   };
 }
 
-// 跨源去重:LLM 容易把同一事件从多个 RSS / news 源各抽一次。
-// 用 ticker 集 + 关键词 hash 做粗去重,留 heat 最高的那条。
+// 跨源去重:LLM 把同一新闻从多源各抽一次,得合到一条。
+// 策略:按 heat 倒序,逐个检查是否跟已留下的某条"明显是同一事件"
+//   - ticker 集合 Jaccard ≥ 0.5(共享 ≥ 2 个 ticker)
+//   - 或 标题前 4 个有效字符相同
+//   - 且 heat 差 ≤ 6(避免完全无关的同 ticker 事件被合)
 function dedupEvents(events) {
-  const seen = new Map();  // key: "tickers||keywords" → idx
   const tokenize = (s) => (s || '')
-    .replace(/[，。、,.\s\-—|·:：!！?？""''「」《》()（）]/g, '')
+    .replace(/[，。、,.\s\-—|·:：!！?？""''「」《》()（）/]/g, '')
     .toLowerCase()
     .split('')
     .filter(c => /[一-龥a-z0-9]/.test(c));
 
-  const keywordKey = (name) => {
-    const tokens = tokenize(name);
-    return tokens.slice(0, 8).join('');  // 前 8 个有效字符
+  const titleHead = (name) => tokenize(name).slice(0, 4).join('');
+
+  const isSameStory = (a, b) => {
+    if (Math.abs((a.heat || 0) - (b.heat || 0)) > 6) return false;
+    // Rule 1: ticker 集合重叠 ≥ 2 个 + Jaccard ≥ 0.4
+    const at = new Set(a.tickers || []);
+    const bt = new Set(b.tickers || []);
+    const tInter = [...at].filter(t => bt.has(t)).length;
+    const tUnion = new Set([...at, ...bt]).size;
+    if (tInter >= 2 && tUnion > 0 && tInter / tUnion >= 0.4) return true;
+    // Rule 2: 标题字符级 Jaccard ≥ 0.6(catch 同新闻不同表述)
+    const titleA = new Set(tokenize(a.name));
+    const titleB = new Set(tokenize(b.name));
+    if (titleA.size >= 4 && titleB.size >= 4) {
+      const tnInter = [...titleA].filter(t => titleB.has(t)).length;
+      const tnUnion = new Set([...titleA, ...titleB]).size;
+      if (tnUnion > 0 && tnInter / tnUnion >= 0.6) return true;
+    }
+    // Rule 3: 标题前 4 字相同
+    if (titleHead(a.name) && titleHead(a.name) === titleHead(b.name)) return true;
+    return false;
   };
 
+  const sorted = [...events].sort((a, b) => (b.heat || 0) - (a.heat || 0));
   const out = [];
-  for (const e of events) {
-    const tks = (e.tickers || []).slice().sort().join(',');
-    const kw = keywordKey(e.name);
-    const key = `${tks}||${kw}`;
-    const existing = seen.get(key);
-    if (existing == null) {
-      seen.set(key, out.length);
-      out.push(e);
-    } else {
-      // 同 key,留 heat 高的
-      if ((e.heat || 0) > (out[existing].heat || 0)) {
-        out[existing] = e;
-      }
-    }
+  for (const e of sorted) {
+    if (out.some(kept => isSameStory(kept, e))) continue;
+    out.push(e);
   }
   return out;
 }
