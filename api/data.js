@@ -278,14 +278,27 @@ module.exports = async (req, res) => {
     }));
 
     // ==== raw_items_by_date ====
+    // 用 LLM 抽出的 events 喂前端 aggregateRange(),字段名要跟 index.html 的渲染器对齐
+    // (name/desc/heat/urg/tks/cluster_explicit),不能用 raw_signals 那一套(title/score/tickers)
     const rawByDate = {};
-    safeRaw.forEach(r => {
-      const d = r.fetched_for_date;
+    safeEvents.forEach(e => {
+      const d = e.event_date;
       if (!d) return;
       if (!rawByDate[d]) rawByDate[d] = [];
       rawByDate[d].push({
-        title: r.title, source: r.source, url: r.source_url,
-        score: r.raw_score, tickers: r.detected_tickers,
+        date: d,
+        level: (e.heat || 0) >= 80 ? 'L3' : (e.heat || 0) >= 70 ? 'L2' : 'L1',
+        cluster_explicit: (e.themes || [])[0] || null,
+        name: e.name,
+        desc: e.description || '',
+        heat: e.heat || 0,
+        urg: e.urgency || '',
+        tk: (e.tickers || [])[0] || '',
+        tks: e.tickers || [],
+        gap: [],
+        comp: [],
+        sig: e.source_tag ? [e.source_tag] : [],
+        act: e.okx_impact || '',
       });
     });
 
