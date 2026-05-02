@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listing Compass · 上币罗盘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0c1015;
+  --bg-secondary: #141a22;
+  --bg-tertiary: #1c2530;
+  --bg-elevated: #232d3a;
+  --bg-hover: #2a3543;
+  --border: #2d3845;
+  --border-subtle: #1f2630;
+  --border-strong: #3d4a5c;
+  --text-primary: #e6edf3;
+  --text-secondary: #a0a8b3;
+  --text-muted: #6b7480;
+  --text-faint: #4a5260;
+  --accent: #d4a13e;
+  --accent-bright: #f0b537;
+  --accent-deep: #8b6a25;
+  --accent-soft: rgba(212, 161, 62, 0.12);
+  --bull: #5db073;
+  --bull-bg: rgba(93, 176, 115, 0.12);
+  --bear: #d4625e;
+  --bear-bg: rgba(212, 98, 94, 0.12);
+  --warn: #e8a93b;
+  --warn-bg: rgba(232, 169, 59, 0.12);
+  --info: #5e9ad4;
+  --info-bg: rgba(94, 154, 212, 0.12);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'IBM Plex Sans', 'Noto Sans SC', -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.55;
+  font-size: 13.5px;
+  font-feature-settings: 'tnum', 'liga';
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+body.drawer-open { overflow: hidden; }
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.63 0 0 0 0 0.24 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+.topbar {
+  position: sticky; top: 0; height: 56px;
+  background: rgba(12, 16, 21, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 100;
+  display: flex; align-items: center;
+  padding: 0 32px; gap: 32px;
+}
+.topbar .brand {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 23px; font-weight: 600;
+  letter-spacing: 0.01em; color: var(--accent-bright);
+  white-space: nowrap;
+}
+.topbar .brand .accent { color: var(--text-primary); font-style: italic; font-weight: 500; }
+.topbar nav { display: flex; gap: 4px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; }
+.topbar nav a {
+  padding: 6px 14px; color: var(--text-secondary); text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid transparent; transition: all 0.15s;
+}
+.topbar nav a:hover { color: var(--text-primary); background: var(--bg-tertiary); }
+.topbar nav a.active { color: var(--accent); border-color: var(--accent-deep); background: var(--accent-soft); }
+.topbar .spacer { flex: 1; }
+.topbar .pulse-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--text-muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 16px;
+}
+.topbar .pulse-meta .pulse {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--bull); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+.topbar .user-pill {
+  padding: 6px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--text-secondary); background: var(--bg-tertiary);
+  border: 1px solid var(--border); border-radius: 2px;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.container {
+  position: relative; z-index: 2;
+  max-width: 1680px; margin: 0 auto;
+  padding: 24px 32px 60px;
+}
+.hero {
+  margin-bottom: 24px;
+  position: relative;
+}
+.hero .eyebrow {
+  display: none; /* removed decorative eyebrow */
+}
+
+/* MARKET SHARE STRIP */
+.share-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.share-block {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: rgba(12, 16, 21, 0.6);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent-deep);
+}
+.share-block .biz-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--accent-bright);
+  letter-spacing: 0.02em;
+  padding-right: 14px;
+  border-right: 1px solid var(--border);
+  min-width: 84px;
+}
+.share-block .biz-tag .biz-en {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.18em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin-top: 2px;
+}
+.share-stat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.12em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.share-stat .val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px; font-weight: 600;
+  color: var(--text-primary); line-height: 1;
+}
+.share-stat.primary .val { color: var(--accent-bright); font-size: 22px; }
+.share-stat .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  margin-top: 3px; letter-spacing: 0.04em;
+}
+.share-stat .sub.up { color: var(--bull); }
+.share-stat .sub.dn { color: var(--bear); }
+.share-stat .sub.flat { color: var(--text-muted); }
+.kpi-row {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 14px; position: relative; z-index: 1;
+}
+.kpi {
+  padding: 13px 16px;
+  background: rgba(12, 16, 21, 0.5);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+}
+.kpi .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.15em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.kpi .value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px; font-weight: 600;
+  color: var(--text-primary); line-height: 1;
+  margin-bottom: 4px;
+}
+.kpi .delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; color: var(--bull); letter-spacing: 0.04em;
+}
+.kpi .delta.down { color: var(--bear); }
+.kpi .delta.warn { color: var(--warn); }
+.dashboard {
+  display: grid; grid-template-columns: 380px 1fr;
+  gap: 24px;
+}
+.hotlist-section {
+  position: sticky; top: 80px;
+  align-self: start;
+  display: flex; flex-direction: column;
+}
+.hotlist-section .section-header {
+  margin-bottom: 12px;
+}
+.pulse-section {
+  margin-bottom: 24px;
+}
+.pulse-section .section-header {
+  margin-bottom: 16px;
+}
+.hotlist {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  height: calc(100vh - 250px); min-height: 660px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.hotlist-header {
+  padding: 14px 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+.hotlist-header .title {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px;
+}
+.hotlist-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--text-primary);
+}
+.hotlist-header h2::before { content: '◆ '; color: var(--accent); }
+.hotlist-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+/* DATE PICKER */
+.date-picker {
+  display: flex; flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.date-inputs {
+  display: flex; align-items: center; gap: 8px;
+}
+.date-input {
+  flex: 1;
+  padding: 6px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.15s;
+  color-scheme: dark;
+}
+.date-input:hover { border-color: var(--border-strong); }
+.date-input:focus { border-color: var(--accent); }
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.7) brightness(1.1);
+  cursor: pointer;
+  opacity: 0.6;
+}
+.date-input::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+.date-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.date-quicks {
+  display: flex; gap: 5px;
+}
+.date-quick {
+  flex: 1;
+  padding: 5px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.date-quick:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.date-quick.active {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.date-summary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+/* GRANULARITY ROW */
+.granularity-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0 0;
+  border-top: 1px dashed var(--border-subtle);
+}
+.granularity-row .gr-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.granularity-row .gr-options {
+  display: flex; align-items: center; gap: 4px;
+}
+.gr-opt {
+  padding: 3px 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.gr-opt:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.gr-opt.active {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.gr-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+}
+
+/* CATEGORY CHIPS (filter) */
+.cat-chip-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 10px 16px 8px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.cat-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.cat-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.cat-chip.all.active { color: var(--text-primary); border-color: var(--text-primary); background: var(--bg-elevated); }
+.cat-chip.listing.active { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.cat-chip.risk.active { color: var(--bear); border-color: var(--bear); background: var(--bear-bg); }
+.cat-chip.competitor.active { color: var(--info); border-color: var(--info); background: var(--info-bg); }
+.cat-chip.macro.active { color: var(--accent-bright); border-color: var(--accent); background: var(--accent-soft); }
+.cat-chip.tech_reg.active { color: #b88be8; border-color: #8b6fa8; background: rgba(184, 139, 232, 0.12); }
+.cat-chip.other.active { color: var(--text-secondary); border-color: var(--text-secondary); background: var(--bg-elevated); }
+.cat-chip .ct {
+  font-weight: 600;
+  opacity: 0.7;
+  margin-left: 1px;
+}
+.cat-chip.active .ct { opacity: 1; }
+
+/* CARD TYPE-BADGE (top-left of card) */
+.hot-card .type-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid; border-radius: 2px;
+  flex-shrink: 0;
+}
+.hot-card .type-badge.listing { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.hot-card .type-badge.risk { color: var(--bear); border-color: var(--bear); background: var(--bear-bg); }
+.hot-card .type-badge.competitor { color: var(--info); border-color: var(--info); background: var(--info-bg); }
+.hot-card .type-badge.macro { color: var(--accent-bright); border-color: var(--accent); background: var(--accent-soft); }
+.hot-card .type-badge.tech_reg { color: #b88be8; border-color: #8b6fa8; background: rgba(184, 139, 232, 0.12); }
+.hot-card .type-badge.other { color: var(--text-muted); border-color: var(--border); }
+
+.hot-card.hidden { display: none; }
+.hot-empty {
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.hotlist-scroll {
+  flex: 1; overflow-y: auto; padding: 8px 0;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.hotlist-scroll::-webkit-scrollbar { width: 6px; }
+.hotlist-scroll::-webkit-scrollbar-thumb { background: var(--border); }
+.hotlist-scroll::-webkit-scrollbar-track { background: transparent; }
+.hot-panel { display: none; padding: 0 4px; }
+.hot-panel.active { display: block; }
+.hot-card {
+  margin: 4px 12px; padding: 12px 14px;
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--border-strong);
+  cursor: pointer; transition: all 0.15s;
+  position: relative;
+}
+.hot-card:hover { background: var(--bg-elevated); border-left-color: var(--accent); }
+.hot-card.urg-high { border-left-color: var(--bear); }
+.hot-card.urg-mid { border-left-color: var(--warn); }
+.hot-card.urg-low { border-left-color: var(--info); }
+.hot-card.continuing { border-left-color: var(--accent); }
+.hot-card .rank {
+  position: absolute; top: 10px; right: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.hot-card .head {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 6px; flex-wrap: wrap;
+}
+.hot-card .heat-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 1px 7px; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  background: var(--accent-soft); color: var(--accent-bright);
+  border: 1px solid var(--accent-deep); border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+.hot-card .heat-pill::before { content: '▲'; font-size: 8px; }
+.hot-card .day-badge {
+  display: inline-block; padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.05em;
+  background: var(--bg-elevated); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 2px;
+}
+.hot-card .day-badge.persist { color: var(--accent); border-color: var(--accent-deep); }
+.hot-card .date-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.04em; margin-left: auto;
+}
+.hot-card h3 {
+  font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif;
+  font-size: 13px; font-weight: 600;
+  line-height: 1.4; color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.hot-card .desc {
+  font-size: 12px; color: var(--text-secondary);
+  line-height: 1.55; margin-bottom: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.hot-card .ticker-row {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-top: 6px;
+}
+.hot-card .tk-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; padding: 1px 6px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 2px;
+  letter-spacing: 0.03em;
+}
+.hot-card .meta-row {
+  display: flex; gap: 12px; align-items: center;
+  margin-top: 6px; padding-top: 8px;
+  border-top: 1px dashed var(--border-subtle);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.hot-card .urg-tag {
+  font-weight: 600; text-transform: uppercase;
+  padding: 1px 5px; border: 1px solid; border-radius: 2px;
+}
+.hot-card .urg-tag.high { color: var(--bear); border-color: var(--bear); background: var(--bear-bg); }
+.hot-card .urg-tag.mid { color: var(--warn); border-color: var(--warn); background: var(--warn-bg); }
+.hot-card .urg-tag.low { color: var(--info); border-color: var(--info); background: var(--info-bg); }
+.right-col { display: flex; flex-direction: column; gap: 24px; }
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 16px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap; gap: 12px;
+}
+.section-header h2 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--text-primary); letter-spacing: -0.005em;
+}
+.section-header h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.section-header .sec-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; color: var(--text-muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+.theme-card {
+  padding: 18px 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border-strong);
+  cursor: pointer; transition: all 0.2s;
+  position: relative; overflow: hidden;
+}
+.theme-card:hover { background: var(--bg-tertiary); border-top-color: var(--accent-deep); }
+.theme-card.active { border-top-color: var(--accent); }
+.theme-card.active:hover { background: var(--bg-tertiary); border-top-color: var(--accent-bright); }
+.theme-card.coming { opacity: 0.45; cursor: not-allowed; }
+.theme-card.coming:hover { background: var(--bg-secondary); border-top-color: var(--border-strong); }
+.theme-card .head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.theme-card h3 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--text-primary); letter-spacing: -0.005em;
+  display: flex; align-items: center; gap: 8px;
+}
+.theme-card h3 .star { color: var(--accent-bright); font-size: 14px; }
+.theme-card .badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; padding: 2px 8px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid;
+}
+.theme-card .badge.live { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.theme-card .badge.coming { color: var(--text-muted); border-color: var(--text-muted); }
+.theme-card .stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; padding: 12px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 10px;
+}
+.theme-card .stat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.theme-card .stat .val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px; font-weight: 600;
+  color: var(--text-primary);
+}
+.theme-card .stat .val.bear { color: var(--bear); }
+.theme-card .stat .val.bull { color: var(--bull); }
+.theme-card .desc {
+  font-size: 12px; color: var(--text-secondary);
+  margin-bottom: 10px; line-height: 1.55;
+}
+.theme-card .footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.05em;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.theme-card .footer-meta .arrow { color: var(--accent); font-weight: 600; }
+.drawer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200; opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(1200px, 92vw);
+  background: var(--bg-primary);
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  display: flex; flex-direction: column;
+  border-left: 1px solid var(--border);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+.drawer.open { transform: translateX(0); }
+.drawer-header {
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(12, 16, 21, 0.95);
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.drawer-breadcrumb {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--text-muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.drawer-breadcrumb .sep { color: var(--text-faint); }
+.drawer-breadcrumb .crumb-current { color: var(--accent-bright); }
+.drawer-title {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--text-primary); letter-spacing: -0.005em;
+  flex: 1; margin-left: 16px;
+}
+.drawer-title em { color: var(--accent-bright); font-style: italic; }
+.drawer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; color: var(--text-muted);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.drawer-date-picker {
+  display: flex; align-items: center; gap: 8px;
+}
+.drawer-date-picker .date-input {
+  padding: 6px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  outline: none;
+  color-scheme: dark;
+  width: 130px;
+}
+.drawer-date-picker .date-input:hover { border-color: var(--border-strong); }
+.drawer-date-picker .date-input:focus { border-color: var(--accent); }
+.drawer-date-picker .date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.7) brightness(1.1);
+  cursor: pointer;
+  opacity: 0.6;
+}
+.drawer-date-picker .date-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.drawer-close {
+  width: 36px; height: 36px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.drawer-close:hover { background: var(--bg-elevated); color: var(--accent); }
+.drawer-body {
+  flex: 1; overflow-y: auto;
+  padding: 28px 32px 60px;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.drawer-body::-webkit-scrollbar { width: 8px; }
+.drawer-body::-webkit-scrollbar-thumb { background: var(--border); }
+.drawer-body::-webkit-scrollbar-track { background: transparent; }
+.drawer-section { margin-bottom: 36px; }
+.drawer-section h3 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 22px; font-weight: 600;
+  margin-bottom: 6px; color: var(--text-primary);
+  position: relative; padding-left: 16px;
+}
+.drawer-section h3::before {
+  content: ''; position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 3px; background: var(--accent);
+}
+.drawer-section .section-sub {
+  font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif;
+  font-size: 12.5px; color: var(--text-muted);
+  margin-bottom: 16px; padding-left: 16px;
+  font-style: italic;
+}
+.theme-overview {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; align-items: start;
+}
+.overview-narrative {
+  padding: 22px 26px;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border-left: 3px solid var(--accent);
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-style: italic; font-size: 16px;
+  line-height: 1.65; color: var(--text-primary);
+}
+.overview-narrative strong {
+  color: var(--accent-bright); font-style: normal; font-weight: 600;
+}
+.overview-narrative .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 12px; font-style: normal;
+}
+.overview-kpis {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.overview-kpis .kpi-block {
+  padding: 16px 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+.overview-kpis .kpi-block .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.overview-kpis .kpi-block .val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px; font-weight: 600;
+  color: var(--text-primary); line-height: 1;
+  margin-bottom: 4px;
+}
+.overview-kpis .kpi-block .val.bear { color: var(--bear); }
+.overview-kpis .kpi-block .val.bull { color: var(--bull); }
+.overview-kpis .kpi-block .delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--text-secondary);
+}
+.ai-hot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 12px;
+}
+
+.pulse-group {
+  margin-bottom: 22px;
+}
+.pulse-group:last-child { margin-bottom: 0; }
+.pulse-group-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px;
+}
+.pulse-group-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 9px;
+  border: 1px solid; border-radius: 2px;
+}
+.pulse-group-tag.industry { color: var(--accent-bright); border-color: var(--accent); background: var(--accent-soft); }
+.pulse-group-tag.listing { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.pulse-group-tag.kol { color: #b88be8; border-color: #8b6fa8; background: rgba(184, 139, 232, 0.12); }
+.pulse-group-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* Source tag pill on each pulse card */
+.ai-hot-card .source-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 1px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+}
+.ai-hot-card .impact-line {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.ai-hot-card .impact-line .impact-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-right: 6px;
+}
+.ai-hot-card {
+  padding: 14px 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+.ai-hot-card .head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.ai-hot-card .heat-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 1px 6px; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  background: var(--accent-soft); color: var(--accent-bright);
+  border: 1px solid var(--accent-deep); border-radius: 2px;
+}
+.ai-hot-card .heat-pill::before { content: '▲'; font-size: 8px; }
+.ai-hot-card .day-badge {
+  padding: 1px 6px; font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  background: var(--bg-elevated); color: var(--accent);
+  border: 1px solid var(--accent-deep); border-radius: 2px;
+}
+.ai-hot-card .date-tag {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.ai-hot-card h4 {
+  font-size: 13.5px; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 6px;
+  line-height: 1.4;
+}
+.ai-hot-card .desc {
+  font-size: 12px; color: var(--text-secondary);
+  line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
+  margin-bottom: 8px;
+}
+.ai-hot-card .tks { display: flex; flex-wrap: wrap; gap: 4px; }
+.ai-hot-card .tk-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; padding: 1px 5px;
+  background: var(--bg-tertiary); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 2px;
+}
+.gap-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+.gap-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12.5px; min-width: 820px;
+}
+.gap-table thead {
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--accent-deep);
+}
+.gap-table th {
+  text-align: left; padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); white-space: nowrap;
+}
+.gap-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary); vertical-align: middle;
+}
+.gap-table tr:last-child td { border-bottom: none; }
+.gap-table tr:hover td { background: var(--bg-tertiary); }
+.gap-table td.tk {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600; font-size: 13px;
+  color: var(--accent-bright); letter-spacing: 0.02em;
+}
+.gap-table td.cat { color: var(--text-primary); }
+.gap-table td.days {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--bear); font-weight: 600;
+  font-size: 11.5px;
+}
+.gap-table .check { color: var(--bull); font-weight: 600; text-align: center; }
+.gap-table .x { color: var(--bear); font-weight: 600; text-align: center; }
+.gap-table th:nth-child(n+4):nth-child(-n+8) { text-align: center; }
+.gap-table .row-divider td {
+  padding: 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--accent-deep);
+}
+.action-pill {
+  display: inline-block; padding: 2px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid; border-radius: 2px;
+}
+.action-pill.go { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.action-pill.wait { color: var(--warn); border-color: var(--warn); background: var(--warn-bg); }
+.action-pill.skip { color: var(--text-muted); border-color: var(--border); }
+.callout {
+  margin-top: 16px; padding: 16px 22px;
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--warn);
+  font-size: 12.5px;
+}
+.callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.2em;
+  color: var(--warn); text-transform: uppercase;
+  margin-bottom: 6px; font-weight: 600;
+}
+.callout p { color: var(--text-secondary); line-height: 1.6; }
+.callout p strong { color: var(--text-primary); }
+.matrix {
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  background: var(--bg-secondary);
+}
+.matrix table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 12px; }
+.matrix th, .matrix td {
+  padding: 10px 14px; text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.matrix thead { background: var(--bg-elevated); }
+.matrix th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 500;
+}
+.matrix th:first-child, .matrix td:first-child { text-align: left; color: var(--text-primary); font-weight: 500; }
+.matrix .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600; font-size: 13px;
+  color: var(--text-primary);
+}
+.matrix .num.lead { color: var(--accent-bright); }
+.matrix .num.zero { color: var(--text-muted); font-weight: 400; }
+.matrix .bar-cell { position: relative; }
+.matrix .bar {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--accent-soft); z-index: 0;
+}
+.matrix .bar-cell .num { position: relative; z-index: 1; }
+.matrix tr.row-okx td { background: rgba(212, 161, 62, 0.05); }
+.matrix tr.row-okx td:first-child { color: var(--accent-bright); font-weight: 600; }
+.comp-timeline {
+  display: flex; flex-direction: column; gap: 0;
+  border-left: 2px solid var(--border);
+  padding-left: 24px; margin-left: 8px;
+  position: relative;
+}
+.comp-event {
+  position: relative;
+  padding: 14px 18px 14px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  margin-bottom: 8px; margin-left: 4px;
+}
+.comp-event::before {
+  content: ''; position: absolute;
+  left: -34px; top: 22px;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border: 2px solid var(--bg-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent-deep);
+}
+.comp-event .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; color: var(--accent);
+  font-weight: 600; letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.comp-event .date::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--border-subtle);
+}
+.comp-event .what {
+  color: var(--text-primary); font-weight: 500;
+  margin-bottom: 4px; font-size: 13px;
+  line-height: 1.4;
+}
+.comp-event .detail {
+  color: var(--text-secondary);
+  font-size: 11.5px; line-height: 1.55;
+}
+/* CONSENSUS SUMMARY (one-liner above table) */
+.consensus-summary {
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border-left: 3px solid var(--accent);
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+.consensus-summary strong { color: var(--accent-bright); font-style: normal; font-weight: 600; }
+.consensus-summary .bull-tk { color: var(--bull); font-style: normal; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.consensus-summary .bear-tk { color: var(--bear); font-style: normal; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+
+/* CONSENSUS TABLE */
+.consensus-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  margin-bottom: 16px;
+}
+.consensus-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12.5px; min-width: 720px;
+}
+.consensus-table thead {
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--accent-deep);
+}
+.consensus-table th {
+  text-align: left; padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); white-space: nowrap;
+}
+.consensus-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary); vertical-align: middle;
+}
+.consensus-table tr:last-child td { border-bottom: none; }
+.consensus-table tr:hover td { background: var(--bg-tertiary); }
+.consensus-table td.tk {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600; font-size: 13px;
+  color: var(--accent-bright); letter-spacing: 0.02em;
+}
+.verdict-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.verdict-pill.strong_up { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.verdict-pill.up { color: var(--bull); border-color: var(--border-strong); background: rgba(93, 176, 115, 0.06); }
+.verdict-pill.strong_dn { color: var(--bear); border-color: var(--bear); background: var(--bear-bg); }
+.verdict-pill.dn { color: var(--bear); border-color: var(--border-strong); background: rgba(212, 98, 94, 0.06); }
+.verdict-pill.mixed { color: var(--text-muted); border-color: var(--border-strong); }
+.source-list {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+}
+.source-tag-kol {
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+}
+.source-tag-kol.up { color: var(--bull); border-color: rgba(93, 176, 115, 0.4); }
+.source-tag-kol.dn { color: var(--bear); border-color: rgba(212, 98, 94, 0.4); }
+.source-tag-kol.mixed { color: var(--text-secondary); }
+.okx-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; font-weight: 600;
+  padding: 2px 7px;
+  border: 1px solid;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.okx-pill.covered { color: var(--bull); border-color: var(--bull); background: var(--bull-bg); }
+.okx-pill.gap { color: var(--bear); border-color: var(--bear); background: var(--bear-bg); }
+.okx-pill.na { color: var(--text-muted); border-color: var(--border); }
+.action-signal {
+  font-size: 11.5px;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.action-signal.strong { color: var(--accent-bright); }
+.action-signal.warn { color: var(--bear); }
+.action-signal.neutral { color: var(--text-muted); }
+
+/* MACRO WARNINGS */
+.macro-warnings {
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--bear);
+  padding: 14px 18px;
+}
+.warning-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bear);
+  margin-bottom: 10px;
+}
+.warning-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.warning-item {
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--bear);
+}
+.warning-item .head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+.warning-item .head .src {
+  color: var(--accent-bright); font-weight: 600;
+}
+.warning-item .view {
+  font-size: 12.5px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.warning-item .impact {
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-subtle);
+}
+.warning-item .impact::before {
+  content: 'OKX 影响: ';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-right: 4px;
+}
+.kol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 10px;
+}
+.kol-item {
+  padding: 12px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  font-size: 11.5px;
+}
+.kol-item.sent-up { border-left-color: var(--bull); }
+.kol-item.sent-dn { border-left-color: var(--bear); }
+.kol-item.sent-n { border-left-color: var(--text-muted); }
+.kol-item .head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px;
+}
+.kol-item .name {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600; color: var(--accent-bright);
+  font-size: 11.5px;
+}
+.kol-item .date-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.kol-item .view {
+  color: var(--text-secondary);
+  line-height: 1.55; font-size: 11px;
+}
+.kol-item .sent {
+  display: inline-block; margin-left: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; padding: 1px 5px;
+  border-radius: 2px; letter-spacing: 0.04em;
+}
+.kol-item.sent-up .sent { color: var(--bull); background: var(--bull-bg); }
+.kol-item.sent-dn .sent { color: var(--bear); background: var(--bear-bg); }
+.kol-item.sent-n .sent { color: var(--text-muted); background: var(--bg-elevated); }
+.footer {
+  margin-top: 60px; padding: 24px 0;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; color: var(--text-muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+@media (max-width: 1280px) {
+  .dashboard { grid-template-columns: 320px 1fr; }
+  .kpi-row { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .share-strip { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-width: 980px) {
+  .dashboard { grid-template-columns: 1fr; }
+  .hotlist-section { position: static; }
+  .hotlist { height: auto; max-height: 600px; min-height: auto; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .topbar { padding: 0 16px; gap: 16px; }
+  .topbar nav { display: none; }
+  .container { padding: 16px; }
+  .share-block { grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 14px; }
+  .share-block .biz-tag { grid-column: 1 / -1; padding: 0 0 8px; border-right: none; border-bottom: 1px solid var(--border); }
+  .theme-overview { grid-template-columns: 1fr; }
+  .drawer { width: 100%; }
+  .drawer-header { padding: 16px 20px; flex-wrap: wrap; }
+  .drawer-title { font-size: 22px; flex-basis: 100%; margin-left: 0; margin-top: 8px; }
+  .drawer-body { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Listing<span class="accent"> Compass</span></div>
+  <nav>
+    <a href="#" class="active">DISCOVER</a>
+    <a href="#">WATCHLIST</a>
+    <a href="#">DECISIONS</a>
+    <a href="#">POSTMORTEM</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="pulse-meta"><span class="pulse"></span>SYNC · <span id="topbar-date">2026-04-26</span></div>
+  <div class="user-pill">CHOW · OKX</div>
+</header>
+
+<div class="container">
+
+<section class="hero">
+  <div class="section-header">
+    <h2>OKX <em>市占</em></h2>
+    <span class="sec-meta">04-25 单日 · vs 上周同日 / 去年同日</span>
+  </div>
+  <div class="share-strip">
+    <div class="share-block">
+      <div class="biz-tag">Perp <span class="biz-en">04-25</span></div>
+      <div class="share-stat primary">
+        <div class="label">OKX 市占</div>
+        <div class="val">19.18%</div>
+        <div class="sub">vol $10.66B · 单日</div>
+      </div>
+      <div class="share-stat">
+        <div class="label">环比 vs 04-18</div>
+        <div class="val">20.04%</div>
+        <div class="sub dn">▼ −0.87pp</div>
+      </div>
+      <div class="share-stat">
+        <div class="label">同比 vs 2025-04-25</div>
+        <div class="val">18.77%</div>
+        <div class="sub up">▲ +0.40pp</div>
+      </div>
+    </div>
+    <div class="share-block">
+      <div class="biz-tag">Spot <span class="biz-en">04-25</span></div>
+      <div class="share-stat primary">
+        <div class="label">OKX 市占</div>
+        <div class="val">8.76%</div>
+        <div class="sub">vol $0.92B · 单日</div>
+      </div>
+      <div class="share-stat">
+        <div class="label">环比 vs 04-18</div>
+        <div class="val">10.05%</div>
+        <div class="sub dn">▼ −1.29pp</div>
+      </div>
+      <div class="share-stat">
+        <div class="label">同比 vs 2025-04-25</div>
+        <div class="val">10.77%</div>
+        <div class="sub dn">▼ −2.02pp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pulse-section">
+  <div class="section-header">
+    <h2>信号速览 <em>Pulse</em></h2>
+    <span class="sec-meta">本月 / 本周 关键指标 · updated 2026-04-26</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="label">本月新热点</div><div class="value" id="kpi-month-new">96</div><div class="delta">▲ +14 vs prev 30d</div></div>
+    <div class="kpi"><div class="label">本周 L3 高优</div><div class="value" id="kpi-week-l3">27</div><div class="delta">▲ +5 vs prev 7d</div></div>
+    <div class="kpi"><div class="label">竞对动作 / 周</div><div class="value" id="kpi-week-comp">61</div><div class="delta warn">! 11 待评估</div></div>
+    <div class="kpi"><div class="label">KOL 信号 / 周</div><div class="value" id="kpi-week-kol">78</div><div class="delta">▲ +12 vs prev 7d</div></div>
+    <div class="kpi"><div class="label">股票漏单</div><div class="value" id="kpi-stock-gap">11</div><div class="delta down">! 持续 10 天</div></div>
+    <div class="kpi"><div class="label">已决策 · 命中率</div><div class="value">23·68%</div><div class="delta">本月 (mock)</div></div>
+  </div>
+</section>
+
+<div class="dashboard">
+
+  <section class="hotlist-section">
+    <div class="section-header">
+      <h2>热点榜 <em>Discovery</em></h2>
+    </div>
+    <aside class="hotlist">
+    <div class="hotlist-header">
+      <div class="date-picker">
+        <div class="date-inputs">
+          <input type="date" id="date-from" class="date-input">
+          <span class="date-arrow">→</span>
+          <input type="date" id="date-to" class="date-input">
+        </div>
+      </div>
+    </div>
+    <div class="cat-chip-row" id="cat-chip-row">
+      <span class="cat-chip all active" data-cat="all">全部 <span class="ct" id="ct-all">0</span></span>
+      <span class="cat-chip listing" data-cat="listing">上币机会 <span class="ct" id="ct-listing">0</span></span>
+      <span class="cat-chip risk" data-cat="risk">风控 <span class="ct" id="ct-risk">0</span></span>
+      <span class="cat-chip competitor" data-cat="competitor">竞对 <span class="ct" id="ct-competitor">0</span></span>
+      <span class="cat-chip macro" data-cat="macro">宏观 <span class="ct" id="ct-macro">0</span></span>
+      <span class="cat-chip tech_reg" data-cat="tech_reg">技术/监管 <span class="ct" id="ct-tech_reg">0</span></span>
+      <span class="cat-chip other" data-cat="other">其他 <span class="ct" id="ct-other">0</span></span>
+    </div>
+    <div class="hotlist-scroll">
+      <div class="hot-panel active" id="panel-current"></div>
+    </div>
+    </aside>
+  </section>
+
+  <div class="right-col">
+    <section>
+      <div class="section-header">
+        <h2>主题看板 <em>Watchlist</em></h2>
+        <span class="sec-meta">6 themes · click to expand · updated 2026-04-26</span>
+      </div>
+      <div class="theme-grid">
+
+        <div class="theme-card active" id="theme-card-ai">
+          <div class="head"><h3><span class="star">★</span> AI 产业链</h3><span class="badge live">活跃</span></div>
+          <div class="desc">从算力到模型的全产业链 — 重点跟踪美股代币化 perp 缺口与加密原生 AI 项目轮动。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">17 / 25</div></div>
+            <div class="stat"><div class="label">漏单 vol/7d</div><div class="val bear">$58.4M</div></div>
+            <div class="stat"><div class="label">本周 AI L3</div><div class="val">3</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">AVGO · BABA</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span class="arrow">点击展开 →</span></div>
+        </div>
+
+        <div class="theme-card coming">
+          <div class="head"><h3>RWA / 美股代币化</h3><span class="badge coming">Coming</span></div>
+          <div class="desc">代币化股票、债券、房地产 — 美股 perp 已铺开 30 个，下一战场。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">29</div></div>
+            <div class="stat"><div class="label">漏单</div><div class="val bear">11+</div></div>
+            <div class="stat"><div class="label">本周 L3</div><div class="val">3</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">WMT · MCD</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
+        </div>
+
+        <div class="theme-card coming">
+          <div class="head"><h3>LRT / Restaking</h3><span class="badge coming">Coming</span></div>
+          <div class="desc">KELP/rsETH 危机后的赛道重估，需观察资金回流路径。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">4</div></div>
+            <div class="stat"><div class="label">漏单</div><div class="val bear">3</div></div>
+            <div class="stat"><div class="label">本周 L3</div><div class="val">7</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">KELP · MNT</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
+        </div>
+
+        <div class="theme-card coming">
+          <div class="head"><h3>Stablecoin</h3><span class="badge coming">Coming</span></div>
+          <div class="desc">GENIUS Act 通过后，主流稳定币储备产品扩张窗口。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">8</div></div>
+            <div class="stat"><div class="label">漏单</div><div class="val bear">2</div></div>
+            <div class="stat"><div class="label">本周 L3</div><div class="val">2</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">USDG · HKD</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
+        </div>
+
+        <div class="theme-card coming">
+          <div class="head"><h3>Prediction Market</h3><span class="badge coming">Coming</span></div>
+          <div class="desc">Polymarket / Kalshi 监管和扩张同行 — 预测市场进入加密视野。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">2</div></div>
+            <div class="stat"><div class="label">漏单</div><div class="val bear">5</div></div>
+            <div class="stat"><div class="label">本周 L3</div><div class="val">2</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">POLY</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
+        </div>
+
+        <div class="theme-card coming">
+          <div class="head"><h3>DePIN</h3><span class="badge coming">Coming</span></div>
+          <div class="desc">物理基础设施去中心化网络，热度跟随 GPU/算力主线。</div>
+          <div class="stats">
+            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">12</div></div>
+            <div class="stat"><div class="label">漏单</div><div class="val bear">3</div></div>
+            <div class="stat"><div class="label">本周 L3</div><div class="val">0</div></div>
+            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">RNDR · ROSE</div></div>
+          </div>
+          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>Listing Compass · v0.2 demo · Chow @ OKX</div>
+  <div>Data: daily-hotnews-brief × OKX datatools · 2026-04-16 → 2026-04-26</div>
+  <div>Internal use only · Not investment advice</div>
+</div>
+
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="drawer-ai">
+  <div class="drawer-header">
+    <div class="drawer-breadcrumb">
+      <span>WATCHLIST</span>
+      <span class="sep">/</span>
+      <span class="crumb-current">AI 产业链</span>
+    </div>
+    <div class="drawer-title">AI 产业链 · <em>主题展开</em></div>
+    <div class="drawer-date-picker">
+      <input type="date" id="drawer-date-from" class="date-input">
+      <span class="date-arrow">→</span>
+      <input type="date" id="drawer-date-to" class="date-input">
+    </div>
+    <button class="drawer-close" id="drawer-close" title="Close">×</button>
+  </div>
+  <div class="drawer-body">
+
+    <div class="drawer-section">
+      <h3>主题速览</h3>
+      <p class="section-sub">为什么这个主题值得看？当前最大的机会是什么？</p>
+      <div class="theme-overview">
+        <div class="overview-narrative">
+          <div class="label">本周叙事 · 04-20 → 04-26</div>
+          AI 产业链在 4/20-4/26 一周内呈现<strong>"美股代币化加速 + 中概 AI / 半导体设备缺位"</strong>双线信号。竞对侧 Bitget 持续扩 AI 半导体股 perps（AMAT / ASML / AVGO / ARM / BABA），<strong>OKX 已连续 10 天漏单</strong>。KOL 端 based16z / KelseyWeb3VC 共识看多 ARM ATH + SK Hynix / Micron 存储主线，hexiecs 则做 NVDA 多 / TSLA 空对冲。<br><br>
+          <strong>当前最大窗口：AVGO · ASML · BABA</strong> 三个 Tier 1 AI 半导体标的现在补齐即可，再拖会被动。
+        </div>
+        <div class="overview-kpis">
+          <div class="kpi-block"><div class="label">OKX 覆盖率</div><div class="val">68%</div><div class="delta">17 / 25 标的</div></div>
+          <div class="kpi-block"><div class="label">漏单 vol / 7d</div><div class="val bear">$58.4M</div><div class="delta">竞对累计</div></div>
+          <div class="kpi-block"><div class="label">本周 AI 热点</div><div class="val">5</div><div class="delta">3 持续多日</div></div>
+          <div class="kpi-block"><div class="label">连续漏单</div><div class="val bear">10 天</div><div class="delta">AVGO / ASML / ARM</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>本周 AI 主题脉搏</h3>
+      <p class="section-sub">行业事件 + 上币机会 + KOL 共识 — 全方位看 AI 主题这周发生了什么。</p>
+
+      <div class="pulse-group">
+        <div class="pulse-group-head">
+          <span class="pulse-group-tag industry">行业事件</span>
+          <span class="pulse-group-meta">财报 / 产品 / 监管 / 融资 / 链上</span>
+        </div>
+        <div class="ai-hot-grid" id="pulse-industry"></div>
+      </div>
+
+      <div class="pulse-group">
+        <div class="pulse-group-head">
+          <span class="pulse-group-tag listing">上币机会</span>
+          <span class="pulse-group-meta">竞对动作 + OKX 缺口</span>
+        </div>
+        <div class="ai-hot-grid" id="pulse-listing"></div>
+      </div>
+
+      <div class="pulse-group">
+        <div class="pulse-group-head">
+          <span class="pulse-group-tag kol">KOL 共识</span>
+          <span class="pulse-group-meta">多源 KOL 信号聚合</span>
+        </div>
+        <div class="ai-hot-grid" id="pulse-kol"></div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>OKX 已覆盖 vs 漏单清单</h3>
+      <p class="section-sub">基于内部 datatools 实时查询 OKX <code style="color:var(--accent)">tradfi=yes</code> + 竞对监控表，按产业链分层。数据日期 04-26。</p>
+      <div class="gap-table-wrap">
+        <table class="gap-table">
+          <thead>
+            <tr>
+              <th>Ticker</th><th>名称 · 产业链层</th><th>层级</th>
+              <th>OKX</th><th>Binance</th><th>Bitget</th><th>Bybit</th><th>HL</th>
+              <th>漏单天数</th><th>建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-divider"><td colspan="10">▸ 核心算力 · GPU / ASIC / CPU</td></tr>
+            <tr><td class="tk">NVDA</td><td class="cat">英伟达 · GPU 龙头</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">AMD</td><td class="cat">AMD · GPU/CPU</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">INTC</td><td class="cat">Intel · CPU 复苏</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">AVGO</td><td class="cat">博通 · ASIC 龙头 ★</td><td>Tier 1</td><td class="x">✗</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
+            <tr><td class="tk">ARM</td><td class="cat">ARM · IP 龙头</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ 内存 / HBM / 存储</td></tr>
+            <tr><td class="tk">MU</td><td class="cat">Micron · HBM</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">SNDK</td><td class="cat">SanDisk · 存储</td><td>Tier 2</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ 半导体设备 / 代工</td></tr>
+            <tr><td class="tk">TSM</td><td class="cat">台积电 · 代工</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">ASML</td><td class="cat">荷兰光刻机龙头 ★</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
+            <tr><td class="tk">AMAT</td><td class="cat">应用材料 · 半导体设备</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ AI 应用 / SaaS / 云算力</td></tr>
+            <tr><td class="tk">PLTR</td><td class="cat">Palantir · AI Agent</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">META</td><td class="cat">Meta · AI 应用</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">MSFT</td><td class="cat">Microsoft · Copilot</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">GOOGL</td><td class="cat">Alphabet · AI</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">AMZN</td><td class="cat">Amazon · AWS</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">ORCL</td><td class="cat">Oracle · 云算力</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+            <tr><td class="tk">CRWV</td><td class="cat">CoreWeave · Neocloud</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ 中国 AI / 中概</td></tr>
+            <tr><td class="tk">BABA</td><td class="cat">阿里巴巴 · 中国 AI ★</td><td>Tier 1</td><td class="x">✗</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ 卫星 · 量子 / 光模块 / Neocloud</td></tr>
+            <tr><td class="tk">IONQ</td><td class="cat">IonQ · 量子计算</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
+            <tr><td class="tk">AAOI</td><td class="cat">AAOI · 光模块</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
+            <tr><td class="tk">COHR</td><td class="cat">Coherent · 光模块</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
+            <tr><td class="tk">NBIS</td><td class="cat">Nebius · Neocloud</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
+
+            <tr class="row-divider"><td colspan="10">▸ 衍生品 · 半导体指数代币</td></tr>
+            <tr><td class="tk">CHIP</td><td class="cat">CHIP 半导体指数 (perp 已上, spot 缺)</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="days">5 天 spot 缺</td><td><span class="action-pill go">补 spot</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="label">⚠ 决策建议（自动生成）</div>
+        <p><strong>Tier 1 漏单优先级</strong>：AVGO（ASIC 龙头）+ ASML（光刻独家）+ AMAT（半导体设备）+ ARM（IP 龙头）+ BABA（中国 AI）<strong>本周即可评估上线</strong>，竞对覆盖广 + 持续 10 天漏单。<strong>Tier 2 观望</strong>：IONQ / AAOI / COHR / NBIS 仅 Bitget 独家，等 Binance 跟进再上。<strong>CHIP 现货补全</strong>：5 家 Tier1 现货已上、OKX 仅 perp，Day 5 持续被动。</p>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>竞对覆盖矩阵</h3>
+      <p class="section-sub">tradfi=yes (perp_usdt) · 7 天 vol · 截至 04-26 · 数据来自 OKX datatools <code style="color:var(--accent)">ads_okx_competitor_amp_external_kline_trade_amounts_di</code></p>
+      <div class="matrix">
+        <table>
+          <thead>
+            <tr><th>交易所</th><th>tradfi 标的数</th><th>7d vol</th><th>份额</th><th>核心算力</th><th>HBM</th><th>AI 应用</th><th>半导体设备</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Binance</td><td class="bar-cell"><div class="bar" style="width:30%"></div><span class="num lead">31</span></td><td class="num lead">$21.76B</td><td class="num lead">52%</td><td class="num lead">8/9</td><td class="num">2/3</td><td class="num lead">7/8</td><td class="num zero">0/4</td></tr>
+            <tr><td>Hyperliquid</td><td class="bar-cell"><div class="bar" style="width:100%"></div><span class="num lead">103</span></td><td class="num">$13.10B</td><td class="num">31%</td><td class="num">3/9</td><td class="num zero">0/3</td><td class="num">2/8</td><td class="num zero">0/4</td></tr>
+            <tr><td>Bitget</td><td class="bar-cell"><div class="bar" style="width:66%"></div><span class="num">68</span></td><td class="num">$4.24B</td><td class="num">10%</td><td class="num">5/9</td><td class="num">1/3</td><td class="num">4/8</td><td class="num lead">4/4</td></tr>
+            <tr class="row-okx"><td>OKX</td><td class="bar-cell"><div class="bar" style="width:33%"></div><span class="num">34</span></td><td class="num">$1.98B</td><td class="num">5%</td><td class="num">7/9</td><td class="num">1/3</td><td class="num">6/8</td><td class="num zero">0/4</td></tr>
+            <tr><td>Bybit</td><td class="bar-cell"><div class="bar" style="width:3%"></div><span class="num zero">3</span></td><td class="num zero">$0.63B</td><td class="num zero">2%</td><td class="num">1/9</td><td class="num zero">0/3</td><td class="num">1/8</td><td class="num zero">0/4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>竞对动作时间线</h3>
+      <p class="section-sub">最近 7 天 (04-20 → 04-26) — 仅显示 AI / 半导体 / 美股代币化相关动作。</p>
+      <div class="comp-timeline" id="comp-timeline"></div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>KOL 共识矩阵</h3>
+      <p class="section-sub">按 ticker 聚合多源 KOL 观点 — 共识 + 分歧 + 反向警报。最近 7 天 (04-20 → 04-26)。</p>
+
+      <div class="consensus-summary" id="consensus-summary"></div>
+
+      <div class="consensus-table-wrap">
+        <table class="consensus-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>共识</th>
+              <th>支持源 (KOL × 倾向)</th>
+              <th>OKX 状态</th>
+              <th>行动信号</th>
+            </tr>
+          </thead>
+          <tbody id="consensus-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="macro-warnings" id="macro-warnings">
+        <div class="warning-head">⚠ 宏观警报</div>
+        <div class="warning-list" id="warning-list"></div>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+<script>
+let DATA = {};
+
+async function loadData() {
+  // 优先 Vercel API(实时 Supabase),失败 fallback 到静态 data.json
+  const sources = ['/api/data', './data.json'];
+  for (const src of sources) {
+    try {
+      const resp = await fetch(src);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      DATA = await resp.json();
+      console.log(`✓ loaded data from ${src}`, DATA._generated_at ? `(generated ${DATA._generated_at})` : '');
+      return;
+    } catch (e) {
+      console.warn(`✗ ${src} failed:`, e.message);
+    }
+  }
+  document.body.innerHTML = '<div style="padding:40px;color:#fff;font-family:monospace;">Error: 数据加载失败 — /api/data 和 ./data.json 都不可用</div>';
+  throw new Error('all data sources failed');
+}
+
+function escapeHTML(s) {
+  return String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function urgClass(urg) {
+  if (!urg) return '';
+  const u = String(urg).toLowerCase();
+  if (u.includes('critical') || u.includes('立即') || u.includes('紧急')) return 'high';
+  if (u.includes('high') || u === '高') return 'high';
+  if (u.includes('mid') || u.includes('medium') || u === '中' || u === '中高') return 'mid';
+  if (u.includes('low') || u === '低') return 'low';
+  return '';
+}
+function urgLabel(urg) {
+  if (!urg) return '';
+  const u = String(urg).toLowerCase();
+  if (u.includes('critical') || u.includes('立即')) return 'CRITICAL';
+  if (u.includes('high') || u === '高' || u.includes('紧急')) return 'HIGH';
+  if (u.includes('mid') || u.includes('medium') || u === '中' || u === '中高') return 'MED';
+  if (u === '低' || u.includes('low')) return 'LOW';
+  return urg.toUpperCase();
+}
+function fmtDateRange(first, last) {
+  if (!first || !last) return '';
+  if (first === last) return last.replace(/^2026-/,'');
+  const f = first.replace(/^2026-/, '');
+  const l = last.replace(/^2026-/, '');
+  return `${f} → ${l}`;
+}
+function renderHotCards(arr, panelId) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+  panel.innerHTML = arr.map((item, idx) => {
+    const days = item.days_count || 1;
+    const persistTag = days > 1 ? `<span class="day-badge persist">DAY ${days}</span>` : '';
+    const tks = (item.tks || []).slice(0, 5).map(t => `<span class="tk-chip">${escapeHTML(t)}</span>`).join('');
+    const urgC = urgClass(item.urg);
+    const urgT = item.urg ? `<span class="urg-tag ${urgC}">${urgLabel(item.urg)}</span>` : '';
+    const cardCls = days > 1 ? 'continuing' : (urgC ? 'urg-' + urgC : '');
+    const et = item.event_type || 'other';
+    const typeLabels = {
+      'listing': '上币机会',
+      'risk': '风控',
+      'competitor': '竞对',
+      'macro': '宏观',
+      'tech_reg': '技术/监管',
+      'other': '其他'
+    };
+    const typeBadge = `<span class="type-badge ${et}">${typeLabels[et] || et}</span>`;
+    return `
+      <div class="hot-card ${cardCls}" data-cat="${et}">
+        <div class="rank">#${idx+1}</div>
+        <div class="head">
+          ${typeBadge}
+          <span class="heat-pill">${item.heat || 0}</span>
+          ${persistTag}
+          <span class="date-tag">${fmtDateRange(item.first_date, item.last_date)}</span>
+        </div>
+        <h3>${escapeHTML(item.name)}</h3>
+        <div class="desc">${escapeHTML(item.desc || '')}</div>
+        <div class="ticker-row">${tks}</div>
+        <div class="meta-row">
+          ${urgT}
+          <span>${escapeHTML(item.cluster || '')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+function renderAiPulse() {
+  const items = DATA.ai_full || [];
+  const groups = { industry: [], listing: [], kol: [] };
+  items.forEach(item => {
+    if (groups[item.category]) groups[item.category].push(item);
+  });
+
+  function renderCard(item) {
+    const days = item.days_count || 1;
+    const tks = (item.tks || []).slice(0, 8).map(t => `<span class="tk-chip">${escapeHTML(t)}</span>`).join('');
+    const dateTag = fmtDateRange(item.first_date, item.last_date);
+    const dayBadge = days > 1 ? `<span class="day-badge">DAY ${days}</span>` : '';
+    const sourceTag = item.source_tag ? `<span class="source-tag">${escapeHTML(item.source_tag)}</span>` : '';
+    const impact = item.impact_okx ? `
+      <div class="impact-line">
+        <span class="impact-label">OKX 影响</span>${escapeHTML(item.impact_okx)}
+      </div>
+    ` : '';
+    return `
+      <div class="ai-hot-card">
+        <div class="head">
+          <span class="heat-pill">${item.heat || 0}</span>
+          ${sourceTag}
+          ${dayBadge}
+          <span class="date-tag">${dateTag}</span>
+        </div>
+        <h4>${escapeHTML(item.name)}</h4>
+        <div class="desc">${escapeHTML((item.desc||'').slice(0, 280))}</div>
+        <div class="tks">${tks}</div>
+        ${impact}
+      </div>
+    `;
+  }
+
+  ['industry', 'listing', 'kol'].forEach(cat => {
+    const el = document.getElementById('pulse-' + cat);
+    if (!el) return;
+    if (groups[cat].length === 0) {
+      el.innerHTML = '<div style="padding: 14px 16px; color: var(--text-muted); font-style: italic; font-size: 12px;">本周暂无该类信号</div>';
+      return;
+    }
+    el.innerHTML = groups[cat].map(renderCard).join('');
+  });
+}
+function renderCompTimeline() {
+  const el = document.getElementById('comp-timeline');
+  if (!el) return;
+  const items = (DATA.ai_comp_dated || []).slice().sort((a,b) => b.date.localeCompare(a.date));
+  if (items.length === 0) {
+    el.innerHTML = '<div style="padding: 20px; color: var(--text-muted); font-style: italic;">暂无 AI 相关竞对动作</div>';
+    return;
+  }
+  el.innerHTML = items.map(c => `
+    <div class="comp-event">
+      <div class="date">${escapeHTML(c.date)}</div>
+      <div class="what">${escapeHTML(c.what || '')}</div>
+      <div class="detail">${escapeHTML(c.detail || '')}</div>
+    </div>
+  `).join('');
+}
+function renderKolConsensus() {
+  const consensus = DATA.ai_kol_consensus || [];
+  const warnings = DATA.ai_macro_warnings || [];
+
+  // 1. Top summary (one liner)
+  const summaryEl = document.getElementById('consensus-summary');
+  if (summaryEl) {
+    const strongUp = consensus.filter(c => c.verdict === 'strong_up' || c.verdict === 'up');
+    const strongDn = consensus.filter(c => c.verdict === 'strong_dn' || c.verdict === 'dn');
+    const upGap = strongUp.filter(c => c.okx_status === 'gap');
+    const dnCovered = strongDn.filter(c => c.okx_status === 'covered');
+    
+    let summary = '';
+    if (upGap.length > 0) {
+      const tks = upGap.map(c => `<span class="bull-tk">${c.ticker}</span>`).join(' · ');
+      summary += `<strong>看多 + 漏单 双信号:</strong> ${tks} — 加强上币优先级。`;
+    }
+    if (strongDn.length > 0) {
+      summary += summary ? '<br>' : '';
+      const tks = strongDn.map(c => `<span class="bear-tk">${c.ticker}</span>`).join(' · ');
+      summary += `<strong>反向警报:</strong> ${tks} — KOL 多源共识看空。`;
+    }
+    if (!summary) {
+      summary = '本周 KOL 观点分散，暂无明确共识。';
+    }
+    summaryEl.innerHTML = summary;
+  }
+
+  // 2. Consensus table
+  const tbody = document.getElementById('consensus-tbody');
+  if (tbody) {
+    if (consensus.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px; color:var(--text-muted); font-style:italic;">暂无 AI 相关 KOL 共识</td></tr>';
+    } else {
+      tbody.innerHTML = consensus.map(c => {
+        const sources = [
+          ...c.sources_up.map(v => `<span class="source-tag-kol up" title="${escapeHTML(v.view)}">@${escapeHTML(v.name.replace(/^@/,''))} 多</span>`),
+          ...c.sources_dn.map(v => `<span class="source-tag-kol dn" title="${escapeHTML(v.view)}">@${escapeHTML(v.name.replace(/^@/,''))} 空</span>`),
+          ...c.sources_mixed.map(v => `<span class="source-tag-kol mixed" title="${escapeHTML(v.view)}">@${escapeHTML(v.name.replace(/^@/,''))} 对冲</span>`),
+        ].join('');
+        
+        let actionCls = 'neutral';
+        if (c.action.includes('加强')) actionCls = 'strong';
+        else if (c.action.includes('风控') || c.action.includes('暂不上')) actionCls = 'warn';
+        
+        return `
+          <tr>
+            <td class="tk">${escapeHTML(c.ticker)}</td>
+            <td><span class="verdict-pill ${c.verdict}">${escapeHTML(c.verdict_label)}</span></td>
+            <td><div class="source-list">${sources}</div></td>
+            <td><span class="okx-pill ${c.okx_status}">${escapeHTML(c.okx_label)}</span></td>
+            <td><div class="action-signal ${actionCls}">${escapeHTML(c.action) || '—'}</div></td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+
+  // 3. Macro warnings
+  const warnList = document.getElementById('warning-list');
+  if (warnList) {
+    if (warnings.length === 0) {
+      warnList.innerHTML = '<div style="padding: 10px; font-style: italic; color: var(--text-muted);">本周无宏观警报</div>';
+    } else {
+      warnList.innerHTML = warnings.map(w => `
+        <div class="warning-item">
+          <div class="head">
+            <span class="src">${escapeHTML(w.name)}</span>
+            <span>${escapeHTML(w.date)}</span>
+          </div>
+          <div class="view">${escapeHTML(w.view)}</div>
+          <div class="impact">${escapeHTML(w.impact)}</div>
+        </div>
+      `).join('');
+    }
+  }
+}
+// =========================
+// DATE FILTER + AGGREGATION
+// =========================
+// 注意:这几个变量在 DATA 加载完后会在 loadData().then() 里重新赋值
+let ALL_DATES = [];
+let DATE_MIN = '2026-04-16';
+let DATE_MAX = '2026-04-26';
+
+let activeCat = 'all';
+let currentDateFrom = DATE_MIN;
+let currentDateTo = DATE_MAX;
+let currentGranularity = 'day';
+
+// Recommend granularity based on date span
+function recommendGranularity(fromDate, toDate) {
+  const d1 = new Date(fromDate + 'T00:00:00Z');
+  const d2 = new Date(toDate + 'T00:00:00Z');
+  const days = Math.round((d2 - d1) / 86400000) + 1;
+  if (days <= 7) return 'day';
+  if (days <= 60) return 'week';
+  return 'month';
+}
+
+// Aggregate raw items in given date range (inclusive) by cluster
+// Convert YYYY-MM-DD to bucket key based on granularity
+function dateToBucket(date, granularity) {
+  if (granularity === 'day') return date;
+  if (granularity === 'month') return date.slice(0, 7); // YYYY-MM
+  if (granularity === 'week') {
+    // ISO week: get the Monday of the week containing this date
+    const d = new Date(date + 'T00:00:00Z');
+    const day = d.getUTCDay() || 7; // Sunday=0 -> 7
+    d.setUTCDate(d.getUTCDate() - day + 1); // Monday
+    return d.toISOString().slice(0, 10); // YYYY-MM-DD of Monday
+  }
+  return date;
+}
+
+function aggregateRange(fromDate, toDate, granularity) {
+  granularity = granularity || 'day';
+  const raw = DATA.raw_items_by_date || {};
+  // Bucket key = `${cluster}__${dateBucket}` for week/month, or just `cluster` for day
+  // Actually we want: same cluster across the same time bucket = 1 card
+  // For 'day' granularity: cluster acts as the merge key (same as before — events spanning days merged into 1 card)
+  // For 'week'/'month': cluster + bucket — same cluster in different buckets becomes separate cards
+  const buckets = {};
+  Object.keys(raw).forEach(date => {
+    if (date < fromDate || date > toDate) return;
+    const dateBucket = dateToBucket(date, granularity);
+    raw[date].forEach(item => {
+      const cluster = (item.cluster_explicit && item.cluster_explicit.trim()) || (item.name || '').slice(0, 30).trim();
+      // For day: key = cluster (merge across all days in range)
+      // For week/month: key = cluster + bucket (merge within bucket only)
+      const key = granularity === 'day' ? cluster : `${cluster}__${dateBucket}`;
+      if (!buckets[key]) {
+        buckets[key] = {
+          cluster: cluster,
+          bucket: dateBucket,
+          granularity: granularity,
+          name: item.name,
+          desc: item.desc,
+          heat: item.heat || 0,
+          days: new Set([date]),
+          tks: new Set([...(item.tks || []), item.tk].filter(Boolean)),
+          urg: item.urg,
+          gap: item.gap,
+          comp: item.comp,
+          first_date: date,
+          last_date: date,
+          latest_item: item,
+        };
+      } else {
+        const b = buckets[key];
+        b.days.add(date);
+        (item.tks || []).forEach(t => b.tks.add(t));
+        if (item.tk) b.tks.add(item.tk);
+        if (item.heat > b.heat) b.heat = item.heat;
+        if (date > b.last_date) {
+          b.last_date = date;
+          b.name = item.name;
+          b.desc = item.desc;
+          b.urg = item.urg;
+          b.gap = item.gap;
+          b.latest_item = item;
+        }
+        if (date < b.first_date) b.first_date = date;
+      }
+    });
+  });
+  const out = Object.values(buckets).map(b => ({
+    cluster: b.cluster,
+    bucket: b.bucket,
+    granularity: b.granularity,
+    name: b.name,
+    desc: b.desc,
+    heat: b.heat,
+    days_count: b.days.size,
+    first_date: b.first_date,
+    last_date: b.last_date,
+    tks: Array.from(b.tks).slice(0, 8),
+    urg: b.urg,
+    gap: b.gap || [],
+    event_type: classifyEvent(b.latest_item, b.cluster),
+  }));
+  // Sort: by bucket (newest first) for week/month, by heat for day
+  if (granularity === 'day') {
+    out.sort((a, b) => (b.heat - a.heat) || (b.days_count - a.days_count));
+  } else {
+    out.sort((a, b) => {
+      if (a.bucket !== b.bucket) return b.bucket.localeCompare(a.bucket); // newer bucket first
+      return b.heat - a.heat;
+    });
+  }
+  return out;
+}
+
+function classifyEvent(item, cluster) {
+  // Mirror of Python classify rules — keep in sync
+  const text = ((item.name || '') + ' ' + (item.desc || '')).toLowerCase();
+  const urg = (item.urg || '').toLowerCase();
+  const clusterMap = {
+    'KELP':'risk','RAVE':'risk','BELIEVE':'risk','BLESS':'risk','SIREN':'risk','ETHFI':'risk','BMNR':'risk',
+    'CHIP':'listing','GENIUS':'listing','OPG':'listing','AVGO':'listing',
+    'stock_derivatives':'listing','AI_App_SaaS':'listing','AI_semis':'listing',
+    'MEGA':'listing','BIO':'listing','SPCX':'listing',
+    'BTC_technical':'macro','btc_macro':'macro','etf_flow':'macro','stablecoin_flow':'macro','BTC_macro':'macro',
+    'regulation':'tech_reg','HK_stablecoin':'tech_reg','ETH_roadmap':'tech_reg',
+    'privacy_coins':'tech_reg','GENIUS_ACT':'tech_reg','HK_regulation':'tech_reg',
+    'IPO':'tech_reg','LTC_security':'tech_reg','prediction_market':'tech_reg',
+  };
+  if (clusterMap[cluster]) return clusterMap[cluster];
+  if (text.includes('okx 完全缺失') || text.includes('okx 全缺') || text.includes('okx 仅 perp') || text.includes('okx 完全无')) return 'listing';
+  if (['上币','建议上线','漏单','缺现货','okx 缺','gap 扩大','差距收窄','股票永续对标'].some(k => text.includes(k))) return 'listing';
+  if (['操纵','坏账','穿仓','砸盘','强平','爆仓','控盘','危机','跑路','破产','安全事件','漏洞','退市','风控预警','清算','信任叙事','信任危机'].some(k => text.includes(k))) return 'risk';
+  if (['美伊','霍尔木兹','宏观','美联储','spx','s&p','risk-on','risk-off','btc 顶部','btc 积累','资金流入','资金流出','机构加码','机构净流入','机构买','机构大买','巨鲸','whale','资金轮动','eth etf','btc etf'].some(k => text.includes(k))) return 'macro';
+  if (['监管','牌照','sec','听证','法案','genius act','clarity act','路线图','roadmap','协议升级','硬分叉','量子迁移','bip-','隐私'].some(k => text.includes(k))) return 'tech_reg';
+  if (['竞对','抢先','收购','合并','宣布上线'].some(k => text.includes(k))) return 'competitor';
+  return 'other';
+}
+
+function fmtShortDate(d) { return d ? d.slice(5) : ''; }
+
+function refreshHotPanel() {
+  const items = aggregateRange(currentDateFrom, currentDateTo, currentGranularity);
+  // Render
+  renderHotCards(items, 'panel-current');
+  // Update summary line
+  const days = new Set();
+  ALL_DATES.forEach(d => { if (d >= currentDateFrom && d <= currentDateTo) days.add(d); });
+  const summary = document.getElementById('date-summary');
+  if (summary) {
+    const grLabel = {'day': '日', 'week': '周', 'month': '月'}[currentGranularity] || '日';
+    if (days.size === 0) {
+      summary.textContent = '该范围无数据';
+    } else if (days.size === 1) {
+      summary.textContent = `单日 · ${items.length} 事件`;
+    } else {
+      summary.textContent = `${days.size} 天 · ${grLabel}聚合 · ${items.length} 事件`;
+    }
+  }
+  // Update granularity buttons + hint
+  document.querySelectorAll('.gr-opt').forEach(b => {
+    b.classList.toggle('active', b.dataset.gr === currentGranularity);
+  });
+  const hint = document.getElementById('gr-hint');
+  if (hint) {
+    const recommended = recommendGranularity(currentDateFrom, currentDateTo);
+    const grLabel = {'day': '日', 'week': '周', 'month': '月'}[recommended];
+    hint.textContent = currentGranularity === recommended ? '' : `推荐: ${grLabel}`;
+  }
+  // Update chip counts based on currently rendered items
+  const counts = {all: items.length, listing:0, risk:0, competitor:0, macro:0, tech_reg:0, other:0};
+  items.forEach(item => { counts[item.event_type] = (counts[item.event_type] || 0) + 1; });
+  Object.keys(counts).forEach(k => {
+    const el = document.getElementById('ct-' + k);
+    if (el) el.textContent = counts[k];
+  });
+  applyFilter();
+}
+
+function applyFilter() {
+  const activePanel = document.getElementById('panel-current');
+  if (!activePanel) return;
+  let visibleCount = 0;
+  activePanel.querySelectorAll('.hot-card').forEach(card => {
+    if (activeCat === 'all' || card.dataset.cat === activeCat) {
+      card.classList.remove('hidden');
+      visibleCount++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  let emptyEl = activePanel.querySelector('.hot-empty');
+  if (visibleCount === 0) {
+    if (!emptyEl) {
+      emptyEl = document.createElement('div');
+      emptyEl.className = 'hot-empty';
+      activePanel.appendChild(emptyEl);
+    }
+    emptyEl.textContent = activePanel.querySelectorAll('.hot-card').length === 0
+      ? '该日期范围无热点数据'
+      : `当前范围下，「${getCatLabel(activeCat)}」类别暂无热点`;
+    emptyEl.style.display = '';
+  } else if (emptyEl) {
+    emptyEl.style.display = 'none';
+  }
+}
+
+function getCatLabel(cat) {
+  const labels = {'all':'全部','listing':'上币机会','risk':'风控','competitor':'竞对','macro':'宏观','tech_reg':'技术/监管','other':'其他'};
+  return labels[cat] || cat;
+}
+
+// === Wire up date inputs + quick buttons ===
+const dateFromInput = document.getElementById('date-from');
+const dateToInput = document.getElementById('date-to');
+dateFromInput.min = DATE_MIN;
+dateFromInput.max = DATE_MAX;
+dateToInput.min = DATE_MIN;
+dateToInput.max = DATE_MAX;
+dateFromInput.value = DATE_MIN;
+dateToInput.value = DATE_MAX;
+
+function setDateRange(from, to, quickKey) {
+  currentDateFrom = from;
+  currentDateTo = to;
+  dateFromInput.value = from;
+  dateToInput.value = to;
+  // Auto-select recommended granularity based on the new date span
+  currentGranularity = recommendGranularity(from, to);
+  // Update quick button active state
+  document.querySelectorAll('.date-quick').forEach(b => b.classList.remove('active'));
+  if (quickKey) {
+    const btn = document.querySelector(`.date-quick[data-quick="${quickKey}"]`);
+    if (btn) btn.classList.add('active');
+  }
+  refreshHotPanel();
+}
+
+dateFromInput.addEventListener('change', () => {
+  if (dateFromInput.value && dateToInput.value) {
+    if (dateFromInput.value > dateToInput.value) dateToInput.value = dateFromInput.value;
+    setDateRange(dateFromInput.value, dateToInput.value, null);
+  }
+});
+dateToInput.addEventListener('change', () => {
+  if (dateFromInput.value && dateToInput.value) {
+    if (dateToInput.value < dateFromInput.value) dateFromInput.value = dateToInput.value;
+    setDateRange(dateFromInput.value, dateToInput.value, null);
+  }
+});
+
+// Helper: get N-day window ending at last available date in dataset
+function nDayWindow(n) {
+  const sorted = [...ALL_DATES].sort();
+  const end = sorted[sorted.length - 1];
+  // Compute calendar date n-1 days before end, but clamp to DATE_MIN
+  const endDate = new Date(end + 'T00:00:00Z');
+  endDate.setUTCDate(endDate.getUTCDate() - (n - 1));
+  let start = endDate.toISOString().slice(0, 10);
+  if (start < DATE_MIN) start = DATE_MIN;
+  return [start, end];
+}
+
+document.querySelectorAll('.date-quick').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.dataset.quick;
+    if (q === 'yesterday') {
+      const sorted = [...ALL_DATES].sort();
+      const yest = sorted.length >= 2 ? sorted[sorted.length - 2] : sorted[sorted.length - 1];
+      setDateRange(yest, yest, 'yesterday');
+    } else if (q === '7d') {
+      const [start, end] = nDayWindow(7);
+      setDateRange(start, end, '7d');
+    } else if (q === '30d') {
+      const [start, end] = nDayWindow(30);
+      setDateRange(start, end, '30d');
+    } else if (q === '90d') {
+      const [start, end] = nDayWindow(90);
+      setDateRange(start, end, '90d');
+    } else if (q === 'all') {
+      setDateRange(DATE_MIN, DATE_MAX, 'all');
+    }
+  });
+});
+
+// === Granularity selector ===
+document.querySelectorAll('.gr-opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentGranularity = btn.dataset.gr;
+    refreshHotPanel();
+  });
+});
+
+// === Category chips ===
+document.querySelectorAll('.cat-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCat = chip.dataset.cat;
+    applyFilter();
+  });
+});
+
+function openDrawer() {
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('drawer-ai').classList.add('open');
+  document.body.classList.add('drawer-open');
+}
+function closeDrawer() {
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('drawer-ai').classList.remove('open');
+  document.body.classList.remove('drawer-open');
+}
+document.getElementById('theme-card-ai').addEventListener('click', openDrawer);
+document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+document.getElementById('drawer-overlay').addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+// === Async init === 所有依赖 DATA 的初始化必须在 loadData() 完成后做
+loadData().then(() => {
+  // 1. 用真实 meta 重新赋值日期变量(原值是 fallback 占位)
+  const meta = DATA.meta || {};
+  ALL_DATES = meta.all_dates || [];
+  DATE_MIN = meta.date_min || DATE_MIN;
+  DATE_MAX = meta.date_max || DATE_MAX;
+  currentDateFrom = DATE_MIN;
+  currentDateTo = DATE_MAX;
+
+  // 2. 渲染 KPI 卡(原来在 DATA 空时就执行,数字全是回退默认值)
+  const kpi = DATA.kpi || {};
+  document.getElementById('topbar-date').textContent = meta.date_max || '';
+  document.getElementById('kpi-month-new').textContent = (DATA.month || []).length * 5;
+  document.getElementById('kpi-week-l3').textContent = kpi.l3_week ?? 0;
+  document.getElementById('kpi-week-comp').textContent = kpi.comp_week ?? 0;
+  document.getElementById('kpi-week-kol').textContent = kpi.kol_week ?? 0;
+  document.getElementById('kpi-stock-gap').textContent = kpi.gap_count ?? 0;
+
+  // 3. 渲染主内容
+  refreshHotPanel();
+  renderAiPulse();
+  renderCompTimeline();
+  renderKolConsensus();
+
+  // 4. Drawer date picker
+  const drawerFromInput = document.getElementById('drawer-date-from');
+  const drawerToInput = document.getElementById('drawer-date-to');
+  if (drawerFromInput && drawerToInput) {
+    drawerFromInput.min = DATE_MIN;
+    drawerFromInput.max = DATE_MAX;
+    drawerToInput.min = DATE_MIN;
+    drawerToInput.max = DATE_MAX;
+    drawerFromInput.value = DATE_MIN;
+    drawerToInput.value = DATE_MAX;
+  }
+});
+</script>
+
+</body>
+</html>
