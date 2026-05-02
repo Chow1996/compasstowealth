@@ -2039,12 +2039,7 @@ function getCatLabel(cat) {
 // === Wire up date inputs + quick buttons ===
 const dateFromInput = document.getElementById('date-from');
 const dateToInput = document.getElementById('date-to');
-dateFromInput.min = DATE_MIN;
-dateFromInput.max = DATE_MAX;
-dateToInput.min = DATE_MIN;
-dateToInput.max = DATE_MAX;
-dateFromInput.value = DATE_MIN;
-dateToInput.value = DATE_MAX;
+// 注意:min/max/value 在 loadData().then() 里用真实 meta 重新设置,这里不要预设
 
 function setDateRange(from, to, quickKey) {
   currentDateFrom = from;
@@ -2161,13 +2156,23 @@ loadData().then(() => {
   document.getElementById('kpi-week-kol').textContent = kpi.kol_week ?? 0;
   document.getElementById('kpi-stock-gap').textContent = kpi.gap_count ?? 0;
 
-  // 3. 渲染主内容
+  // 3. 主日期 picker(原来在脚本顶层就执行,DATE_MIN/MAX 还是占位值)
+  if (dateFromInput && dateToInput) {
+    dateFromInput.min = DATE_MIN;
+    dateFromInput.max = DATE_MAX;
+    dateToInput.min = DATE_MIN;
+    dateToInput.max = DATE_MAX;
+    dateFromInput.value = DATE_MIN;
+    dateToInput.value = DATE_MAX;
+  }
+
+  // 4. 渲染主内容
   refreshHotPanel();
   renderAiPulse();
   renderCompTimeline();
   renderKolConsensus();
 
-  // 4. Drawer date picker
+  // 5. Drawer date picker
   const drawerFromInput = document.getElementById('drawer-date-from');
   const drawerToInput = document.getElementById('drawer-date-to');
   if (drawerFromInput && drawerToInput) {
