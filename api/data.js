@@ -27,6 +27,40 @@ function eventToCluster(e) {
   };
 }
 
+// 跨源去重:LLM 容易把同一事件从多个 RSS / news 源各抽一次。
+// 用 ticker 集 + 关键词 hash 做粗去重,留 heat 最高的那条。
+function dedupEvents(events) {
+  const seen = new Map();  // key: "tickers||keywords" → idx
+  const tokenize = (s) => (s || '')
+    .replace(/[，。、,.\s\-—|·:：!！?？""''「」《》()（）]/g, '')
+    .toLowerCase()
+    .split('')
+    .filter(c => /[一-龥a-z0-9]/.test(c));
+
+  const keywordKey = (name) => {
+    const tokens = tokenize(name);
+    return tokens.slice(0, 8).join('');  // 前 8 个有效字符
+  };
+
+  const out = [];
+  for (const e of events) {
+    const tks = (e.tickers || []).slice().sort().join(',');
+    const kw = keywordKey(e.name);
+    const key = `${tks}||${kw}`;
+    const existing = seen.get(key);
+    if (existing == null) {
+      seen.set(key, out.length);
+      out.push(e);
+    } else {
+      // 同 key,留 heat 高的
+      if ((e.heat || 0) > (out[existing].heat || 0)) {
+        out[existing] = e;
+      }
+    }
+  }
+  return out;
+}
+
 function bucketByHeat(e) {
   const h = e.heat || 0;
   if (h >= 80) return 'L3';
@@ -85,7 +119,7 @@ module.exports = async (req, res) => {
       .order('published_at', { ascending: false })
       .limit(50);
 
-    const safeEvents = events || [];
+    const safeEvents = dedupEvents(events || []);
     const safeKol = kolViews || [];
     const safeRaw = rawSignals || [];
     const safeCex = cexAnnounce || [];
@@ -201,13 +235,13 @@ module.exports = async (req, res) => {
       today_comp: todayComp.length,
     };
 
-    // 拉 tickers 算漏单
+    // 拉 tickers 算漏单(全拉,JS 里过滤,避免 supabase-js 的 not-null 语法坑)
     const { data: gapsData } = await supabase
       .from('tickers')
-      .select('ticker, name, priority, competitors_listed')
-      .eq('okx_perp', false)
-      .not('competitors_listed', 'is', null);
-    const gaps = (gapsData || []).filter(t => (t.competitors_listed || []).length > 0);
+      .select('ticker, name, priority, competitors_listed, okx_perp');
+    const gaps = (gapsData || []).filter(
+      t => !t.okx_perp && Array.isArray(t.competitors_listed) && t.competitors_listed.length > 0
+    );
     kpi.gap_count = gaps.length;
 
     // ==== top_tickers_week ====
