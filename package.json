@@ -1,0 +1,9 @@
+{
+  "name": "compasstowealth-dashboard",
+  "version": "1.0.0",
+  "description": "OKX Listing Compass dashboard backed by Supabase",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

@@ -1601,14 +1601,21 @@ body::before {
 let DATA = {};
 
 async function loadData() {
-  try {
-    const resp = await fetch('./data.json');
-    DATA = await resp.json();
-  } catch (e) {
-    console.error('Failed to load data.json:', e);
-    document.body.innerHTML = '<div style="padding:40px;color:#fff;font-family:monospace;">Error: data.json 加载失败 — ' + e.message + '</div>';
-    throw e;
+  // 优先 Vercel API(实时 Supabase),失败 fallback 到静态 data.json
+  const sources = ['/api/data', './data.json'];
+  for (const src of sources) {
+    try {
+      const resp = await fetch(src);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      DATA = await resp.json();
+      console.log(`✓ loaded data from ${src}`, DATA._generated_at ? `(generated ${DATA._generated_at})` : '');
+      return;
+    } catch (e) {
+      console.warn(`✗ ${src} failed:`, e.message);
+    }
   }
+  document.body.innerHTML = '<div style="padding:40px;color:#fff;font-family:monospace;">Error: 数据加载失败 — /api/data 和 ./data.json 都不可用</div>';
+  throw new Error('all data sources failed');
 }
 
 function escapeHTML(s) {
