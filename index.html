@@ -1439,19 +1439,7 @@ body::before {
     <div class="drawer-section">
       <h3>主题速览</h3>
       <p class="section-sub">为什么这个主题值得看？当前最大的机会是什么？</p>
-      <div class="theme-overview">
-        <div class="overview-narrative">
-          <div class="label">本周叙事 · 04-20 → 04-26</div>
-          AI 产业链在 4/20-4/26 一周内呈现<strong>"美股代币化加速 + 中概 AI / 半导体设备缺位"</strong>双线信号。竞对侧 Bitget 持续扩 AI 半导体股 perps（AMAT / ASML / AVGO / ARM / BABA），<strong>OKX 已连续 10 天漏单</strong>。KOL 端 based16z / KelseyWeb3VC 共识看多 ARM ATH + SK Hynix / Micron 存储主线，hexiecs 则做 NVDA 多 / TSLA 空对冲。<br><br>
-          <strong>当前最大窗口：AVGO · ASML · BABA</strong> 三个 Tier 1 AI 半导体标的现在补齐即可，再拖会被动。
-        </div>
-        <div class="overview-kpis">
-          <div class="kpi-block"><div class="label">OKX 覆盖率</div><div class="val">68%</div><div class="delta">17 / 25 标的</div></div>
-          <div class="kpi-block"><div class="label">漏单 vol / 7d</div><div class="val bear">$58.4M</div><div class="delta">竞对累计</div></div>
-          <div class="kpi-block"><div class="label">本周 AI 热点</div><div class="val">5</div><div class="delta">3 持续多日</div></div>
-          <div class="kpi-block"><div class="label">连续漏单</div><div class="val bear">10 天</div><div class="delta">AVGO / ASML / ARM</div></div>
-        </div>
-      </div>
+      <div class="theme-overview" id="theme-overview"></div>
     </div>
 
     <div class="drawer-section">
@@ -1485,85 +1473,42 @@ body::before {
 
     <div class="drawer-section">
       <h3>OKX 已覆盖 vs 漏单清单</h3>
-      <p class="section-sub">基于内部 datatools 实时查询 OKX <code style="color:var(--accent)">tradfi=yes</code> + 竞对监控表，按产业链分层。数据日期 04-26。</p>
+      <p class="section-sub">数据来自 Supabase <code style="color:var(--accent)">tickers</code> 表(<code>okx_perp / okx_spot / competitors_listed</code> 字段),按产业链分层。</p>
       <div class="gap-table-wrap">
         <table class="gap-table">
           <thead>
             <tr>
               <th>Ticker</th><th>名称 · 产业链层</th><th>层级</th>
               <th>OKX</th><th>Binance</th><th>Bitget</th><th>Bybit</th><th>HL</th>
-              <th>漏单天数</th><th>建议</th>
+              <th>漏单</th><th>建议</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="row-divider"><td colspan="10">▸ 核心算力 · GPU / ASIC / CPU</td></tr>
-            <tr><td class="tk">NVDA</td><td class="cat">英伟达 · GPU 龙头</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">AMD</td><td class="cat">AMD · GPU/CPU</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">INTC</td><td class="cat">Intel · CPU 复苏</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">AVGO</td><td class="cat">博通 · ASIC 龙头 ★</td><td>Tier 1</td><td class="x">✗</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
-            <tr><td class="tk">ARM</td><td class="cat">ARM · IP 龙头</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ 内存 / HBM / 存储</td></tr>
-            <tr><td class="tk">MU</td><td class="cat">Micron · HBM</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">SNDK</td><td class="cat">SanDisk · 存储</td><td>Tier 2</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ 半导体设备 / 代工</td></tr>
-            <tr><td class="tk">TSM</td><td class="cat">台积电 · 代工</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">ASML</td><td class="cat">荷兰光刻机龙头 ★</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
-            <tr><td class="tk">AMAT</td><td class="cat">应用材料 · 半导体设备</td><td>Tier 1</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ AI 应用 / SaaS / 云算力</td></tr>
-            <tr><td class="tk">PLTR</td><td class="cat">Palantir · AI Agent</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">META</td><td class="cat">Meta · AI 应用</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">MSFT</td><td class="cat">Microsoft · Copilot</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">GOOGL</td><td class="cat">Alphabet · AI</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">AMZN</td><td class="cat">Amazon · AWS</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">ORCL</td><td class="cat">Oracle · 云算力</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-            <tr><td class="tk">CRWV</td><td class="cat">CoreWeave · Neocloud</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td>—</td><td><span class="action-pill skip">已上</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ 中国 AI / 中概</td></tr>
-            <tr><td class="tk">BABA</td><td class="cat">阿里巴巴 · 中国 AI ★</td><td>Tier 1</td><td class="x">✗</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="check">✓</td><td class="days">10 天</td><td><span class="action-pill go">建议上</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ 卫星 · 量子 / 光模块 / Neocloud</td></tr>
-            <tr><td class="tk">IONQ</td><td class="cat">IonQ · 量子计算</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
-            <tr><td class="tk">AAOI</td><td class="cat">AAOI · 光模块</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
-            <tr><td class="tk">COHR</td><td class="cat">Coherent · 光模块</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
-            <tr><td class="tk">NBIS</td><td class="cat">Nebius · Neocloud</td><td>Tier 2</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="days">3 天</td><td><span class="action-pill wait">观望</span></td></tr>
-
-            <tr class="row-divider"><td colspan="10">▸ 衍生品 · 半导体指数代币</td></tr>
-            <tr><td class="tk">CHIP</td><td class="cat">CHIP 半导体指数 (perp 已上, spot 缺)</td><td>Tier 1</td><td class="check">✓</td><td class="check">✓</td><td class="x">✗</td><td class="x">✗</td><td class="check">✓</td><td class="days">5 天 spot 缺</td><td><span class="action-pill go">补 spot</span></td></tr>
-          </tbody>
+          <tbody id="coverage-tbody"></tbody>
         </table>
       </div>
 
-      <div class="callout">
-        <div class="label">⚠ 决策建议（自动生成）</div>
-        <p><strong>Tier 1 漏单优先级</strong>：AVGO（ASIC 龙头）+ ASML（光刻独家）+ AMAT（半导体设备）+ ARM（IP 龙头）+ BABA（中国 AI）<strong>本周即可评估上线</strong>，竞对覆盖广 + 持续 10 天漏单。<strong>Tier 2 观望</strong>：IONQ / AAOI / COHR / NBIS 仅 Bitget 独家，等 Binance 跟进再上。<strong>CHIP 现货补全</strong>：5 家 Tier1 现货已上、OKX 仅 perp，Day 5 持续被动。</p>
+      <div class="callout" id="coverage-callout">
+        <div class="label">⚠ 决策建议</div>
+        <p id="coverage-callout-text">基于 tickers 表自动生成 …</p>
       </div>
     </div>
 
     <div class="drawer-section">
       <h3>竞对覆盖矩阵</h3>
-      <p class="section-sub">tradfi=yes (perp_usdt) · 7 天 vol · 截至 04-26 · 数据来自 OKX datatools <code style="color:var(--accent)">ads_okx_competitor_amp_external_kline_trade_amounts_di</code></p>
+      <p class="section-sub">数据来自 Supabase <code style="color:var(--accent)">tickers.competitors_listed</code> + <code>okx_perp/okx_spot</code> 字段聚合。</p>
       <div class="matrix">
         <table>
           <thead>
-            <tr><th>交易所</th><th>tradfi 标的数</th><th>7d vol</th><th>份额</th><th>核心算力</th><th>HBM</th><th>AI 应用</th><th>半导体设备</th></tr>
+            <tr><th>交易所</th><th>AI 标的数</th><th>核心算力</th><th>HBM</th><th>AI 应用</th><th>半导体设备</th></tr>
           </thead>
-          <tbody>
-            <tr><td>Binance</td><td class="bar-cell"><div class="bar" style="width:30%"></div><span class="num lead">31</span></td><td class="num lead">$21.76B</td><td class="num lead">52%</td><td class="num lead">8/9</td><td class="num">2/3</td><td class="num lead">7/8</td><td class="num zero">0/4</td></tr>
-            <tr><td>Hyperliquid</td><td class="bar-cell"><div class="bar" style="width:100%"></div><span class="num lead">103</span></td><td class="num">$13.10B</td><td class="num">31%</td><td class="num">3/9</td><td class="num zero">0/3</td><td class="num">2/8</td><td class="num zero">0/4</td></tr>
-            <tr><td>Bitget</td><td class="bar-cell"><div class="bar" style="width:66%"></div><span class="num">68</span></td><td class="num">$4.24B</td><td class="num">10%</td><td class="num">5/9</td><td class="num">1/3</td><td class="num">4/8</td><td class="num lead">4/4</td></tr>
-            <tr class="row-okx"><td>OKX</td><td class="bar-cell"><div class="bar" style="width:33%"></div><span class="num">34</span></td><td class="num">$1.98B</td><td class="num">5%</td><td class="num">7/9</td><td class="num">1/3</td><td class="num">6/8</td><td class="num zero">0/4</td></tr>
-            <tr><td>Bybit</td><td class="bar-cell"><div class="bar" style="width:3%"></div><span class="num zero">3</span></td><td class="num zero">$0.63B</td><td class="num zero">2%</td><td class="num">1/9</td><td class="num zero">0/3</td><td class="num">1/8</td><td class="num zero">0/4</td></tr>
-          </tbody>
+          <tbody id="matrix-tbody"></tbody>
         </table>
       </div>
     </div>
 
     <div class="drawer-section">
       <h3>竞对动作时间线</h3>
-      <p class="section-sub">最近 7 天 (04-20 → 04-26) — 仅显示 AI / 半导体 / 美股代币化相关动作。</p>
+      <p class="section-sub">来自各交易所的官方上币公告(过去 7 天)— Binance / Bitget / Bybit。</p>
       <div class="comp-timeline" id="comp-timeline"></div>
     </div>
 
@@ -1733,18 +1678,147 @@ function renderAiPulse() {
 function renderCompTimeline() {
   const el = document.getElementById('comp-timeline');
   if (!el) return;
-  const items = (DATA.ai_comp_dated || []).slice().sort((a,b) => b.date.localeCompare(a.date));
+  const items = (DATA.ai_comp_dated || []).slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
   if (items.length === 0) {
-    el.innerHTML = '<div style="padding: 20px; color: var(--text-muted); font-style: italic;">暂无 AI 相关竞对动作</div>';
+    el.innerHTML = '<div style="padding: 20px; color: var(--text-muted); font-style: italic;">暂无竞对动作</div>';
     return;
   }
-  el.innerHTML = items.map(c => `
-    <div class="comp-event">
-      <div class="date">${escapeHTML(c.date)}</div>
-      <div class="what">${escapeHTML(c.what || '')}</div>
-      <div class="detail">${escapeHTML(c.detail || '')}</div>
+  el.innerHTML = items.map(c => {
+    const cex = (c.cex || '').toUpperCase();
+    const cexBadge = cex ? `<span class="source-tag" style="margin-right:6px;">${escapeHTML(cex)}</span>` : '';
+    return `
+      <div class="comp-event">
+        <div class="date">${escapeHTML(c.date || '')}</div>
+        <div class="what">${cexBadge}${escapeHTML(c.what || '')}</div>
+        <div class="detail">${escapeHTML(c.detail || '')}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// 主题速览(取代之前硬编码 HTML)
+function renderThemeOverview() {
+  const ov = DATA.theme_overview || {};
+  const el = document.getElementById('theme-overview');
+  if (!el) return;
+  const k = ov.kpis || {};
+  const narrative = ov.narrative
+    ? escapeHTML(ov.narrative).replace(/\n/g, '<br>')
+    : '<em style="color:var(--text-muted);">本周主题叙事尚未生成 — pipeline 每周一自动刷新 themes.narrative_current</em>';
+  const updatedLabel = ov.narrative_updated_at
+    ? `更新于 ${ov.narrative_updated_at.slice(0, 10)}`
+    : '尚未更新';
+  el.innerHTML = `
+    <div class="overview-narrative">
+      <div class="label">本周叙事 · ${escapeHTML(updatedLabel)}</div>
+      ${narrative}
     </div>
-  `).join('');
+    <div class="overview-kpis">
+      <div class="kpi-block">
+        <div class="label">OKX 覆盖率</div>
+        <div class="val">${k.okx_coverage_pct ?? 0}%</div>
+        <div class="delta">${escapeHTML(k.okx_coverage_text || '—')}</div>
+      </div>
+      <div class="kpi-block">
+        <div class="label">本周 AI 热点</div>
+        <div class="val">${k.ai_hot_week ?? 0}</div>
+        <div class="delta">events</div>
+      </div>
+      <div class="kpi-block">
+        <div class="label">漏单标的</div>
+        <div class="val ${(k.gap_count || 0) > 0 ? 'bear' : ''}">${k.gap_count ?? 0}</div>
+        <div class="delta">${escapeHTML((k.gap_tickers || []).join(' · ') || '—')}</div>
+      </div>
+    </div>
+  `;
+}
+
+// OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
+function renderCoverageTable() {
+  const groups = DATA.coverage_table || [];
+  const tbody = document.getElementById('coverage-tbody');
+  if (!tbody) return;
+  if (groups.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="10" style="padding:20px;text-align:center;color:var(--text-muted);font-style:italic;">tickers 表无数据(或 sub_category 未配)</td></tr>';
+    return;
+  }
+  const exchOrder = ['Binance', 'Bitget', 'Bybit', 'Hyperliquid'];
+  const rows = groups.map(g => {
+    const groupRow = `<tr class="row-divider"><td colspan="10">▸ ${escapeHTML(g.group)}</td></tr>`;
+    const itemRows = g.items.map(t => {
+      const okxOk = t.okx_perp || t.okx_spot;
+      const okxCell = okxOk ? '<td class="check">✓</td>' : '<td class="x">✗</td>';
+      const exchCells = exchOrder.map(ex =>
+        (t.competitors || []).includes(ex)
+          ? '<td class="check">✓</td>'
+          : '<td class="x">✗</td>'
+      ).join('');
+      const compCount = (t.competitors || []).length;
+      let action;
+      if (okxOk) action = '<span class="action-pill skip">已上</span>';
+      else if (compCount >= 2) action = '<span class="action-pill go">建议上</span>';
+      else if (compCount === 1) action = '<span class="action-pill wait">观望</span>';
+      else action = '<span class="action-pill skip">—</span>';
+      const gap = !okxOk && compCount > 0 ? `<span class="days">${compCount} 家有</span>` : '—';
+      return `<tr>
+        <td class="tk">${escapeHTML(t.ticker)}</td>
+        <td class="cat">${escapeHTML(t.name || '')}</td>
+        <td>${escapeHTML(t.tier || '')}</td>
+        ${okxCell}${exchCells}
+        <td>${gap}</td>
+        <td>${action}</td>
+      </tr>`;
+    }).join('');
+    return groupRow + itemRows;
+  }).join('');
+  tbody.innerHTML = rows;
+
+  // 决策建议(自动:列出 OKX 漏单 + ≥2 家竞对的 ticker)
+  const callout = document.getElementById('coverage-callout-text');
+  if (callout) {
+    const allItems = groups.flatMap(g => g.items);
+    const goItems = allItems.filter(t => !(t.okx_perp || t.okx_spot) && (t.competitors || []).length >= 2);
+    const waitItems = allItems.filter(t => !(t.okx_perp || t.okx_spot) && (t.competitors || []).length === 1);
+    if (goItems.length === 0 && waitItems.length === 0) {
+      callout.textContent = '当前 AI 主题下所有标的 OKX 已覆盖,或竞对暂未上线。';
+    } else {
+      let msg = '';
+      if (goItems.length) {
+        msg += `<strong>建议上(${goItems.length})</strong>:` + goItems.map(t => escapeHTML(t.ticker)).join(' / ') + '。';
+      }
+      if (waitItems.length) {
+        msg += (msg ? ' ' : '') + `<strong>观望(${waitItems.length})</strong>:` + waitItems.map(t => escapeHTML(t.ticker)).join(' / ') + '。';
+      }
+      callout.innerHTML = msg;
+    }
+  }
+}
+
+// 竞对矩阵(交易所 × 4 个细分领域)
+function renderCompetitorMatrix() {
+  const matrix = DATA.competitor_matrix || [];
+  const tbody = document.getElementById('matrix-tbody');
+  if (!tbody) return;
+  if (matrix.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="padding:20px;text-align:center;color:var(--text-muted);font-style:italic;">暂无矩阵数据</td></tr>';
+    return;
+  }
+  const maxTotal = Math.max(...matrix.map(r => r.total || 0), 1);
+  const cols = ['核心算力', 'HBM', 'AI 应用', '半导体设备'];
+  tbody.innerHTML = matrix.map(r => {
+    const isOkx = r.name === 'OKX';
+    const widthPct = Math.round((r.total / maxTotal) * 100);
+    const groupCells = cols.map(c => {
+      const grp = (r.by_group || {})[c] || { covered: 0, total: 0 };
+      const cls = grp.covered === 0 ? 'zero' : (grp.total > 0 && grp.covered === grp.total) ? 'lead' : '';
+      return `<td class="num ${cls}">${grp.covered}/${grp.total}</td>`;
+    }).join('');
+    return `<tr ${isOkx ? 'class="row-okx"' : ''}>
+      <td>${escapeHTML(r.name)}</td>
+      <td class="bar-cell"><div class="bar" style="width:${widthPct}%"></div><span class="num">${r.total || 0}</span></td>
+      ${groupCells}
+    </tr>`;
+  }).join('');
 }
 function renderKolConsensus() {
   const consensus = DATA.ai_kol_consensus || [];
@@ -2168,7 +2242,10 @@ loadData().then(() => {
 
   // 4. 渲染主内容
   refreshHotPanel();
+  renderThemeOverview();
   renderAiPulse();
+  renderCoverageTable();
+  renderCompetitorMatrix();
   renderCompTimeline();
   renderKolConsensus();
 
