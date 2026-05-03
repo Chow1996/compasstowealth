@@ -193,27 +193,51 @@ module.exports = async (req, res) => {
     };
 
     // ==== today / week / month ====
+    // 关键改动:不再按 event_date 过滤(LLM 沿用 RSS published_at 标会让"几周前发生
+    // 但今天被回炒的旧文章"反复挤进今日热点)。改用 created_at(数据库写入时间 = pipeline
+    // 首次抓到这条事件的时间)+ freshness 衰减,确保"今日 = 今天首次发现的新事件"。
+    const nowMs = Date.now();
+    const dayMs = 24 * 3600 * 1000;
+    const ageDays = (e) => e.created_at
+      ? (nowMs - new Date(e.created_at).getTime()) / dayMs
+      : 999;
+    // 衰减:24h=1.0 / 48h=0.5 / 72h=0.2 / 1w=0.05 / older=0.01
+    const freshness = (age) => {
+      if (age < 1) return 1.0;
+      if (age < 2) return 0.5;
+      if (age < 3) return 0.2;
+      if (age < 7) return 0.05;
+      return 0.01;
+    };
+    const freshScore = (e) => (e.heat || 0) * freshness(ageDays(e));
+
+    // today: 严格只取过去 24h 首次写入的 events,按 heat 排序
     const today = safeEvents
-      .filter(e => e.event_date === dateMax)
+      .filter(e => ageDays(e) < 1)
+      .sort((a, b) => (b.heat || 0) - (a.heat || 0))
       .map(eventToCluster)
       .slice(0, 12);
 
+    // week: 过去 7 天首次写入,按 heat × freshness 排序(今日新事件优先,老的沉下去)
     const weekStart = dateRange(dateMax, 7);
     const week = safeEvents
-      .filter(e => e.event_date >= weekStart)
+      .filter(e => ageDays(e) < 7)
+      .sort((a, b) => freshScore(b) - freshScore(a))
       .map(eventToCluster)
       .slice(0, 15);
 
     const monthStart = dateRange(dateMax, 30);
     const month = safeEvents
-      .filter(e => e.event_date >= monthStart)
+      .filter(e => ageDays(e) < 30)
+      .sort((a, b) => freshScore(b) - freshScore(a))
       .map(eventToCluster)
       .slice(0, 20);
 
     // ==== ai_week / ai_strict / ai_full ====
     const aiEvents = safeEvents.filter(e => (e.themes || []).includes(AI_THEME));
     const ai_week = aiEvents
-      .filter(e => e.event_date >= weekStart)
+      .filter(e => ageDays(e) < 7)
+      .sort((a, b) => freshScore(b) - freshScore(a))
       .map(eventToCluster)
       .slice(0, 10);
     const ai_strict = aiEvents
@@ -258,7 +282,8 @@ module.exports = async (req, res) => {
     ai_full.push(...aiKolItems);
 
     // ==== latest (今日 dispatch 块) ====
-    const todayEv = safeEvents.filter(e => e.event_date === dateMax);
+    // 同 today:基于 created_at(过去 24h 首次写入)而不是 event_date
+    const todayEv = safeEvents.filter(e => ageDays(e) < 1);
     const todayBuckets = { L3: [], L2: [], L1: [] };
     todayEv.forEach(e => todayBuckets[bucketByHeat(e)].push(e));
 
@@ -296,8 +321,9 @@ module.exports = async (req, res) => {
     };
 
     // ==== kpi ====
+    // weekEv 改成基于 created_at(过去 7 天写入的 events),跟 today/week 排序保持一致
     const dWeekAgo = dateRange(dateMax, 7);
-    const weekEv = safeEvents.filter(e => e.event_date >= dWeekAgo);
+    const weekEv = safeEvents.filter(e => ageDays(e) < 7);
     const weekKol = safeKol.filter(k => k.view_date >= dWeekAgo);
     const weekComp = safeCex.filter(c => (c.published_at || '').slice(0, 10) >= dWeekAgo);
     const weekRaw = safeRaw.filter(r => r.fetched_for_date >= dWeekAgo);
