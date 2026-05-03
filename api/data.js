@@ -349,7 +349,9 @@ module.exports = async (req, res) => {
       rawByDate[d].push({
         date: d,
         level: (e.heat || 0) >= 80 ? 'L3' : (e.heat || 0) >= 70 ? 'L2' : 'L1',
-        cluster_explicit: (e.themes || [])[0] || null,
+        // cluster_explicit 用 ticker 当 key,而不是主题名 — 否则 N 条事件 cluster 都是
+        // "AI 产业链" 会被前端 aggregateRange 全部合并成 1 个 bucket(热点榜只显示 1 条)
+        cluster_explicit: (e.tickers || [])[0] || (e.name || '').slice(0, 20),
         name: e.name,
         desc: e.description || '',
         heat: e.heat || 0,
