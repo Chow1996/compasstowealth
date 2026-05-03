@@ -158,6 +158,14 @@ module.exports = async (req, res) => {
       .order('published_at', { ascending: false })
       .limit(80);
 
+    // 4b. 拉金十数据宏观快讯(过去 24h,raw_score 高的优先)→ 宏观警报模块
+    const { data: jin10Signals } = await supabase
+      .from('raw_signals')
+      .select('title, content, published_at, source_url, raw_score, metadata')
+      .eq('source', 'jin10')
+      .order('published_at', { ascending: false })
+      .limit(40);
+
     // 5. 拉 themes(含 narrative)+ tickers 全表(覆盖清单 + 矩阵共用)
     const { data: themesData } = await supabase
       .from('themes')
@@ -376,7 +384,34 @@ module.exports = async (req, res) => {
         sentiment: k.sentiment === '看多' ? 'up' : k.sentiment === '看空' ? 'down' : 'neutral',
         view: k.view_text, tks: k.tickers || [],
       }));
-    const ai_macro_warnings = [];
+    // ai_macro_warnings: 金十数据过去 24h 宏观快讯(关税/地缘/央行/监管)
+    // 字段对齐 index.html:renderKolConsensus 的 name/date/view/impact
+    const macroCutoff = Date.now() - 24 * 3600 * 1000;
+    const ai_macro_warnings = (jin10Signals || [])
+      .filter(s => {
+        if (!s.published_at) return false;
+        return new Date(s.published_at).getTime() >= macroCutoff;
+      })
+      .sort((a, b) => {
+        const aw = (a.metadata?.important ? 100 : 0) + (a.raw_score || 0) * 10;
+        const bw = (b.metadata?.important ? 100 : 0) + (b.raw_score || 0) * 10;
+        return bw - aw;
+      })
+      .slice(0, 12)
+      .map(s => {
+        const dt = s.published_at ? new Date(s.published_at) : null;
+        const dateStr = dt
+          ? `${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')} ${String(dt.getHours()).padStart(2, '0')}:${String(dt.getMinutes()).padStart(2, '0')}`
+          : '';
+        const isImportant = !!(s.metadata && s.metadata.important);
+        return {
+          name: isImportant ? '金十数据 ★' : '金十数据',
+          date: dateStr,
+          view: s.title || (s.content || '').slice(0, 80),
+          impact: (s.content || '').slice(0, 200),
+          url: s.source_url || 'https://www.jin10.com/',
+        };
+      });
     const tg_today = [];
 
     // ==== theme_overview ==== (AI 主题速览块,代替前端硬编码)
