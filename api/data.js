@@ -181,7 +181,7 @@ module.exports = async (req, res) => {
     // 5. 拉 themes(含 narrative)+ tickers 全表(覆盖清单 + 矩阵共用)
     const { data: themesData } = await supabase
       .from('themes')
-      .select('id, theme_name_cn, theme_name_en, narrative_current, narrative_updated_at, status, priority');
+      .select('id, theme_name_cn, theme_name_en, description, narrative_current, narrative_updated_at, status, priority');
     const { data: tickersData } = await supabase
       .from('tickers')
       .select('ticker, name, category, priority, okx_perp, okx_spot, competitors_listed');
