@@ -1236,43 +1236,43 @@ body::before {
 <section class="hero">
   <div class="section-header">
     <h2>OKX <em>市占</em></h2>
-    <span class="sec-meta">04-25 单日 · vs 上周同日 / 去年同日</span>
+    <span class="sec-meta" id="ms-meta">— 单日 · vs 上周同日 / 去年同日</span>
   </div>
   <div class="share-strip">
     <div class="share-block">
-      <div class="biz-tag">Perp <span class="biz-en">04-25</span></div>
+      <div class="biz-tag">Perp <span class="biz-en" id="ms-perp-date">—</span></div>
       <div class="share-stat primary">
         <div class="label">OKX 市占</div>
-        <div class="val">19.18%</div>
-        <div class="sub">vol $10.66B · 单日</div>
+        <div class="val" id="ms-perp-share">—</div>
+        <div class="sub" id="ms-perp-vol">—</div>
       </div>
       <div class="share-stat">
-        <div class="label">环比 vs 04-18</div>
-        <div class="val">20.04%</div>
-        <div class="sub dn">▼ −0.87pp</div>
+        <div class="label" id="ms-perp-week-label">环比 vs —</div>
+        <div class="val" id="ms-perp-week-share">—</div>
+        <div class="sub" id="ms-perp-week-delta">—</div>
       </div>
       <div class="share-stat">
-        <div class="label">同比 vs 2025-04-25</div>
-        <div class="val">18.77%</div>
-        <div class="sub up">▲ +0.40pp</div>
+        <div class="label" id="ms-perp-year-label">同比 vs —</div>
+        <div class="val" id="ms-perp-year-share">—</div>
+        <div class="sub" id="ms-perp-year-delta">—</div>
       </div>
     </div>
     <div class="share-block">
-      <div class="biz-tag">Spot <span class="biz-en">04-25</span></div>
+      <div class="biz-tag">Spot <span class="biz-en" id="ms-spot-date">—</span></div>
       <div class="share-stat primary">
         <div class="label">OKX 市占</div>
-        <div class="val">8.76%</div>
-        <div class="sub">vol $0.92B · 单日</div>
+        <div class="val" id="ms-spot-share">—</div>
+        <div class="sub" id="ms-spot-vol">—</div>
       </div>
       <div class="share-stat">
-        <div class="label">环比 vs 04-18</div>
-        <div class="val">10.05%</div>
-        <div class="sub dn">▼ −1.29pp</div>
+        <div class="label" id="ms-spot-week-label">环比 vs —</div>
+        <div class="val" id="ms-spot-week-share">—</div>
+        <div class="sub" id="ms-spot-week-delta">—</div>
       </div>
       <div class="share-stat">
-        <div class="label">同比 vs 2025-04-25</div>
-        <div class="val">10.77%</div>
-        <div class="sub dn">▼ −2.02pp</div>
+        <div class="label" id="ms-spot-year-label">同比 vs —</div>
+        <div class="val" id="ms-spot-year-share">—</div>
+        <div class="sub" id="ms-spot-year-delta">—</div>
       </div>
     </div>
   </div>
@@ -1734,6 +1734,44 @@ function renderThemeOverview() {
 }
 
 // OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
+function renderMarketShare() {
+  const ms = DATA.market_share;
+  if (!ms || !ms.snapshot_date) return;
+  const set = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+  const setClass = (id, cls) => { const el = document.getElementById(id); if (el) el.className = 'sub ' + cls; };
+  const fmtMD = (d) => d ? d.slice(5).replace('-', '-') : '—'; // 'YYYY-MM-DD' → 'MM-DD'
+  const fmtVol = (v) => v == null ? '—' : (v >= 1e9 ? `vol $${(v/1e9).toFixed(2)}B · 单日` : `vol $${(v/1e6).toFixed(0)}M · 单日`);
+  const fmtDelta = (pp) => {
+    if (pp == null) return { txt: '— 无对照', cls: '' };
+    if (pp > 0) return { txt: `▲ +${pp.toFixed(2)}pp`, cls: 'up' };
+    if (pp < 0) return { txt: `▼ ${pp.toFixed(2)}pp`, cls: 'dn' };
+    return { txt: '0.00pp', cls: '' };
+  };
+
+  set('ms-meta', `${fmtMD(ms.snapshot_date)} 单日 · vs 上周同日 / 去年同日`);
+
+  ['perp', 'spot'].forEach(seg => {
+    const blk = ms[seg] || {};
+    set(`ms-${seg}-date`, fmtMD(blk.snapshot_date));
+    set(`ms-${seg}-share`, blk.share != null ? `${blk.share.toFixed(2)}%` : '—');
+    set(`ms-${seg}-vol`, fmtVol(blk.vol_usd));
+
+    const wk = blk.vs_week || {};
+    set(`ms-${seg}-week-label`, `环比 vs ${fmtMD(wk.date)}`);
+    set(`ms-${seg}-week-share`, wk.share != null ? `${wk.share.toFixed(2)}%` : '—');
+    const wd = fmtDelta(wk.delta_pp);
+    set(`ms-${seg}-week-delta`, wd.txt);
+    setClass(`ms-${seg}-week-delta`, wd.cls);
+
+    const yr = blk.vs_year || {};
+    set(`ms-${seg}-year-label`, `同比 vs ${yr.date || '—'}`);
+    set(`ms-${seg}-year-share`, yr.share != null ? `${yr.share.toFixed(2)}%` : '—');
+    const yd = fmtDelta(yr.delta_pp);
+    set(`ms-${seg}-year-delta`, yd.txt);
+    setClass(`ms-${seg}-year-delta`, yd.cls);
+  });
+}
+
 function renderCoverageTable() {
   const groups = DATA.coverage_table || [];
   const tbody = document.getElementById('coverage-tbody');
@@ -2241,6 +2279,7 @@ loadData().then(() => {
   }
 
   // 4. 渲染主内容
+  renderMarketShare();
   refreshHotPanel();
   renderThemeOverview();
   renderAiPulse();

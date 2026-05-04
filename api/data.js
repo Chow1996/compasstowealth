@@ -18,7 +18,6 @@ const TICKER_GROUPS = {
   'AI 应用 / SaaS / 云算力': ['PLTR', 'META', 'MSFT', 'GOOGL', 'AMZN', 'ORCL', 'CRWV'],
   '中国 AI / 中概': ['BABA', 'BIDU', 'PDD', 'JD'],
   '卫星 · 量子 · 光模块 · Neocloud': ['IONQ', 'AAOI', 'COHR', 'NBIS', 'RGTI'],
-  '衍生品 · 半导体指数代币': ['CHIP'],
 };
 const TICKER_TO_GROUP = {};
 Object.entries(TICKER_GROUPS).forEach(([g, tks]) => tks.forEach(t => { TICKER_TO_GROUP[t] = g; }));
@@ -165,6 +164,13 @@ module.exports = async (req, res) => {
       .eq('source', 'jin10')
       .order('published_at', { ascending: false })
       .limit(40);
+
+    // 4c. 拉 exchange_market_share(14 行/天,6000 行 ≈ 430 天,够同比对比用)
+    const { data: shareRows } = await supabase
+      .from('exchange_market_share')
+      .select('snapshot_date, segment, rank, exchange_id, exchange_name, vol_usd, share_pct')
+      .order('snapshot_date', { ascending: false })
+      .limit(6000);
 
     // 5. 拉 themes(含 narrative)+ tickers 全表(覆盖清单 + 矩阵共用)
     const { data: themesData } = await supabase
@@ -507,13 +513,54 @@ module.exports = async (req, res) => {
     const competitor_matrix = ALL_EXCHANGES.map(ex => exStat[ex])
       .sort((a, b) => b.total - a.total);
 
+    // ==== market_share (OKX 占主流交易所份额) ====
+    // shareRows 已按 snapshot_date desc 排好,挑出最新一天 + 7 天前 + 365 天前的 OKX 行
+    const okxBySegDate = {}; // {segment: {date: row}}
+    (shareRows || []).forEach(r => {
+      if (r.exchange_id !== 'okex' && r.exchange_id !== 'okex_swap') return;
+      const seg = r.segment;
+      if (!okxBySegDate[seg]) okxBySegDate[seg] = {};
+      okxBySegDate[seg][r.snapshot_date] = r;
+    });
+    const allShareDates = [...new Set((shareRows || []).map(r => r.snapshot_date))].sort().reverse();
+    const latestShareDate = allShareDates[0] || null;
+    const offsetDate = (d, days) => {
+      if (!d) return null;
+      const dt = new Date(d + 'T00:00:00Z');
+      dt.setUTCDate(dt.getUTCDate() - days);
+      return dt.toISOString().slice(0, 10);
+    };
+    const buildSegBlock = (seg) => {
+      const bySeg = okxBySegDate[seg] || {};
+      const today = latestShareDate ? bySeg[latestShareDate] : null;
+      const wkDate = offsetDate(latestShareDate, 7);
+      const yrDate = offsetDate(latestShareDate, 365);
+      const wk = wkDate ? bySeg[wkDate] : null;
+      const yr = yrDate ? bySeg[yrDate] : null;
+      const pp = (a, b) => (a != null && b != null) ? Number((a - b).toFixed(2)) : null;
+      return {
+        snapshot_date: latestShareDate,
+        share: today ? Number(today.share_pct) : null,
+        vol_usd: today ? Number(today.vol_usd) : null,
+        rank: today ? today.rank : null,
+        vs_week: { date: wkDate, share: wk ? Number(wk.share_pct) : null, delta_pp: pp(today?.share_pct, wk?.share_pct) },
+        vs_year: { date: yrDate, share: yr ? Number(yr.share_pct) : null, delta_pp: pp(today?.share_pct, yr?.share_pct) },
+      };
+    };
+    const market_share = {
+      snapshot_date: latestShareDate,
+      perp: buildSegBlock('perp'),
+      spot: buildSegBlock('spot'),
+    };
+
     const result = {
       meta, today, week, month, ai_week, latest, kpi,
       exchanges, top_tickers_week, tg_today,
       ai_strict, ai_comp_dated, ai_kols_dated,
       raw_items_by_date: rawByDate,
       ai_full, ai_kol_consensus, ai_kol_views_filtered, ai_macro_warnings,
-      theme_overview, coverage_table, competitor_matrix, // 新增
+      theme_overview, coverage_table, competitor_matrix,
+      market_share,
       _generated_at: new Date().toISOString(),
     };
 
