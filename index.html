@@ -1284,12 +1284,11 @@ body::before {
     <span class="sec-meta">本月 / 本周 关键指标 · updated 2026-04-26</span>
   </div>
   <div class="kpi-row">
-    <div class="kpi"><div class="label">本月新热点</div><div class="value" id="kpi-month-new">96</div><div class="delta">▲ +14 vs prev 30d</div></div>
-    <div class="kpi"><div class="label">本周 L3 高优</div><div class="value" id="kpi-week-l3">27</div><div class="delta">▲ +5 vs prev 7d</div></div>
-    <div class="kpi"><div class="label">竞对动作 / 周</div><div class="value" id="kpi-week-comp">61</div><div class="delta warn">! 11 待评估</div></div>
-    <div class="kpi"><div class="label">KOL 信号 / 周</div><div class="value" id="kpi-week-kol">78</div><div class="delta">▲ +12 vs prev 7d</div></div>
-    <div class="kpi"><div class="label">股票漏单</div><div class="value" id="kpi-stock-gap">11</div><div class="delta down">! 持续 10 天</div></div>
-    <div class="kpi"><div class="label">已决策 · 命中率</div><div class="value">23·68%</div><div class="delta">本月 (mock)</div></div>
+    <div class="kpi"><div class="label">本月新热点</div><div class="value" id="kpi-month-new">—</div><div class="delta" id="kpi-month-new-delta">—</div></div>
+    <div class="kpi"><div class="label">本周 L3 高优</div><div class="value" id="kpi-week-l3">—</div><div class="delta" id="kpi-week-l3-delta">—</div></div>
+    <div class="kpi"><div class="label">竞对动作 / 周</div><div class="value" id="kpi-week-comp">—</div><div class="delta" id="kpi-week-comp-delta">—</div></div>
+    <div class="kpi"><div class="label">KOL 信号 / 周</div><div class="value" id="kpi-week-kol">—</div><div class="delta" id="kpi-week-kol-delta">—</div></div>
+    <div class="kpi"><div class="label">股票漏单</div><div class="value" id="kpi-stock-gap">—</div></div>
   </div>
 </section>
 
@@ -2259,14 +2258,35 @@ loadData().then(() => {
   currentDateFrom = DATE_MIN;
   currentDateTo = DATE_MAX;
 
-  // 2. 渲染 KPI 卡(原来在 DATA 空时就执行,数字全是回退默认值)
+  // 2. 渲染 KPI 卡
   const kpi = DATA.kpi || {};
   document.getElementById('topbar-date').textContent = meta.date_max || '';
-  document.getElementById('kpi-month-new').textContent = (DATA.month || []).length * 5;
-  document.getElementById('kpi-week-l3').textContent = kpi.l3_week ?? 0;
-  document.getElementById('kpi-week-comp').textContent = kpi.comp_week ?? 0;
-  document.getElementById('kpi-week-kol').textContent = kpi.kol_week ?? 0;
-  document.getElementById('kpi-stock-gap').textContent = kpi.gap_count ?? 0;
+
+  // 把 (cur, prev, suffix) 渲染成"▲ +X vs prev 7d" / "▼ −X vs prev 7d" / "持平"
+  const fmtKpiDelta = (cur, prev, suffix) => {
+    if (cur == null || prev == null) return { txt: '—', cls: '' };
+    const d = cur - prev;
+    if (d > 0) return { txt: `▲ +${d} vs prev ${suffix}`, cls: '' };
+    if (d < 0) return { txt: `▼ ${d} vs prev ${suffix}`, cls: 'down' };
+    return { txt: `持平 vs prev ${suffix}`, cls: '' };
+  };
+  const setKpi = (valId, deltaId, cur, prev, suffix) => {
+    const v = document.getElementById(valId);
+    if (v) v.textContent = cur ?? 0;
+    if (deltaId) {
+      const d = document.getElementById(deltaId);
+      if (d) {
+        const { txt, cls } = fmtKpiDelta(cur, prev, suffix);
+        d.textContent = txt;
+        d.className = 'delta ' + cls;
+      }
+    }
+  };
+  setKpi('kpi-month-new', 'kpi-month-new-delta', kpi.month_new, kpi.month_new_prev, '30d');
+  setKpi('kpi-week-l3',   'kpi-week-l3-delta',   kpi.l3_week,   kpi.l3_week_prev,   '7d');
+  setKpi('kpi-week-comp', 'kpi-week-comp-delta', kpi.comp_week, kpi.comp_week_prev, '7d');
+  setKpi('kpi-week-kol',  'kpi-week-kol-delta',  kpi.kol_week,  kpi.kol_week_prev,  '7d');
+  setKpi('kpi-stock-gap', null, kpi.gap_count, null, null);
 
   // 3. 主日期 picker(原来在脚本顶层就执行,DATE_MIN/MAX 还是占位值)
   if (dateFromInput && dateToInput) {

@@ -327,17 +327,36 @@ module.exports = async (req, res) => {
     };
 
     // ==== kpi ====
-    // weekEv 改成基于 created_at(过去 7 天写入的 events),跟 today/week 排序保持一致
-    const dWeekAgo = dateRange(dateMax, 7);
-    const weekEv = safeEvents.filter(e => ageDays(e) < 7);
-    const weekKol = safeKol.filter(k => k.view_date >= dWeekAgo);
-    const weekComp = safeCex.filter(c => (c.published_at || '').slice(0, 10) >= dWeekAgo);
+    // weekEv 基于 created_at(过去 7 天写入的 events),跟 today/week 排序保持一致
+    const dWeekAgo  = dateRange(dateMax, 7);
+    const dTwoWeeks = dateRange(dateMax, 14);
+    const dMonthAgo = dateRange(dateMax, 30);
+    const dTwoMo    = dateRange(dateMax, 60);
+    const weekEv    = safeEvents.filter(e => ageDays(e) < 7);
+    const prevWeekEv = safeEvents.filter(e => ageDays(e) >= 7  && ageDays(e) < 14);
+    const monthEv   = safeEvents.filter(e => ageDays(e) < 30);
+    const prevMonthEv = safeEvents.filter(e => ageDays(e) >= 30 && ageDays(e) < 60);
+    const weekKol     = safeKol.filter(k => k.view_date >= dWeekAgo);
+    const prevWeekKol = safeKol.filter(k => k.view_date >= dTwoWeeks && k.view_date < dWeekAgo);
+    const weekComp     = safeCex.filter(c => (c.published_at || '').slice(0, 10) >= dWeekAgo);
+    const prevWeekComp = safeCex.filter(c => {
+      const d = (c.published_at || '').slice(0, 10);
+      return d >= dTwoWeeks && d < dWeekAgo;
+    });
     const weekRaw = safeRaw.filter(r => r.fetched_for_date >= dWeekAgo);
 
     const kpi = {
-      l3_week: weekEv.filter(e => (e.heat || 0) >= 80).length,
-      kol_week: weekKol.length,
-      comp_week: weekComp.length,
+      // current 窗口
+      month_new: monthEv.length,                                    // 本月新热点(过去 30 天写入)
+      l3_week: weekEv.filter(e => (e.heat || 0) >= 80).length,      // 本周 L3 高优(heat≥80)
+      comp_week: weekComp.length,                                   // 竞对动作 / 周
+      kol_week: weekKol.length,                                     // KOL 信号 / 周
+      // prev 窗口(给环比 delta 用)
+      month_new_prev: prevMonthEv.length,
+      l3_week_prev: prevWeekEv.filter(e => (e.heat || 0) >= 80).length,
+      comp_week_prev: prevWeekComp.length,
+      kol_week_prev: prevWeekKol.length,
+      // 其他
       msgs_week: weekRaw.length,
       gap_count: 0, // 漏单计数,后面填
       today_l3: todayBuckets.L3.length,
