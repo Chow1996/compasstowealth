@@ -165,6 +165,17 @@ module.exports = async (req, res) => {
       .order('published_at', { ascending: false })
       .limit(40);
 
+    // 4e. 拉 watchlist storylines(过去 30 天,按 last_seen 降序)
+    const cutoff30 = new Date(Date.now() - 30 * 86400 * 1000).toISOString().slice(0, 10);
+    const { data: storylines } = await supabase
+      .from('v_watchlist')
+      .select('*')
+      .gte('last_seen', cutoff30)
+      .order('pinned', { ascending: false })
+      .order('heat_max', { ascending: false })
+      .order('last_seen', { ascending: false })
+      .limit(200);
+
     // 4d. 拉 ticker_themes 关联(主题看板 4 张卡的 OKX 覆盖 / 漏单 / 主关注 计算用)
     const { data: tickerThemesLinks } = await supabase
       .from('ticker_themes')
@@ -737,6 +748,25 @@ module.exports = async (req, res) => {
       spot: buildSegBlock('spot'),
     };
 
+    // ==== watchlist (storylines tab) ====
+    const watchlist = (storylines || []).map(s => ({
+      id: s.id,
+      title: s.title,
+      first_seen: s.first_seen,
+      last_seen: s.last_seen,
+      event_count: s.event_count || 0,
+      signal_count: s.signal_count || 0,
+      source_count: s.source_count || 0,
+      heat_max: s.heat_max || 0,
+      heat_current: s.heat_current || 0,
+      themes: s.themes || [],
+      tickers: s.tickers || [],
+      status: s.status,                // active / dormant / closed
+      pinned: !!s.pinned,
+      is_recent: !!s.is_recent,
+      notes: s.notes || '',
+    }));
+
     const result = {
       meta, today, week, month, ai_week, latest, kpi,
       exchanges, top_tickers_week, tg_today,
@@ -746,6 +776,7 @@ module.exports = async (req, res) => {
       theme_overview, coverage_table, competitor_matrix,
       theme_cards, theme_details,
       market_share,
+      watchlist,
       _generated_at: new Date().toISOString(),
     };
 

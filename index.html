@@ -1214,6 +1214,71 @@ body::before {
   .drawer-title { font-size: 22px; flex-basis: 100%; margin-left: 0; margin-top: 8px; }
   .drawer-body { padding: 20px; }
 }
+/* Tab page switching */
+.tab-page { display: block; }
+.tab-page[hidden] { display: none; }
+
+/* Watchlist page */
+.watchlist-page-header { padding: 24px 28px 0; }
+.wl-filters { display: flex; gap: 8px; padding: 8px 0 18px; flex-wrap: wrap; }
+.wl-chip {
+  padding: 5px 12px; font-size: 12px; cursor: pointer;
+  border: 1px solid var(--border-strong); border-radius: 14px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  user-select: none; transition: all 0.15s;
+}
+.wl-chip:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+.wl-chip.active { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
+.wl-chip .ct { margin-left: 4px; opacity: 0.7; font-size: 10.5px; }
+
+.storyline-list {
+  padding: 0 28px 40px;
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+}
+.storyline-card {
+  background: var(--bg-secondary); border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--border-strong);
+  padding: 16px 20px; border-radius: 4px;
+  display: grid; grid-template-columns: 1fr auto; gap: 16px;
+  align-items: start; transition: all 0.15s;
+}
+.storyline-card.active { border-left-color: var(--accent); }
+.storyline-card.dormant { opacity: 0.65; border-left-color: var(--text-muted); }
+.storyline-card.pinned { border-left-color: var(--accent-bright); background: var(--accent-soft); }
+.storyline-card:hover { background: var(--bg-tertiary); }
+.storyline-card .head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.storyline-card .badge {
+  font-size: 10.5px; padding: 2px 7px; border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace; border: 1px solid;
+}
+.storyline-card .badge.heat { background: var(--bull-bg); color: var(--bull); border-color: var(--bull); }
+.storyline-card .badge.theme { background: var(--bg-tertiary); color: var(--text-secondary); border-color: var(--border-strong); }
+.storyline-card .badge.tk { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
+.storyline-card .badge.pin { background: var(--accent); color: var(--bg-primary); border-color: var(--accent-deep); font-weight: 600; }
+.storyline-card h3 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 18px; line-height: 1.35; margin: 8px 0 6px;
+  color: var(--text-primary); font-weight: 500;
+}
+.storyline-card .meta-line {
+  font-size: 11.5px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 4px;
+}
+.storyline-card .meta-line strong { color: var(--text-primary); font-weight: 500; }
+.storyline-card .actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.storyline-card .act-btn {
+  cursor: pointer; padding: 4px 10px; font-size: 11px;
+  border: 1px solid var(--border-strong); border-radius: 3px;
+  background: var(--bg-primary); color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace; transition: all 0.1s;
+}
+.storyline-card .act-btn:hover { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
+.storyline-card .act-btn.danger:hover { background: var(--bear-bg); color: var(--bear); border-color: var(--bear); }
+@media (max-width: 768px) {
+  .storyline-card { grid-template-columns: 1fr; }
+  .storyline-card .actions { flex-direction: row; flex-wrap: wrap; }
+}
 </style>
 </head>
 <body>
@@ -1221,10 +1286,8 @@ body::before {
 <header class="topbar">
   <div class="brand">Listing<span class="accent"> Compass</span></div>
   <nav>
-    <a href="#" class="active">DISCOVER</a>
-    <a href="#">WATCHLIST</a>
-    <a href="#">DECISIONS</a>
-    <a href="#">POSTMORTEM</a>
+    <a href="#discover" class="active" data-tab="discover">DISCOVER</a>
+    <a href="#watchlist" data-tab="watchlist">WATCHLIST</a>
   </nav>
   <div class="spacer"></div>
   <div class="pulse-meta"><span class="pulse"></span>SYNC · <span id="topbar-date">2026-04-26</span></div>
@@ -1232,6 +1295,8 @@ body::before {
 </header>
 
 <div class="container">
+
+<div id="page-discover" class="tab-page">
 
 <section class="hero">
   <div class="section-header">
@@ -1334,6 +1399,24 @@ body::before {
   </div>
 
 </div>
+
+</div><!-- /page-discover -->
+
+<div id="page-watchlist" class="tab-page" hidden>
+  <section class="watchlist-page-header">
+    <div class="section-header">
+      <h2>长期追踪 <em>Watchlist</em></h2>
+      <span class="sec-meta" id="wl-meta">— storylines</span>
+    </div>
+    <div class="wl-filters">
+      <span class="wl-chip active" data-filter="all">全部 <span class="ct" id="wl-ct-all">0</span></span>
+      <span class="wl-chip" data-filter="pinned">📌 Pinned <span class="ct" id="wl-ct-pinned">0</span></span>
+      <span class="wl-chip" data-filter="active">🔥 Active <span class="ct" id="wl-ct-active">0</span></span>
+      <span class="wl-chip" data-filter="dormant">💤 Dormant <span class="ct" id="wl-ct-dormant">0</span></span>
+    </div>
+  </section>
+  <div class="storyline-list" id="storyline-list"></div>
+</div><!-- /page-watchlist -->
 
 <div class="footer">
   <div>Listing Compass · v0.2 demo · Chow @ OKX</div>
@@ -1667,6 +1750,134 @@ function renderThemeOverview(themeName) {
 }
 
 // OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
+// =================== Watchlist Tab(长期追踪故事线) ===================
+let _wlFilter = 'all';
+
+function renderWatchlistPage() {
+  const items = DATA.watchlist || [];
+  const list = document.getElementById('storyline-list');
+  const meta = document.getElementById('wl-meta');
+  if (!list) return;
+
+  // 计数
+  const counts = {
+    all: items.length,
+    pinned: items.filter(s => s.pinned).length,
+    active: items.filter(s => s.status === 'active').length,
+    dormant: items.filter(s => s.status === 'dormant').length,
+  };
+  ['all', 'pinned', 'active', 'dormant'].forEach(k => {
+    const ct = document.getElementById(`wl-ct-${k}`);
+    if (ct) ct.textContent = counts[k];
+  });
+  if (meta) meta.textContent = `${items.length} storylines · 跨源聚合 / 跨日持续`;
+
+  // 过滤
+  const filtered = items.filter(s => {
+    if (_wlFilter === 'all') return true;
+    if (_wlFilter === 'pinned') return s.pinned;
+    if (_wlFilter === 'active') return s.status === 'active';
+    if (_wlFilter === 'dormant') return s.status === 'dormant';
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);font-style:italic;">${items.length === 0 ? 'storylines 表暂无数据 — 跑过 /compass 之后会聚类生成' : '当前 filter 无匹配'}</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(s => {
+    const cls = ['storyline-card'];
+    if (s.pinned) cls.push('pinned');
+    else if (s.status === 'active') cls.push('active');
+    else cls.push('dormant');
+
+    const themesBadges = (s.themes || []).map(t => `<span class="badge theme">${escapeHTML(t)}</span>`).join('');
+    const tickerBadges = (s.tickers || []).slice(0, 6).map(t => `<span class="badge tk">${escapeHTML(t)}</span>`).join('');
+    const pinBadge = s.pinned ? '<span class="badge pin">📌 PIN</span>' : '';
+    const heatBadge = `<span class="badge heat">heat ${s.heat_max}</span>`;
+    const dateRange = s.first_seen === s.last_seen
+      ? s.first_seen.slice(5)
+      : `${s.first_seen.slice(5)} → ${s.last_seen.slice(5)}`;
+    const days = Math.max(1, Math.round((new Date(s.last_seen) - new Date(s.first_seen)) / 86400000) + 1);
+
+    return `
+      <div class="storyline-card ${cls.join(' ')}" data-id="${s.id}">
+        <div>
+          <div class="head">${pinBadge}${heatBadge}${themesBadges}</div>
+          <h3>${escapeHTML(s.title)}</h3>
+          <div class="meta-line">
+            <strong>${s.event_count}</strong> events · <strong>${s.signal_count}</strong> signals · <strong>${s.source_count}</strong> sources · 持续 <strong>${days}</strong> 天 · ${dateRange}
+          </div>
+          <div class="head" style="margin-top:6px;">${tickerBadges}</div>
+        </div>
+        <div class="actions">
+          <button class="act-btn" data-action="${s.pinned ? 'unpin' : 'pin'}">${s.pinned ? '✕ 取消 Pin' : '📌 Pin'}</button>
+          <button class="act-btn ${s.status === 'closed' ? '' : ''}" data-action="${s.status === 'closed' ? 'reopen' : 'close'}">${s.status === 'closed' ? '↩ 重开' : '✓ 标记结束'}</button>
+          <button class="act-btn danger" data-action="dismiss">🗑 Dismiss</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // 操作按钮事件
+  list.querySelectorAll('.act-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.storyline-card');
+      const id = card?.dataset.id;
+      const action = btn.dataset.action;
+      if (!id || !action) return;
+      btn.disabled = true;
+      btn.textContent = '...';
+      try {
+        const resp = await fetch('/api/storyline-action', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, action }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || `HTTP ${resp.status}`);
+        // 重新拉数据(简单粗暴,数据量小)
+        await loadData();
+        renderWatchlistPage();
+      } catch (err) {
+        console.error(err);
+        btn.disabled = false;
+        btn.textContent = '❌ 失败';
+      }
+    });
+  });
+}
+
+// Filter chip 事件
+document.addEventListener('click', (e) => {
+  const chip = e.target.closest('.wl-chip');
+  if (!chip) return;
+  document.querySelectorAll('.wl-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  _wlFilter = chip.dataset.filter || 'all';
+  renderWatchlistPage();
+});
+
+// =================== Tab 切换 ===================
+function switchTab(name) {
+  const valid = ['discover', 'watchlist'];
+  if (!valid.includes(name)) name = 'discover';
+  document.querySelectorAll('.tab-page').forEach(p => {
+    p.hidden = p.id !== `page-${name}`;
+  });
+  document.querySelectorAll('.topbar nav a[data-tab]').forEach(a => {
+    a.classList.toggle('active', a.dataset.tab === name);
+  });
+  if (name === 'watchlist' && typeof DATA !== 'undefined' && DATA) {
+    renderWatchlistPage();
+  }
+}
+
+// 初始按 hash 切换
+window.addEventListener('hashchange', () => switchTab((location.hash || '#discover').slice(1)));
+
 // 一次切换 drawer 整体内容到指定主题
 function renderDrawerForTheme(themeName) {
   renderThemeOverview(themeName);
@@ -2315,7 +2526,7 @@ loadData().then(() => {
 
   // 4. 渲染主内容
   renderMarketShare();
-  renderWatchlist();
+  renderWatchlist();           // DISCOVER 右侧 4 张主题卡
   refreshHotPanel();
   renderThemeOverview();
   renderAiPulse();
@@ -2323,6 +2534,10 @@ loadData().then(() => {
   renderCompetitorMatrix();
   renderCompTimeline();
   renderKolConsensus();
+
+  // 4.5. 按 URL hash 决定初始 tab(支持直接访问 /#watchlist)
+  const initialTab = (location.hash || '#discover').slice(1);
+  switchTab(initialTab);
 
   // 5. Drawer date picker
   const drawerFromInput = document.getElementById('drawer-date-from');
