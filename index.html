@@ -1695,6 +1695,12 @@ function renderWatchlist() {
         <div class="footer-meta"><span>${escape(updated)}</span><span>${idx === 0 ? '<span class="arrow">点击展开 →</span>' : '—'}</span></div>
       </div>`;
   }).join('');
+
+  // 第一张卡(active 高优主题)绑 drawer 展开
+  const firstCard = grid.querySelector('.theme-card.active');
+  if (firstCard && typeof openDrawer === 'function') {
+    firstCard.addEventListener('click', openDrawer);
+  }
 }
 
 function renderMarketShare() {
@@ -2207,7 +2213,7 @@ function closeDrawer() {
   document.getElementById('drawer-ai').classList.remove('open');
   document.body.classList.remove('drawer-open');
 }
-document.getElementById('theme-card-ai').addEventListener('click', openDrawer);
+// theme-card-ai 在 renderWatchlist 动态生成后再绑 click,见下面
 document.getElementById('drawer-close').addEventListener('click', closeDrawer);
 document.getElementById('drawer-overlay').addEventListener('click', closeDrawer);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
