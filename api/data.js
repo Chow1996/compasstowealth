@@ -538,6 +538,15 @@ module.exports = async (req, res) => {
     const competitor_matrix = ALL_EXCHANGES.map(ex => exStat[ex])
       .sort((a, b) => b.total - a.total);
 
+    // ==== tickersByTheme 共用 map(theme_details + theme_cards 都用) ====
+    const tickersByTheme = {}; // theme_name_cn → [ticker_row...]
+    (tickerThemesLinks || []).forEach(link => {
+      const themeName = link.themes?.theme_name_cn;
+      const tk = link.tickers;
+      if (!themeName || !tk) return;
+      (tickersByTheme[themeName] ||= []).push(tk);
+    });
+
     // ==== theme_details (drawer 展开时的 per-theme 数据,key = theme_name_cn) ====
     // 每个活跃主题一份完整数据(narrative / kpis / coverage / events_industry/listing/kol)
     // AI 产业链额外保留 sub-group 分组结构 + competitor_matrix
@@ -650,14 +659,7 @@ module.exports = async (req, res) => {
 
     // ==== theme_cards (主题看板 4 张卡,从 themes 表动态生成,过滤掉 已归档) ====
     // 每张卡:OKX 覆盖 / 漏单 / 本周 L3 / 主关注(P0 漏单优先,无则 P0 ticker 前 2)
-    const tickersByTheme = {}; // theme_name_cn → [ticker_row...]
-    (tickerThemesLinks || []).forEach(link => {
-      const themeName = link.themes?.theme_name_cn;
-      const tk = link.tickers;
-      if (!themeName || !tk) return;
-      (tickersByTheme[themeName] ||= []).push(tk);
-    });
-
+    // tickersByTheme 已在上面 theme_details 前算好
     const PRIORITY_RANK = { 'P0': 0, 'P1': 1, 'P2': 2, '': 9 };
     const activeThemes = themes
       .filter(t => t.status !== '已归档')
