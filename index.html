@@ -1327,83 +1327,9 @@ body::before {
     <section>
       <div class="section-header">
         <h2>主题看板 <em>Watchlist</em></h2>
-        <span class="sec-meta">6 themes · click to expand · updated 2026-04-26</span>
+        <span class="sec-meta" id="watchlist-meta">— themes</span>
       </div>
-      <div class="theme-grid">
-
-        <div class="theme-card active" id="theme-card-ai">
-          <div class="head"><h3><span class="star">★</span> AI 产业链</h3><span class="badge live">活跃</span></div>
-          <div class="desc">从算力到模型的全产业链 — 重点跟踪美股代币化 perp 缺口与加密原生 AI 项目轮动。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">17 / 25</div></div>
-            <div class="stat"><div class="label">漏单 vol/7d</div><div class="val bear">$58.4M</div></div>
-            <div class="stat"><div class="label">本周 AI L3</div><div class="val">3</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">AVGO · BABA</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span class="arrow">点击展开 →</span></div>
-        </div>
-
-        <div class="theme-card coming">
-          <div class="head"><h3>RWA / 美股代币化</h3><span class="badge coming">Coming</span></div>
-          <div class="desc">代币化股票、债券、房地产 — 美股 perp 已铺开 30 个，下一战场。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">29</div></div>
-            <div class="stat"><div class="label">漏单</div><div class="val bear">11+</div></div>
-            <div class="stat"><div class="label">本周 L3</div><div class="val">3</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">WMT · MCD</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
-        </div>
-
-        <div class="theme-card coming">
-          <div class="head"><h3>LRT / Restaking</h3><span class="badge coming">Coming</span></div>
-          <div class="desc">KELP/rsETH 危机后的赛道重估，需观察资金回流路径。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">4</div></div>
-            <div class="stat"><div class="label">漏单</div><div class="val bear">3</div></div>
-            <div class="stat"><div class="label">本周 L3</div><div class="val">7</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">KELP · MNT</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
-        </div>
-
-        <div class="theme-card coming">
-          <div class="head"><h3>Stablecoin</h3><span class="badge coming">Coming</span></div>
-          <div class="desc">GENIUS Act 通过后，主流稳定币储备产品扩张窗口。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">8</div></div>
-            <div class="stat"><div class="label">漏单</div><div class="val bear">2</div></div>
-            <div class="stat"><div class="label">本周 L3</div><div class="val">2</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">USDG · HKD</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
-        </div>
-
-        <div class="theme-card coming">
-          <div class="head"><h3>Prediction Market</h3><span class="badge coming">Coming</span></div>
-          <div class="desc">Polymarket / Kalshi 监管和扩张同行 — 预测市场进入加密视野。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">2</div></div>
-            <div class="stat"><div class="label">漏单</div><div class="val bear">5</div></div>
-            <div class="stat"><div class="label">本周 L3</div><div class="val">2</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">POLY</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
-        </div>
-
-        <div class="theme-card coming">
-          <div class="head"><h3>DePIN</h3><span class="badge coming">Coming</span></div>
-          <div class="desc">物理基础设施去中心化网络，热度跟随 GPU/算力主线。</div>
-          <div class="stats">
-            <div class="stat"><div class="label">OKX 覆盖</div><div class="val">12</div></div>
-            <div class="stat"><div class="label">漏单</div><div class="val bear">3</div></div>
-            <div class="stat"><div class="label">本周 L3</div><div class="val">0</div></div>
-            <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">RNDR · ROSE</div></div>
-          </div>
-          <div class="footer-meta"><span>更新 04-26</span><span>—</span></div>
-        </div>
-
-      </div>
+      <div class="theme-grid" id="theme-grid"></div>
     </section>
   </div>
 
@@ -1733,6 +1659,44 @@ function renderThemeOverview() {
 }
 
 // OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
+function renderWatchlist() {
+  const cards = DATA.theme_cards || [];
+  const grid = document.getElementById('theme-grid');
+  const meta = document.getElementById('watchlist-meta');
+  if (!grid) return;
+  if (cards.length === 0) {
+    grid.innerHTML = '<div style="color:var(--text-muted);font-style:italic;padding:20px;">themes 表无活跃主题</div>';
+    if (meta) meta.textContent = '0 themes';
+    return;
+  }
+  if (meta) meta.textContent = `${cards.length} themes · 来自 Supabase themes 表(status ≠ 已归档)`;
+
+  const escape = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const isLive = (s) => s === '活跃';
+  // 每个主题:第一个(优先级最高)默认 active 高亮,其余正常态
+  grid.innerHTML = cards.map((card, idx) => {
+    const star = idx === 0 ? '<span class="star">★</span> ' : '';
+    const cls = idx === 0 ? 'theme-card active' : 'theme-card';
+    const badgeCls = isLive(card.status) ? 'live' : 'coming';
+    const focus = (card.top_focus || []).join(' · ') || '—';
+    const updated = card.narrative_updated_at
+      ? `更新 ${card.narrative_updated_at.slice(5,10)}`
+      : '更新 —';
+    return `
+      <div class="${cls}">
+        <div class="head"><h3>${star}${escape(card.theme_name_cn)}</h3><span class="badge ${badgeCls}">${escape(card.status || '—')}</span></div>
+        <div class="desc">${escape(card.description || '—')}</div>
+        <div class="stats">
+          <div class="stat"><div class="label">OKX 覆盖</div><div class="val">${escape(card.okx_coverage?.text || '—')}</div></div>
+          <div class="stat"><div class="label">漏单</div><div class="val${card.gap_count > 0 ? ' bear' : ''}">${card.gap_count ?? 0}</div></div>
+          <div class="stat"><div class="label">本周 L3</div><div class="val">${card.l3_week ?? 0}</div></div>
+          <div class="stat"><div class="label">主关注</div><div class="val" style="font-size:13px">${escape(focus)}</div></div>
+        </div>
+        <div class="footer-meta"><span>${escape(updated)}</span><span>${idx === 0 ? '<span class="arrow">点击展开 →</span>' : '—'}</span></div>
+      </div>`;
+  }).join('');
+}
+
 function renderMarketShare() {
   const ms = DATA.market_share;
   if (!ms || !ms.snapshot_date) return;
@@ -2300,6 +2264,7 @@ loadData().then(() => {
 
   // 4. 渲染主内容
   renderMarketShare();
+  renderWatchlist();
   refreshHotPanel();
   renderThemeOverview();
   renderAiPulse();

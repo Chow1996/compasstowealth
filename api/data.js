@@ -165,6 +165,12 @@ module.exports = async (req, res) => {
       .order('published_at', { ascending: false })
       .limit(40);
 
+    // 4d. 拉 ticker_themes 关联(主题看板 4 张卡的 OKX 覆盖 / 漏单 / 主关注 计算用)
+    const { data: tickerThemesLinks } = await supabase
+      .from('ticker_themes')
+      .select('ticker_id, theme_id, tickers!inner(ticker, name, priority, okx_perp, okx_spot, competitors_listed), themes!inner(theme_name_cn)')
+      .limit(2000);
+
     // 4c. 拉 exchange_market_share(14 行/天,6000 行 ≈ 430 天,够同比对比用)
     const { data: shareRows } = await supabase
       .from('exchange_market_share')
@@ -532,6 +538,53 @@ module.exports = async (req, res) => {
     const competitor_matrix = ALL_EXCHANGES.map(ex => exStat[ex])
       .sort((a, b) => b.total - a.total);
 
+    // ==== theme_cards (主题看板 4 张卡,从 themes 表动态生成,过滤掉 已归档) ====
+    // 每张卡:OKX 覆盖 / 漏单 / 本周 L3 / 主关注(P0 漏单优先,无则 P0 ticker 前 2)
+    const tickersByTheme = {}; // theme_name_cn → [ticker_row...]
+    (tickerThemesLinks || []).forEach(link => {
+      const themeName = link.themes?.theme_name_cn;
+      const tk = link.tickers;
+      if (!themeName || !tk) return;
+      (tickersByTheme[themeName] ||= []).push(tk);
+    });
+
+    const PRIORITY_RANK = { 'P0': 0, 'P1': 1, 'P2': 2, '': 9 };
+    const activeThemes = themes
+      .filter(t => t.status !== '已归档')
+      .sort((a, b) => (PRIORITY_RANK[a.priority] ?? 9) - (PRIORITY_RANK[b.priority] ?? 9));
+
+    const theme_cards = activeThemes.map(t => {
+      const themeName = t.theme_name_cn;
+      const themeTickers = tickersByTheme[themeName] || [];
+      const covered = themeTickers.filter(tk => tk.okx_perp || tk.okx_spot).length;
+      const total = themeTickers.length;
+      const gaps = themeTickers.filter(tk => !tk.okx_perp && Array.isArray(tk.competitors_listed) && tk.competitors_listed.length > 0);
+      // L3 events 7d:用 created_at(跟 today/week 一致),且 themes 数组含此主题名
+      const l3Week = safeEvents.filter(e =>
+        ageDays(e) < 7 && (e.heat || 0) >= 80 && (e.themes || []).includes(themeName)
+      ).length;
+      // 主关注:P0 漏单 ticker 前 2;若无,该主题下 P0 ticker(已上 OKX 也行)前 2
+      const sortP0 = (arr) => arr
+        .filter(tk => tk.priority === 'P0')
+        .map(tk => tk.ticker)
+        .slice(0, 2);
+      let focusTks = sortP0(gaps);
+      if (focusTks.length === 0) focusTks = sortP0(themeTickers);
+      return {
+        theme_name_cn: themeName,
+        theme_name_en: t.theme_name_en || '',
+        status: t.status,
+        priority: t.priority,
+        description: t.description || '',
+        narrative_current: t.narrative_current || '',
+        narrative_updated_at: t.narrative_updated_at || null,
+        okx_coverage: { covered, total, text: `${covered} / ${total}` },
+        gap_count: gaps.length,
+        l3_week: l3Week,
+        top_focus: focusTks, // ['AVGO','BABA']  或 []
+      };
+    });
+
     // ==== market_share (OKX 占主流交易所份额) ====
     // shareRows 已按 snapshot_date desc 排好,挑出最新一天 + 7 天前 + 365 天前的 OKX 行
     const okxBySegDate = {}; // {segment: {date: row}}
@@ -579,6 +632,7 @@ module.exports = async (req, res) => {
       raw_items_by_date: rawByDate,
       ai_full, ai_kol_consensus, ai_kol_views_filtered, ai_macro_warnings,
       theme_overview, coverage_table, competitor_matrix,
+      theme_cards,
       market_share,
       _generated_at: new Date().toISOString(),
     };
