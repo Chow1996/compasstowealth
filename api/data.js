@@ -538,6 +538,116 @@ module.exports = async (req, res) => {
     const competitor_matrix = ALL_EXCHANGES.map(ex => exStat[ex])
       .sort((a, b) => b.total - a.total);
 
+    // ==== theme_details (drawer 展开时的 per-theme 数据,key = theme_name_cn) ====
+    // 每个活跃主题一份完整数据(narrative / kpis / coverage / events_industry/listing/kol)
+    // AI 产业链额外保留 sub-group 分组结构 + competitor_matrix
+    const theme_details = {};
+    const activeThemesForDetails = themes.filter(t => t.status !== '已归档');
+    activeThemesForDetails.forEach(t => {
+      const themeName = t.theme_name_cn;
+      const themeTickers = (tickersByTheme[themeName] || []);
+      const themeEvents = safeEvents.filter(e => (e.themes || []).includes(themeName));
+      const themeKols = safeKol.filter(k => (k.themes || []).includes(themeName));
+
+      const okxCov = themeTickers.filter(tk => tk.okx_perp || tk.okx_spot).length;
+      const total = themeTickers.length;
+      const gapsArr = themeTickers.filter(tk => !tk.okx_perp && Array.isArray(tk.competitors_listed) && tk.competitors_listed.length > 0);
+      const hotWeek = themeEvents.filter(e => ageDays(e) < 7 && (e.heat || 0) >= 70).length;
+
+      // coverage 结构:AI 保留分组(核心算力/HBM/AI 应用/半导体设备),其他主题用扁平单组
+      let coverage;
+      if (themeName === AI_THEME) {
+        coverage = coverage_table; // 复用 AI 已算好的分组结构
+      } else {
+        coverage = themeTickers.length > 0
+          ? [{
+              group: themeName,
+              items: themeTickers.map(tk => ({
+                ticker: tk.ticker,
+                name: tk.name || '',
+                tier: (tk.priority === 'P0' || tk.priority === 'P1') ? 'Tier 1' : 'Tier 2',
+                okx_perp: !!tk.okx_perp,
+                okx_spot: !!tk.okx_spot,
+                competitors: tk.competitors_listed || [],
+              })),
+            }]
+          : [];
+      }
+
+      // events 拆分 industry / listing
+      const evIndustry = themeEvents
+        .filter(e => !isListingEvent(e))
+        .sort((a, b) => freshScore(b) - freshScore(a))
+        .slice(0, 30)
+        .map(e => ({
+          category: 'industry',
+          source_tag: e.source_tag || '',
+          name: e.name,
+          desc: e.description,
+          heat: e.heat || 0,
+          urgency: e.urgency,
+          tks: e.tickers || [],
+          impact_okx: e.okx_impact || '',
+          first_date: e.event_date,
+          last_date: e.event_last_date || e.event_date,
+          days_count: 1,
+        }));
+      const evListing = themeEvents
+        .filter(e => isListingEvent(e))
+        .sort((a, b) => freshScore(b) - freshScore(a))
+        .slice(0, 30)
+        .map(e => ({
+          category: 'listing',
+          source_tag: e.source_tag || '',
+          name: e.name,
+          desc: e.description,
+          heat: e.heat || 0,
+          urgency: e.urgency,
+          tks: e.tickers || [],
+          impact_okx: e.okx_impact || '',
+          first_date: e.event_date,
+          last_date: e.event_last_date || e.event_date,
+          days_count: 1,
+        }));
+      const evKol = themeKols.slice(0, 9).map(k => ({
+        category: 'kol',
+        source_tag: `@${(k.kol_handle || '').replace(/^@/, '')} · ${k.tier || ''}`,
+        name: `${k.sentiment || '观点'} · ${(k.tickers || []).slice(0, 3).join(' / ')}`,
+        desc: k.view_text || '',
+        heat: 0,
+        tks: k.tickers || [],
+        impact_okx: '',
+        first_date: k.view_date,
+        last_date: k.view_date,
+        days_count: 1,
+      }));
+
+      theme_details[themeName] = {
+        theme_name: themeName,
+        priority: t.priority,
+        status: t.status,
+        narrative: t.narrative_current || '',
+        narrative_updated_at: t.narrative_updated_at || null,
+        kpis: {
+          okx_coverage_pct: total ? Math.round(okxCov * 100 / total) : 0,
+          okx_coverage_text: `${okxCov} / ${total} 标的`,
+          ai_hot_week: hotWeek,  // 字段名沿用 ai_hot_week 兼容前端 renderThemeOverview
+          gap_count: gapsArr.length,
+          gap_tickers: gapsArr.slice(0, 5).map(g => g.ticker),
+        },
+        coverage,                     // 同 coverage_table 结构(分组 or 单组)
+        events_industry: evIndustry,
+        events_listing: evListing,
+        events_kol: evKol,
+        // competitor_matrix 仅 AI 有(子产业链是 AI 专属概念),其他主题为 null,前端隐藏
+        competitor_matrix: themeName === AI_THEME ? null : null,
+      };
+    });
+    // 把 AI 的 competitor_matrix 单独塞进 AI 详情(此时 competitor_matrix 已计算好)
+    if (theme_details[AI_THEME]) {
+      theme_details[AI_THEME].competitor_matrix = competitor_matrix;
+    }
+
     // ==== theme_cards (主题看板 4 张卡,从 themes 表动态生成,过滤掉 已归档) ====
     // 每张卡:OKX 覆盖 / 漏单 / 本周 L3 / 主关注(P0 漏单优先,无则 P0 ticker 前 2)
     const tickersByTheme = {}; // theme_name_cn → [ticker_row...]
@@ -632,7 +742,7 @@ module.exports = async (req, res) => {
       raw_items_by_date: rawByDate,
       ai_full, ai_kol_consensus, ai_kol_views_filtered, ai_macro_warnings,
       theme_overview, coverage_table, competitor_matrix,
-      theme_cards,
+      theme_cards, theme_details,
       market_share,
       _generated_at: new Date().toISOString(),
     };

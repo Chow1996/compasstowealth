@@ -1556,12 +1556,17 @@ function renderHotCards(arr, panelId) {
     `;
   }).join('');
 }
-function renderAiPulse() {
-  const items = DATA.ai_full || [];
-  const groups = { industry: [], listing: [], kol: [] };
-  items.forEach(item => {
-    if (groups[item.category]) groups[item.category].push(item);
-  });
+function renderAiPulse(themeName) {
+  const target = themeName || 'AI 产业链';
+  const td = (DATA.theme_details && DATA.theme_details[target]) || {};
+  const groups = {
+    industry: td.events_industry || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'industry') : []),
+    listing:  td.events_listing  || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'listing')  : []),
+    kol:      td.events_kol      || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'kol')      : []),
+  };
+  // 同时更新 drawer 里"本周 X 主题脉搏"标题
+  const pulseTitle = document.querySelector('#drawer-ai .drawer-section:nth-child(2) h3');
+  if (pulseTitle) pulseTitle.textContent = `本周 ${target} 主题脉搏`;
 
   function renderCard(item) {
     const days = item.days_count || 1;
@@ -1621,9 +1626,10 @@ function renderCompTimeline() {
   }).join('');
 }
 
-// 主题速览(取代之前硬编码 HTML)
-function renderThemeOverview() {
-  const ov = DATA.theme_overview || {};
+// 主题速览 — 默认 AI;传 themeName 切换到指定主题
+function renderThemeOverview(themeName) {
+  const target = themeName || 'AI 产业链';
+  const ov = (DATA.theme_details && DATA.theme_details[target]) || DATA.theme_overview || {};
   const el = document.getElementById('theme-overview');
   if (!el) return;
   const k = ov.kpis || {};
@@ -1633,6 +1639,8 @@ function renderThemeOverview() {
   const updatedLabel = ov.narrative_updated_at
     ? `更新于 ${ov.narrative_updated_at.slice(0, 10)}`
     : '尚未更新';
+  // 第二个 KPI label 用 "本周 X 热点",X = 主题简称
+  const hotLabel = `本周 ${escapeHTML(target.split(/[ /]/)[0])} 热点`;
   el.innerHTML = `
     <div class="overview-narrative">
       <div class="label">本周叙事 · ${escapeHTML(updatedLabel)}</div>
@@ -1645,7 +1653,7 @@ function renderThemeOverview() {
         <div class="delta">${escapeHTML(k.okx_coverage_text || '—')}</div>
       </div>
       <div class="kpi-block">
-        <div class="label">本周 AI 热点</div>
+        <div class="label">${hotLabel}</div>
         <div class="val">${k.ai_hot_week ?? 0}</div>
         <div class="delta">events</div>
       </div>
@@ -1659,6 +1667,14 @@ function renderThemeOverview() {
 }
 
 // OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
+// 一次切换 drawer 整体内容到指定主题
+function renderDrawerForTheme(themeName) {
+  renderThemeOverview(themeName);
+  renderCoverageTable(themeName);
+  renderAiPulse(themeName);
+  renderCompetitorMatrix(themeName);
+}
+
 function renderWatchlist() {
   const cards = DATA.theme_cards || [];
   const grid = document.getElementById('theme-grid');
@@ -1696,10 +1712,25 @@ function renderWatchlist() {
       </div>`;
   }).join('');
 
-  // 第一张卡(active 高优主题)绑 drawer 展开
-  const firstCard = grid.querySelector('.theme-card.active');
-  if (firstCard && typeof openDrawer === 'function') {
-    firstCard.addEventListener('click', openDrawer);
+  // 4 张卡全部绑 click → 切换 drawer 内容到对应主题 + 打开
+  if (typeof openDrawer === 'function') {
+    grid.querySelectorAll('.theme-card').forEach((cardEl, i) => {
+      cardEl.style.cursor = 'pointer';
+      cardEl.addEventListener('click', () => {
+        const card = cards[i];
+        if (!card) return;
+        // 更新 drawer 标题
+        const crumb = document.querySelector('.crumb-current');
+        const title = document.querySelector('.drawer-title');
+        if (crumb) crumb.textContent = card.theme_name_cn;
+        if (title) title.innerHTML = `${escape(card.theme_name_cn)} · <em>主题展开</em>`;
+        // 切换 drawer 内容
+        if (typeof renderDrawerForTheme === 'function') {
+          renderDrawerForTheme(card.theme_name_cn);
+        }
+        openDrawer();
+      });
+    });
   }
 }
 
@@ -1741,12 +1772,16 @@ function renderMarketShare() {
   });
 }
 
-function renderCoverageTable() {
-  const groups = DATA.coverage_table || [];
+function renderCoverageTable(themeName) {
+  const target = themeName || 'AI 产业链';
+  const td = (DATA.theme_details && DATA.theme_details[target]) || {};
+  const groups = td.coverage || DATA.coverage_table || [];
   const tbody = document.getElementById('coverage-tbody');
   if (!tbody) return;
   if (groups.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="10" style="padding:20px;text-align:center;color:var(--text-muted);font-style:italic;">tickers 表无数据(或 sub_category 未配)</td></tr>';
+    tbody.innerHTML = `<tr><td colspan="10" style="padding:20px;text-align:center;color:var(--text-muted);font-style:italic;">${escapeHTML(target)} 主题下暂无 ticker</td></tr>`;
+    const callout = document.getElementById('coverage-callout-text');
+    if (callout) callout.textContent = '该主题暂无 ticker 关联,无法评估漏单。';
     return;
   }
   const exchOrder = ['Binance', 'Bitget', 'Bybit', 'Hyperliquid'];
@@ -1787,7 +1822,7 @@ function renderCoverageTable() {
     const goItems = allItems.filter(t => !(t.okx_perp || t.okx_spot) && (t.competitors || []).length >= 2);
     const waitItems = allItems.filter(t => !(t.okx_perp || t.okx_spot) && (t.competitors || []).length === 1);
     if (goItems.length === 0 && waitItems.length === 0) {
-      callout.textContent = '当前 AI 主题下所有标的 OKX 已覆盖,或竞对暂未上线。';
+      callout.textContent = `当前 ${target} 主题下所有标的 OKX 已覆盖,或竞对暂未上线。`;
     } else {
       let msg = '';
       if (goItems.length) {
@@ -1801,11 +1836,21 @@ function renderCoverageTable() {
   }
 }
 
-// 竞对矩阵(交易所 × 4 个细分领域)
-function renderCompetitorMatrix() {
-  const matrix = DATA.competitor_matrix || [];
+// 竞对矩阵(交易所 × 4 个细分领域) — 仅 AI 主题有,其他主题整块隐藏
+function renderCompetitorMatrix(themeName) {
+  const target = themeName || 'AI 产业链';
+  const td = (DATA.theme_details && DATA.theme_details[target]) || {};
+  // 找到包裹整个区块的 .drawer-section(矩阵 table 的 ancestor)
   const tbody = document.getElementById('matrix-tbody');
   if (!tbody) return;
+  const section = tbody.closest('.drawer-section');
+  // 非 AI 主题:隐藏整块
+  if (target !== 'AI 产业链') {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  if (section) section.style.display = '';
+  const matrix = td.competitor_matrix || DATA.competitor_matrix || [];
   if (matrix.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="padding:20px;text-align:center;color:var(--text-muted);font-style:italic;">暂无矩阵数据</td></tr>';
     return;
