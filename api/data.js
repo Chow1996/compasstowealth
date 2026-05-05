@@ -667,10 +667,29 @@ module.exports = async (req, res) => {
     // ==== theme_cards (主题看板 4 张卡,从 themes 表动态生成,过滤掉 已归档) ====
     // 每张卡:OKX 覆盖 / 漏单 / 本周 L3 / 主关注(P0 漏单优先,无则 P0 ticker 前 2)
     // tickersByTheme 已在上面 theme_details 前算好
+    // 显式排序(对应 DB themes 表 theme_name_cn):
+    //   1. 'AI 产业链'           — 关键字 'AI'
+    //   2. 'Prediction Market'  — 关键字 'rediction'(避开大小写)
+    //   3. 'RWA / 美股代币化'    — 关键字 'RWA'
+    //   4. '稳定币/X402'         — 关键字 '稳定币'
+    // 其他主题(将来新增)落到 99,按 priority 兜底排在后面
+    const THEME_ORDER_KEYWORDS = ['AI', 'rediction', 'RWA', '稳定币'];
+    const themeOrderIndex = (name) => {
+      const n = (name || '');
+      for (let i = 0; i < THEME_ORDER_KEYWORDS.length; i++) {
+        if (n.includes(THEME_ORDER_KEYWORDS[i])) return i;
+      }
+      return 99;
+    };
     const PRIORITY_RANK = { 'P0': 0, 'P1': 1, 'P2': 2, '': 9 };
     const activeThemes = themes
       .filter(t => t.status !== '已归档')
-      .sort((a, b) => (PRIORITY_RANK[a.priority] ?? 9) - (PRIORITY_RANK[b.priority] ?? 9));
+      .sort((a, b) => {
+        const ai = themeOrderIndex(a.theme_name_cn);
+        const bi = themeOrderIndex(b.theme_name_cn);
+        if (ai !== bi) return ai - bi;
+        return (PRIORITY_RANK[a.priority] ?? 9) - (PRIORITY_RANK[b.priority] ?? 9);
+      });
 
     const theme_cards = activeThemes.map(t => {
       const themeName = t.theme_name_cn;
@@ -846,8 +865,9 @@ module.exports = async (req, res) => {
           .slice(0, 5),
       };
     })
-    // 入选门槛:跨 ≥2 周持续(过滤一日游)OR 用户 pin
-    .filter(t => t.pinned || t.week_span >= 2)
+    // 入选门槛:跨 ≥2 周持续 OR ≥2 events OR 用户 pin
+    // (后两个条件是为数据稀少阶段兜底 — 数据积累几周后,week_span 会自然成为主导筛选)
+    .filter(t => t.pinned || t.week_span >= 2 || t.event_count >= 2)
     // 排序:pin 优先 → 升温 → 持续 → 沉寂;桶内按 last_date 降序
     .sort((a, b) => {
       if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
