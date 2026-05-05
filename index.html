@@ -1232,84 +1232,78 @@ body::before {
 .wl-chip.active { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
 .wl-chip .ct { margin-left: 4px; opacity: 0.7; font-size: 10.5px; }
 
-.hot-topic-list {
-  display: grid; gap: 12px; padding: 0 0 24px;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+.wl-list { padding: 0 28px 40px; display: flex; flex-direction: column; gap: 18px; }
+.wl-bucket-head {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+  padding: 8px 0 0; border-bottom: 1px solid var(--border); margin-bottom: 4px;
 }
-.hot-topic-card {
-  border: 1px solid var(--border); border-left: 3px solid var(--accent);
-  background: var(--bg-secondary); padding: 14px 16px;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.hot-topic-card:hover { background: var(--bg-tertiary); }
-.hot-topic-card .ht-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.hot-topic-card h3 {
-  font-family: var(--font-serif); font-size: 17px; margin: 0;
-  color: var(--accent-bright); font-weight: 500;
-}
-.hot-topic-card .ht-breadcrumb {
-  font-size: 11px; color: var(--text-muted);
-}
-.hot-topic-card .ht-cat-mix { display: flex; gap: 6px; flex-wrap: wrap; }
-.hot-topic-card .cat-pill {
-  font-size: 11px; padding: 2px 8px; border-radius: 2px;
-  background: var(--bg-tertiary); color: var(--text-secondary);
-  border: 1px solid var(--border);
-}
-.hot-topic-card .cat-pill .n { color: var(--accent-bright); font-weight: 600; margin-left: 3px; }
-.hot-topic-card .ht-meta {
-  font-size: 11.5px; color: var(--text-muted); display: flex; gap: 10px; flex-wrap: wrap;
-}
-.hot-topic-card .ht-events { font-size: 12.5px; line-height: 1.65; color: var(--text-secondary); }
-.hot-topic-card .ht-events .ev { display: flex; gap: 8px; padding: 2px 0; }
-.hot-topic-card .ht-events .ev .d { color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; flex-shrink: 0; }
-.hot-topic-card .ht-events .ev .n { flex: 1; }
-.storyline-list {
-  padding: 0 28px 40px;
-  display: grid; grid-template-columns: 1fr; gap: 14px;
-}
-.storyline-card {
+.wl-bucket-head .ct { color: var(--accent-bright); margin-left: 6px; }
+.wl-card {
   background: var(--bg-secondary); border: 1px solid var(--border-strong);
   border-left: 3px solid var(--border-strong);
-  padding: 16px 20px; border-radius: 4px;
+  padding: 14px 18px; border-radius: 4px;
   display: grid; grid-template-columns: 1fr auto; gap: 16px;
   align-items: start; transition: all 0.15s;
 }
-.storyline-card.active { border-left-color: var(--accent); }
-.storyline-card.dormant { opacity: 0.65; border-left-color: var(--text-muted); }
-.storyline-card.pinned { border-left-color: var(--accent-bright); background: var(--accent-soft); }
-.storyline-card:hover { background: var(--bg-tertiary); }
-.storyline-card .head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.storyline-card .badge {
-  font-size: 10.5px; padding: 2px 7px; border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace; border: 1px solid;
+.wl-card.heating { border-left-color: var(--bull); }
+.wl-card.stable  { border-left-color: var(--accent); }
+.wl-card.dormant { opacity: 0.55; border-left-color: var(--text-muted); }
+.wl-card.pinned  { border-left-color: var(--accent-bright); background: var(--accent-soft); }
+.wl-card:hover { background: var(--bg-tertiary); }
+
+.wl-card h3 {
+  font-family: var(--font-serif); font-size: 19px; margin: 0 0 4px;
+  color: var(--accent-bright); font-weight: 500;
 }
-.storyline-card .badge.heat { background: var(--bull-bg); color: var(--bull); border-color: var(--bull); }
-.storyline-card .badge.theme { background: var(--bg-tertiary); color: var(--text-secondary); border-color: var(--border-strong); }
-.storyline-card .badge.tk { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
-.storyline-card .badge.pin { background: var(--accent); color: var(--bg-primary); border-color: var(--accent-deep); font-weight: 600; }
-.storyline-card h3 {
-  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
-  font-size: 18px; line-height: 1.35; margin: 8px 0 6px;
-  color: var(--text-primary); font-weight: 500;
+.wl-card .crumb { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.wl-card .crumb .pin-tag { color: var(--accent-bright); margin-right: 6px; }
+
+.wl-spark-row {
+  display: flex; align-items: baseline; gap: 12px; margin: 6px 0;
+  font-family: 'JetBrains Mono', monospace;
 }
-.storyline-card .meta-line {
+.wl-spark { font-size: 22px; line-height: 1; letter-spacing: 1px; color: var(--accent); }
+.wl-card.heating .wl-spark { color: var(--bull); }
+.wl-card.dormant .wl-spark { color: var(--text-muted); }
+.wl-spark-meta { font-size: 11px; color: var(--text-muted); }
+.wl-spark-meta .delta-up   { color: var(--bull); font-weight: 600; }
+.wl-spark-meta .delta-down { color: var(--bear); }
+
+.wl-card .cat-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.wl-card .cat-pill {
+  font-size: 11px; padding: 2px 8px; border-radius: 2px;
+  background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+.wl-card .cat-pill .n { color: var(--accent-bright); font-weight: 600; margin-left: 3px; }
+
+.wl-card .meta-line {
   font-size: 11.5px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 4px;
+  margin-top: 6px;
 }
-.storyline-card .meta-line strong { color: var(--text-primary); font-weight: 500; }
-.storyline-card .actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
-.storyline-card .act-btn {
+.wl-card .meta-line strong { color: var(--text-primary); font-weight: 500; }
+.wl-card .ticker-row { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.wl-card .ticker-row .tk {
+  display: inline-block; padding: 1px 6px; margin-right: 4px;
+  background: var(--accent-soft); color: var(--accent-bright);
+  border: 1px solid var(--accent-deep); border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+}
+
+.wl-card .actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.wl-card .act-btn {
   cursor: pointer; padding: 4px 10px; font-size: 11px;
   border: 1px solid var(--border-strong); border-radius: 3px;
   background: var(--bg-primary); color: var(--text-secondary);
-  font-family: 'JetBrains Mono', monospace; transition: all 0.1s;
+  font-family: 'JetBrains Mono', monospace; transition: all 0.1s; white-space: nowrap;
 }
-.storyline-card .act-btn:hover { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
-.storyline-card .act-btn.danger:hover { background: var(--bear-bg); color: var(--bear); border-color: var(--bear); }
+.wl-card .act-btn:hover { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
+.wl-card .act-btn.danger:hover { background: var(--bear-bg); color: var(--bear); border-color: var(--bear); }
+
 @media (max-width: 768px) {
-  .storyline-card { grid-template-columns: 1fr; }
-  .storyline-card .actions { flex-direction: row; flex-wrap: wrap; }
+  .wl-card { grid-template-columns: 1fr; }
+  .wl-card .actions { flex-direction: row; flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -1438,31 +1432,17 @@ body::before {
   <section class="watchlist-page-header">
     <div class="section-header">
       <h2>长期追踪 <em>Watchlist</em></h2>
-      <span class="sec-meta" id="wl-meta">— storylines</span>
+      <span class="sec-meta" id="wl-meta">— 中期话题雷达</span>
     </div>
     <div class="wl-filters">
       <span class="wl-chip active" data-filter="all">全部 <span class="ct" id="wl-ct-all">0</span></span>
       <span class="wl-chip" data-filter="pinned">📌 Pinned <span class="ct" id="wl-ct-pinned">0</span></span>
-      <span class="wl-chip" data-filter="active">🔥 Active <span class="ct" id="wl-ct-active">0</span></span>
-      <span class="wl-chip" data-filter="dormant">💤 Dormant <span class="ct" id="wl-ct-dormant">0</span></span>
+      <span class="wl-chip" data-filter="heating">🔥 升温 <span class="ct" id="wl-ct-heating">0</span></span>
+      <span class="wl-chip" data-filter="stable">📊 持续 <span class="ct" id="wl-ct-stable">0</span></span>
+      <span class="wl-chip" data-filter="dormant">💤 沉寂 <span class="ct" id="wl-ct-dormant">0</span></span>
     </div>
   </section>
-
-  <section style="padding: 0 28px 8px;">
-    <div class="section-header">
-      <h2>🔥 热点话题 <em>Hot Topics</em></h2>
-      <span class="sec-meta" id="ht-meta">— 过去 14 天 · 跨品类信号汇聚</span>
-    </div>
-    <div class="hot-topic-list" id="hot-topic-list"></div>
-  </section>
-
-  <section style="padding: 16px 28px 0;">
-    <div class="section-header">
-      <h2>📂 长期故事线 <em>Storylines</em></h2>
-      <span class="sec-meta">— 启发式聚类(events 多次复现)</span>
-    </div>
-  </section>
-  <div class="storyline-list" id="storyline-list"></div>
+  <div class="wl-list" id="wl-list"></div>
 </div><!-- /page-watchlist -->
 
 <div class="footer">
@@ -1796,152 +1776,135 @@ function renderThemeOverview(themeName) {
   `;
 }
 
-// OKX 覆盖清单(行级:OKX/Binance/Bitget/Bybit/HL,8 个 √/✗ + 漏单 + 建议)
-// =================== Watchlist Tab(长期追踪故事线) ===================
+// =================== Watchlist Tab — 中期话题雷达 v2 ===================
 let _wlFilter = 'all';
-
-function renderHotTopics() {
-  const list = document.getElementById('hot-topic-list');
-  const meta = document.getElementById('ht-meta');
-  if (!list) return;
-  const items = DATA.hot_topics || [];
-  if (meta) meta.textContent = `${items.length} topics · 过去 14 天 · 跨品类信号汇聚`;
-  if (!items.length) {
-    list.innerHTML = '<div style="padding:20px;color:var(--text-muted);font-style:italic;">暂无符合阈值的热点话题(需 ≥3 events 跨 ≥2 品类)</div>';
-    return;
-  }
-  const catLabel = (k) => ({industry:'行业', listing:'上币', risk:'风控', competitor:'竞对', macro:'宏观', tech_reg:'技监', other:'其他'}[k] || k);
-  list.innerHTML = items.map(t => {
-    const catPills = Object.entries(t.category_mix || {})
-      .sort((a, b) => b[1] - a[1])
-      .map(([k, n]) => `<span class="cat-pill">${escapeHTML(catLabel(k))}<span class="n">×${n}</span></span>`)
-      .join('');
-    const breadcrumb = (t.themes || []).length
-      ? `<span class="ht-breadcrumb">▷ ${(t.themes || []).map(escapeHTML).join(' · ')}</span>`
-      : '';
-    const evList = (t.events || []).slice(0, 5).map(e => `
-      <div class="ev"><span class="d">${escapeHTML((e.event_date||'').slice(5))}</span><span class="n">${escapeHTML(e.name || '')}</span></div>
-    `).join('');
-    const more = (t.events || []).length > 5
-      ? `<div class="ev"><span class="d"></span><span class="n" style="color:var(--text-muted);font-style:italic;">+${t.events.length - 5} 条</span></div>`
-      : '';
-    const dateRange = t.first_date === t.last_date
-      ? (t.last_date || '').slice(5)
-      : `${(t.first_date || '').slice(5)} → ${(t.last_date || '').slice(5)}`;
-    return `
-      <div class="hot-topic-card">
-        <div class="ht-head">
-          <h3>${escapeHTML(t.subtopic)}</h3>
-          ${breadcrumb}
-        </div>
-        <div class="ht-cat-mix">${catPills}</div>
-        <div class="ht-meta">
-          <span><strong>${t.event_count}</strong> events</span>
-          <span>heat ${t.heat_max}</span>
-          <span>${dateRange}</span>
-        </div>
-        <div class="ht-events">${evList}${more}</div>
-      </div>
-    `;
-  }).join('');
-}
+const _CAT_LABEL = {industry:'行业', listing:'上币', risk:'风控', competitor:'竞对', macro:'宏观', tech_reg:'技监', other:'其他'};
+const _BUCKET_LABEL = {heating:'🔥 升温中', stable:'📊 持续追踪', dormant:'💤 沉寂'};
 
 function renderWatchlistPage() {
-  renderHotTopics();
   const items = DATA.watchlist || [];
-  const list = document.getElementById('storyline-list');
+  const list = document.getElementById('wl-list');
   const meta = document.getElementById('wl-meta');
   if (!list) return;
 
-  // 计数
   const counts = {
     all: items.length,
-    pinned: items.filter(s => s.pinned).length,
-    active: items.filter(s => s.status === 'active').length,
-    dormant: items.filter(s => s.status === 'dormant').length,
+    pinned: items.filter(t => t.pinned).length,
+    heating: items.filter(t => !t.pinned && t.bucket === 'heating').length,
+    stable: items.filter(t => !t.pinned && t.bucket === 'stable').length,
+    dormant: items.filter(t => !t.pinned && t.bucket === 'dormant').length,
   };
-  ['all', 'pinned', 'active', 'dormant'].forEach(k => {
+  ['all','pinned','heating','stable','dormant'].forEach(k => {
     const ct = document.getElementById(`wl-ct-${k}`);
     if (ct) ct.textContent = counts[k];
   });
-  if (meta) meta.textContent = `${items.length} storylines · 跨源聚合 / 跨日持续`;
+  if (meta) meta.textContent = `${items.length} 话题 · 8 周窗口`;
 
-  // 过滤
-  const filtered = items.filter(s => {
+  const filtered = items.filter(t => {
     if (_wlFilter === 'all') return true;
-    if (_wlFilter === 'pinned') return s.pinned;
-    if (_wlFilter === 'active') return s.status === 'active';
-    if (_wlFilter === 'dormant') return s.status === 'dormant';
-    return true;
+    if (_wlFilter === 'pinned') return t.pinned;
+    return !t.pinned && t.bucket === _wlFilter;
   });
 
   if (filtered.length === 0) {
-    list.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);font-style:italic;">${items.length === 0 ? 'storylines 表暂无数据 — 跑过 /compass 之后会聚类生成' : '当前 filter 无匹配'}</div>`;
+    list.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted);font-style:italic;">${items.length === 0 ? '暂无话题 — events 需要先打 subtopic 标签(跑 backfill 或等明天 daily run)' : '当前 filter 无匹配'}</div>`;
     return;
   }
 
-  list.innerHTML = filtered.map(s => {
-    const cls = ['storyline-card'];
-    if (s.pinned) cls.push('pinned');
-    else if (s.status === 'active') cls.push('active');
-    else cls.push('dormant');
+  // Pinned 单独一组在最上面;其余按 bucket 分组
+  const groups = [];
+  const pinned = filtered.filter(t => t.pinned);
+  if (pinned.length) groups.push({ key: 'pinned', label: '📌 Pinned', items: pinned });
+  for (const bk of ['heating','stable','dormant']) {
+    const g = filtered.filter(t => !t.pinned && t.bucket === bk);
+    if (g.length) groups.push({ key: bk, label: _BUCKET_LABEL[bk], items: g });
+  }
 
-    const themesBadges = (s.themes || []).map(t => `<span class="badge theme">${escapeHTML(t)}</span>`).join('');
-    const tickerBadges = (s.tickers || []).slice(0, 6).map(t => `<span class="badge tk">${escapeHTML(t)}</span>`).join('');
-    const pinBadge = s.pinned ? '<span class="badge pin">📌 PIN</span>' : '';
-    const heatBadge = `<span class="badge heat">heat ${s.heat_max}</span>`;
-    const dateRange = s.first_seen === s.last_seen
-      ? s.first_seen.slice(5)
-      : `${s.first_seen.slice(5)} → ${s.last_seen.slice(5)}`;
-    const days = Math.max(1, Math.round((new Date(s.last_seen) - new Date(s.first_seen)) / 86400000) + 1);
+  list.innerHTML = groups.map(g => `
+    <div class="wl-bucket-head">${escapeHTML(g.label)}<span class="ct">${g.items.length}</span></div>
+    ${g.items.map(renderWatchlistCard).join('')}
+  `).join('');
 
-    return `
-      <div class="storyline-card ${cls.join(' ')}" data-id="${s.id}">
-        <div>
-          <div class="head">${pinBadge}${heatBadge}${themesBadges}</div>
-          <h3>${escapeHTML(s.title)}</h3>
-          <div class="meta-line">
-            <strong>${s.event_count}</strong> events · <strong>${s.signal_count}</strong> signals · <strong>${s.source_count}</strong> sources · 持续 <strong>${days}</strong> 天 · ${dateRange}
-          </div>
-          <div class="head" style="margin-top:6px;">${tickerBadges}</div>
-        </div>
-        <div class="actions">
-          <button class="act-btn" data-action="${s.pinned ? 'unpin' : 'pin'}">${s.pinned ? '✕ 取消 Pin' : '📌 Pin'}</button>
-          <button class="act-btn ${s.status === 'closed' ? '' : ''}" data-action="${s.status === 'closed' ? 'reopen' : 'close'}">${s.status === 'closed' ? '↩ 重开' : '✓ 标记结束'}</button>
-          <button class="act-btn danger" data-action="dismiss">🗑 Dismiss</button>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  // 操作按钮事件
+  // 操作按钮
   list.querySelectorAll('.act-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const card = btn.closest('.storyline-card');
-      const id = card?.dataset.id;
+      const card = btn.closest('.wl-card');
+      const canon = card?.dataset.canonical;
       const action = btn.dataset.action;
-      if (!id || !action) return;
+      if (!canon || !action) return;
       btn.disabled = true;
+      const orig = btn.textContent;
       btn.textContent = '...';
       try {
-        const resp = await fetch('/api/storyline-action', {
+        const resp = await fetch('/api/subtopic-action', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, action }),
+          body: JSON.stringify({ canonical_name: canon, action }),
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.error || `HTTP ${resp.status}`);
-        // 重新拉数据(简单粗暴,数据量小)
         await loadData();
         renderWatchlistPage();
       } catch (err) {
         console.error(err);
         btn.disabled = false;
-        btn.textContent = '❌ 失败';
+        btn.textContent = '❌ ' + orig;
       }
     });
   });
+}
+
+function renderWatchlistCard(t) {
+  const cls = ['wl-card'];
+  if (t.pinned) cls.push('pinned');
+  else cls.push(t.bucket || 'stable');
+
+  const crumb = t.parent_theme
+    ? `<div class="crumb">${t.pinned ? '<span class="pin-tag">📌 PIN</span>' : ''}▷ ${escapeHTML(t.parent_theme)}</div>`
+    : (t.pinned ? '<div class="crumb"><span class="pin-tag">📌 PIN</span></div>' : '');
+
+  const catPills = Object.entries(t.category_mix || {})
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, n]) => `<span class="cat-pill">${escapeHTML(_CAT_LABEL[k] || k)}<span class="n">×${n}</span></span>`)
+    .join('');
+
+  const tickers = (t.tickers || []).slice(0, 8).map(tk => `<span class="tk">${escapeHTML(tk)}</span>`).join('');
+
+  let deltaTxt = '';
+  if (typeof t.delta_pct === 'number') {
+    const cls2 = t.delta_pct >= 0 ? 'delta-up' : 'delta-down';
+    const sign = t.delta_pct >= 0 ? '+' : '';
+    deltaTxt = `<span class="${cls2}">${sign}${t.delta_pct}%</span> vs 前 3 周均值`;
+  } else if ((t.weekly_counts || []).slice(-1)[0] > 0) {
+    deltaTxt = '本周新启动';
+  }
+
+  const dateRange = t.first_date === t.last_date
+    ? (t.last_date || '').slice(5)
+    : `${(t.first_date || '').slice(5)} → ${(t.last_date || '').slice(5)}`;
+
+  return `
+    <div class="${cls.join(' ')}" data-canonical="${escapeHTML(t.canonical)}">
+      <div>
+        ${crumb}
+        <h3>${escapeHTML(t.canonical)}</h3>
+        <div class="wl-spark-row">
+          <span class="wl-spark" title="近 8 周事件密度: ${(t.weekly_counts||[]).join(' / ')}">${t.sparkline || ''}</span>
+          <span class="wl-spark-meta">${deltaTxt}</span>
+        </div>
+        <div class="cat-pills">${catPills}</div>
+        <div class="meta-line">
+          <strong>${t.event_count}</strong> events · 跨 <strong>${t.week_span}</strong> 周 · heat ${t.heat_max} · ${dateRange}
+        </div>
+        ${tickers ? `<div class="ticker-row">${tickers}</div>` : ''}
+      </div>
+      <div class="actions">
+        <button class="act-btn" data-action="${t.pinned ? 'unpin' : 'pin'}">${t.pinned ? '✕ 取消 Pin' : '📌 Pin'}</button>
+        <button class="act-btn danger" data-action="dismiss">🗑 Dismiss</button>
+      </div>
+    </div>
+  `;
 }
 
 // Filter chip 事件

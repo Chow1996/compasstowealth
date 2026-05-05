@@ -165,16 +165,12 @@ module.exports = async (req, res) => {
       .order('published_at', { ascending: false })
       .limit(40);
 
-    // 4e. 拉 watchlist storylines(过去 30 天,按 last_seen 降序)
-    const cutoff30 = new Date(Date.now() - 30 * 86400 * 1000).toISOString().slice(0, 10);
-    const { data: storylines } = await supabase
-      .from('v_watchlist')
+    // 4e. 拉 subtopics 主表(Watchlist v2 — 用户 pin/dismiss 状态 + 生命周期)
+    const { data: subtopicsRows } = await supabase
+      .from('subtopics')
       .select('*')
-      .gte('last_seen', cutoff30)
-      .order('pinned', { ascending: false })
-      .order('heat_max', { ascending: false })
-      .order('last_seen', { ascending: false })
-      .limit(200);
+      .eq('dismissed', false)
+      .limit(500);
 
     // 4d. 拉 ticker_themes 关联(主题看板 4 张卡的 OKX 覆盖 / 漏单 / 主关注 计算用)
     const { data: tickerThemesLinks } = await supabase
@@ -748,89 +744,118 @@ module.exports = async (req, res) => {
       spot: buildSegBlock('spot'),
     };
 
-    // ==== hot_topics ====
-    // 按 events.subtopics_canonical group,过去 14 天 + event_count≥3 + 跨品类≥2 = "热点话题"。
-    // 每条 topic 输出:品类混合 / 父主题 / event 列表(给前端 watchlist v2 用)
-    const cutoff14 = new Date(Date.now() - 14 * 86400 * 1000).toISOString().slice(0, 10);
-    const topicBuckets = new Map();
+    // ==== watchlist v2 (subtopic-driven, 长期追踪雷达) ====
+    // 按 events.subtopics_canonical 跨 8 周聚合;join subtopics 表拿 pin/dismiss/parent_theme;
+    // 输出 weekly_counts(8 周事件密度)+ sparkline(unicode block)+ bucket(heating/stable/dormant)。
+    const SPARK_WEEKS = 8;
+    const today0 = new Date();
+    today0.setUTCHours(0, 0, 0, 0);
+    // weekStart = ISO 周一为起点(简单点:就用 7 天 bin,以今天为最后一格的最后一天)
+    const weekStartMs = today0.getTime() - (SPARK_WEEKS - 1) * 7 * 86400 * 1000;
+    const weekIndex = (dateStr) => {
+      if (!dateStr) return -1;
+      const d = new Date(dateStr + 'T00:00:00Z').getTime();
+      if (d < weekStartMs) return -1;
+      return Math.min(SPARK_WEEKS - 1, Math.floor((d - weekStartMs) / (7 * 86400 * 1000)));
+    };
+
+    // 1) 按 canonical 桶聚合 events
+    const wlBuckets = new Map();
     for (const ev of (events || [])) {
-      if (!ev.event_date || ev.event_date < cutoff14) continue;
       const subs = ev.subtopics_canonical || [];
       if (!subs.length) continue;
       for (const st of subs) {
         if (!st) continue;
-        let b = topicBuckets.get(st);
+        let b = wlBuckets.get(st);
         if (!b) {
           b = {
-            subtopic: st,
-            events: [],
+            canonical: st,
+            weekly: new Array(SPARK_WEEKS).fill(0),
             categories: {},
-            themes: new Set(),
             tickers: new Set(),
             heat_max: 0,
             first_date: ev.event_date,
             last_date: ev.event_date,
+            event_count: 0,
+            recent_events: [],   // 最近 5 条
           };
-          topicBuckets.set(st, b);
+          wlBuckets.set(st, b);
         }
-        b.events.push({
-          id: ev.id,
-          name: ev.name,
-          event_date: ev.event_date,
-          category: ev.category,
-          heat: ev.heat || 0,
-          source_tag: ev.source_tag,
-        });
+        const wi = weekIndex(ev.event_date);
+        if (wi >= 0) b.weekly[wi] += 1;
+        b.event_count += 1;
         const cat = ev.category || 'other';
         b.categories[cat] = (b.categories[cat] || 0) + 1;
-        for (const t of (ev.themes || [])) b.themes.add(t);
         for (const tk of (ev.tickers || [])) b.tickers.add(tk);
         b.heat_max = Math.max(b.heat_max, ev.heat || 0);
-        if (ev.event_date < b.first_date) b.first_date = ev.event_date;
-        if (ev.event_date > b.last_date) b.last_date = ev.event_date;
+        if (!b.first_date || (ev.event_date && ev.event_date < b.first_date)) b.first_date = ev.event_date;
+        if (!b.last_date  || (ev.event_date && ev.event_date > b.last_date))  b.last_date  = ev.event_date;
+        b.recent_events.push({ event_date: ev.event_date, name: ev.name, category: ev.category, heat: ev.heat || 0 });
       }
     }
-    const hot_topics = [...topicBuckets.values()]
-      .map(b => {
-        const cat_keys = Object.keys(b.categories);
-        return {
-          subtopic: b.subtopic,
-          event_count: b.events.length,
-          category_mix: b.categories,                // {industry: 3, listing: 1, ...}
-          category_diversity: cat_keys.length,
-          themes: [...b.themes],                     // 父主题(给前端 breadcrumb 用)
-          tickers: [...b.tickers].slice(0, 12),
-          heat_max: b.heat_max,
-          first_date: b.first_date,
-          last_date: b.last_date,
-          events: b.events.sort((a, b) => (b.event_date || '').localeCompare(a.event_date || '')),
-        };
-      })
-      // 热点判定:≥3 个 event 且至少跨 2 个品类
-      .filter(t => t.event_count >= 3 && t.category_diversity >= 2)
-      .sort((a, b) =>
-        (b.last_date || '').localeCompare(a.last_date || '') ||
-        b.event_count - a.event_count
-      );
 
-    // ==== watchlist (storylines tab) ====
-    const watchlist = (storylines || []).map(s => ({
-      id: s.id,
-      title: s.title,
-      first_seen: s.first_seen,
-      last_seen: s.last_seen,
-      event_count: s.event_count || 0,
-      signal_count: s.signal_count || 0,
-      source_count: s.source_count || 0,
-      heat_max: s.heat_max || 0,
-      heat_current: s.heat_current || 0,
-      themes: s.themes || [],
-      tickers: s.tickers || [],
-      status: s.status,                // active / dormant / closed
-      pinned: !!s.pinned,
-      is_recent: !!s.is_recent,
-      notes: s.notes || '',
-    }));
+    // 2) join subtopics 表(parent_theme + pinned + notes)
+    const subMeta = new Map((subtopicsRows || []).map(r => [r.canonical_name, r]));
+
+    // 3) 生成卡片 + 桶分类
+    const SPARK_CHARS = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
+    const sparkOf = (counts) => {
+      const max = Math.max(...counts, 1);
+      return counts.map(c => c === 0 ? '▁' : SPARK_CHARS[Math.min(7, Math.floor((c / max) * 7))]).join('');
+    };
+
+    const watchlist = [...wlBuckets.values()].map(b => {
+      const meta = subMeta.get(b.canonical) || {};
+      // bucket 分档:
+      //   heating  = 本周(weekly[7])>0 且 比前 3 周均值 ≥ 1.5x
+      //   dormant  = 最近 3 周无 event(weekly[5..7] 全 0)
+      //   stable   = 其他
+      const last3 = b.weekly.slice(-3);
+      const prev3 = b.weekly.slice(-6, -3);
+      const last3Sum = last3.reduce((a, c) => a + c, 0);
+      const prev3Avg = prev3.reduce((a, c) => a + c, 0) / 3 || 0;
+      const thisWeek = b.weekly[SPARK_WEEKS - 1];
+      let bucket;
+      if (last3Sum === 0) bucket = 'dormant';
+      else if (thisWeek > 0 && (prev3Avg === 0 ? thisWeek >= 2 : thisWeek / prev3Avg >= 1.5)) bucket = 'heating';
+      else bucket = 'stable';
+      const deltaPct = prev3Avg > 0 ? Math.round((thisWeek - prev3Avg) / prev3Avg * 100) : null;
+
+      // 跨周 span(去重 weekly>0 的格子数)
+      const week_span = b.weekly.filter(c => c > 0).length;
+
+      return {
+        canonical: b.canonical,
+        parent_theme: meta.parent_theme || null,
+        pinned: !!meta.pinned,
+        dismissed: !!meta.dismissed,
+        notes: meta.notes || '',
+        weekly_counts: b.weekly,
+        sparkline: sparkOf(b.weekly),
+        bucket,                      // heating / stable / dormant
+        delta_pct: deltaPct,         // 本周 vs 前 3 周均值,百分比;null 表示前 3 周为 0
+        category_mix: b.categories,
+        tickers: [...b.tickers].slice(0, 12),
+        heat_max: b.heat_max,
+        first_date: b.first_date,
+        last_date: b.last_date,
+        event_count: b.event_count,
+        week_span,
+        recent_events: b.recent_events
+          .sort((x, y) => (y.event_date || '').localeCompare(x.event_date || ''))
+          .slice(0, 5),
+      };
+    })
+    // 入选门槛:跨 ≥2 周持续(过滤一日游)OR 用户 pin
+    .filter(t => t.pinned || t.week_span >= 2)
+    // 排序:pin 优先 → 升温 → 持续 → 沉寂;桶内按 last_date 降序
+    .sort((a, b) => {
+      if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+      const order = { heating: 0, stable: 1, dormant: 2 };
+      const ao = order[a.bucket] ?? 9, bo = order[b.bucket] ?? 9;
+      if (ao !== bo) return ao - bo;
+      return (b.last_date || '').localeCompare(a.last_date || '');
+    });
 
     const result = {
       meta, today, week, month, ai_week, latest, kpi,
@@ -842,7 +867,6 @@ module.exports = async (req, res) => {
       theme_cards, theme_details,
       market_share,
       watchlist,
-      hot_topics,
       _generated_at: new Date().toISOString(),
     };
 
