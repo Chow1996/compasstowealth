@@ -1643,9 +1643,9 @@ function renderAiPulse(themeName) {
   const target = themeName || 'AI 产业链';
   const td = (DATA.theme_details && DATA.theme_details[target]) || {};
   const groups = {
-    industry: td.events_industry || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'industry') : []),
-    listing:  td.events_listing  || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'listing')  : []),
-    kol:      td.events_kol      || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'kol')      : []),
+    industry: (td.events_industry || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'industry') : [])).filter(inDrawerDateRange),
+    listing:  (td.events_listing  || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'listing')  : [])).filter(inDrawerDateRange),
+    kol:      (td.events_kol      || (target === 'AI 产业链' ? (DATA.ai_full || []).filter(x => x.category === 'kol')      : [])).filter(inDrawerDateRange),
   };
   // 同时更新 drawer 里"本周 X 主题脉搏"标题
   const pulseTitle = document.querySelector('#drawer-ai .drawer-section:nth-child(2) h3');
@@ -1691,7 +1691,7 @@ function renderAiPulse(themeName) {
 function renderCompTimeline() {
   const el = document.getElementById('comp-timeline');
   if (!el) return;
-  const items = (DATA.ai_comp_dated || []).slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  const items = (DATA.ai_comp_dated || []).filter(inDrawerDateRange).slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
   if (items.length === 0) {
     el.innerHTML = '<div style="padding: 20px; color: var(--text-muted); font-style: italic;">暂无竞对动作</div>';
     return;
@@ -1878,12 +1878,28 @@ function switchTab(name) {
 // 初始按 hash 切换
 window.addEventListener('hashchange', () => switchTab((location.hash || '#discover').slice(1)));
 
+// drawer 当前打开的主题 — 给日期 picker 重渲染时引用
+let currentDrawerTheme = null;
+
 // 一次切换 drawer 整体内容到指定主题
 function renderDrawerForTheme(themeName) {
+  currentDrawerTheme = themeName;
   renderThemeOverview(themeName);
   renderCoverageTable(themeName);
   renderAiPulse(themeName);
   renderCompetitorMatrix(themeName);
+  renderCompTimeline();
+}
+
+// [from, to] 与事件 [first_date, last_date] 是否有交集
+function inDrawerDateRange(item) {
+  const from = document.getElementById('drawer-date-from')?.value;
+  const to = document.getElementById('drawer-date-to')?.value;
+  if (!from || !to) return true;
+  const f = item.first_date || item.last_date || item.date;
+  const l = item.last_date || item.first_date || item.date;
+  if (!f && !l) return true;
+  return (l || f) >= from && (f || l) <= to;
 }
 
 function renderWatchlist() {
@@ -2549,6 +2565,18 @@ loadData().then(() => {
     drawerToInput.max = DATE_MAX;
     drawerFromInput.value = DATE_MIN;
     drawerToInput.value = DATE_MAX;
+
+    const onDrawerDateChange = () => {
+      if (drawerFromInput.value && drawerToInput.value && drawerFromInput.value > drawerToInput.value) {
+        drawerToInput.value = drawerFromInput.value;
+      }
+      if (currentDrawerTheme) {
+        renderAiPulse(currentDrawerTheme);
+      }
+      renderCompTimeline();
+    };
+    drawerFromInput.addEventListener('change', onDrawerDateChange);
+    drawerToInput.addEventListener('change', onDrawerDateChange);
   }
 });
 </script>
