@@ -1301,6 +1301,50 @@ body::before {
 .wl-card .act-btn:hover { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
 .wl-card .act-btn.danger:hover { background: var(--bear-bg); color: var(--bear); border-color: var(--bear); }
 
+.wl-card { cursor: pointer; }
+.wl-card.expanded { background: var(--bg-tertiary); }
+
+.wl-card .expand-hint {
+  font-size: 11px; color: var(--text-faint);
+  margin-top: 6px; font-family: 'JetBrains Mono', monospace;
+}
+.wl-card.expanded .expand-hint::before { content: '▼ '; }
+.wl-card:not(.expanded) .expand-hint::before { content: '▶ '; }
+
+.wl-events {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  display: none;
+}
+.wl-card.expanded .wl-events { display: block; }
+
+.wl-events .ev-row {
+  display: grid;
+  grid-template-columns: 56px 36px 60px 1fr;
+  gap: 10px; align-items: baseline;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px dotted var(--border);
+}
+.wl-events .ev-row:last-child { border-bottom: none; }
+.wl-events .ev-date { font-family: 'JetBrains Mono', monospace; color: var(--text-muted); }
+.wl-events .ev-heat {
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+  text-align: center; padding: 1px 0; border-radius: 2px;
+  background: var(--bg-primary); color: var(--accent-bright);
+  border: 1px solid var(--accent-deep);
+}
+.wl-events .ev-heat.l3 { color: var(--bull); border-color: var(--bull); }
+.wl-events .ev-heat.l1 { color: var(--text-muted); border-color: var(--border); }
+.wl-events .ev-cat { color: var(--text-secondary); font-size: 11px; }
+.wl-events .ev-name { color: var(--text-primary); }
+.wl-events .ev-more {
+  margin-top: 8px; text-align: right;
+  font-size: 11px; color: var(--text-muted); font-style: italic;
+}
+
 @media (max-width: 768px) {
   .wl-card { grid-template-columns: 1fr; }
   .wl-card .actions { flex-direction: row; flex-wrap: wrap; }
@@ -1778,6 +1822,7 @@ function renderThemeOverview(themeName) {
 
 // =================== Watchlist Tab — 中期话题雷达 v2 ===================
 let _wlFilter = 'all';
+const _wlExpanded = new Set();   // 记住展开的 canonical,重渲染时保留
 const _CAT_LABEL = {industry:'行业', listing:'上币', risk:'风控', competitor:'竞对', macro:'宏观', tech_reg:'技监', other:'其他'};
 const _BUCKET_LABEL = {heating:'🔥 升温中', stable:'📊 持续追踪', dormant:'💤 沉寂'};
 
@@ -1853,12 +1898,32 @@ function renderWatchlistPage() {
       }
     });
   });
+
+  // 卡片点击 → 切换展开(act-btn 不触发)
+  list.querySelectorAll('.wl-card').forEach(cardEl => {
+    cardEl.addEventListener('click', (e) => {
+      if (e.target.closest('.act-btn')) return;
+      const canon = cardEl.dataset.canonical;
+      if (!canon) return;
+      if (_wlExpanded.has(canon)) _wlExpanded.delete(canon);
+      else _wlExpanded.add(canon);
+      cardEl.classList.toggle('expanded');
+      const hint = cardEl.querySelector('.expand-hint');
+      if (hint) {
+        const t = (DATA.watchlist || []).find(x => x.canonical === canon);
+        const n = (t?.recent_events || []).length;
+        hint.textContent = _wlExpanded.has(canon) ? '收起' : `展开 ${n} 条`;
+      }
+    });
+  });
 }
 
 function renderWatchlistCard(t) {
   const cls = ['wl-card'];
   if (t.pinned) cls.push('pinned');
   else cls.push(t.bucket || 'stable');
+  const isExpanded = _wlExpanded.has(t.canonical);
+  if (isExpanded) cls.push('expanded');
 
   const crumb = t.parent_theme
     ? `<div class="crumb">${t.pinned ? '<span class="pin-tag">📌 PIN</span>' : ''}▷ ${escapeHTML(t.parent_theme)}</div>`
@@ -1884,6 +1949,28 @@ function renderWatchlistCard(t) {
     ? (t.last_date || '').slice(5)
     : `${(t.first_date || '').slice(5)} → ${(t.last_date || '').slice(5)}`;
 
+  const evs = t.recent_events || [];
+  const evHtml = evs.length ? `
+    <div class="wl-events">
+      ${evs.map(ev => {
+        const heat = ev.heat || 0;
+        const lvl = heat >= 80 ? 'l3' : heat >= 70 ? 'l2' : 'l1';
+        const lvlTxt = heat >= 80 ? 'L3' : heat >= 70 ? 'L2' : 'L1';
+        return `
+          <div class="ev-row">
+            <span class="ev-date">${(ev.event_date || '').slice(5)}</span>
+            <span class="ev-heat ${lvl}">${lvlTxt}</span>
+            <span class="ev-cat">${escapeHTML(_CAT_LABEL[ev.category] || ev.category || '—')}</span>
+            <span class="ev-name">${escapeHTML(ev.name || '')}</span>
+          </div>`;
+      }).join('')}
+      ${t.event_count > evs.length
+        ? `<div class="ev-more">显示最近 ${evs.length} / ${t.event_count} 条</div>`
+        : ''}
+    </div>` : '';
+
+  const hintTxt = isExpanded ? '收起' : `展开 ${evs.length} 条`;
+
   return `
     <div class="${cls.join(' ')}" data-canonical="${escapeHTML(t.canonical)}">
       <div>
@@ -1898,11 +1985,13 @@ function renderWatchlistCard(t) {
           <strong>${t.event_count}</strong> events · 跨 <strong>${t.week_span}</strong> 周 · heat ${t.heat_max} · ${dateRange}
         </div>
         ${tickers ? `<div class="ticker-row">${tickers}</div>` : ''}
+        ${evs.length ? `<div class="expand-hint">${hintTxt}</div>` : ''}
       </div>
       <div class="actions">
         <button class="act-btn" data-action="${t.pinned ? 'unpin' : 'pin'}">${t.pinned ? '✕ 取消 Pin' : '📌 Pin'}</button>
         <button class="act-btn danger" data-action="dismiss">🗑 Dismiss</button>
       </div>
+      ${evHtml}
     </div>
   `;
 }
