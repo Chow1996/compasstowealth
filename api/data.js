@@ -748,6 +748,71 @@ module.exports = async (req, res) => {
       spot: buildSegBlock('spot'),
     };
 
+    // ==== hot_topics ====
+    // 按 events.subtopics_canonical group,过去 14 天 + event_count≥3 + 跨品类≥2 = "热点话题"。
+    // 每条 topic 输出:品类混合 / 父主题 / event 列表(给前端 watchlist v2 用)
+    const cutoff14 = new Date(Date.now() - 14 * 86400 * 1000).toISOString().slice(0, 10);
+    const topicBuckets = new Map();
+    for (const ev of (events || [])) {
+      if (!ev.event_date || ev.event_date < cutoff14) continue;
+      const subs = ev.subtopics_canonical || [];
+      if (!subs.length) continue;
+      for (const st of subs) {
+        if (!st) continue;
+        let b = topicBuckets.get(st);
+        if (!b) {
+          b = {
+            subtopic: st,
+            events: [],
+            categories: {},
+            themes: new Set(),
+            tickers: new Set(),
+            heat_max: 0,
+            first_date: ev.event_date,
+            last_date: ev.event_date,
+          };
+          topicBuckets.set(st, b);
+        }
+        b.events.push({
+          id: ev.id,
+          name: ev.name,
+          event_date: ev.event_date,
+          category: ev.category,
+          heat: ev.heat || 0,
+          source_tag: ev.source_tag,
+        });
+        const cat = ev.category || 'other';
+        b.categories[cat] = (b.categories[cat] || 0) + 1;
+        for (const t of (ev.themes || [])) b.themes.add(t);
+        for (const tk of (ev.tickers || [])) b.tickers.add(tk);
+        b.heat_max = Math.max(b.heat_max, ev.heat || 0);
+        if (ev.event_date < b.first_date) b.first_date = ev.event_date;
+        if (ev.event_date > b.last_date) b.last_date = ev.event_date;
+      }
+    }
+    const hot_topics = [...topicBuckets.values()]
+      .map(b => {
+        const cat_keys = Object.keys(b.categories);
+        return {
+          subtopic: b.subtopic,
+          event_count: b.events.length,
+          category_mix: b.categories,                // {industry: 3, listing: 1, ...}
+          category_diversity: cat_keys.length,
+          themes: [...b.themes],                     // 父主题(给前端 breadcrumb 用)
+          tickers: [...b.tickers].slice(0, 12),
+          heat_max: b.heat_max,
+          first_date: b.first_date,
+          last_date: b.last_date,
+          events: b.events.sort((a, b) => (b.event_date || '').localeCompare(a.event_date || '')),
+        };
+      })
+      // 热点判定:≥3 个 event 且至少跨 2 个品类
+      .filter(t => t.event_count >= 3 && t.category_diversity >= 2)
+      .sort((a, b) =>
+        (b.last_date || '').localeCompare(a.last_date || '') ||
+        b.event_count - a.event_count
+      );
+
     // ==== watchlist (storylines tab) ====
     const watchlist = (storylines || []).map(s => ({
       id: s.id,
@@ -777,6 +842,7 @@ module.exports = async (req, res) => {
       theme_cards, theme_details,
       market_share,
       watchlist,
+      hot_topics,
       _generated_at: new Date().toISOString(),
     };
 

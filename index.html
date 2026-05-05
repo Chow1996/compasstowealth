@@ -1232,6 +1232,38 @@ body::before {
 .wl-chip.active { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent-deep); }
 .wl-chip .ct { margin-left: 4px; opacity: 0.7; font-size: 10.5px; }
 
+.hot-topic-list {
+  display: grid; gap: 12px; padding: 0 0 24px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+}
+.hot-topic-card {
+  border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  background: var(--bg-secondary); padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.hot-topic-card:hover { background: var(--bg-tertiary); }
+.hot-topic-card .ht-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hot-topic-card h3 {
+  font-family: var(--font-serif); font-size: 17px; margin: 0;
+  color: var(--accent-bright); font-weight: 500;
+}
+.hot-topic-card .ht-breadcrumb {
+  font-size: 11px; color: var(--text-muted);
+}
+.hot-topic-card .ht-cat-mix { display: flex; gap: 6px; flex-wrap: wrap; }
+.hot-topic-card .cat-pill {
+  font-size: 11px; padding: 2px 8px; border-radius: 2px;
+  background: var(--bg-tertiary); color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.hot-topic-card .cat-pill .n { color: var(--accent-bright); font-weight: 600; margin-left: 3px; }
+.hot-topic-card .ht-meta {
+  font-size: 11.5px; color: var(--text-muted); display: flex; gap: 10px; flex-wrap: wrap;
+}
+.hot-topic-card .ht-events { font-size: 12.5px; line-height: 1.65; color: var(--text-secondary); }
+.hot-topic-card .ht-events .ev { display: flex; gap: 8px; padding: 2px 0; }
+.hot-topic-card .ht-events .ev .d { color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; flex-shrink: 0; }
+.hot-topic-card .ht-events .ev .n { flex: 1; }
 .storyline-list {
   padding: 0 28px 40px;
   display: grid; grid-template-columns: 1fr; gap: 14px;
@@ -1413,6 +1445,21 @@ body::before {
       <span class="wl-chip" data-filter="pinned">📌 Pinned <span class="ct" id="wl-ct-pinned">0</span></span>
       <span class="wl-chip" data-filter="active">🔥 Active <span class="ct" id="wl-ct-active">0</span></span>
       <span class="wl-chip" data-filter="dormant">💤 Dormant <span class="ct" id="wl-ct-dormant">0</span></span>
+    </div>
+  </section>
+
+  <section style="padding: 0 28px 8px;">
+    <div class="section-header">
+      <h2>🔥 热点话题 <em>Hot Topics</em></h2>
+      <span class="sec-meta" id="ht-meta">— 过去 14 天 · 跨品类信号汇聚</span>
+    </div>
+    <div class="hot-topic-list" id="hot-topic-list"></div>
+  </section>
+
+  <section style="padding: 16px 28px 0;">
+    <div class="section-header">
+      <h2>📂 长期故事线 <em>Storylines</em></h2>
+      <span class="sec-meta">— 启发式聚类(events 多次复现)</span>
     </div>
   </section>
   <div class="storyline-list" id="storyline-list"></div>
@@ -1753,7 +1800,54 @@ function renderThemeOverview(themeName) {
 // =================== Watchlist Tab(长期追踪故事线) ===================
 let _wlFilter = 'all';
 
+function renderHotTopics() {
+  const list = document.getElementById('hot-topic-list');
+  const meta = document.getElementById('ht-meta');
+  if (!list) return;
+  const items = DATA.hot_topics || [];
+  if (meta) meta.textContent = `${items.length} topics · 过去 14 天 · 跨品类信号汇聚`;
+  if (!items.length) {
+    list.innerHTML = '<div style="padding:20px;color:var(--text-muted);font-style:italic;">暂无符合阈值的热点话题(需 ≥3 events 跨 ≥2 品类)</div>';
+    return;
+  }
+  const catLabel = (k) => ({industry:'行业', listing:'上币', risk:'风控', competitor:'竞对', macro:'宏观', tech_reg:'技监', other:'其他'}[k] || k);
+  list.innerHTML = items.map(t => {
+    const catPills = Object.entries(t.category_mix || {})
+      .sort((a, b) => b[1] - a[1])
+      .map(([k, n]) => `<span class="cat-pill">${escapeHTML(catLabel(k))}<span class="n">×${n}</span></span>`)
+      .join('');
+    const breadcrumb = (t.themes || []).length
+      ? `<span class="ht-breadcrumb">▷ ${(t.themes || []).map(escapeHTML).join(' · ')}</span>`
+      : '';
+    const evList = (t.events || []).slice(0, 5).map(e => `
+      <div class="ev"><span class="d">${escapeHTML((e.event_date||'').slice(5))}</span><span class="n">${escapeHTML(e.name || '')}</span></div>
+    `).join('');
+    const more = (t.events || []).length > 5
+      ? `<div class="ev"><span class="d"></span><span class="n" style="color:var(--text-muted);font-style:italic;">+${t.events.length - 5} 条</span></div>`
+      : '';
+    const dateRange = t.first_date === t.last_date
+      ? (t.last_date || '').slice(5)
+      : `${(t.first_date || '').slice(5)} → ${(t.last_date || '').slice(5)}`;
+    return `
+      <div class="hot-topic-card">
+        <div class="ht-head">
+          <h3>${escapeHTML(t.subtopic)}</h3>
+          ${breadcrumb}
+        </div>
+        <div class="ht-cat-mix">${catPills}</div>
+        <div class="ht-meta">
+          <span><strong>${t.event_count}</strong> events</span>
+          <span>heat ${t.heat_max}</span>
+          <span>${dateRange}</span>
+        </div>
+        <div class="ht-events">${evList}${more}</div>
+      </div>
+    `;
+  }).join('');
+}
+
 function renderWatchlistPage() {
+  renderHotTopics();
   const items = DATA.watchlist || [];
   const list = document.getElementById('storyline-list');
   const meta = document.getElementById('wl-meta');
