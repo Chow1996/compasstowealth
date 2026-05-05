@@ -724,7 +724,7 @@ module.exports = async (req, res) => {
     });
 
     // ==== market_share (OKX 占主流交易所份额) ====
-    // shareRows 已按 snapshot_date desc 排好,挑出最新一天 + 7 天前 + 365 天前的 OKX 行
+    // shareRows 已按 snapshot_date desc 排好,挑出最新一天 + 昨天 + 7 天前的 OKX 行
     const okxBySegDate = {}; // {segment: {date: row}}
     (shareRows || []).forEach(r => {
       if (r.exchange_id !== 'okex' && r.exchange_id !== 'okex_swap') return;
@@ -743,18 +743,18 @@ module.exports = async (req, res) => {
     const buildSegBlock = (seg) => {
       const bySeg = okxBySegDate[seg] || {};
       const today = latestShareDate ? bySeg[latestShareDate] : null;
+      const ydDate = offsetDate(latestShareDate, 1);
       const wkDate = offsetDate(latestShareDate, 7);
-      const yrDate = offsetDate(latestShareDate, 365);
+      const yd = ydDate ? bySeg[ydDate] : null;
       const wk = wkDate ? bySeg[wkDate] : null;
-      const yr = yrDate ? bySeg[yrDate] : null;
       const pp = (a, b) => (a != null && b != null) ? Number((a - b).toFixed(2)) : null;
       return {
         snapshot_date: latestShareDate,
         share: today ? Number(today.share_pct) : null,
         vol_usd: today ? Number(today.vol_usd) : null,
         rank: today ? today.rank : null,
-        vs_week: { date: wkDate, share: wk ? Number(wk.share_pct) : null, delta_pp: pp(today?.share_pct, wk?.share_pct) },
-        vs_year: { date: yrDate, share: yr ? Number(yr.share_pct) : null, delta_pp: pp(today?.share_pct, yr?.share_pct) },
+        vs_yesterday: { date: ydDate, share: yd ? Number(yd.share_pct) : null, delta_pp: pp(today?.share_pct, yd?.share_pct) },
+        vs_week:      { date: wkDate, share: wk ? Number(wk.share_pct) : null, delta_pp: pp(today?.share_pct, wk?.share_pct) },
       };
     };
     const market_share = {
